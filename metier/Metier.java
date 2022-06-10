@@ -12,17 +12,17 @@ public class Metier
 
     }
 
-    public static String creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
+    public static Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
         //this.lstCuves = lstCuves;
         //this.lstTuyaux = lstTuyaux;
 
-        int [][] matrice = new int [taille][taille];
+        Tuyau [][] matrice = new Tuyau [taille][taille];
         for (int i=0; i<taille; i++)
         {
             for (int j=0; j<taille; j++)
             {
-                matrice[i][j] = -1;
+                matrice[i][j] = null;
             } 
         };
 
@@ -32,17 +32,40 @@ public class Metier
             {
                 if (t.getCuveOrig() == c || t.getCuveDest() == c)
                 {
-                    matrice[ (int) (  t.getCuveDest().getId() - 'A'  ) ] [ (int) (  t.getCuveOrig().getId() - 'A'  ) ] = t.getSection();
-                    matrice[ (int) (  t.getCuveOrig().getId() - 'A'  ) ] [ (int) (  t.getCuveDest().getId() - 'A'  ) ] = t.getSection();
+                    matrice[ (int) (  t.getCuveDest().getId() - 'A'  ) ] [ (int) (  t.getCuveOrig().getId() - 'A'  ) ] = t;
+                    matrice[ (int) (  t.getCuveOrig().getId() - 'A'  ) ] [ (int) (  t.getCuveDest().getId() - 'A'  ) ] = t;
                 }
             }
         }
+        return matrice;       
+    }
+
+    public static String afficherMatrice(Tuyau[][] matrice)
+    {
         String sRet ="";
-        for (int i=0; i<taille; i++)
+        for (int i=0; i<matrice.length; i++)
         {
-            for (int j=0; j<taille; j++)
+            for (int j=0; j<matrice[0].length; j++)
             {
-                sRet += matrice[i][j] +" ";
+                if (matrice[i][j] != null)
+                    sRet += matrice[i][j].getSection() +" ";
+                else sRet += 0 +" ";
+            } 
+            sRet +="\n";
+        };
+        return sRet;
+    }
+
+    public static String afficherMatriceOpti(Tuyau[][]matrice)
+    {
+        String sRet ="";
+        for (int i=0; i<matrice.length; i++) // pour chaque ligne
+        {
+            for (int j=0; j<=i; j++)
+            {
+                if (matrice[i][j] != null)
+                    sRet += matrice[i][j].getSection() +" ";
+                else sRet += 0 +" ";
             } 
             sRet +="\n";
         };
@@ -88,6 +111,10 @@ public class Metier
         lstTempT.add(t2c1c3);
         lstTempT.add(t3c2c3);
 
-        System.out.println(creerMatrice(lstTempC, lstTempT, 3));
+        System.out.println();
+
+        System.out.println("Matrice: \n"+afficherMatrice(creerMatrice(lstTempC, lstTempT, 3)));
+        System.out.println("Matrice Opti: \n" + afficherMatriceOpti(creerMatrice(lstTempC, lstTempT, 3)));
+        //System.out.println("Liste d'adjacence: \n");
     }
 }
