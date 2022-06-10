@@ -2,12 +2,14 @@ import java.util.ArrayList;
 
 public class Metier
 {
+    
+
     public Metier()
     {
         ArrayList<Cuve>  lstCuves   = new ArrayList<Cuve>(); 
-        ArrayList<Tuyau> lstTuyasux = new ArrayList<Tuyau>(); 
-
-        Tuyau [][] matrice;
+        ArrayList<Tuyau> lstTuyasux = new ArrayList<Tuyau>();
+         
+        int [][] matrice;
         matrice = 
         {
             {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
@@ -62,7 +64,7 @@ public class Metier
             for (Tuyau t: lstTuyasux)
             {
                 if (t.getCuveOrig() == c || t.getCuveDest() == c)
-                matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t;
+                matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t.getSection();
             }
         }
         
