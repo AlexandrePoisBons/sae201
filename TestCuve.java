@@ -21,13 +21,16 @@ public class TestCuve
         /* Récupération des valeurs des utilisateurs */
 		System.out.print("Combien de cuves ? ");
 		int nbCuves = sc.nextInt();
-
-		System.out.print("Quelle capacité ? ");
-		int capaCuves = sc.nextInt();
 		/*---------------------------------------------*/
 
+
+		/*                          Création des cuves selon l'utilisateurs                           */
 		for(int cpt = 0; cpt < nbCuves; cpt++)
-			ensCuves.add(Cuve.creerCuve(capaCuves, 50, 50, "Haut"));
+		{
+			System.out.print("Quelle capacité pour la cuve " + " : " + ( char ) ( 'A' + cpt ) + " ? ");
+			ensCuves.add(Cuve.creerCuve(sc.nextInt(), 50, 50, "Haut"));
+		}
+		/*--------------------------------------------------------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));
@@ -40,8 +43,10 @@ public class TestCuve
 		{
 			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
 
+			/* Pour l'écriture correcte du .txt */
 			for(Cuve c : ensCuves)
 				pw.println ( c );
+
 			
 			pw.close();
 		}
