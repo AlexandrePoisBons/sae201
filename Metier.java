@@ -1,8 +1,36 @@
+import java.util.ArrayList;
+
 public class Metier
 {
     public Metier()
     {
-        // blablabla
+        ArrayList<Cuve>  lstCuves   = new ArrayList<Cuve>(); 
+        ArrayList<Tuyau> lstTuyasux = new ArrayList<Tuyau>(); 
+
+        Tuyau [][] matrice;
+        // liste de cuves
+        // liste de tuyaux
+         
+       /* 
+       //             de       A   B   C   D   E   F   G        / vers
+       int[][] matrice = {  { -1,  3, -1,  0, -1, -1, -1, },    // A
+                            {  1, -1,  3, -1, -1, -1, -1, },    // B
+                            { -1,  1, -1, -1,  0, -1, -1, },    // C
+                            {  2, -1, -1, -1, -1,  0, -1, },    // D
+                            { -1, -1,  2, -1, -1, -1, -1, },    // E
+                            { -1, -1, -1,  2, -1, -1,  3, },    // F
+                            { -1, -1, -1, -1, -1,  1, -1  }  }; // G
+        */
+
+        for( Cuve c: lstCuves)
+        {
+            for (Tuyau t: lstTuyasux)
+            {
+                if (t.getCuve1() == c)matrice["depart"]["destination"] = t;
+                else if (t.getCuve2() == c ) ["un nombre"][]
+            }
+        }
+        
     }
 
     public static void main(String[] args)
