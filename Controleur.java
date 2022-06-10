@@ -1,4 +1,4 @@
-import metier;
+import metier.*;
 import ihm.FrameGUI;
 
 public class Controleur
