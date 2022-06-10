@@ -27,7 +27,7 @@ public class TestCuve
 		/*---------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
-			ensCuves.add(new Cuve(capaCuves, 50, 50, "Haut"));
+			ensCuves.add(Cuve.creerCuve(capaCuves, 50, 50, "Haut"));
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));

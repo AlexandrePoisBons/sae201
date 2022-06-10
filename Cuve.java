@@ -21,17 +21,25 @@ public class Cuve
         this.position = position;
     }
 
-    private static Cuve creerCuve(int capacite, int posX, int posY, String position)
+    public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
-        if ( Cuve.id > 'Z') return null;
-        if ( capacite < 200 || capacite > 1000 ) return null;
-        if (position != "Haut" && position != "Bas" && position != "Gauche" && position != "Droite" ) return null;
+        /* Différentes vérification nécessaires */
+        if ( Cuve.id > 'Z' ) 
+            return null;
+
+        if ( capacite < 200 || capacite > 1000 ) 
+            return null;
+
+        if (position != "Haut" && position != "Bas" && position != "Gauche" && position != "Droite" ) 
+            return null;
+        /*-------------------------------------------------------------------------------------------*/
+        
         return new Cuve( capacite, posX, posY, position );
     }
 
-    public int getCapacite { return this.capacite; }
-    public int getid       { return this.idCuve;   }
-    public int getContenu  { return this.contenu;  }
+    public int getCapacite()    { return this.capacite; }
+    public int getid()          { return this.idCuve;   }
+    public double getContenu()  { return this.contenu;  }
 
     public String toString()
     {
