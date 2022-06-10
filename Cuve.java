@@ -32,7 +32,7 @@ public class Cuve
             return null;
         /*-------------------------------------------------------------------------------------------*/
 
-        return new this( capacite, posX, posY, position );
+        return new Cuve( capacite, posX, posY, position );
     }
 
     public int    getCapacite() { return this.capacite; }
