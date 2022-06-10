@@ -8,6 +8,41 @@ public class Metier
         ArrayList<Tuyau> lstTuyasux = new ArrayList<Tuyau>(); 
 
         Tuyau [][] matrice;
+        matrice = 
+        {
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null},
+            {null, null, null,null, null, null,null, null, null,null, null, null,null, null, null,null, null, null, null, null, null,null, null, null,null, null, null,null, null, null}
+
+        };
         // liste de cuves
         // liste de tuyaux
          
@@ -26,8 +61,8 @@ public class Metier
         {
             for (Tuyau t: lstTuyasux)
             {
-                if (t.getCuve1() == c)matrice["depart"]["destination"] = t;
-                else if (t.getCuve2() == c ) ["un nombre"][]
+                if (t.getCuveOrig() == c || t.getCuveDest() == c)
+                matrice[t.getCuveOrig().getId()][t.getCuveOrig().getId()] = t;
             }
         }
         
