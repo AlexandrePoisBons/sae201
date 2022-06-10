@@ -1,3 +1,5 @@
+package IHM;
+
 public class Controleur
 {
 	private Metier   metier;
@@ -6,7 +8,7 @@ public class Controleur
 	public Controleur()
 	{
 		this.metier = new Metier();
-		this.ihm    = new FrameGUI();
+		this.ihm    = new FrameGUI(this);
 	}
 
 	public static void main (String[] args)
