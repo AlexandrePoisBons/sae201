@@ -26,12 +26,11 @@ public class Cuve
         if ( Cuve.id > 'Z') return null;
         if ( capacite < 200 || capacite > 1000 ) return null;
         return new Cuve( capacite, posX, posY, position );
-
     }
 
     public String toString()
     {
-        return "Cuve: " + Cuve.id + " | capacite: " + this.capacite + 
+        return "Cuve: " + this.idCuve + " | capacite: " + this.capacite + 
                                     " | Contenu: "  + this.contenu  + 
                                     " | positionne en (" + this.posX + "," +this.posY +")"+
                                     " | et "        + this.position; 
