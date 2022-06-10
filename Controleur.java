@@ -1,5 +1,7 @@
-import metier.*;
-import ihm.FrameGUI;
+package sae201;
+
+import sae201.metier.*;
+import sae201.ihm.*;
 
 public class Controleur
 {

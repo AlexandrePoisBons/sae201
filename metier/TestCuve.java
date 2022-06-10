@@ -1,4 +1,4 @@
-package metier;
+package sae201.metier;
 
 import java.io.FileOutputStream;
 // Pour l'écriture dans le fichier texte
