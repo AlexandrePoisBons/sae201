@@ -1,3 +1,5 @@
+package metier;
+
 public class Tuyau
 {
     private Cuve cuveOrig;

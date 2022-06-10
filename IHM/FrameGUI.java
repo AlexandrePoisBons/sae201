@@ -1,4 +1,4 @@
-package IHM;
+package sae201.ihm;
 
 import javax.swing.*;
 import java.awt.BorderLayout;

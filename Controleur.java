@@ -1,4 +1,7 @@
-package IHM;
+package sae201;
+
+import sae201.Metier;
+import sae201.IHM;
 
 public class Controleur
 {

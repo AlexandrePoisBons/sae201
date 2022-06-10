@@ -1,3 +1,5 @@
+package metier.tests
+
 // Pour l'écriture dans le fichier texte
 import java.io.PrintWriter;
 import java.io.FileOutputStream;

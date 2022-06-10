@@ -1,8 +1,10 @@
+package metier;
+
 public class Cuve
 {
     private static char id = 'A'-1;
 
-    public char   idCuve;
+    public  char   idCuve;
     private int    capacite;
     private double contenu;
     private int    posX;

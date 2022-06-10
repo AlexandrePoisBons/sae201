@@ -1,13 +1,14 @@
+package metier;
+
 import java.util.ArrayList;
 
 public class Metier
 {
-    
 
     public Metier()
     {
         ArrayList<Cuve>  lstCuves   = new ArrayList<Cuve>(); 
-        ArrayList<Tuyau> lstTuyasux = new ArrayList<Tuyau>();
+        ArrayList<Tuyau> lstTuyaux = new ArrayList<Tuyau>();
          
         int [][] matrice = new int [30][30];
         for (int i=0; i<=30; i++)
@@ -20,7 +21,7 @@ public class Metier
 
         for( Cuve c: lstCuves)
         {
-            for (Tuyau t: lstTuyasux)
+            for (Tuyau t: lstTuyaux)
             {
                 if (t.getCuveOrig() == c || t.getCuveDest() == c)
                 matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t.getSection();

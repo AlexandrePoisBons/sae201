@@ -1,4 +1,4 @@
-package IHM;
+package sae201.ihm;
 
 import javax.swing.*;
 
@@ -9,7 +9,6 @@ public class PanelGUI extends JPanel
 	public PanelGUI(Controleur ctrl)
 	{
 		this.ctrl = ctrl;
-
 
 	}
 }
