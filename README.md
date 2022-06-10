@@ -1,5 +1,5 @@
-# sae201
+# Instruction pour la compilation
 Pour le compile.list : le lancer depuis sae201 avec cette commande : javac "@compile.list"
 
-
-Pour lancer controleur le lancer depuis le fichier avant sae201 dans votre arborescence avec cette commande : java sae201.Controleur
+# Instruction pour l'exécution
+Pour lancer controleur le lancer depuis le dossier parent de sae201 dans votre arborescence avec cette commande : java sae201.Controleur
