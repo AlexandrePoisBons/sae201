@@ -9,11 +9,9 @@ public class Cuve
     private int    posY;
     private String position;
 
-    public Cuve(int capacite, int posX, int posY, String position)
-    {
-        Cuve.id++;
-        
-        this.idCuve   = Cuve.id;
+    private Cuve(int capacite, int posX, int posY, String position)
+    {   
+        this.idCuve   = Cuve.id++;
         this.capacite = capacite;
         this.contenu  = 0;
         this.posX     = posX;
