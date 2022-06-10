@@ -12,9 +12,9 @@ public class Cuve
     {
         id++;
         this.capacite = capacite;
-        this.contenu = 0;
-        this.posX = posX;
-        this.posY = posY;
+        this.contenu  = 0;
+        this.posX     = posX;
+        this.posY     = posY;
         this.position = position;
     }
 
@@ -28,10 +28,10 @@ public class Cuve
 
     public String toString()
     {
-        return "Cuve: " + id + " | capacite: " + this.capacite + 
-                               " | Contenu: " + this.contenu + 
-                               " | positionne en (" + this.posX + "," +this.posY +")"+
-                               " | et " + this.position; 
+        return "Cuve: " + id + " | capacite : "  + this.capacite + 
+                               " | Contenu  : "  + this.contenu  + 
+                               " | positionne en (" + this.posX  + "," +this.posY + ")" +
+                               " | et "          + this.position; 
     }
 
     public static void main(String[] args)
