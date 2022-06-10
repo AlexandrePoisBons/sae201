@@ -1,6 +1,6 @@
 public class Cuve
 {
-   private static char id = 'A'-1;
+    private static char id = 'A'-1;
 
     public char   idCuve;
     private int    capacite;
