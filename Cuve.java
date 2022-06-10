@@ -41,9 +41,9 @@ public class Cuve
 
     public String toString()
     {
-        return "Cuve: " + this.idCuve + " | capacite: " + this.capacite + 
-                                        " | Contenu: "  + this.contenu  + 
-                                    " | positionne en (" + this.posX + "," +this.posY +")"+
-                                    " | et "        + this.position; 
+        return "Cuve: " + this.idCuve + " | capacite: " + this.capacite  + 
+                                        " | Contenu: "  + this.contenu   + 
+                                        " | positionne en (" + this.posX + "," + this.posY + ")" +
+                                        " | et "        + this.position; 
     }
 }
