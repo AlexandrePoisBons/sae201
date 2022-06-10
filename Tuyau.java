@@ -19,10 +19,10 @@ public class Tuyau
         return new Tuyau (null, null, section);
     }
 
-    public boolean setLien( Cuve cuvePara )
+    public boolean setLien( Cuve cuveOrig, Cuve cuveDest  )
     {
-        this.cuveOrig = this;
-        this.cuveDest = cuvePara;
+        this.cuveOrig = cuveOrig;
+        this.cuveDest = cuveDest;
     }
 
     // Getters
