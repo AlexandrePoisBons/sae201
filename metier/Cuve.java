@@ -30,7 +30,11 @@ public class Cuve
         if ( capacite < 200 || capacite > 1000 ) 
             return null;
 
-        if (position != "Haut" && position != "Bas" && position != "Gauche" && position != "Droite" ) 
+        if ( !position.contains("Haut") && !position.contains("Bas") && !position.contains("Droite") && !position.contains("Gauche") )
+            return null;
+            
+
+        if ( posX < 0 || posY < 0 )
             return null;
         /*-------------------------------------------------------------------------------------------*/
 

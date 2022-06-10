@@ -29,8 +29,9 @@ public class TestCuve
 		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
-			System.out.print("Quelle capacité pour la cuve " + " : " + ( char ) ( 'A' + cpt ) + " ? ");
-			ensCuves.add(Cuve.creerCuve(sc.nextInt(), 50, 50, "Haut"));
+			System.out.print("Quelle capacité | posX | posY | position pour la cuve" + " : " + ( char ) ( 'A' + cpt ) + " ? " + "\n");
+			ensCuves.add(Cuve.creerCuve(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextLine() + sc.nextLine()));
+			// Double sc.nextLine() pour annuler le "\n" du sc.nextInt() précédent, qui comptait comme String position
 		}
 		/*--------------------------------------------------------------------------------------------*/
 
@@ -45,7 +46,7 @@ public class TestCuve
         // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
 		try
 		{
-			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
+			PrintWriter pw = new PrintWriter( new FileOutputStream("./resultat.txt") );
 
 			/* Pour l'écriture correcte du .txt */
 			for(Cuve c : ensCuves)
