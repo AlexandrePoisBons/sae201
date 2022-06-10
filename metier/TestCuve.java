@@ -1,7 +1,5 @@
 package metier;
 
-import metier.Cuve;
-
 import java.io.FileOutputStream;
 // Pour l'écriture dans le fichier texte
 import java.io.PrintWriter;
