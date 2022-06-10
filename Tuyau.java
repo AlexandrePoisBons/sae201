@@ -1,8 +1,8 @@
 public class Tuyau
 {
-    Cuve cuveOrig;
-    Cuve cuveDest;
-    int  section;
+    private Cuve cuveOrig;
+    private Cuve cuveDest;
+    private int  section;
 
     private Tuyau(Cuve cuveOrig, Cuve cuveDest, int section)
     {
@@ -35,7 +35,7 @@ public class Tuyau
     public Cuve getCuveDest() { return this.cuveDest; }
     public int  getSection () { return this.section;  }
 
-     public String toString()
+    public String toString()
     {
         return this.cuveOrig.getId() + "----- " + this.section + " ------" + this.cuveDest.getId();
     }
