@@ -25,13 +25,18 @@ public class Cuve
     {
         if ( Cuve.id > 'Z') return null;
         if ( capacite < 200 || capacite > 1000 ) return null;
+        if (position != "Haut" && position != "Bas" && position != "Gauche" && position != "Droite" ) return null;
         return new Cuve( capacite, posX, posY, position );
     }
+
+    public int getCapacite { return this.capacite; }
+    public int getid       { return this.idCuve;   }
+    public int getContenu  { return this.contenu;  }
 
     public String toString()
     {
         return "Cuve: " + this.idCuve + " | capacite: " + this.capacite + 
-                                    " | Contenu: "  + this.contenu  + 
+                                        " | Contenu: "  + this.contenu  + 
                                     " | positionne en (" + this.posX + "," +this.posY +")"+
                                     " | et "        + this.position; 
     }
