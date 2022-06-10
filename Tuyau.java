@@ -8,7 +8,7 @@ public class Tuyau
     {
         this.cuveOrig = cuveOrig;
         this.cuveDest = cuveDest;
-        this.section    = section;
+        this.section  = section;
     }
 
     public static Tuyau creerTuyau(Cuve cuveOrig, Cuve cuveDest, int section)
