@@ -22,12 +22,15 @@ public class TestCuve
 		System.out.print("Combien de cuves ? ");
 		int nbCuves = sc.nextInt();
 
-		System.out.print("Quelle capacité ? ");
-		int capaCuves = sc.nextInt();
+		
 		/*---------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
-			ensCuves.add(Cuve.creerCuve(capaCuves, 50, 50, "Haut"));
+		{
+			System.out.print("Quelle capacité ? ");
+			ensCuves.add(Cuve.creerCuve(sc.nextInt(), 50, 50, "Haut"));
+		}
+			
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));
