@@ -36,10 +36,4 @@ public class Cuve
                                     " | positionne en (" + this.posX + "," +this.posY +")"+
                                     " | et "        + this.position; 
     }
-
-    public static void main(String[] args)
-    {
-        Cuve c1 =  creerCuve(1000, 50, 50, "Haut");
-        System.out.println(c1);    
-    }
 }
