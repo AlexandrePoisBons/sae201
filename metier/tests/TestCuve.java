@@ -1,11 +1,13 @@
-package metier.tests
+package metier.tests;
 
+import java.io.FileOutputStream;
 // Pour l'écriture dans le fichier texte
 import java.io.PrintWriter;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import metier.Cuve;
 
 // EN cas d'encodage en utf-8 import cette classe :
 // import java.io.OutputStreamWriter;

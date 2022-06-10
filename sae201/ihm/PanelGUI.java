@@ -1,6 +1,8 @@
-package sae201.ihm;
+package sae201.ihm;	
 
-import javax.swing.*;
+import javax.swing.JPanel;
+
+import sae201.Controleur;
 
 public class PanelGUI extends JPanel
 {
@@ -9,6 +11,7 @@ public class PanelGUI extends JPanel
 	public PanelGUI(Controleur ctrl)
 	{
 		this.ctrl = ctrl;
+
 
 	}
 }

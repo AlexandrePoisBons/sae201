@@ -1,8 +1,8 @@
 package sae201.ihm;
 
-import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import javax.swing.JFrame;
+
+import sae201.Controleur;
 
 public class FrameGUI extends JFrame
 {
