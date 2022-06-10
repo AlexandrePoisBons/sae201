@@ -43,8 +43,10 @@ public class TestCuve
 		{
 			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
 
+			/* Pour l'écriture correcte du .txt */
 			for(Cuve c : ensCuves)
 				pw.println ( c );
+
 			
 			pw.close();
 		}

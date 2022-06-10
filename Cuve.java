@@ -33,7 +33,7 @@ public class Cuve
         if (position != "Haut" && position != "Bas" && position != "Gauche" && position != "Droite" ) 
             return null;
         /*-------------------------------------------------------------------------------------------*/
-        
+
         return new Cuve( capacite, posX, posY, position );
     }
 
