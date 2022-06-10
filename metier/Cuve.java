@@ -24,7 +24,7 @@ public class Cuve
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
         /* Différentes vérification nécessaires */
-        if ( Cuve.id > 'Z' ) 
+        if ( Cuve.id > 'Y' ) 
             return null;
 
         if ( capacite < 200 || capacite > 1000 ) 
