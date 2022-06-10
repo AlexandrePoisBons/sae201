@@ -11,7 +11,7 @@ public class Cuve
 
     private Cuve(int capacite, int posX, int posY, String position)
     {   
-        this.idCuve   = ++.Cuve.id;
+        this.idCuve   = ++Cuve.id;
         this.capacite = capacite;
         this.contenu  = 0;
         this.posX     = posX;
