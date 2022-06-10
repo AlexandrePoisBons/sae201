@@ -4,12 +4,19 @@ import java.util.ArrayList;
 
 public class Metier
 {
+    ArrayList<Cuve>  lstCuves; 
+    ArrayList<Tuyau> lstTuyaux; 
 
     public Metier()
     {
-        ArrayList<Cuve>  lstCuves   = new ArrayList<Cuve>(); 
-        ArrayList<Tuyau> lstTuyaux = new ArrayList<Tuyau>();
-         
+
+    }
+
+    public int[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux)
+    {
+        this.lstCuves = lstCuves;
+        this.lstTuyaux = lstTuyaux;
+
         int [][] matrice = new int [30][30];
         for (int i=0; i<=30; i++)
         {
@@ -27,9 +34,8 @@ public class Metier
                 matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t.getSection();
             }
         }
-        
+        return matrice;
     }
-
 
     public static void main(String[] args)
     {
