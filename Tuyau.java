@@ -37,7 +37,7 @@ public class Tuyau
 
      public String toString()
     {
-        return this.cuveOrig.idCuve + "----- " + this.section + " ------" + this.cuveDest.idCuve;
+        return this.cuveOrig.getId() + "----- " + this.section + " ------" + this.cuveDest.getId();
     }
 
 }
