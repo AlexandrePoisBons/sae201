@@ -1,10 +1,14 @@
 package sae201.metier;
 
-import java.io.FileOutputStream;
+
 // Pour l'écriture dans le fichier texte
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
+
 import java.util.ArrayList;
 import java.util.List;
+
+// Pour la lecture des saisies claviers
 import java.util.Scanner;
 
 // EN cas d'encodage en utf-8 import cette classe :
@@ -46,13 +50,12 @@ public class TestCuve
         // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
 		try
 		{
-			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
+			PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
 			/* Pour l'écriture correcte du .txt */
 			for(Cuve c : ensCuves)
 				pw.println ( c );
 
-			
 			pw.close();
 		}
 		catch (Exception e){ e.printStackTrace(); }
