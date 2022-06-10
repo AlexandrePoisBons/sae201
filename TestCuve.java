@@ -21,16 +21,16 @@ public class TestCuve
         /* Récupération des valeurs des utilisateurs */
 		System.out.print("Combien de cuves ? ");
 		int nbCuves = sc.nextInt();
-
-		
 		/*---------------------------------------------*/
 
+
+		/*                          Création des cuves selon l'utilisateurs                           */
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
-			System.out.print("Quelle capacité ? ");
+			System.out.print("Quelle capacité pour la cuve " + " : " + ( char ) ( 'A' + cpt ) + " ? ");
 			ensCuves.add(Cuve.creerCuve(sc.nextInt(), 50, 50, "Haut"));
 		}
-			
+		/*--------------------------------------------------------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));
