@@ -16,5 +16,10 @@ public class Tuyau
         if (section < 2 || section > 10) return null;
         if (cuve1 == null || cuve2 == null) return null;
         return new Tuyau(cuve1, cuve2, section);
-    }   
+    }
+    
+    public String toString()
+    {
+        return this.cuve1.idCuve + "----- " + this.section + " ------" + this.cuve2.idCuve;
+    }
 }
