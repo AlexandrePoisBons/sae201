@@ -24,7 +24,7 @@ public class TestCuve
 		/*---------------------------------------------*/
 
 
-		/*                          Création des cuves selon l'utilisateurs                           */
+		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
 			System.out.print("Quelle capacité pour la cuve " + " : " + ( char ) ( 'A' + cpt ) + " ? ");
@@ -36,9 +36,9 @@ public class TestCuve
 			System.out.println(ensCuves.get(cpt));
 
 
-		// Pour l'écriture dans le fichier texte
-		// Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :
-        // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" ));
+		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
+		//      Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :              //
+        // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
 		try
 		{
 			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
