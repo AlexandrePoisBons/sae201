@@ -62,11 +62,12 @@ public class Metier
             for (Tuyau t: lstTuyasux)
             {
                 if (t.getCuveOrig() == c || t.getCuveDest() == c)
-                matrice[t.getCuveOrig().getId()][t.getCuveOrig().getId()] = t;
+                matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t;
             }
         }
         
     }
+
 
     public static void main(String[] args)
     {
