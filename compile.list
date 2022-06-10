@@ -1,9 +1,9 @@
-./sae201/Controleur.java
+./Controleur.java
 
-./sae201/ihm/FrameGUI.java
-./sae201/ihm/PanelGUI.java
+./ihm/FrameGUI.java
+./ihm/PanelGUI.java
 
-./sae201/metier/Tuyau.java
-./sae201/metier/TestCuve.java
-./sae201/metier/Metier.java
-./sae201/metier/Cuve.java
+./metier/Tuyau.java
+./metier/TestCuve.java
+./metier/Metier.java
+./metier/Cuve.java
