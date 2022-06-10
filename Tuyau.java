@@ -17,6 +17,11 @@ public class Tuyau
         if (cuve1 == null || cuve2 == null) return null;
         return new Tuyau(cuve1, cuve2, section);
     }
+
+    public Cuve getCuve1()  {return this.cuve1;  }
+    public Cuve getCuve2()  {return this.cuve2;  }
+    public int  getSection(){return this.section;}
+
     
     public String toString()
     {
