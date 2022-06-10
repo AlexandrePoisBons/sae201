@@ -6,9 +6,9 @@ public class Tuyau
 
     private Tuyau(Cuve cuveOrig, Cuve cuveDest, int section)
     {
-        this.cuveOrig        = cuveOrig;
-        this.cuveDestination = cuveDest;
-        this.section         = section;
+        this.cuveOrig = cuveOrig;
+        this.cuveDest = cuveDest;
+        this.section    = section;
     }
 
     public static Tuyau creerTuyau(Cuve cuveOrig, Cuve cuveDest, int section)
@@ -21,8 +21,13 @@ public class Tuyau
 
     public boolean setLien( Cuve cuveOrig, Cuve cuveDest  )
     {
+        if ( cuveOrig == null || cuveDest == null )
+            return false;
+
         this.cuveOrig = cuveOrig;
         this.cuveDest = cuveDest;
+
+        return true;
     }
 
     // Getters
