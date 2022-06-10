@@ -1,4 +1,4 @@
-package sae201.metier;
+    package sae201.metier;
 
 public class Tuyau
 {
@@ -39,7 +39,7 @@ public class Tuyau
 
     public String toString()
     {
-        return this.cuveOrig.getId() + "----- " + this.section + " ------" + this.cuveDest.getId();
+        return (char) this.cuveOrig.getId() + "----- " + this.section + " ------" + (char) this.cuveDest.getId();
     }
 
 }

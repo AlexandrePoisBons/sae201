@@ -12,29 +12,38 @@ public class Metier
 
     }
 
-    public int[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux)
+    public static String creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
-        this.lstCuves = lstCuves;
-        this.lstTuyaux = lstTuyaux;
+        //this.lstCuves = lstCuves;
+        //this.lstTuyaux = lstTuyaux;
 
-        int [][] matrice = new int [30][30];
-        for (int i=0; i<=30; i++)
+        int [][] matrice = new int [taille][taille];
+        for (int i=0; i<taille; i++)
         {
-            for (int j=0; j<=30; j++)
+            for (int j=0; j<taille; j++)
             {
                 matrice[i][j] = -1;
             } 
-        } ;
+        };
 
         for( Cuve c: lstCuves)
         {
             for (Tuyau t: lstTuyaux)
             {
                 if (t.getCuveOrig() == c || t.getCuveDest() == c)
-                matrice[ (int) ('A' - t.getCuveOrig().getId() ) ][ (int) ( 'A' - t.getCuveOrig().getId() ) ] = t.getSection();
+                matrice[ (int) (  t.getCuveDest().getId() - 'A'  ) ] [ (int) (t.getCuveOrig().getId() - 'A')] = t.getSection();
             }
         }
-        return matrice;
+        String sRet ="";
+        for (int i=0; i<taille; i++)
+        {
+            for (int j=0; j<taille; j++)
+            {
+                sRet += matrice[i][j] +" ";
+            } 
+            sRet +="\n";
+        };
+        return sRet;
     }
 
     public static void main(String[] args)
@@ -45,7 +54,27 @@ public class Metier
         Cuve c2 = Cuve.creerCuve(300, 10, 10, "Bas");
         System.out.println(c2);
 
+        Cuve c3 = Cuve.creerCuve(500, 60, 20, "Droite");
+        System.out.println(c3);
+
         Tuyau t1c1c2 = Tuyau.creerTuyau(c1, c2, 5);
+        t1c1c2.setLien(c1,c2);
         System.out.println(t1c1c2);
+
+        Tuyau t1c1c3 = Tuyau.creerTuyau(c1, c3, 8);
+        t1c1c3.setLien(c1,c3);
+        System.out.println(t1c1c3);
+
+
+        ArrayList<Cuve>  lstTempC  = new ArrayList<Cuve>(); 
+        ArrayList<Tuyau> lstTempT  = new ArrayList<Tuyau>(); 
+        lstTempC.add(c1);
+        lstTempC.add(c2);
+        lstTempC.add(c3);
+
+        lstTempT.add(t1c1c2);
+        lstTempT.add(t1c1c3);
+
+        System.out.println(creerMatrice(lstTempC, lstTempT, 3));
     }
 }
