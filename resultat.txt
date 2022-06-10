@@ -1,0 +1,6 @@
+Cuve: A | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
+Cuve: B | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
+Cuve: C | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
+Cuve: D | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
+Cuve: E | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
+Cuve: F | capacite: 250 | Contenu: 0.0 | positionne en (50,50) | et Haut
