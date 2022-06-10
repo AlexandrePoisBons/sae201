@@ -46,7 +46,7 @@ public class TestCuve
         // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
 		try
 		{
-			PrintWriter pw = new PrintWriter( new FileOutputStream("./resultat.txt") );
+			PrintWriter pw = new PrintWriter( new FileOutputStream("resultat.txt") );
 
 			/* Pour l'écriture correcte du .txt */
 			for(Cuve c : ensCuves)

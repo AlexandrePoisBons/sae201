@@ -42,7 +42,7 @@ public class Cuve
     }
 
     public int    getCapacite() { return this.capacite; }
-    public int    getId()       { return this.idCuve;   }
+    public char   getId()       { return this.idCuve;   }
     public double getContenu()  { return this.contenu;  }
 
     public String toString()
