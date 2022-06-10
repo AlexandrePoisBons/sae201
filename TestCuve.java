@@ -36,6 +36,8 @@ public class TestCuve
 			System.out.println(ensCuves.get(cpt));
 
 
+
+
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
 		//      Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :              //
         // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
