@@ -35,8 +35,8 @@ public class Cuve
         return new this( capacite, posX, posY, position );
     }
 
-    public int getCapacite()    { return this.capacite; }
-    public int getid()          { return this.idCuve;   }
+    public int    getCapacite() { return this.capacite; }
+    public int    getId()       { return this.idCuve;   }
     public double getContenu()  { return this.contenu;  }
 
     public String toString()
