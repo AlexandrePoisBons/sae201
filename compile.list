@@ -2,6 +2,8 @@
 
 ./ihm/FrameGUI.java
 ./ihm/PanelGUI.java
+./ihm/FrameCreation.java
+./ihm/PanelCreerCuves.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java

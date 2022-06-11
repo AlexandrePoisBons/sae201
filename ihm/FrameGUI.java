@@ -7,15 +7,19 @@ import sae201.Controleur;
 public class FrameGUI extends JFrame
 {
 	private Controleur ctrl;
-	private PanelGUI   panelGUI;
+	private PanelGUI   panelInfo;
 
 	public FrameGUI(Controleur ctrl)
 	{
 		this.ctrl = ctrl;
 
 		this.setTitle    ( "GUI Application 1" );
-		this.setResizable(false);
+		this.setSize(500, 100);
+		//this.pack();
 
 		this.setVisible(true);
+
+		this.panelInfo = new PanelGUI(this.ctrl);
+		this.add(this.panelInfo);
 	}
 } 
