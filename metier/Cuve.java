@@ -25,7 +25,7 @@ public class Cuve
 
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
-        /* Différentes vérification nécessaires */
+        /* Différentes vérifications nécessaires */
         if ( Cuve.id > 'Y' ) 
             return null;
 
@@ -38,7 +38,6 @@ public class Cuve
 
         if ( posX < 0 || posY < 0 )
             return null;
-        /*-------------------------------------------------------------------------------------------*/
 
         return new Cuve( capacite, posX, posY, position );
     }

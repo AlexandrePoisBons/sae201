@@ -7,3 +7,4 @@
 ./metier/TestCuve.java
 ./metier/Metier.java
 ./metier/Cuve.java
+./metier/TestCuveTuyau.java

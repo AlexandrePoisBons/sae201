@@ -85,15 +85,15 @@ public class Metier
         System.out.println(c3);
 
         //------------------------- Creation de tuyaux -------------------------//
-        Tuyau t1c1c2 = Tuyau.creerTuyau(c1, c2, 5);
+        Tuyau t1c1c2 = Tuyau.creerTuyau(5);
         t1c1c2.setLien(c1,c2);
         System.out.println(t1c1c2);
 
-        Tuyau t2c1c3 = Tuyau.creerTuyau(c1, c3, 8);
+        Tuyau t2c1c3 = Tuyau.creerTuyau(8);
         t2c1c3.setLien(c1,c3);
         System.out.println(t2c1c3);
 
-        Tuyau t3c2c3 = Tuyau.creerTuyau(c2, c3, 3);
+        Tuyau t3c2c3 = Tuyau.creerTuyau(3);
         t3c2c3.setLien(c2,c3);
         System.out.println(t3c2c3);
 

@@ -6,19 +6,17 @@ public class Tuyau
     private Cuve cuveDest;
     private int  section;
 
-    private Tuyau(Cuve cuveOrig, Cuve cuveDest, int section)
+    private Tuyau(int section)
     {
-        this.cuveOrig = cuveOrig;
-        this.cuveDest = cuveDest;
         this.section  = section;
     }
 
-    public static Tuyau creerTuyau(Cuve cuveOrig, Cuve cuveDest, int section)
+    public static Tuyau creerTuyau(int section)
     {
         if (section < 2 || section > 10) 
             return null;
         
-        return new Tuyau (null, null, section);
+        return new Tuyau (section);
     }
 
     public boolean setLien( Cuve cuveOrig, Cuve cuveDest  )
