@@ -1,4 +1,5 @@
 package sae201.metier;
+import java.util.ArrayList;
 
 public class Cuve
 {
@@ -10,6 +11,7 @@ public class Cuve
     private int    posX;
     private int    posY;
     private String position;
+    private ArrayList<Tuyau> lstTuyaux;
 
     private Cuve(int capacite, int posX, int posY, String position)
     {   
@@ -41,6 +43,12 @@ public class Cuve
         return new Cuve( capacite, posX, posY, position );
     }
 
+    public void connecterTuyau(Tuyau t)
+    {
+        this.lstTuyaux.add(t);
+    }
+
+    /* --------------------- Guetteurs ----------------------- */
     public int    getCapacite() { return this.capacite; }
     public char   getId()       { return this.idCuve;   }
     public double getContenu()  { return this.contenu;  }
