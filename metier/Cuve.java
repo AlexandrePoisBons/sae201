@@ -11,7 +11,7 @@ public class Cuve
     private int    posX;
     private int    posY;
     private String position;
-    private ArrayList<Tuyau> lstTuyaux;
+    private ArrayList<Tuyau> lstTuyauxConnectes;
 
     private Cuve(int capacite, int posX, int posY, String position)
     {   
@@ -45,13 +45,14 @@ public class Cuve
 
     public void connecterTuyau(Tuyau t)
     {
-        this.lstTuyaux.add(t);
+        this.lstTuyauxConnectes.add(t);
     }
 
     /* --------------------- Guetteurs ----------------------- */
-    public int    getCapacite() { return this.capacite; }
-    public char   getId()       { return this.idCuve;   }
-    public double getContenu()  { return this.contenu;  }
+    public int    getCapacite()                 { return this.capacite;          }
+    public char   getId()                       { return this.idCuve;            }
+    public double getContenu()                  { return this.contenu;           }
+    public ArrayList<Tuyau> getTuyauxConnectes(){ return this.lstTuyauxConnectes;}
 
     public String toString()
     {
