@@ -30,10 +30,19 @@ public class Tuyau
         return true;
     }
 
-    // Getters
+    //-------------------- Getters ------------------//
     public Cuve getCuveOrig() { return this.cuveOrig; }
     public Cuve getCuveDest() { return this.cuveDest; }
     public int  getSection () { return this.section;  }
+
+    public boolean equals(Tuyau t)
+    {
+        return (    this.cuveDest == t.cuveDest 
+                 || this.cuveOrig == t.cuveOrig
+                 || this.cuveDest == t.cuveOrig
+                 || this.cuveOrig == t.cuveDest
+                );
+    }
 
     public String toString()
     {

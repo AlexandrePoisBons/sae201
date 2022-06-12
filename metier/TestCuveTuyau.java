@@ -71,11 +71,11 @@ public class TestCuveTuyau
 				if (c.getId() == stringCuve2.charAt(0))
 					cuveALier[1] = c;
 			}
-			ensTuyau.get(ensTuyau.size()-1).setLien(cuveALier[0], cuveALier[1]);
+			ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
 		}
 
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
-			System.out.println(ensTuyau.get(cpt));
+			System.out.println(ensTuyau.get(cpt)); // Enlever le .getSection()
 
 
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
@@ -86,8 +86,13 @@ public class TestCuveTuyau
 			PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
 			/* Pour l'écriture correcte du .txt */
+			pw.println("Cuves\n");
 			for(Cuve c : ensCuves)
 				pw.println ( c );
+
+			pw.println("\nTuyaux\n");
+			for(Tuyau t: ensTuyau)
+				pw.println ( t ); 
 
 			pw.close();
 		}
