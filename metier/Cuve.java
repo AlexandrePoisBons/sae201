@@ -48,11 +48,37 @@ public class Cuve
         this.lstTuyauxConnectes.add(t);
     }
 
+    public boolean Couler(Cuve cuveDest, Tuyau tuyau) 
+    // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien ete effectue//
+    {
+        if (cuveDest.estPleine() || !this.estVide())
+            return false;
+        else
+        {
+            
+            if (cuveDest.placeLibre() < tuyau.getSection())
+            {
+                cuveDest.contenu += cuveDest.placeLibre();
+                this.contenu -= cuveDest.placeLibre();
+            }
+
+            else
+                cuveDest.contenu += tuyau.getSection();
+                this.contenu -= tuyau.getSection();
+            return true;
+        }
+    }
+
     /* --------------------- Guetteurs ----------------------- */
-    public int    getCapacite()                 { return this.capacite;          }
-    public char   getId()                       { return this.idCuve;            }
-    public double getContenu()                  { return this.contenu;           }
-    public ArrayList<Tuyau> getTuyauxConnectes(){ return this.lstTuyauxConnectes;}
+    public int     getCapacite()                 { return this.capacite;                          } 
+    public char    getId()                       { return this.idCuve;                            }
+    public double  getContenu()                  { return this.contenu;                           }
+
+    // Autres méthodes //
+    public int placeLibre()                      { return this.capacite - (int)this.contenu;      }
+    public boolean estVide()                     { return this.contenu == 0;                      }
+    public boolean estPleine()                   { return (double) this.capacite == this.contenu; }
+    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
 
     public String toString()
     {

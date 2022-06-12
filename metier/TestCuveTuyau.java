@@ -22,8 +22,9 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		List<Cuve> ensCuves = new ArrayList<Cuve>();
-        List<Tuyau> ensTuyau = new ArrayList<Tuyau>();
+		List<Cuve> ensCuves 	  = new ArrayList<Cuve> ();
+		List<Tuyau> ensTuyau 	  = new ArrayList<Tuyau>();
+		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
 
 		Scanner sc  = new Scanner(System.in);
         
@@ -46,20 +47,20 @@ public class TestCuveTuyau
 			System.out.println(ensCuves.get(cpt));
 
         /* Récupération des valeurs des utilisateurs */
-		System.out.print("Combien de Tuyaux ? ");
+		System.out.print("\nCombien de Tuyaux ? ");
 		int nbTuyaux = sc.nextInt();
 		/*---------------------------------------------*/
 
 		/*-------------------------- Création des tuyaux selon l'utilisateur --------------------------*/
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
-			System.out.print("Quelle section ?\n");
+			System.out.print("\nQuelle section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 			// Double sc.nextLine() pour annuler le "\n" du sc.nextInt() précédent, qui comptait comme String position
 		}
 		/*--------------------------------------------------------------------------------------------*/
 		Cuve[] cuveALier= new Cuve[2];
-		for (Tuyau t: ensTuyau)
+		for (int j=0; j< nbTuyaux; j++)
 		{
 			System.out.print("Quelles cuves voulez vous relier ?\n");
 			String stringCuve1 = sc.next();
@@ -74,24 +75,46 @@ public class TestCuveTuyau
 
 			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]); --> lier directement
 
-			// Verifier si le tuyau n'existe pas deja //
-			Tuyau tmp = ensTuyau.get(ensTuyau.lastIndexOf(t));
-			tmp.setLien(cuveALier[0], cuveALier[1]);
+			// Verifier si le tuyau n'existe pas deja // Erreur ici ou Tuyau.equals
+			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
 
-			boolean exists = false;
-			for (Tuyau t2: ensTuyau)
+			toRemove = new ArrayList<Tuyau>();
+			boolean alreadySelected = false;
+			for (Tuyau t3: ensTuyau)
 			{
-				if (t2.equals(tmp))
-					exists = true;
-					break;
+				for (Tuyau t2: ensTuyau)
+				{
+					if (t3!= t2 && t3.equals(t2))
+					{
+						
+						for (Tuyau tRemove : toRemove)
+						{
+							if (tRemove.equals(t3))
+							{
+								alreadySelected = true;
+								break;
+							}							
+						}
+						if (!alreadySelected)
+							toRemove.add(ensTuyau.get(ensTuyau.lastIndexOf(t3)));
+					}
+				}
 			}
-			if (!exists)
-				ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
+			for (Tuyau tRemove : toRemove)
+			{
+				ensTuyau.remove(tRemove);
+			}
+						
 		}
+		
+		
 
-		for(int cpt = 0; cpt < nbTuyaux; cpt++)
-			System.out.println(ensTuyau.get(cpt)); // Enlever le .getSection()
 
+		// Affichage //
+		for (Tuyau tAffiche: ensTuyau)
+		{
+			System.out.println(tAffiche);
+		}
 
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
 		//      Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :              //
