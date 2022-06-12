@@ -11,7 +11,7 @@ public class Tuyau
         this.section  = section;
     }
 
-    public static Tuyau creerTuyau(int section)
+    public static Tuyau creerTuyau(int section) // cree un tuyau qui ne sera pas necessairement utilise par la suite //
     {
         if (section < 2 || section > 10) 
             return null;
@@ -19,13 +19,15 @@ public class Tuyau
         return new Tuyau (section);
     }
 
-    public boolean setLien( Cuve cuveOrig, Cuve cuveDest  )
+    public boolean setLien( Cuve cuveOrig, Cuve cuveDest  ) // connecte les cuves a partir d'un tuyau precedemment cree //
     {
         if ( cuveOrig == null || cuveDest == null )
             return false;
 
         this.cuveOrig = cuveOrig;
+        this.cuveOrig.connecterTuyau(this); // Connecter les cuves entres elles //
         this.cuveDest = cuveDest;
+        this.cuveDest.connecterTuyau(this); // Connecter les cuves entres elles //
 
         return true;
     }
@@ -35,7 +37,7 @@ public class Tuyau
     public Cuve getCuveDest() { return this.cuveDest; }
     public int  getSection () { return this.section;  }
 
-    public boolean equals(Tuyau t)
+    public boolean equals(Tuyau t) // A corriger
     {
         return (    this.cuveDest == t.cuveDest 
                  || this.cuveOrig == t.cuveOrig

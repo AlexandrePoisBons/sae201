@@ -15,12 +15,13 @@ public class Cuve
 
     private Cuve(int capacite, int posX, int posY, String position)
     {   
-        this.idCuve   = ++Cuve.id;
-        this.capacite = capacite;
-        this.contenu  = 0;
-        this.posX     = posX;
-        this.posY     = posY;
-        this.position = position;
+        this.idCuve             = ++Cuve.id;
+        this.capacite           = capacite;
+        this.contenu            = 0;
+        this.posX               = posX;
+        this.posY               = posY;
+        this.position           = position;
+        this.lstTuyauxConnectes = new ArrayList<Tuyau>();
     }
 
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)

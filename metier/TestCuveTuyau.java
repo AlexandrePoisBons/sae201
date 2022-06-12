@@ -71,7 +71,22 @@ public class TestCuveTuyau
 				if (c.getId() == stringCuve2.charAt(0))
 					cuveALier[1] = c;
 			}
-			ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
+
+			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]); --> lier directement
+
+			// Verifier si le tuyau n'existe pas deja //
+			Tuyau tmp = ensTuyau.get(ensTuyau.lastIndexOf(t));
+			tmp.setLien(cuveALier[0], cuveALier[1]);
+
+			boolean exists = false;
+			for (Tuyau t2: ensTuyau)
+			{
+				if (t2.equals(tmp))
+					exists = true;
+					break;
+			}
+			if (!exists)
+				ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
 		}
 
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
