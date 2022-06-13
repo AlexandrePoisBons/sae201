@@ -1,16 +1,19 @@
 package sae201.metier;
 
+import sae201.ihm.*;
+
 import java.util.ArrayList;
 
 public class Metier
 {
     private ArrayList<Cuve>  lstCuves; 
     private ArrayList<Tuyau> lstTuyaux; 
+    private ControleurCuves  ctrl;
 
-    public Metier()
+    public Metier(ControleurCuves ctrl)
     {
         this.lstCuves = new ArrayList<Cuve>();
-        this.lstTuyaux = new ArrayList<Tuyau>();
+        this.lstTuyaux = new ArrayList<Tuyau>(); 
     }
 
     public static Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)

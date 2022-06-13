@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import sae201.metier.*;
 import javax.swing.JFrame;
 
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 public class ControleurCuves
 {
     private ArrayList<Cuve>  ensCuves;
     public ArrayList<Tuyau>  ensTuyau; // en public juste pour tester
     private JFrame           ihm;
+    private Metier           metier;
     /*
      *Completer
      * 
@@ -17,6 +21,7 @@ public class ControleurCuves
     public ControleurCuves()
     {
         this.ihm = new FrameGUI(this);
+        this.metier = new Metier(this);
     }
 
     public void setCuves(ArrayList<Cuve> ensCuves)
@@ -49,10 +54,44 @@ public class ControleurCuves
         this.ensTuyau.get(index).setLien(c1, c2);
     }
 
+    public Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
+    {
+        return this.metier.creerMatrice(lstCuves, lstTuyaux, taille);
+    }
+
+    public String afficherMatriceOpti(Tuyau[][] matrice)
+    {
+        return this.metier.afficherMatriceOpti(matrice);
+    }
+
     public static void main(String[] args)
     {
         new ControleurCuves();
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
+
+    public static void ecrire(ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyau)
+    {
+        String format = "Matrice";
+        try
+		{
+			PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
+
+			/* Pour l'écriture correcte du .txt */
+			pw.println("Cuves\n");
+			for(Cuve c : ensCuves)
+				pw.println ( c );
+
+			pw.println("\nTuyaux\n");
+			for(Tuyau t: ensTuyau)
+				pw.println ( t ); 
+
+			pw.println("\n"+format+"\n");
+
+			pw.close();
+		}
+		catch (Exception e){ e.printStackTrace(); }
+
+	}
 
 }
