@@ -22,10 +22,11 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		ArrayList<Cuve> ensCuves 	  = new ArrayList<Cuve> ();
-		ArrayList<Tuyau> ensTuyau 	  = new ArrayList<Tuyau>();
-		ArrayList<Tuyau> toRemove 	  = new ArrayList<Tuyau>();
-		String format 				  = "";
+		ArrayList<Cuve>  ensCuves = new ArrayList<Cuve> ();
+		ArrayList<Tuyau> ensTuyau = new ArrayList<Tuyau>();
+		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
+
+		String format = "";
 
 		Scanner sc  = new Scanner(System.in);
         
@@ -106,7 +107,7 @@ public class TestCuveTuyau
 				ensTuyau.remove(tRemove);
 			}
 						
-		}		
+		}	
 
 
 		// Affichage //

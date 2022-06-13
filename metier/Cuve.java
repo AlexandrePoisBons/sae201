@@ -90,13 +90,12 @@ public class Cuve
     public int     getCapacite()                 { return this.capacite;                          } 
     public char    getId()                       { return this.idCuve;                            }
     public double  getContenu()                  { return this.contenu;                           }
-
-    // Autres méthodes //
     public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
+    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
+
     public boolean estVide()                     { return this.contenu == 0;                      }
     public boolean estPleine()                   { return (double) this.capacite == this.contenu; }
-    
-    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
+    /*-------------------------------------------------------*/
 
     public String toString()
     {
