@@ -22,10 +22,10 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		List<Cuve>  ensCuves = new ArrayList<Cuve> ();
-		List<Tuyau> ensTuyau = new ArrayList<Tuyau>();
-		List<Tuyau> toRemove = new ArrayList<Tuyau>();
-		List<Tuyau> alTransf = new ArrayList<Tuyau>();
+		ArrayList<Cuve>  ensCuves = new ArrayList<Cuve> ();
+		ArrayList<Tuyau> ensTuyau = new ArrayList<Tuyau>();
+		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
+		ArrayList<Tuyau> alTransf = new ArrayList<Tuyau>();
 
 		String format = "";
 
@@ -40,7 +40,7 @@ public class TestCuveTuyau
         
         /* Récupération des valeurs des utilisateurs */
 		System.out.print("Combien de cuves ? ");
-		int nbCuves = sc.nextInt();
+		nbCuves = sc.nextInt();
 		/*---------------------------------------------*/
 
 
@@ -58,7 +58,7 @@ public class TestCuveTuyau
 
         /* Récupération des valeurs des utilisateurs */
 		System.out.print("\nCombien de Tuyaux ? ");
-		int nbTuyaux = sc.nextInt();
+		nbTuyaux = sc.nextInt();
 		/*---------------------------------------------*/
 
 		/*-------------------------- Création des tuyaux selon l'utilisateur --------------------------*/
@@ -118,7 +118,7 @@ public class TestCuveTuyau
 		}	
 
 		// Relier cuves
-		System.out.println("Combien de transfert voulez vous réaliser ? ")
+		System.out.println("Combien de transfert voulez vous réaliser ? ");
 		nbTransfert = sc.nextInt();	
 
 		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
@@ -136,7 +136,7 @@ public class TestCuveTuyau
 				
 				Tuyau t;
 
-				if ( c.getId().equals( idCuveOrig ) )
+				if ( c.getId().isLetter( idCuveOrig ) )
 					cuveOrig = c;
 
 				if ( c.getId().equals( idCuveDest ) )
@@ -144,7 +144,7 @@ public class TestCuveTuyau
 
 				alTransf = cuveOrig.getTuyauxConnectes();
 				for ( Tuyau tu : alTransf )
-					if ( tu.getCuveOrig() = cuveOrig && tu.getCuveDest() == cuveDest )
+					if ( tu.getCuveOrig() == cuveOrig && tu.getCuveDest() == cuveDest )
 						t = tu;
 
 				cuveOrig.couler( cuveDest, t );
