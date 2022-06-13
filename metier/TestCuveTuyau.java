@@ -24,7 +24,8 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		ArrayList<Cuve> ensCuves 	  = new ArrayList<Cuve> ();
 		ArrayList<Tuyau> ensTuyau 	  = new ArrayList<Tuyau>();
-		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
+		ArrayList<Tuyau> toRemove 	  = new ArrayList<Tuyau>();
+		String format 				  = "";
 
 		Scanner sc  = new Scanner(System.in);
         
@@ -114,19 +115,21 @@ public class TestCuveTuyau
 			System.out.println(tAffiche);
 		}
 
-		System.out.println("Quel format voulez vous ?\n");
-		String format = sc.nextLine()+sc.nextLine();
+		System.out.println("Quel format voulez vous ?(Matrice, Matrice Optimisee, Liste d'adjacence)\n");
+		format = sc.nextLine()+sc.nextLine();
 		switch(format)
 		{
 			case "Matrice":
 			{
-				System.out.println(Metier.afficherMatrice(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				System.out.println((Metier.afficherMatrice(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves))));
+				format = "Matrice\n"+(Metier.afficherMatrice(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
 				break;
 			}
 
 			case "Matrice Optimisee":
 			{
 				System.out.println(Metier.afficherMatriceOpti(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				format = "Matrice Opti\n"+(Metier.afficherMatriceOpti(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
 				break;
 			}
 
@@ -153,6 +156,8 @@ public class TestCuveTuyau
 			pw.println("\nTuyaux\n");
 			for(Tuyau t: ensTuyau)
 				pw.println ( t ); 
+
+			pw.println("\n"+format+"\n");
 
 			pw.close();
 		}
