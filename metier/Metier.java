@@ -4,19 +4,17 @@ import java.util.ArrayList;
 
 public class Metier
 {
-    ArrayList<Cuve>  lstCuves; 
-    ArrayList<Tuyau> lstTuyaux; 
+    private ArrayList<Cuve>  lstCuves; 
+    private ArrayList<Tuyau> lstTuyaux; 
 
     public Metier()
     {
-
+        this.lstCuves = new ArrayList<Cuve>();
+        this.lstTuyaux = new ArrayList<Tuyau>();
     }
 
     public static Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
-        //this.lstCuves = lstCuves;
-        //this.lstTuyaux = lstTuyaux;
-
         Tuyau [][] matrice = new Tuyau [taille][taille];
         for (int i=0; i<taille; i++)
         {
@@ -24,7 +22,7 @@ public class Metier
             {
                 matrice[i][j] = null;
             } 
-        };
+        }
 
         for( Cuve c: lstCuves)
         {
@@ -52,7 +50,7 @@ public class Metier
                 else sRet += 0 +" ";
             } 
             sRet +="\n";
-        };
+        }
         return sRet;
     }
 
@@ -68,7 +66,7 @@ public class Metier
                 else sRet += 0 +" ";
             } 
             sRet +="\n";
-        };
+        }
         return sRet;
     }
 
