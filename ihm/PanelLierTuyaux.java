@@ -49,7 +49,6 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-<<<<<<< HEAD
         //int taille = (this.nbTuyaux*2);
         for (int j=0; j<this.lstText.size(); j=j+2)
         {
@@ -57,13 +56,6 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
             this.ctrl.setLien(j/2, c1, c2);
             System.out.println(this.ctrl.ensTuyau.get(j/2));
-=======
-        for (int j=0; j<this.nbTuyaux; j=j+2)
-        {
-            Cuve c1 = this.ctrl.estCuve(this.lstText.get(j).getText().charAt(0));
-            Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
-            this.ctrl.setLien(j, c1, c2);
->>>>>>> 183f521c77af1144488d7efeab40e7bf1e1a9cf3
         }
         new FrameFormat(this.ctrl);
 		//this.ctrl.generer();

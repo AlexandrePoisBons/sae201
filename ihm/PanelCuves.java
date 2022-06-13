@@ -62,7 +62,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 
 	}
 
-	/*public void paint(Graphics g)
+	public void paint(Graphics g)
     {
         super.paint(g);
 
@@ -83,6 +83,6 @@ public class PanelCuves extends JPanel //implements ActionListener
             g.fillOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
         }
 
-    }*/
+    }
 
 }
