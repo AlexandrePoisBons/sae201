@@ -151,8 +151,9 @@ public class TestCuveTuyau
 
 					for (Tuyau tConnecte : c.getTuyauxConnectes())
 					{
-						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0));
+						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c && idCuveOrig != idCuveDest);
 						{
+							System.out.println(tConnecte);
 							System.out.println("Avant\n");
 							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
 							System.out.println("Cuve Origine est vide ?" + c.estVide());
