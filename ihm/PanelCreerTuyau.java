@@ -13,23 +13,24 @@ import sae201.metier.*;
 public class PanelCreerTuyau extends JPanel implements ActionListener
 {
 	private Controleur            ctrl;
+    private JFrame                parent;
     private int                   nbTuyaux;
-    private int                   totalTxt;
     private ArrayList<JTextField> lstTextFields; 
+    private ArrayList<Tuyau>      lstTuyaux;
 
     private JPanel                  panelDonnes;
     private JLabel                  lblSection;
-
     private JButton                 btnCreer;
 
 
-	public PanelCreerTuyau( Controleur ctrl, int nbTuyaux)
+	public PanelCreerTuyau(JFrame parent, Controleur ctrl, int nbTuyaux)
 	{
         this.setLayout(new BorderLayout());
-		this.ctrl    = ctrl;
-        this.nbTuyaux = nbTuyaux;
-        this.totalTxt   = (this.nbTuyaux*4);        
+		this.ctrl          = ctrl;
+        this.parent        = parent;
+        this.nbTuyaux      = nbTuyaux;
         this.lstTextFields = new ArrayList<JTextField>();
+        this.lstTuyaux     = new ArrayList<Tuyau>();
 
         // creation des composants //
         this.panelDonnes = new JPanel();
@@ -39,7 +40,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
         this.btnCreer = new JButton("Creer");
 
-		for(int i=0; i < this.totalTxt; i++)
+		for(int i=0; i < this.nbTuyaux; i++)
         {
             this.lstTextFields.add(new JTextField());
         }
@@ -64,12 +65,14 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 	public void actionPerformed (ActionEvent ae)
 	{
         int taille = this.lstTextFields.size();
-        for(int i=0; i < taille; i++)
+        for(int i=0; i < this.nbTuyaux; i++)
         {
             int section    = Integer.parseInt(this.lstTextFields.get(i).getText());
-
-            System.out.println(Tuyau.creerTuyau(section));
+            this.lstTuyaux.add(Tuyau.creerTuyau(section));
+            System.out.println(this.lstTuyaux.get(i));
             //Sysout pour tester//
         }
+        this.parent.maj(this.lstTuyaux);
     }
+
 }

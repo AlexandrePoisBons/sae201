@@ -27,7 +27,7 @@ public class FrameSelectTuyau extends JFrame
 
 		this.setVisible(true);
 
-		this.panelCreerTuyau = new PanelCreerTuyau(this.ctrl, nbTuyaux);
+		this.panelCreerTuyau = new PanelCreerTuyau(this, this.ctrl, nbTuyaux);
 		this.add(this.panelCreerTuyau);	
 	}
 

@@ -49,7 +49,10 @@ public class Tuyau
 
     public String toString()
     {
-        return (char) this.cuveOrig.getId() + "----- " + this.section + " ------" + (char) this.cuveDest.getId();
+        if (this.cuveOrig == null)
+            return "? ----- " + this.section + " ------ ?"; 
+        else
+            return (char) this.cuveOrig.getId() + "----- " + this.section + " ------" + (char) this.cuveDest.getId();           
     }
 
 }

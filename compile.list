@@ -4,6 +4,10 @@
 ./ihm/PanelGUI.java
 ./ihm/FrameCreation.java
 ./ihm/PanelCreerCuves.java
+./ihm/FrameTuyaux.java
+./ihm/PanelTuyaux.java
+./ihm/FrameSelectTuyau.java
+./ihm/PanelCreerTuyau.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java
