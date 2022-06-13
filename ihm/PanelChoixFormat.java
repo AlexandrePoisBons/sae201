@@ -27,7 +27,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     
     public PanelChoixFormat(JFrame frmParent, ControleurCuves ctrl)
     {
-        this.ctrl = ctrl;
+        this.ctrl      = ctrl;
+        this.frmParent = frmParent;
 
         // creation des composants //
             

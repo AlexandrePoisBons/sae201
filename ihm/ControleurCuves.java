@@ -64,12 +64,6 @@ public class ControleurCuves
         return this.metier.afficherMatriceOpti(matrice);
     }
 
-    public static void main(String[] args)
-    {
-        new ControleurCuves();
-        //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
-    }
-
     /* ECRIRE DANS LE RESULTAT.TXT */
     public void ecrire(String format)
     {
@@ -93,7 +87,7 @@ public class ControleurCuves
             PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
             /* Pour l'écriture correcte du .txt */
-            pw.println("Cuves\n");
+            pw.println("Cuves");
             for(Cuve c : ensCuves)
                 pw.println ( c.getCapacite()+","+
                              c.getPosX()    +","+  
@@ -101,18 +95,24 @@ public class ControleurCuves
                              c.getPosition()
                             );
 
-            pw.println("\nTuyaux\n");
+            pw.println("\nTuyaux");
             for(Tuyau t: ensTuyau)
                 pw.println ( t.getSection ()        +","+
                              t.getCuveOrig().getId()+","+
                              t.getCuveDest().getId()
                             ); 
 
-            pw.println("\n"+format+"\n");
+            pw.println("\n"+format);
             pw.println(formatChoisi);
 
             pw.close();
         }
         catch (Exception e){ e.printStackTrace(); }
+    }
+
+    public static void main(String[] args)
+    {
+        new ControleurCuves();
+        //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
