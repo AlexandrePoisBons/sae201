@@ -96,10 +96,16 @@ public class TestCuveTuyau
 
 		for (Cuve c :ensCuves)
 		{
-			System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
-			c.remplir((double) sc.nextInt());
+			if ( c != null )
+			{
+				System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
+				c.remplir((double) sc.nextInt());
+			}
+			else
+			{
+				System.out.println("La cuve n'existe pas");
+			}
 		}
-
 		
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
@@ -171,22 +177,44 @@ public class TestCuveTuyau
 			
 			for ( Cuve c : ensCuves )
 			{
-				if (c.getId() == idCuveOrig.charAt(0))
+				if ( c.getId() == idCuveOrig.charAt(0) ) // on cherche la cuve qui correspond a notre id d'origine
 				{
-					for (Tuyau tConnecte : c.getTuyauxConnectes())
-					{
-						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ) //&& idCuveOrig != idCuveDest)
+					for ( Tuyau tConnecte : c.getTuyauxConnectes() ) // pour tous les tuyaux connecte a cette origine A --> B B -->A 
+					{ // si (l'origine == Id Origine && la destnation == Id destination ) ou l'id Origine == destination && id destination == cuve de destination
+						System.out.println("test 1" + tConnecte);
+						
+						if (tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest().getId() == idCuveDest.charAt(0))
+						/*if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
+						    tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveOrig()==c && (idCuveOrig != idCuveDest)  ) //&& idCuveOrig != idCuveDest)
+						*/
+
+						// Si le tuyau connecte a moi est connecte a la destination ou si la destination est connecte a moi et si la destination n'est pas moi	
 						{
-							System.out.println(tConnecte);
+							System.out.println("test 2" + tConnecte);
 							System.out.println("Avant\n");
-							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
-							System.out.println("Cuve Origine est vide ?" + c.estVide());
-							System.out.println("Cuve dest est pleine ?" + tConnecte.getCuveDest().estPleine());
+							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
+							System.out.println("Cuve Origine est vide ?"  + c.estVide());
+							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
 							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
 							
-							System.out.println((c.couler(tConnecte.getCuveDest(),tConnecte)));
+							System.out.println(( c.couler( tConnecte.getCuveDest(), tConnecte) ));//
 
-							System.out.println("\n\nApres");
+							System.out.println("\n\nApres\n");
+							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
+							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
+						}
+						if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
+						{
+							System.out.println("test 2" + tConnecte);
+							System.out.println("Avant\n");
+							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
+							System.out.println("Cuve Origine est vide ?"  + c.estVide());
+							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
+							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
+							
+							System.out.println(( c.couler( tConnecte.getCuveOrig(), tConnecte) ));//
+
+							System.out.println("\n\nApres\n");
 							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
 							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
 						}
@@ -202,13 +230,13 @@ public class TestCuveTuyau
 
 
 		// Affichage //
-		for (Tuyau tAffiche: ensTuyau)
+		for ( Tuyau tAffiche: ensTuyau )
 		{
 			System.out.println(tAffiche);
 		}
 
 		System.out.println("Quel format voulez vous ?(Matrice, Matrice Optimisee, Liste d'adjacence)\n");
-		format = sc.nextLine()+sc.nextLine();
+		format = sc.nextLine() + sc.nextLine();
 		switch(format)
 		{
 			case "Matrice":
