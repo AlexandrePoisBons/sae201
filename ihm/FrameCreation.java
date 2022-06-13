@@ -15,7 +15,7 @@ public class FrameCreation extends JFrame
 		this.ctrl    = ctrl;
         this.nbCuves = nbCuves;
         
-		this.setTitle    ( "Creation de Cuves" );
+		this.setTitle    ( "Creation de Cuves et tuyaux" );
         this.setSize(500, 100);
         //this.pack();
 

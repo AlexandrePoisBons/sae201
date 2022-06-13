@@ -22,8 +22,8 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		List<Cuve> ensCuves 	  = new ArrayList<Cuve> ();
-		List<Tuyau> ensTuyau 	  = new ArrayList<Tuyau>();
+		ArrayList<Cuve> ensCuves 	  = new ArrayList<Cuve> ();
+		ArrayList<Tuyau> ensTuyau 	  = new ArrayList<Tuyau>();
 		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
 
 		Scanner sc  = new Scanner(System.in);
@@ -105,9 +105,7 @@ public class TestCuveTuyau
 				ensTuyau.remove(tRemove);
 			}
 						
-		}
-		
-		
+		}		
 
 
 		// Affichage //
@@ -115,6 +113,30 @@ public class TestCuveTuyau
 		{
 			System.out.println(tAffiche);
 		}
+
+		System.out.println("Quel format voulez vous ?\n");
+		String format = sc.nextLine()+sc.nextLine();
+		switch(format)
+		{
+			case "Matrice":
+			{
+				System.out.println(Metier.afficherMatrice(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				break;
+			}
+
+			case "Matrice Optimisee":
+			{
+				System.out.println(Metier.afficherMatriceOpti(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				break;
+			}
+
+			case "Liste d'adjacence":
+			{
+				System.out.println("Pas encore disponible");
+				break;
+			}
+		}
+		
 
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
 		//      Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :              //
