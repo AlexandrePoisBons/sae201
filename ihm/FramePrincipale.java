@@ -23,14 +23,16 @@ public class FramePrincipale extends JFrame
         this.setSize(1000, 500);
         //this.pack();
 
-		this.setVisible(true);
 
 		this.panelCuves = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
 		this.add(this.panelCuves);
 
         Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
+        System.out.println();
         System.out.println(this.ctrl.afficherMatriceOpti(matrice));
-        this.ctrl.ecrire(this.ensCuves, this.ensTuyaux);
+        //this.ctrl.ecrire(matrice, format);
+
+        this.setVisible(true);
 	}
 
     public static void main(String[] args)

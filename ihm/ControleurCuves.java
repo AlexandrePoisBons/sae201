@@ -70,28 +70,42 @@ public class ControleurCuves
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 
-    public static void ecrire(ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyau)
+    public void ecrire(String format)
     {
-        String format = "Matrice";
+        String formatChoisi ="";
+        Tuyau [][] matrice = this.metier.creerMatrice(this.ensCuves, this.ensTuyau, this.ensCuves.size());
+
+        switch(format)
+        {
+            case "Matrice" : formatChoisi = this.metier.afficherMatrice(matrice);
+            break;
+
+            case "Matrice Optimisée" : formatChoisi = this.metier.afficherMatriceOpti(matrice);
+            break;
+
+            case "Liste d'Adjacence" : formatChoisi = this.metier.afficherListeAdjacence(matrice);
+            break;
+        }
+
         try
-		{
-			PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
+        {
+            PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
-			/* Pour l'écriture correcte du .txt */
-			pw.println("Cuves\n");
-			for(Cuve c : ensCuves)
-				pw.println ( c );
+            /* Pour l'écriture correcte du .txt */
+            pw.println("Cuves\n");
+            for(Cuve c : ensCuves)
+                pw.println ( c );
 
-			pw.println("\nTuyaux\n");
-			for(Tuyau t: ensTuyau)
-				pw.println ( t ); 
+            pw.println("\nTuyaux\n");
+            for(Tuyau t: ensTuyau)
+                pw.println ( t ); 
 
-			pw.println("\n"+format+"\n");
+            pw.println("\n"+format+"\n");
 
-			pw.close();
-		}
-		catch (Exception e){ e.printStackTrace(); }
+            pw.println(formatChoisi);
 
-	}
-
+            pw.close();
+        }
+        catch (Exception e){ e.printStackTrace(); }
+    }
 }

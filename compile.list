@@ -13,6 +13,8 @@
 ./ihm/ControleurCuves.java
 ./ihm/FrameLierTuyaux.java
 ./ihm/PanelLierTuyaux.java
+./ihm/PanelChoixFormat.java
+./ihm/FrameFormat.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java
