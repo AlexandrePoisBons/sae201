@@ -227,7 +227,8 @@ public class TestCuveTuyau
 
 			case "Liste d'adjacence":
 			{
-				System.out.println("Pas encore disponible");
+				System.out.println(Metier.afficherListeAdjacence(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				format = "Liste d'adjacence\n"+(Metier.afficherListeAdjacence(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
 				break;
 			}
 		}

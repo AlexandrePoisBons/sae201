@@ -28,13 +28,14 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.lstLblTuyaux = new ArrayList<JLabel>();
 
 		//Creation des composants//
+		/*
 		for (Cuve c: this.ensCuves)
 		{
 			this.lstLblCuves.add(new JLabel(""+c));
 		}
 		
 		this.lstLblTuyaux.add(new JLabel("Tuyaux:"));
-		
+
 		for (Tuyau t: this.ensTuyaux)
 		{
 			this.lstLblTuyaux.add(new JLabel(""+t));
@@ -55,6 +56,30 @@ public class PanelCuves extends JPanel //implements ActionListener
 			this.add(lbl);
 		}
 
+		*/
+
 	}
+
+	public void paint(Graphics g)
+    {
+        super.paint(g);
+
+
+        for (Tuyau t : this.ensTuyaux)
+        {
+            g.setColor(Color.GRAY);
+
+            g.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
+
+        }
+
+        for ( Cuve c : this.ensCuves)
+        {
+            g.setColor(this.getColor(c));
+            g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
+
+        }
+
+    }
 
 }

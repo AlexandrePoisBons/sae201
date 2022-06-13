@@ -1,16 +1,18 @@
 package sae201.metier;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class Cuve
 {
     private static char id = 'A'-1;
 
-    public  char   idCuve;
+    private char   idCuve;
     private int    capacite;
     private double contenu;
     private int    posX;
     private int    posY;
     private String position;
+    private Color  couleur;
     private ArrayList<Tuyau> lstTuyauxConnectes;
 
     private Cuve(int capacite, int posX, int posY, String position)
@@ -22,6 +24,7 @@ public class Cuve
         this.posY               = posY;
         this.position           = position;
         this.lstTuyauxConnectes = new ArrayList<Tuyau>();
+        this.couleur            = new Color(0,0,0);
     }
 
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
@@ -103,6 +106,7 @@ public class Cuve
     public double  getContenu()                  { return this.contenu;                           }
     public int     getPosX()                     { return this.posX;                              }
     public int     getPosY()                     { return this.posY;                              }
+    public Color   getCouleur()                  { return this.couleur;                           }
 
     public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
