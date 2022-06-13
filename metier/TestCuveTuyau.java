@@ -94,9 +94,8 @@ public class TestCuveTuyau
 			{
 				for (Tuyau t2: ensTuyau)
 				{
-					if (t3!= t2 && t3.equals(t2))
+					if (t3 != t2 && t3.equals(t2))
 					{
-						
 						for (Tuyau tRemove : toRemove)
 						{
 							if (tRemove.equals(t3))
@@ -131,12 +130,15 @@ public class TestCuveTuyau
 
 			System.out.println("ID Cuve Origine     : |" + idCuveOrig + "|");
 			System.out.println("ID Cuve Destination : |" + idCuveDest + "|");
-			for ( Cuve c : ensCuves )
-			{
-				Cuve cuveOrig = null;
+
+Cuve cuveOrig = null;
 				Cuve cuveDest = null;
 				
 				Tuyau t = null;
+			
+			for ( Cuve c : ensCuves )
+			{
+				
 
 				if ( c.getId() ==  idCuveOrig.toUpperCase().charAt(0) )
 				{
@@ -158,6 +160,7 @@ public class TestCuveTuyau
 				cuveOrig.remplir(50.0);
 				//cuveDest.remplir(50.0);
 
+				System.out.println(cuveOrig.getTuyauxConnectes());
 				System.out.println(cuveOrig);
 				System.out.println(cuveDest);
 				cuveOrig.couler( cuveDest, t );
