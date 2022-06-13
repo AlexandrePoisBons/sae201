@@ -171,20 +171,20 @@ public class TestCuveTuyau
 			
 			for ( Cuve c : ensCuves )
 			{
-				if (c.getId() == idCuveOrig.charAt(0))
+				if ( c.getId() == idCuveOrig.charAt(0) )
 				{
-					for (Tuyau tConnecte : c.getTuyauxConnectes())
+					for ( Tuyau tConnecte : c.getTuyauxConnectes() )
 					{
-						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ) //&& idCuveOrig != idCuveDest)
+						if ( tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ) //&& idCuveOrig != idCuveDest)
 						{
 							System.out.println(tConnecte);
 							System.out.println("Avant\n");
-							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
-							System.out.println("Cuve Origine est vide ?" + c.estVide());
-							System.out.println("Cuve dest est pleine ?" + tConnecte.getCuveDest().estPleine());
+							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
+							System.out.println("Cuve Origine est vide ?"  + c.estVide());
+							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
 							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
 							
-							System.out.println((c.couler(tConnecte.getCuveDest(),tConnecte)));
+							System.out.println(( c.couler( tConnecte.getCuveDest(), tConnecte) ));
 
 							System.out.println("\n\nApres");
 							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
@@ -202,13 +202,13 @@ public class TestCuveTuyau
 
 
 		// Affichage //
-		for (Tuyau tAffiche: ensTuyau)
+		for ( Tuyau tAffiche: ensTuyau )
 		{
 			System.out.println(tAffiche);
 		}
 
 		System.out.println("Quel format voulez vous ?(Matrice, Matrice Optimisee, Liste d'adjacence)\n");
-		format = sc.nextLine()+sc.nextLine();
+		format = sc.nextLine() + sc.nextLine();
 		switch(format)
 		{
 			case "Matrice":
