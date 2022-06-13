@@ -81,10 +81,9 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             String position = this.lstTextFields.get(i+3).getText();
 
             System.out.println(Cuve.creerCuve(Capacite, posX, posY, position));
-           
-            new FrameTuyaux(this.ctrl);
-
             //Sysout pour tester//
         }
+
+        new FrameTuyaux(this.ctrl);
     }
 }
