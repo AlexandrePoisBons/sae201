@@ -37,7 +37,7 @@ public class Tuyau
     public Cuve getCuveDest() { return this.cuveDest; }
     public int  getSection () { return this.section;  }
 
-    public boolean equals(Tuyau t) // Renvoie vrai si le tuyau correspond a celuie en paramtre // A corriger
+    public boolean equals(Tuyau t) // Renvoie vrai si le tuyau correspond a celui en paramtre // A corriger
     {
         if  (this.cuveOrig == null || this.cuveDest == null) return false;
         return (    this.cuveDest == t.cuveDest 

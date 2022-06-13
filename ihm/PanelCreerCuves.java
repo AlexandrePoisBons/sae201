@@ -12,19 +12,15 @@ import sae201.metier.*;
 
 public class PanelCreerCuves extends JPanel implements ActionListener
 {
-	private ControleurCuves            ctrl;
-    private int                        nbCuves;
-    private int                        totalTxt;
-    private ArrayList<JTextField>      lstTextFields; 
-    private ArrayList<Cuve>            ensCuves;
+	private ControleurCuves             ctrl;
+    private int                         nbCuves;
+    private int                         totalTxt;
+    private ArrayList<JTextField>       lstTextFields; 
+    private ArrayList<Cuve>             ensCuves;
 
-    private JPanel                  panelDonnes;
-    private JLabel                  lblCapacite;
-    private JLabel                  lblPosX;
-    private JLabel                  lblPosY;
-    private JLabel                  lblPosition;
+    private JPanel                      panelDonnes;
 
-    private JButton                 btnCreer;
+    private JButton                     btnCreer;
 
 
 	public PanelCreerCuves( ControleurCuves ctrl, int nbCuves)
@@ -40,10 +36,10 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.panelDonnes = new JPanel();
         this.panelDonnes.setLayout(new GridLayout(this.nbCuves+1, 4));
 
-        this.lblCapacite = new JLabel("Capacite", JLabel.CENTER);
-        this.lblPosX     = new JLabel("Pos X",    JLabel.CENTER);
-        this.lblPosY     = new JLabel("Pos Y",    JLabel.CENTER);
-        this.lblPosition = new JLabel("Position", JLabel.CENTER);
+        JLabel lblCapacite = new JLabel("Capacite", JLabel.CENTER);
+        JLabel lblPosX     = new JLabel("Pos X",    JLabel.CENTER);
+        JLabel lblPosY     = new JLabel("Pos Y",    JLabel.CENTER);
+        JLabel lblPosition = new JLabel("Position", JLabel.CENTER);
 
         this.btnCreer = new JButton("Creer");
 
@@ -57,10 +53,10 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.btnCreer.addActionListener(this);
 
         // positionnement des composants //
-        this.panelDonnes.add(this.lblCapacite);
-        this.panelDonnes.add(this.lblPosX);
-        this.panelDonnes.add(this.lblPosY);
-        this.panelDonnes.add(this.lblPosition);
+        this.panelDonnes.add(lblCapacite);
+        this.panelDonnes.add(lblPosX);
+        this.panelDonnes.add(lblPosY);
+        this.panelDonnes.add(lblPosition);
 
         for(JTextField txt: this.lstTextFields)
         {

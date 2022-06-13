@@ -12,6 +12,8 @@ import java.awt.Point;
 // Pour la lecture des saisies claviers
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 // EN cas d'encodage en utf-8 import cette classe :
 // import java.io.OutputStreamWriter;
 
@@ -91,6 +93,13 @@ public class TestCuveTuyau
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 		}
 		/*--------------------------------------------------------------------------------------------*/
+
+		for (Cuve c :ensCuves)
+		{
+			System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
+			c.remplir((double) sc.nextInt());
+		}
+
 		
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
@@ -106,6 +115,7 @@ public class TestCuveTuyau
 					cuveALier[1] = c;
 			}
 
+			
 			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]); --> lier directement
 
 			// Verifier si le tuyau n'existe pas deja // Erreur ici ou Tuyau.equals
@@ -145,10 +155,10 @@ public class TestCuveTuyau
 
 		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
 		{
-			System.out.println( "À quelle cuve voulez-vous transferer ? Cuve Origine : "    );
+			System.out.println( "A quelle cuve voulez-vous transferer ? Cuve Origine : "    );
 			idCuveOrig = sc.nextLine() + sc.nextLine();
 
-			System.out.println( "À quelle cuve voulez-vous transferer ? Cuve Destination : ");
+			System.out.println( "A quelle cuve voulez-vous transferer ? Cuve Destination : ");
 			idCuveDest = sc.nextLine();
 
 			System.out.println("ID Cuve Origine     : |" + idCuveOrig + "|");
@@ -161,20 +171,11 @@ public class TestCuveTuyau
 			
 			for ( Cuve c : ensCuves )
 			{
-				c.remplir(50.0);
-
 				if (c.getId() == idCuveOrig.charAt(0))
 				{
-					// TEST AFFICHAGE
-					System.out.println(c);
-					for (Tuyau t1: c.getTuyauxConnectes())
-					{
-						System.out.println(t1);
-					}
-
 					for (Tuyau tConnecte : c.getTuyauxConnectes())
 					{
-						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c && idCuveOrig != idCuveDest);
+						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ) //&& idCuveOrig != idCuveDest)
 						{
 							System.out.println(tConnecte);
 							System.out.println("Avant\n");
@@ -188,6 +189,10 @@ public class TestCuveTuyau
 							System.out.println("\n\nApres");
 							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
 							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
+						}
+						else 
+						{
+							System.out.println("Il n'y a aucune liaison entre ces 2 cuves.");
 						}
 					}
 				}
@@ -222,7 +227,8 @@ public class TestCuveTuyau
 
 			case "Liste d'adjacence":
 			{
-				System.out.println("Pas encore disponible");
+				System.out.println(Metier.afficherListeAdjacence(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
+				format = "Liste d'adjacence\n"+(Metier.afficherListeAdjacence(Metier.creerMatrice(ensCuves, ensTuyau, nbCuves)));
 				break;
 			}
 		}
