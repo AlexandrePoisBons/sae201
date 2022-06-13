@@ -71,7 +71,7 @@ public class Cuve
             return false;
     
         // Cas où le contenu à transférer est plus petit que la section du tuyau
-        if ( cuveDest.getContenu() < tuyau.getSection() )
+        if ( this.getContenu() < tuyau.getSection() )
         {
             contenuTransfert = this.getContenu();
 
