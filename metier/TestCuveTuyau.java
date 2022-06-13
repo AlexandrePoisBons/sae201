@@ -181,7 +181,8 @@ public class TestCuveTuyau
 				{
 					for ( Tuyau tConnecte : c.getTuyauxConnectes() )
 					{
-						if ( tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ) //&& idCuveOrig != idCuveDest)
+						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
+						    tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest()==c    ) //&& idCuveOrig != idCuveDest)
 						{
 							System.out.println(tConnecte);
 							System.out.println("Avant\n");
