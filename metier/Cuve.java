@@ -101,6 +101,9 @@ public class Cuve
     public int     getCapacite()                 { return this.capacite;                          } 
     public char    getId()                       { return this.idCuve;                            }
     public double  getContenu()                  { return this.contenu;                           }
+    public int     getPosX()                     { return this.posX;                              }
+    public int     getPosY()                     { return this.posY;                              }
+
     public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
 

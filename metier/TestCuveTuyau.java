@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Point;
 
 // Pour la lecture des saisies claviers
 import java.util.Scanner;
@@ -22,11 +23,9 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		ArrayList<Cuve>  ensCuves = new ArrayList<Cuve> ();
-		ArrayList<Tuyau> ensTuyau = new ArrayList<Tuyau>();
-		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
-		ArrayList<Tuyau> alTransf = new ArrayList<Tuyau>();
-
+		ArrayList<Cuve>  ensCuves = new ArrayList<Cuve> (); // --> ensemble des cuves crees
+		ArrayList<Tuyau> ensTuyau = new ArrayList<Tuyau>(); // --> ensemble des tuyaux crees
+		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>(); // --> tuyaux incorrects a supprimer
 		String format = "";
 
 		int nbCuves     = 0;
@@ -45,30 +44,54 @@ public class TestCuveTuyau
 
 
 		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
+
+		
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
+			boolean positionTaken = false;
+			
 			System.out.print("Quelle capacité | posX | posY | position pour la cuve" + " : " + ( char ) ( 'A' + cpt ) + " ? " + "\n");
-			ensCuves.add(Cuve.creerCuve(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextLine() + sc.nextLine()));
-			// Double sc.nextLine() pour annuler le "\n" du sc.nextInt() précédent, qui comptait comme String position
+			int capacite 	= sc.nextInt();
+			int posX 		= sc.nextInt();
+			int posY 	 	= sc.nextInt();
+			String position = sc.nextLine() + sc.nextLine(); // Double sc.nextLine() pour annuler le "\n" du sc.nextInt() précédent, qui comptait comme String position
+
+			// Verification de la position //
+			for (Cuve c: ensCuves)						
+			{
+				if (c.getPosX() == posX && c.getPosY() == posY)
+				{
+					positionTaken = true;
+					cpt--;
+					System.out.println("Position ("+posX+", "+posY+") deja occupee");
+					break;
+					
+				}
+			}
+			if(!positionTaken)
+				ensCuves.add(Cuve.creerCuve(capacite, posX, posY, position));
+			
 		}
 		/*--------------------------------------------------------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));
 
-        /* Récupération des valeurs des utilisateurs */
+
+        /*----------------- Récupération des valeurs des utilisateurs pour les tuyaux ----------------*/
 		System.out.print("\nCombien de Tuyaux ? ");
 		nbTuyaux = sc.nextInt();
-		/*---------------------------------------------*/
+		/*---------------------------------------------------------------------------------------------*/
+
 
 		/*-------------------------- Création des tuyaux selon l'utilisateur --------------------------*/
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
 			System.out.print("\nQuelle section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
-			// Double sc.nextLine() pour annuler le "\n" du sc.nextInt() précédent, qui comptait comme String position
 		}
 		/*--------------------------------------------------------------------------------------------*/
+		
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
 		{
