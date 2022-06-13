@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import sae201.Controleur;
 import sae201.metier.*;
 
-public class PanelCreerCuves extends JPanel implements ActionListener
+public class PanelCreerTuyau extends JPanel implements ActionListener
 {
 	private Controleur            ctrl;
     private int                   nbCuves;
@@ -18,15 +18,12 @@ public class PanelCreerCuves extends JPanel implements ActionListener
     private ArrayList<JTextField> lstTextFields; 
 
     private JPanel                  panelDonnes;
-    private JLabel                  lblCapacite;
-    private JLabel                  lblPosX;
-    private JLabel                  lblPosY;
-    private JLabel                  lblPosition;
+    private JLabel                  lblSection;
 
     private JButton                 btnCreer;
 
 
-	public PanelCreerCuves( Controleur ctrl, int nbCuves)
+	public PanelCreerTuyau( Controleur ctrl)
 	{
         this.setLayout(new BorderLayout());
 		this.ctrl    = ctrl;
@@ -36,12 +33,9 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
         // creation des composants //
         this.panelDonnes = new JPanel();
-        this.panelDonnes.setLayout(new GridLayout(this.nbCuves+1, 4));
+        this.panelDonnes.setLayout(new GridLayout(this.nbCuves+1, 1));
 
-        this.lblCapacite = new JLabel("Capacite", JLabel.CENTER);
-        this.lblPosX     = new JLabel("Pos X",    JLabel.CENTER);
-        this.lblPosY     = new JLabel("Pos Y",    JLabel.CENTER);
-        this.lblPosition = new JLabel("Position", JLabel.CENTER);
+        this.lblSection = new JLabel("Section", JLabel.CENTER);
 
         this.btnCreer = new JButton("Creer");
 
@@ -55,10 +49,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.btnCreer.addActionListener(this);
 
         // positionnement des composants //
-        this.panelDonnes.add(this.lblCapacite);
-        this.panelDonnes.add(this.lblPosX);
-        this.panelDonnes.add(this.lblPosY);
-        this.panelDonnes.add(this.lblPosition);
+        this.panelDonnes.add(this.lblSection);
 
         for(JTextField txt: this.lstTextFields)
         {
@@ -73,17 +64,11 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 	public void actionPerformed (ActionEvent ae)
 	{
         int taille = this.lstTextFields.size();
-        for(int i=0; i < taille; i=i+4)
+        for(int i=0; i < taille; i++)
         {
-            int Capacite    = Integer.parseInt(this.lstTextFields.get(i).getText());
-            int posX        = Integer.parseInt(this.lstTextFields.get(i+1).getText());
-            int posY        = Integer.parseInt(this.lstTextFields.get(i+2).getText());
-            String position = this.lstTextFields.get(i+3).getText();
+            int section    = Integer.parseInt(this.lstTextFields.get(i).getText());
 
-            System.out.println(Cuve.creerCuve(Capacite, posX, posY, position));
-           
-            //new FrameSelectTuyau(this.ctrl);
-
+            System.out.println(Tuyau.creerTuyau(section));
             //Sysout pour tester//
         }
     }
