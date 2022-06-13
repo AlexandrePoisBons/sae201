@@ -58,7 +58,7 @@ public class Metier
 
     public static String afficherMatriceOpti(Tuyau[][]matrice)
     {
-        String sRet ="";
+        String sRet = "";
         for (int i=0; i<matrice.length; i++) // pour chaque ligne
         {
             for (int j=0; j<=i; j++)
@@ -69,6 +69,23 @@ public class Metier
             } 
             sRet +="\n";
         };
+        return sRet;
+    }
+
+    public static String afficherListeAdjacence( Tuyau[][] matrice )
+    {
+        String sRet = "";
+        for ( int i = 0; i < matrice.length; i++ ) 
+        {
+            for ( int j = 0; j <= matrice.length; j++ )
+            {
+                if (matrice[i][j] != null)
+                     sRet += 1 + " ";
+                else sRet += 0 + " ";
+            }
+            sRet += "\n";
+        }
+
         return sRet;
     }
 
@@ -115,6 +132,6 @@ public class Metier
 
         System.out.println("Matrice: \n"+afficherMatrice(creerMatrice(lstTempC, lstTempT, 3)));
         System.out.println("Matrice Opti: \n" + afficherMatriceOpti(creerMatrice(lstTempC, lstTempT, 3)));
-        //System.out.println("Liste d'adjacence: \n");
+        System.out.println("Liste d'adjacence: \n" + afficherListeAdjacence(creerMatrice(lstTempC, lstTempT, 3)));
     }
 }
