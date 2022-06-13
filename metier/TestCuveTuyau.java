@@ -123,30 +123,43 @@ public class TestCuveTuyau
 
 		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
 		{
-			System.out.println( "Quelle cuves à relier ? Cuve Origine : "    );
-			idCuveOrig = sc.nextLine();
+			System.out.println( "À quelle cuve voulez-vous transferer ? Cuve Origine : "    );
+			idCuveOrig = sc.nextLine() + sc.nextLine();
 
-			System.out.println( "Quelle cuves à relier ? Cuve Destination : ");
+			System.out.println( "À quelle cuve voulez-vous transferer ? Cuve Destination : ");
 			idCuveDest = sc.nextLine();
 
+			System.out.println("ID Cuve Origine     : |" + idCuveOrig + "|");
+			System.out.println("ID Cuve Destination : |" + idCuveDest + "|");
 			for ( Cuve c : ensCuves )
 			{
-				Cuve  cuveOrig;
-				Cuve  cuveDest;
+				Cuve cuveOrig = null;
+				Cuve cuveDest = null;
 				
-				Tuyau t;
+				Tuyau t = null;
 
-				if ( c.getId().isLetter( idCuveOrig ) )
+				if ( c.getId() ==  idCuveOrig.toUpperCase().charAt(0) )
+				{
+					System.out.println("flags1");
 					cuveOrig = c;
+				}
 
-				if ( c.getId().equals( idCuveDest ) )
+				if ( c.getId() ==  idCuveDest.toUpperCase().charAt(0) )
+				{
+					System.out.println("flags2");
 					cuveDest = c;
+				}
 
 				alTransf = cuveOrig.getTuyauxConnectes();
 				for ( Tuyau tu : alTransf )
 					if ( tu.getCuveOrig() == cuveOrig && tu.getCuveDest() == cuveDest )
 						t = tu;
 
+				cuveOrig.remplir(50.0);
+				//cuveDest.remplir(50.0);
+
+				System.out.println(cuveOrig);
+				System.out.println(cuveDest);
 				cuveOrig.couler( cuveDest, t );
 
 				System.out.println( cuveOrig );

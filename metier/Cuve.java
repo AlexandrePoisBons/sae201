@@ -49,6 +49,16 @@ public class Cuve
         this.lstTuyauxConnectes.add(t);
     }
 
+    public boolean remplir(double quantite)
+    {
+        if ( quantite > this.capacite || quantite < 0)
+            return false;
+    
+        this.contenu += quantite;
+        return true;
+        
+    }
+
     public boolean couler(Cuve cuveDest, Tuyau tuyau) 
     // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien ete effectue//
     // FAIRE SYSTEME VASES COMMUNICANTS //
