@@ -52,33 +52,48 @@ public class Cuve
     // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien ete effectue//
     // FAIRE SYSTEME VASES COMMUNICANTS //
     {
-        if (cuveDest.estPleine() || !this.estVide())
-            return false;
-        else
-        {
-            
-            if (cuveDest.placeLibre() < tuyau.getSection())
-            {
-                cuveDest.contenu += cuveDest.placeLibre();
-                this.contenu -= cuveDest.placeLibre();
-            }
+        // Variable intermédiaire pour éviter de perdre trace de la valeur à transférer
+        double contenuTrasfert;
 
-            else
-                cuveDest.contenu += tuyau.getSection();
-                this.contenu -= tuyau.getSection();
-            return true;
+        // Vérification des cuves
+        if ( cuveDest.estPleine() || !this.estVide() )
+            return false;
+    
+        // Cas où le contenu à transférer est plus petit que la section du tuyau
+        if ( cuveDest.contenu() < tuyau.getSection() )
+        {
+            contenuTransfert = this.getContenu();
+
+            cuveDest     += contenuTransfert;
+            this.contenu -= contenuTransfert;
         }
+
+        // Cas où la section du tuyau est plus grande que la place restante dans la cuveDest
+        if ( cuveDest.placeLibre() < tuyau.getSection() )
+        {
+            contenuTransfert = (double) cuveDest.getPlaceLibre();
+
+            cuveDest     += contenuTransfert;
+            this.contenu -= contenuTransfert;
+        }
+
+        // Cas général
+        cuveDest.contenu += tuyau.getSection();
+        this.contenu     -= tuyau.getSection();
+          
+        return true;    
     }
 
-    /* --------------------- Guetteurs ----------------------- */
+    /* --------------------- Getters ----------------------- */
     public int     getCapacite()                 { return this.capacite;                          } 
     public char    getId()                       { return this.idCuve;                            }
     public double  getContenu()                  { return this.contenu;                           }
 
     // Autres méthodes //
-    public int placeLibre()                      { return this.capacite - (int)this.contenu;      }
+    public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
     public boolean estVide()                     { return this.contenu == 0;                      }
     public boolean estPleine()                   { return (double) this.capacite == this.contenu; }
+    
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
 
     public String toString()
