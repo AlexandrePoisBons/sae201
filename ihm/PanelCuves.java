@@ -28,7 +28,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.lstLblTuyaux = new ArrayList<JLabel>();
 
 		//Creation des composants//
-		/*
+		
 		for (Cuve c: this.ensCuves)
 		{
 			this.lstLblCuves.add(new JLabel(""+c));
@@ -56,11 +56,11 @@ public class PanelCuves extends JPanel //implements ActionListener
 			this.add(lbl);
 		}
 
-		*/
+		
 
 	}
 
-	public void paint(Graphics g)
+	/*public void paint(Graphics g)
     {
         super.paint(g);
 
@@ -80,6 +80,6 @@ public class PanelCuves extends JPanel //implements ActionListener
 
         }
 
-    }
+    }*/
 
 }

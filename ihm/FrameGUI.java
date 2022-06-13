@@ -14,12 +14,12 @@ public class FrameGUI extends JFrame
 		this.ctrl = ctrl;
 
 		this.setTitle    ( "GUI Application 1" );
-		this.setSize(500, 100);
+		this.setSize(500, 400);
 		//this.pack();
-
-		this.setVisible(true);
 
 		this.panelInfo = new PanelGUI(this.ctrl);
 		this.add(this.panelInfo);
+
+		this.setVisible(true);
 	}
 } 
