@@ -43,16 +43,16 @@ public class Metier
 
     public static String afficherMatrice(Tuyau[][] matrice)
     {
-        String sRet ="";
-        for (int i=0; i<matrice.length; i++)
+        String sRet = "";
+        for (int i = 0; i < matrice.length; i++)
         {
-            for (int j=0; j<matrice[0].length; j++)
+            for (int j = 0; j < matrice[0].length; j++)
             {
                 if (matrice[i][j] != null)
-                    sRet += matrice[i][j].getSection() +" ";
+                    sRet  += matrice[i][j].getSection() +" ";
                 else sRet += 0 +" ";
             } 
-            sRet +="\n";
+            sRet += "\n";
         }
         return sRet;
     }
@@ -60,9 +60,9 @@ public class Metier
     public static String afficherMatriceOpti(Tuyau[][]matrice)
     {
         String sRet = "";
-        for (int i=0; i<matrice.length; i++) // pour chaque ligne
+        for (int i = 0; i < matrice.length; i++ ) // pour chaque ligne
         {
-            for (int j=0; j<=i; j++)
+            for ( int j = 0; j <= i; j++ )
             {
                 if (matrice[i][j] != null)
                     sRet += matrice[i][j].getSection() +" ";

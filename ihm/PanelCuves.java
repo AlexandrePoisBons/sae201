@@ -3,10 +3,12 @@ package sae201.ihm;
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 import sae201.Controleur;
 import sae201.metier.*;
+import java.awt.Color;
 
 public class PanelCuves extends JPanel //implements ActionListener
 {
@@ -65,6 +67,8 @@ public class PanelCuves extends JPanel //implements ActionListener
         super.paint(g);
 
 
+
+
         for (Tuyau t : this.ensTuyaux)
         {
             g.setColor(Color.GRAY);
@@ -72,12 +76,12 @@ public class PanelCuves extends JPanel //implements ActionListener
             g.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
 
         }
-
-        for ( Cuve c : this.ensCuves)
+		
+		for ( Cuve c : this.ensCuves)
         {
-            g.setColor(this.getColor(c));
+			c.remplir(200.0); // TEST
+            g.setColor(c.getCouleur());
             g.fillOval(c.getPosX(), c.getPosY(), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
-
         }
 
     }*/

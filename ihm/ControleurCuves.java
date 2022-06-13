@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 public class ControleurCuves
 {
     private ArrayList<Cuve>  ensCuves;
-    private ArrayList<Tuyau> ensTuyau;
+    public ArrayList<Tuyau>  ensTuyau; // en public juste pour tester
     private JFrame           ihm;
     private Metier           metier;
     /*
