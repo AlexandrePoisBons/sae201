@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 public class ControleurCuves
 {
     private ArrayList<Cuve>  ensCuves;
-    private ArrayList<Tuyau> ensTuyau;
+    public ArrayList<Tuyau>  ensTuyau; // en public juste pour tester
     private JFrame           ihm;
     /*
      *Completer

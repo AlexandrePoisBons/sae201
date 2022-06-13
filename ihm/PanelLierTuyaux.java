@@ -49,11 +49,12 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-        for (int j=0; j<this.nbTuyaux; j=j+2)
+        for (int j=0; j<this.nbTuyaux; j++)
         {
             Cuve c1 = this.ctrl.estCuve(this.lstText.get(j).getText().charAt(0));
             Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
             this.ctrl.setLien(j, c1, c2);
+            System.out.println(this.ctrl.ensTuyau.get(j));
         }
 		this.ctrl.generer();
 	}
