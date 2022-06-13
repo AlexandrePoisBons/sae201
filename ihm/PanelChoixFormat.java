@@ -13,6 +13,7 @@ import java.awt.event.*;
 
 public class PanelChoixFormat extends JPanel implements ActionListener, ItemListener
 {
+    private JFrame        frmParent;
     private ButtonGroup   bgFormat;
     private JRadioButton  rbMatrice;
     private JRadioButton  rbMatriceOpti;
@@ -20,9 +21,11 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     private JButton       btnValider;
     private String        format;
 
+    private Boolean alreadyChecked = false;
+
     private ControleurCuves ctrl;
     
-    public PanelChoixFormat(ControleurCuves ctrl)
+    public PanelChoixFormat(JFrame frmParent, ControleurCuves ctrl)
     {
         this.ctrl = ctrl;
 
@@ -53,14 +56,21 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.rbMatriceOpti.addItemListener(this);   
         this.rbListeAdjacence.addItemListener(this);
         this.btnValider.addActionListener(this);
+
     }
 
     public void actionPerformed(ActionEvent e)
     {
 
         //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
-        this.ctrl.ecrire(this.format);
-        this.ctrl.generer();
+        if (!alreadyChecked)
+        {
+            this.ctrl.ecrire(this.format);
+            this.ctrl.generer();
+            this.frmParent.dispose();
+            alreadyChecked = true;
+        }
+        
     }
 
     public void itemStateChanged(ItemEvent e)

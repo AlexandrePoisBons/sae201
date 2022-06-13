@@ -17,7 +17,7 @@ public class FrameGUI extends JFrame
 		this.setSize(500, 200);
 		//this.pack();
 
-		this.panelInfo = new PanelGUI(this.ctrl);
+		this.panelInfo = new PanelGUI(this, this.ctrl);
 		this.add(this.panelInfo);
 
 		this.setVisible(true);

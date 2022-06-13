@@ -18,18 +18,18 @@ public class FrameTuyaux extends JFrame
 		this.ctrl = ctrl;
 
 		this.setTitle    ( "Frame Tuyaux" );
-		this.setSize(500, 100);
+		this.setSize(500, 200);
 		//this.pack();
 
 		this.setVisible(true);
 
-		this.panelInfo = new PanelTuyaux(this.ctrl);
+		this.panelInfo = new PanelTuyaux(this, this.ctrl);
 		this.add(this.panelInfo);
 	}
 
     public void maj(ArrayList<Tuyau> lstTuyaux) // A CHANGER CREER PANEL A PART//
     {
-        this.panelInfo = new PanelTuyaux(this.ctrl);
+        this.panelInfo = new PanelTuyaux(this, this.ctrl);
 		
         this.panelInfo.setLayout(new GridLayout(lstTuyaux.size()+1, 2));
         this.panelInfo.add(new JLabel("Cuve Origine", JLabel.CENTER));

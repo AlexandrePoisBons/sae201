@@ -5,17 +5,20 @@ import javax.swing.*;
 import java.awt.event.*;
 
 import sae201.Controleur;
+import sae201.ihm.FrameTuyaux;
 
 public class PanelTuyaux extends JPanel implements ActionListener
 {
+	private FrameTuyaux		 frmParent;
 	private ControleurCuves  ctrl;
 	private JLabel			 lblInfo;
 	private JTextField  	 txtNbCuves;
 	private JButton 		 btnValider;
 
-	public PanelTuyaux( ControleurCuves ctrl)
+	public PanelTuyaux(FrameTuyaux frmParent, ControleurCuves ctrl)
 	{
 		this.ctrl = ctrl;
+		this.frmParent = frmParent;
 
 		//Creation des composants//
 		this.lblInfo 	= new JLabel("Combien de Tuyaux souhaitez vous créer ? ");
@@ -35,5 +38,6 @@ public class PanelTuyaux extends JPanel implements ActionListener
 	public void actionPerformed (ActionEvent ae)
 	{
 		new FrameSelectTuyau(this.ctrl, Integer.parseInt(this.txtNbCuves.getText()));
+		this.frmParent.dispose();
 	}
 }

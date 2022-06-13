@@ -54,7 +54,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 			JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
 			switch(c.getPosition())
 			{
-				case "Haut": 	lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)-30, dimLbl.width, dimLbl.height); ;System.out.println("RATIO");;break;
+				case "Haut": 	lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)-30, dimLbl.width, dimLbl.height); break;
 				case "Bas":		lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)+30, dimLbl.width, dimLbl.height); break;
 				case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;
 				case "Droite":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;

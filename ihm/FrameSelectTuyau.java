@@ -22,7 +22,7 @@ public class FrameSelectTuyau extends JFrame
         this.ctrl = ctrl;
 
 		this.setTitle    ( "Creation de tuyaux" );
-		this.setSize(500, 100);
+		this.setSize(500, 200);
 		//this.pack();
 
 		this.setVisible(true);

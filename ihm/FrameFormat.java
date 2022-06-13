@@ -14,9 +14,10 @@ public class FrameFormat extends JFrame
     public FrameFormat(ControleurCuves ctrl)
     {
         this.setTitle("Choix format");
-        this.setSize(1000, 500);
+        this.setSize(500, 200);
+        this.setResizable(false);
 
-        this.panelChoixFormat = new PanelChoixFormat(ctrl);
+        this.panelChoixFormat = new PanelChoixFormat(this, ctrl);
         this.add(this.panelChoixFormat);
 
         this.setVisible(true);

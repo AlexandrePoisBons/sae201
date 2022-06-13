@@ -12,8 +12,8 @@ import sae201.metier.*;
 
 public class PanelCreerTuyau extends JPanel implements ActionListener
 {
-	private ControleurCuves            ctrl;
-    private JFrame                parent;
+	private ControleurCuves       ctrl;
+    private JFrame                frmParent;
     private int                   nbTuyaux;
     private ArrayList<JTextField> lstTextFields; 
     private ArrayList<Tuyau>      lstTuyaux;
@@ -23,11 +23,11 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
     private JButton                 btnCreer;
 
 
-	public PanelCreerTuyau(JFrame parent, ControleurCuves ctrl, int nbTuyaux)
+	public PanelCreerTuyau(JFrame frmParent, ControleurCuves ctrl, int nbTuyaux)
 	{
         this.setLayout(new BorderLayout());
 		this.ctrl          = ctrl;
-        this.parent        = parent;
+        this.frmParent     = frmParent;
         this.nbTuyaux      = nbTuyaux;
         this.lstTextFields = new ArrayList<JTextField>();
         this.lstTuyaux     = new ArrayList<Tuyau>();
@@ -75,6 +75,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         //this.parent.maj(this.lstTuyaux);
         new FrameLierTuyaux(this.ctrl, this.nbTuyaux);
         this.ctrl.setTuyau(this.lstTuyaux);
+        this.frmParent.dispose();
     }
 
 }

@@ -8,14 +8,16 @@ import sae201.Controleur;
 
 public class PanelGUI extends JPanel implements ActionListener
 {
+	private FrameGUI 		 frmParent;
 	private ControleurCuves  ctrl;
-	private JLabel		lblInfo;
-	private JTextField  txtNbCuves;
-	private JButton 	btnValider;
+	private JLabel			 lblInfo;
+	private JTextField  	 txtNbCuves;
+	private JButton 		 btnValider;
 
-	public PanelGUI( ControleurCuves ctrl)
+	public PanelGUI( FrameGUI frmParent, ControleurCuves ctrl)
 	{
 		this.ctrl = ctrl;
+		this.frmParent = frmParent;
 
 		//Creation des composants//
 		this.lblInfo 	= new JLabel("Combien de Cuves souhaitez vous créer ? ");
@@ -35,5 +37,6 @@ public class PanelGUI extends JPanel implements ActionListener
 	public void actionPerformed (ActionEvent ae)
 	{
 		new FrameCreation(this.ctrl, Integer.parseInt(this.txtNbCuves.getText()));
+		this.frmParent.dispose();
 	}
 }

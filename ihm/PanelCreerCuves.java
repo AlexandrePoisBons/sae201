@@ -12,6 +12,7 @@ import sae201.metier.*;
 
 public class PanelCreerCuves extends JPanel implements ActionListener
 {
+    private JFrame                      frmParent;
 	private ControleurCuves             ctrl;
     private int                         nbCuves;
     private int                         totalTxt;
@@ -23,9 +24,10 @@ public class PanelCreerCuves extends JPanel implements ActionListener
     private JButton                     btnCreer;
 
 
-	public PanelCreerCuves( ControleurCuves ctrl, int nbCuves)
+	public PanelCreerCuves(FrameCreation frmParent, ControleurCuves ctrl, int nbCuves)
 	{
         this.setLayout(new BorderLayout());
+        this.frmParent     = frmParent;
 		this.ctrl          = ctrl;
         this.nbCuves       = nbCuves;
         this.totalTxt      = (this.nbCuves*4);        
@@ -91,5 +93,6 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
         new FrameTuyaux(this.ctrl);
         this.ctrl.setCuves(this.ensCuves);
+        this.frmParent.dispose();
     }
 }

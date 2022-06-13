@@ -20,12 +20,12 @@ public class FrameLierTuyaux extends JFrame
 		this.nbTuyaux = nbTuyaux;
 
 		this.setTitle    ( "Frame Lier Tuyaux" );
-		this.setSize(500, 100);
+		this.setSize(500, 200);
 		//this.pack();
 
 		this.setVisible(true);
 
-		this.panelInfo = new PanelLierTuyaux(this.ctrl, nbTuyaux);
+		this.panelInfo = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);
 		this.add(this.panelInfo);
 	}
 }

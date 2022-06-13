@@ -95,14 +95,20 @@ public class ControleurCuves
             /* Pour l'écriture correcte du .txt */
             pw.println("Cuves\n");
             for(Cuve c : ensCuves)
-                pw.println ( c );
+                pw.println ( c.getCapacite()+","+
+                             c.getPosX()    +","+  
+                             c.getPosX()    +","+
+                             c.getPosition()
+                            );
 
             pw.println("\nTuyaux\n");
             for(Tuyau t: ensTuyau)
-                pw.println ( t ); 
+                pw.println ( t.getSection ()        +","+
+                             t.getCuveOrig().getId()+","+
+                             t.getCuveDest().getId()
+                            ); 
 
             pw.println("\n"+format+"\n");
-
             pw.println(formatChoisi);
 
             pw.close();
