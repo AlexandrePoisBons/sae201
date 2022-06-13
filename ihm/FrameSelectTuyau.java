@@ -15,9 +15,9 @@ public class FrameSelectTuyau extends JFrame
 	private Controleur        ctrl;
 	private PanelCreerTuyau   panelCreerTuyau;
 
-    private int               nbCuves;    
+    private int               nbTuyaux;    
 
-	public FrameSelectTuyau()//Controleur ctrl)
+	public FrameSelectTuyau(Controleur ctrl, int nbTuyaux)
 	{
         this.ctrl = ctrl;
 
@@ -27,13 +27,13 @@ public class FrameSelectTuyau extends JFrame
 
 		this.setVisible(true);
 
-		this.panelCreerTuyau = new PanelCreerTuyau(this.ctrl);
+		this.panelCreerTuyau = new PanelCreerTuyau(this.ctrl, nbTuyaux);
 		this.add(this.panelCreerTuyau);	
 	}
 
     public static void main(String[]args)
     {
-        new FrameSelectTuyau()
+        new FrameSelectTuyau();
     }
 
 } 

@@ -13,7 +13,7 @@ import sae201.metier.*;
 public class PanelCreerTuyau extends JPanel implements ActionListener
 {
 	private Controleur            ctrl;
-    private int                   nbCuves;
+    private int                   nbTuyaux;
     private int                   totalTxt;
     private ArrayList<JTextField> lstTextFields; 
 
@@ -23,17 +23,17 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
     private JButton                 btnCreer;
 
 
-	public PanelCreerTuyau( Controleur ctrl)
+	public PanelCreerTuyau( Controleur ctrl, int nbTuyaux)
 	{
         this.setLayout(new BorderLayout());
 		this.ctrl    = ctrl;
-        this.nbCuves = nbCuves;
-        this.totalTxt   = (this.nbCuves*4);        
+        this.nbTuyaux = nbTuyaux;
+        this.totalTxt   = (this.nbTuyaux*4);        
         this.lstTextFields = new ArrayList<JTextField>();
 
         // creation des composants //
         this.panelDonnes = new JPanel();
-        this.panelDonnes.setLayout(new GridLayout(this.nbCuves+1, 1));
+        this.panelDonnes.setLayout(new GridLayout(this.nbTuyaux+1, 1));
 
         this.lblSection = new JLabel("Section", JLabel.CENTER);
 

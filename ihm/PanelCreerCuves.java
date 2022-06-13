@@ -82,7 +82,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
             System.out.println(Cuve.creerCuve(Capacite, posX, posY, position));
            
-            //new FrameSelectTuyau(this.ctrl);
+            new FrameTuyaux(this.ctrl);
 
             //Sysout pour tester//
         }
