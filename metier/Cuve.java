@@ -66,6 +66,7 @@ public class Cuve
 
             cuveDest     += contenuTransfert;
             this.contenu -= contenuTransfert;
+            return true;
         }
 
         // Cas où la section du tuyau est plus grande que la place restante dans la cuveDest
@@ -75,6 +76,7 @@ public class Cuve
 
             cuveDest     += contenuTransfert;
             this.contenu -= contenuTransfert;
+            return true;
         }
 
         // Cas général
