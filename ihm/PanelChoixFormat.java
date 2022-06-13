@@ -60,6 +60,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
 
         //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
         this.ctrl.ecrire(this.format);
+        this.ctrl.generer();
     }
 
     public void itemStateChanged(ItemEvent e)

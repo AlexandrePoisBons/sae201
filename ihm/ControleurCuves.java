@@ -70,6 +70,7 @@ public class ControleurCuves
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 
+    /* ECRIRE DANS LE RESULTAT.TXT */
     public void ecrire(String format)
     {
         String formatChoisi ="";

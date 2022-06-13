@@ -107,7 +107,6 @@ public class Cuve
     public void majCouleur()
     {
         int rgbValue = (int)this.contenu*(1000/(int)this.contenu)/2; // renvoie un nombre [0; 500]
-        System.out.println(""+rgbValue);//TEST
         if ( rgbValue < 255)
             this.couleur = new Color(rgbValue, 0, 0);
         else
@@ -124,6 +123,7 @@ public class Cuve
     public double  getContenu()                  { return this.contenu;                           }
     public int     getPosX()                     { return this.posX;                              }
     public int     getPosY()                     { return this.posY;                              }
+    public String  getPosition()                 { return this.position;                          }
     public Color   getCouleur()                  { return this.couleur;                           }
 
     public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
