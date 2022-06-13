@@ -96,10 +96,16 @@ public class TestCuveTuyau
 
 		for (Cuve c :ensCuves)
 		{
-			System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
-			c.remplir((double) sc.nextInt());
+			if ( c != null )
+			{
+				System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
+				c.remplir((double) sc.nextInt());
+			}
+			else
+			{
+				System.out.println("La cuve n'existe pas");
+			}
 		}
-
 		
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
@@ -186,7 +192,7 @@ public class TestCuveTuyau
 							
 							System.out.println((c.couler(tConnecte.getCuveDest(),tConnecte)));
 
-							System.out.println("\n\nApres");
+							System.out.println("\n\nApres\n");
 							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
 							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
 						}
