@@ -1,9 +1,7 @@
 package sae201.ihm;
 
 import javax.swing.JFrame;
-
 import sae201.Controleur;
-import sae201.ihm.PanelTuyaux;
 
 public class FrameTuyaux extends JFrame
 {
