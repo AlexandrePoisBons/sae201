@@ -67,7 +67,7 @@ public class Cuve
         double contenuTransfert = 0;
 
         // Vérification des cuves
-        if ( cuveDest.estPleine() || !this.estVide() )
+        if ( cuveDest.estPleine() || this.estVide() )
             return false;
     
         // Cas où le contenu à transférer est plus petit que la section du tuyau
@@ -105,7 +105,7 @@ public class Cuve
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
 
     public boolean estVide()                     { return this.contenu == 0;                      }
-    public boolean estPleine()                   { return (double) this.capacite == this.contenu; }
+    public boolean estPleine()                   { return this.capacite == this.contenu;          }
     /*-------------------------------------------------------*/
 
     public String toString()

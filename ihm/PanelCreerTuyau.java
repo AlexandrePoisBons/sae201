@@ -72,7 +72,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
             System.out.println(this.lstTuyaux.get(i));
             //Sysout pour tester//
         }
-        this.parent.maj(this.lstTuyaux);
+        //this.parent.maj(this.lstTuyaux);
     }
 
 }

@@ -131,42 +131,42 @@ public class TestCuveTuyau
 			System.out.println("ID Cuve Origine     : |" + idCuveOrig + "|");
 			System.out.println("ID Cuve Destination : |" + idCuveDest + "|");
 
-Cuve cuveOrig = null;
-				Cuve cuveDest = null;
-				
-				Tuyau t = null;
+			Cuve cuveOrig = null;
+			Cuve cuveDest = null;
+			
+			Tuyau t = null;
 			
 			for ( Cuve c : ensCuves )
 			{
-				
+				c.remplir(50.0);
 
-				if ( c.getId() ==  idCuveOrig.toUpperCase().charAt(0) )
+				if (c.getId() == idCuveOrig.charAt(0))
 				{
-					System.out.println("flags1");
-					cuveOrig = c;
+					// TEST AFFICHAGE
+					System.out.println(c);
+					for (Tuyau t1: c.getTuyauxConnectes())
+					{
+						System.out.println(t1);
+					}
+
+					for (Tuyau tConnecte : c.getTuyauxConnectes())
+					{
+						if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0));
+						{
+							System.out.println("Avant\n");
+							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
+							System.out.println("Cuve Origine est vide ?" + c.estVide());
+							System.out.println("Cuve dest est pleine ?" + tConnecte.getCuveDest().estPleine());
+							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
+							
+							System.out.println((c.couler(tConnecte.getCuveDest(),tConnecte)));
+
+							System.out.println("\n\nApres");
+							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
+							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
+						}
+					}
 				}
-
-				if ( c.getId() ==  idCuveDest.toUpperCase().charAt(0) )
-				{
-					System.out.println("flags2");
-					cuveDest = c;
-				}
-
-				alTransf = cuveOrig.getTuyauxConnectes();
-				for ( Tuyau tu : alTransf )
-					if ( tu.getCuveOrig() == cuveOrig && tu.getCuveDest() == cuveDest )
-						t = tu;
-
-				cuveOrig.remplir(50.0);
-				//cuveDest.remplir(50.0);
-
-				System.out.println(cuveOrig.getTuyauxConnectes());
-				System.out.println(cuveOrig);
-				System.out.println(cuveDest);
-				cuveOrig.couler( cuveDest, t );
-
-				System.out.println( cuveOrig );
-				System.out.println( cuveDest );
 			}
 
 		}
