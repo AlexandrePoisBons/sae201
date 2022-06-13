@@ -8,6 +8,8 @@
 ./ihm/PanelTuyaux.java
 ./ihm/FrameSelectTuyau.java
 ./ihm/PanelCreerTuyau.java
+./ihm/PanelCuves.java
+./ihm/FramePrincipale.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java

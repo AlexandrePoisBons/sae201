@@ -49,7 +49,7 @@ public class TestCuveTuyau
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
 			boolean positionTaken = false;
-			
+
 			System.out.print("Quelle capacité | posX | posY | position pour la cuve" + " : " + ( char ) ( 'A' + cpt ) + " ? " + "\n");
 			int capacite 	= sc.nextInt();
 			int posX 		= sc.nextInt();
@@ -63,7 +63,7 @@ public class TestCuveTuyau
 				{
 					positionTaken = true;
 					cpt--;
-					System.out.println("Position ("+posX+", "+posY+") deja occupee");
+					System.out.println("Position ("+posX+", "+posY+") deja occupee veuillez ressayer avec une position differente\n");
 					break;
 					
 				}
