@@ -58,6 +58,7 @@ public class Cuve
             return false;
     
         this.contenu += quantite;
+        this.majCouleur();
         return true;
         
     }
@@ -80,7 +81,8 @@ public class Cuve
 
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
-            return true;
+            this.majCouleur();
+            return true;            
         }
 
         // Cas où la section du tuyau est plus grande que la place restante dans la cuveDest
@@ -90,14 +92,30 @@ public class Cuve
 
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
+            this.majCouleur();
             return true;
+
         }
 
         // Cas général
         cuveDest.contenu += tuyau.getSection();
         this.contenu     -= tuyau.getSection();
-          
+        this.majCouleur();
         return true;    
+    }
+
+    public void majCouleur()
+    {
+        int rgbValue = (int)this.contenu*(1000/(int)this.contenu)/2; // renvoie un nombre [0; 500]
+        System.out.println(""+rgbValue);//TEST
+        if ( rgbValue < 255)
+            this.couleur = new Color(rgbValue, 0, 0);
+        else
+        {
+            int diff = (500 - rgbValue);
+            this.couleur = new Color(255,diff, diff);
+        }
+        
     }
 
     /* --------------------- Getters ----------------------- */
