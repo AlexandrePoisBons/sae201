@@ -22,11 +22,19 @@ public class TestCuveTuyau
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
-		ArrayList<Cuve>  ensCuves = new ArrayList<Cuve> ();
-		ArrayList<Tuyau> ensTuyau = new ArrayList<Tuyau>();
-		ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>();
+		List<Cuve>  ensCuves = new ArrayList<Cuve> ();
+		List<Tuyau> ensTuyau = new ArrayList<Tuyau>();
+		List<Tuyau> toRemove = new ArrayList<Tuyau>();
+		List<Tuyau> alTransf = new ArrayList<Tuyau>();
 
 		String format = "";
+
+		int nbCuves     = 0;
+		int nbTuyaux    = 0;
+		int nbTransfert = 0;
+
+		String idCuveOrig = "";
+		String idCuveDest = "";
 
 		Scanner sc  = new Scanner(System.in);
         
@@ -108,6 +116,44 @@ public class TestCuveTuyau
 			}
 						
 		}	
+
+		// Relier cuves
+		System.out.println("Combien de transfert voulez vous réaliser ? ")
+		nbTransfert = sc.nextInt();	
+
+		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
+		{
+			System.out.println( "Quelle cuves à relier ? Cuve Origine : "    );
+			idCuveOrig = sc.nextLine();
+
+			System.out.println( "Quelle cuves à relier ? Cuve Destination : ");
+			idCuveDest = sc.nextLine();
+
+			for ( Cuve c : ensCuves )
+			{
+				Cuve  cuveOrig;
+				Cuve  cuveDest;
+				
+				Tuyau t;
+
+				if ( c.getId().equals( idCuveOrig ) )
+					cuveOrig = c;
+
+				if ( c.getId().equals( idCuveDest ) )
+					cuveDest = c;
+
+				alTransf = cuveOrig.getTuyauxConnectes();
+				for ( Tuyau tu : alTransf )
+					if ( tu.getCuveOrig() = cuveOrig && tu.getCuveDest() == cuveDest )
+						t = tu;
+
+				cuveOrig.couler( cuveDest, t );
+
+				System.out.println( cuveOrig );
+				System.out.println( cuveDest );
+			}
+
+		}
 
 
 		// Affichage //
