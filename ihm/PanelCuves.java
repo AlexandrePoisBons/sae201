@@ -14,6 +14,9 @@ public class PanelCuves extends JPanel //implements ActionListener
     private ArrayList<Cuve> ensCuves;
     private ArrayList<Tuyau> ensTuyaux;
 
+	private ArrayList<JLabel> lstLblCuves;
+	private ArrayList<JLabel> lstLblTuyaux;
+
 	private JLabel		lblInfo;
 
 	public PanelCuves( ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
@@ -21,15 +24,37 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.ctrl      = ctrl;
         this.ensCuves  = ensCuves;
         this.ensTuyaux = ensTuyaux;
+		this.lstLblCuves = new ArrayList<JLabel>();
+		this.lstLblTuyaux = new ArrayList<JLabel>();
 
 		//Creation des composants//
-		this.lblInfo 	= new JLabel("Label de test");
+		for (Cuve c: this.ensCuves)
+		{
+			this.lstLblCuves.add(new JLabel(""+c));
+		}
+		
+		this.lstLblTuyaux.add(new JLabel("Tuyaux:"));
+		
+		for (Tuyau t: this.ensTuyaux)
+		{
+			this.lstLblTuyaux.add(new JLabel(""+t));
+		}
+
 
 		// Activation des composants //
 		
 
 		//Positionnement des composants//
-		this.add(this.lblInfo);
+		for (JLabel lbl : this.lstLblCuves)
+		{
+			this.add(lbl);
+		}
+
+		for (JLabel lbl : this.lstLblTuyaux)
+		{
+			this.add(lbl);
+		}
+
 	}
 
 }

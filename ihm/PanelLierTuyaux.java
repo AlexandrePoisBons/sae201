@@ -52,9 +52,9 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         for (int j=0; j<this.nbTuyaux; j=j+2)
         {
             Cuve c1 = this.ctrl.estCuve(this.lstText.get(j).getText().charAt(0));
-            Cuve c2 = this.ctrl.estCuve(this.lstText.get(j=1).getText().charAt(0));
+            Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
             this.ctrl.setLien(j, c1, c2);
         }
-		new FrameSelectTuyau(this.ctrl, Integer.parseInt(this.txtNbCuves.getText()));
+		this.ctrl.generer();
 	}
 }
