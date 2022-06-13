@@ -53,29 +53,29 @@ public class Cuve
     // FAIRE SYSTEME VASES COMMUNICANTS //
     {
         // Variable intermédiaire pour éviter de perdre trace de la valeur à transférer
-        double contenuTrasfert;
+        double contenuTransfert = 0;
 
         // Vérification des cuves
         if ( cuveDest.estPleine() || !this.estVide() )
             return false;
     
         // Cas où le contenu à transférer est plus petit que la section du tuyau
-        if ( cuveDest.contenu() < tuyau.getSection() )
+        if ( cuveDest.getContenu() < tuyau.getSection() )
         {
             contenuTransfert = this.getContenu();
 
-            cuveDest     += contenuTransfert;
-            this.contenu -= contenuTransfert;
+            cuveDest.contenu += contenuTransfert;
+            this.contenu     -= contenuTransfert;
             return true;
         }
 
         // Cas où la section du tuyau est plus grande que la place restante dans la cuveDest
-        if ( cuveDest.placeLibre() < tuyau.getSection() )
+        if ( cuveDest.getPlaceLibre() < tuyau.getSection() )
         {
             contenuTransfert = (double) cuveDest.getPlaceLibre();
 
-            cuveDest     += contenuTransfert;
-            this.contenu -= contenuTransfert;
+            cuveDest.contenu += contenuTransfert;
+            this.contenu     -= contenuTransfert;
             return true;
         }
 
