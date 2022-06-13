@@ -10,10 +10,10 @@ import sae201.metier.*;
 
 public class FrameTuyaux extends JFrame
 {
-	private Controleur ctrl;
+	private ControleurCuves ctrl;
 	private PanelTuyaux   panelInfo;
 
-	public FrameTuyaux(Controleur ctrl)
+	public FrameTuyaux(ControleurCuves ctrl)
 	{
 		this.ctrl = ctrl;
 

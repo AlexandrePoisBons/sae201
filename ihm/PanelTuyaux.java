@@ -8,12 +8,12 @@ import sae201.Controleur;
 
 public class PanelTuyaux extends JPanel implements ActionListener
 {
-	private Controleur  ctrl;
-	private JLabel		lblInfo;
-	private JTextField  txtNbCuves;
-	private JButton 	btnValider;
+	private ControleurCuves  ctrl;
+	private JLabel			 lblInfo;
+	private JTextField  	 txtNbCuves;
+	private JButton 		 btnValider;
 
-	public PanelTuyaux( Controleur ctrl)
+	public PanelTuyaux( ControleurCuves ctrl)
 	{
 		this.ctrl = ctrl;
 

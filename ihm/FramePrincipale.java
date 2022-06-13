@@ -8,12 +8,12 @@ import sae201.metier.*;
 
 public class FramePrincipale extends JFrame
 {
-	private Controleur        ctrl;
-	private PanelCuves        panelCuves;
-    private ArrayList<Cuve>   ensCuves;  
-    private ArrayList<Tuyau>  ensTuyaux;
+	private ControleurCuves        ctrl;
+	private PanelCuves             panelCuves;
+    private ArrayList<Cuve>        ensCuves;  
+    private ArrayList<Tuyau>       ensTuyaux;
 
-	public FramePrincipale(Controleur ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
+	public FramePrincipale(ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
 		this.ctrl       = ctrl;
         this.ensCuves   = ensCuves;

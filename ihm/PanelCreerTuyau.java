@@ -12,7 +12,7 @@ import sae201.metier.*;
 
 public class PanelCreerTuyau extends JPanel implements ActionListener
 {
-	private Controleur            ctrl;
+	private ControleurCuves            ctrl;
     private JFrame                parent;
     private int                   nbTuyaux;
     private ArrayList<JTextField> lstTextFields; 
@@ -23,7 +23,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
     private JButton                 btnCreer;
 
 
-	public PanelCreerTuyau(JFrame parent, Controleur ctrl, int nbTuyaux)
+	public PanelCreerTuyau(JFrame parent, ControleurCuves ctrl, int nbTuyaux)
 	{
         this.setLayout(new BorderLayout());
 		this.ctrl          = ctrl;
@@ -73,6 +73,8 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
             //Sysout pour tester//
         }
         //this.parent.maj(this.lstTuyaux);
+        new FrameLierTuyaux(this.ctrl, this.nbTuyaux);
+        this.ctrl.setTuyau(this.lstTuyaux);
     }
 
 }

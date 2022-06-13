@@ -12,12 +12,12 @@ import sae201.ihm.PanelCreerTuyau;
 
 public class FrameSelectTuyau extends JFrame
 {
-	private Controleur        ctrl;
-	private PanelCreerTuyau   panelCreerTuyau;
+	private ControleurCuves        ctrl;
+	private PanelCreerTuyau 	   panelCreerTuyau;
 
     private int               nbTuyaux;    
 
-	public FrameSelectTuyau(Controleur ctrl, int nbTuyaux)
+	public FrameSelectTuyau(ControleurCuves ctrl, int nbTuyaux)
 	{
         this.ctrl = ctrl;
 

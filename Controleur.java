@@ -5,6 +5,7 @@ import sae201.ihm.*;
 
 public class Controleur
 {
+	/*
 	private Metier   metier;
 	private FrameGUI ihm;
 
@@ -18,4 +19,5 @@ public class Controleur
 	{
 		new Controleur();
 	}
+	*/
 }

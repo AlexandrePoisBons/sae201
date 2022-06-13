@@ -6,11 +6,11 @@ import sae201.Controleur;
 
 public class FrameCreation extends JFrame
 {
-	private Controleur        ctrl;
+	private ControleurCuves        ctrl;
 	private PanelCreerCuves   panelCreerCuves;
     private int               nbCuves;    
 
-	public FrameCreation(Controleur ctrl, int nbCuves)
+	public FrameCreation(ControleurCuves ctrl, int nbCuves)
 	{
 		this.ctrl    = ctrl;
         this.nbCuves = nbCuves;

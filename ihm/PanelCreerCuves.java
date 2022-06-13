@@ -12,10 +12,11 @@ import sae201.metier.*;
 
 public class PanelCreerCuves extends JPanel implements ActionListener
 {
-	private Controleur            ctrl;
-    private int                   nbCuves;
-    private int                   totalTxt;
-    private ArrayList<JTextField> lstTextFields; 
+	private ControleurCuves            ctrl;
+    private int                        nbCuves;
+    private int                        totalTxt;
+    private ArrayList<JTextField>      lstTextFields; 
+    private ArrayList<Cuve>            ensCuves;
 
     private JPanel                  panelDonnes;
     private JLabel                  lblCapacite;
@@ -26,13 +27,14 @@ public class PanelCreerCuves extends JPanel implements ActionListener
     private JButton                 btnCreer;
 
 
-	public PanelCreerCuves( Controleur ctrl, int nbCuves)
+	public PanelCreerCuves( ControleurCuves ctrl, int nbCuves)
 	{
         this.setLayout(new BorderLayout());
-		this.ctrl    = ctrl;
-        this.nbCuves = nbCuves;
-        this.totalTxt   = (this.nbCuves*4);        
+		this.ctrl          = ctrl;
+        this.nbCuves       = nbCuves;
+        this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
+        this.ensCuves      = new ArrayList<Cuve>();
 
         // creation des composants //
         this.panelDonnes = new JPanel();
@@ -80,10 +82,18 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             int posY        = Integer.parseInt(this.lstTextFields.get(i+2).getText());
             String position = this.lstTextFields.get(i+3).getText();
 
-            System.out.println(Cuve.creerCuve(Capacite, posX, posY, position));
-            //Sysout pour tester//
+            this.ensCuves.add(Cuve.creerCuve(Capacite, posX, posY, position));
+            
         }
+        
+        // TEST AFFICHAGE //
+        for(Cuve c: this.ensCuves)
+        {
+            System.out.println(c);
+            //Sysout pour tester//
+        }        
 
         new FrameTuyaux(this.ctrl);
+        this.ctrl.setCuves(this.ensCuves);
     }
 }

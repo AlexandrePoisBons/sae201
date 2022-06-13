@@ -10,6 +10,9 @@
 ./ihm/PanelCreerTuyau.java
 ./ihm/PanelCuves.java
 ./ihm/FramePrincipale.java
+./ihm/ControleurCuves.java
+./ihm/FrameLierTuyaux.java
+./ihm/PanelLierTuyaux.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java

@@ -6,10 +6,10 @@ import sae201.Controleur;
 
 public class FrameGUI extends JFrame
 {
-	private Controleur ctrl;
+	private ControleurCuves ctrl;
 	private PanelGUI   panelInfo;
 
-	public FrameGUI(Controleur ctrl)
+	public FrameGUI(ControleurCuves ctrl)
 	{
 		this.ctrl = ctrl;
 

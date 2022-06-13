@@ -10,13 +10,13 @@ import sae201.metier.*;
 
 public class PanelCuves extends JPanel //implements ActionListener
 {
-	private Controleur       ctrl;
+	private ControleurCuves       ctrl;
     private ArrayList<Cuve> ensCuves;
     private ArrayList<Tuyau> ensTuyaux;
 
 	private JLabel		lblInfo;
 
-	public PanelCuves( Controleur ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
+	public PanelCuves( ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
 		this.ctrl      = ctrl;
         this.ensCuves  = ensCuves;
