@@ -31,9 +31,4 @@ public class FrameSelectTuyau extends JFrame
 		this.add(this.panelCreerTuyau);	
 	}
 
-    public static void main(String[]args)
-    {
-        new FrameSelectTuyau();
-    }
-
 } 

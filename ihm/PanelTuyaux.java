@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.event.*;
 
 import sae201.Controleur;
-import sae201.ihm.FrameSelectTuyau;
 
 public class PanelTuyaux extends JPanel implements ActionListener
 {
