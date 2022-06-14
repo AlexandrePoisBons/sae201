@@ -128,10 +128,23 @@ public class Cuve
 
     public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
+    /*-------------------------------------------------------*/
 
     public boolean estVide()                     { return this.contenu == 0;                      }
     public boolean estPleine()                   { return this.capacite == this.contenu;          }
-    /*-------------------------------------------------------*/
+    
+    public boolean estVoisin( Cuve cuvePara )
+    { 
+        for ( Tuyau t : this.lstTuyauxConnectes )     
+            if ( this.getId()     == t.getCuveOrig().getId() &&
+                 cuvePara.getId() == t.getCuveDest().getId() ||
+                 cuvePara.getId() == t.getCuveOrig().getId() &&
+                 this.getId()     == t.getCuveDest().getId()     )
+                return true;
+
+            return false;
+    }
+
 
     public String toString()
     {
