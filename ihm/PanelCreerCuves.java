@@ -3,6 +3,7 @@ package sae201.ihm;
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -12,13 +13,14 @@ import sae201.metier.*;
 
 public class PanelCreerCuves extends JPanel implements ActionListener
 {
-    private JFrame                      frmParent;
+    private FrameCreation               frmParent;
 	private ControleurCuves             ctrl;
     private int                         nbCuves;
     private int                         totalTxt;
-    private ArrayList<JTextField>       lstTextFields; 
+    private ArrayList<JTextField>       lstTextFields;
+    private ArrayList<JLabel>           lstLblErreurs; 
     private ArrayList<Cuve>             ensCuves;
-    private ArrayList<Cuve>            toRemove;
+    private ArrayList<Cuve>             toRemove;
 
     private JPanel                      panelDonnes;
 
@@ -33,6 +35,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.nbCuves       = nbCuves;
         this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
+        this.lstLblErreurs = new ArrayList<JLabel>();
         this.ensCuves      = new ArrayList<Cuve>();
         this.toRemove      = new ArrayList<Cuve>();
 
@@ -74,6 +77,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
+        boolean erreur = false;
         int taille = this.lstTextFields.size();
         for(int i=0; i < taille; i=i+4)
         {
@@ -83,36 +87,60 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             String position = this.lstTextFields.get(i+3).getText();
 
             this.ensCuves.add(Cuve.creerCuve(Capacite, posX, posY, position));
-            
-        }
-        
+
+            //TEST CUVE DEJA PRESENTE //
+            for (Cuve c: this.ensCuves)						
+            {
+                for (Cuve c2 : this.ensCuves)
+                {
+                    if (c2 != c)
+                    {
+                        if (c.getPosX() == c2.getPosX() && c.getPosY() == c.getPosY())
+                        {
+                            erreur = true;
+                            this.toRemove.add(c2);
+                            break;                
+                        }
+                    }
+                    
+                }            
+            }
+            for (Cuve c: toRemove)
+            {
+                this.lstLblErreurs.add(new JLabel("Impossible de creer la cuve: [ " + c + " ]", JLabel.CENTER));
+                this.lstLblErreurs.get(this.lstLblErreurs.size()-1).setForeground(Color.RED);
+                this.ensCuves.remove(this.ensCuves.lastIndexOf(c));
+            }
+
+            if (erreur)
+            {
+                for (int cpt=0; cpt<this.lstTextFields.size()/4; cpt++) // si il y a une erreur remettre les liens "à 0"
+                {
+                   lstTextFields.remove(cpt);
+                }
+                this.frmParent.majPanelErreur(this.lstLblErreurs);
+    
+                for (JTextField txt: this.lstTextFields)
+                {
+                    txt.setText("");
+                }
+            }
+
+            // FIN
+            if (!erreur)
+            {
+                new FrameTuyaux(this.ctrl);
+                this.ctrl.setCuves(this.ensCuves);
+                this.frmParent.dispose();
+            }
+                
+        }      
+  
         // TEST AFFICHAGE //
         for(Cuve c: this.ensCuves)
         {
             System.out.println(c);
             //Sysout pour tester//
         }        
-
-        //TEST CUVE DEJA PRESENTE //
-        boolean positionTaken;
-        for (Cuve c: this.ensCuves)						
-        {
-            for (Cuve c2 : this.ensCuves)
-            {
-                if (c2 != c)
-                {
-                    if (c.getPosX() == c2.getPosX() && c.getPosY() == c.getPosY())
-                    {
-                        this.toRemove.add(c2);
-                        break;                
-                    }
-                }
-                
-            }            
-        }
-        // FIN
-        new FrameTuyaux(this.ctrl);
-        this.ctrl.setCuves(this.ensCuves);
-        this.frmParent.dispose();
     }
 }
