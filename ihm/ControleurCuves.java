@@ -26,13 +26,16 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                c
+                //lireFichier(../metier/resultat.txt)
+                //puis generer
             }
 
             case "Avance":
             {
                 this.ihm    = new FrameSelectFichier(this);
                 this.metier = new Metier(this);
+                //lireFichier(path/to/fichierChoisi.txt)
+                //generer
             }
 
             case "Manuel":
@@ -92,7 +95,7 @@ public class ControleurCuves
 
     public void lireFichier()
     {
-        
+
     }
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
