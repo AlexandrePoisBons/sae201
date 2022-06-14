@@ -6,73 +6,85 @@ import java.util.ArrayList;
 
 public class Metier
 {
-    private ArrayList<Cuve>  lstCuves; 
-    private ArrayList<Tuyau> lstTuyaux; 
+    private ArrayList<Tuyau> lstTuyaux;
+    private ArrayList<Cuve>  lstCuves;  
     private ControleurCuves  ctrl;
 
+    /*--------------*/
+    /* Constructeur */
+    /*--------------*/
     public Metier(ControleurCuves ctrl)
     {
-        this.lstCuves = new ArrayList<Cuve>();
+        this.lstCuves  = new ArrayList<Cuve>();
         this.lstTuyaux = new ArrayList<Tuyau>(); 
     }
 
+    /*-----------------------------------------*/
+    /*          Création des Matrices          */
+    /*-----------------------------------------*/
     public static Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
         Tuyau [][] matrice = new Tuyau [taille][taille];
-        for (int i=0; i<taille; i++)
-        {
-            for (int j=0; j<taille; j++)
-            {
+        for ( int i = 0; i < taille; i++ )
+            for ( int j = 0; j < taille; j++ )
                 matrice[i][j] = null;
-            } 
-        }
 
-        for( Cuve c: lstCuves)
-        {
-            for (Tuyau t: lstTuyaux)
-            {
-                if (t.getCuveOrig() == c || t.getCuveDest() == c)
+        for( Cuve c: lstCuves )
+            for ( Tuyau t: lstTuyaux )
+                if ( t.getCuveOrig() == c || t.getCuveDest() == c )
                 {
-                    matrice[ (int) (  t.getCuveDest().getId() - 'A'  ) ] [ (int) (  t.getCuveOrig().getId() - 'A'  ) ] = t;
-                    matrice[ (int) (  t.getCuveOrig().getId() - 'A'  ) ] [ (int) (  t.getCuveDest().getId() - 'A'  ) ] = t;
+                    matrice[(int) ( t.getCuveDest().getId() - 'A' )] [(int) ( t.getCuveOrig().getId() - 'A' )] = t;
+                    matrice[(int) ( t.getCuveOrig().getId() - 'A' )] [(int) ( t.getCuveDest().getId() - 'A' )] = t;
                 }
-            }
-        }
+
         return matrice;       
     }
 
+    /*---------------------------------*/
+    /* Affichage de la Matrice de coût */
+    /*---------------------------------*/
     public static String afficherMatrice(Tuyau[][] matrice)
     {
         String sRet = "";
-        for (int i = 0; i < matrice.length; i++)
+        for ( int i = 0; i < matrice.length; i++ )
         {
-            for (int j = 0; j < matrice[0].length; j++)
+            for ( int j = 0; j < matrice[0].length; j++ )
             {
                 if (matrice[i][j] != null)
-                    sRet  += matrice[i][j].getSection() +" ";
-                else sRet += 0 +" ";
+                    sRet += matrice[i][j].getSection() + " ";
+                else 
+                    sRet += 0 +" ";
             } 
             sRet += "\n";
         }
         return sRet;
     }
+    /*---------------------------------*/
 
-    public static String afficherMatriceOpti(Tuyau[][]matrice)
+    /*-----------------------------------*/
+    /* Affichage de la Matrice Optimisée */
+    /*-----------------------------------*/
+    public static String afficherMatriceOpti(Tuyau[][] matrice)
     {
         String sRet = "";
-        for (int i = 0; i < matrice.length; i++ ) // pour chaque ligne
+        for (int i = 0; i < matrice.length; i++ ) // pour chaque lignes
         {
             for ( int j = 0; j <= i; j++ )
             {
                 if (matrice[i][j] != null)
-                    sRet += matrice[i][j].getSection() +" ";
-                else sRet += 0 +" ";
+                    sRet += matrice[i][j].getSection() + " ";
+                else 
+                    sRet += 0 +" ";
             } 
             sRet +="\n";
         }
         return sRet;
     }
+    /*-----------------------------------*/
 
+    /*-----------------------------------*/
+    /* Affichage de la Liste d'adjacence */
+    /*-----------------------------------*/
     public static String afficherListeAdjacence( Tuyau[][] matrice )
     {
         String sRet = "";
@@ -81,18 +93,20 @@ public class Metier
             for ( int j = 0; j < matrice[0].length; j++ )
             {
                 if (matrice[i][j] != null)
-                     sRet += 1 + " ";
-                else sRet += 0 + " ";
+                    sRet += 1 + " ";
+                else 
+                    sRet += 0 + " ";
             }
             sRet += "\n";
         }
-
         return sRet;
     }
+    /*----------------------------------*/
+
 
     public static void main(String[] args)
     {
-        //------------------------- Creation de cuves -------------------------//
+        //------------------------- Création de cuves -------------------------//
         Cuve c1 = Cuve.creerCuve(500, 50, 50, "Haut");
         System.out.println(c1);
 
@@ -111,7 +125,7 @@ public class Metier
         Cuve c6 = Cuve.creerCuve(500, 300, 300, "Droite");
         System.out.println(c6);
 
-        //------------------------- Creation de tuyaux -------------------------//
+        //------------------------- Création de tuyaux -------------------------//
         Tuyau t1c1c2 = Tuyau.creerTuyau(5);
         t1c1c2.setLien(c1,c2);
         System.out.println(t1c1c2);
@@ -136,7 +150,7 @@ public class Metier
         t6c1c6.setLien(c1,c6);
         System.out.println(t6c1c6);
 
-        //------------------------- Creation de matrice -------------------------//
+        //------------------------- Création de matrices -------------------------//
         ArrayList<Cuve>  lstTempC  = new ArrayList<Cuve>(); 
         ArrayList<Tuyau> lstTempT  = new ArrayList<Tuyau>(); 
         

@@ -44,10 +44,9 @@ public class TestCuveTuyau
 		nbCuves = sc.nextInt();
 		/*---------------------------------------------*/
 
-
-		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
-
-		
+		/*--------------------------------------------------------------------------------------------*/
+		/*                           Création des cuves selon l'utilisateur                           */
+		/*--------------------------------------------------------------------------------------------*/
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
 			boolean positionTaken = false;
@@ -80,20 +79,27 @@ public class TestCuveTuyau
 			System.out.println(ensCuves.get(cpt));
 
 
-        /*----------------- Récupération des valeurs des utilisateurs pour les tuyaux ----------------*/
-		System.out.print("\nCombien de Tuyaux ? ");
+		/*--------------------------------------------------------------------------------------------*/
+        /*                Récupération des valeurs des utilisateurs pour les tuyaux                   */
+		/*--------------------------------------------------------------------------------------------*/
+		System.out.print("\nCombien de Tuyaux voulez-vous créer ? ");
 		nbTuyaux = sc.nextInt();
 		/*---------------------------------------------------------------------------------------------*/
 
 
-		/*-------------------------- Création des tuyaux selon l'utilisateur --------------------------*/
+		/*----------------------------------------------------------------------------------*/
+		/*                     Création des tuyaux selon l'utilisateur                      */
+		/*----------------------------------------------------------------------------------*/
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
 			System.out.print("\nQuelle section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 		}
-		/*--------------------------------------------------------------------------------------------*/
+		/*----------------------------------------------------------------------------------*/
 
+        /*----------------------------------------------*/
+		/*            Remplissage des cuves             */
+        /*----------------------------------------------*/
 		for (Cuve c :ensCuves)
 		{
 			if ( c != null )
@@ -106,7 +112,12 @@ public class TestCuveTuyau
 				System.out.println("La cuve n'existe pas");
 			}
 		}
+		/*----------------------------------------------*/
 		
+
+        /*---------------------------------------------------*/
+		/*      Création de la liaison entre deux cuves      */
+        /*---------------------------------------------------*/
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
 		{
@@ -121,10 +132,14 @@ public class TestCuveTuyau
 					cuveALier[1] = c;
 			}
 
-			
-			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]); --> lier directement
+			// Ligne de code pour faire une liaison directe //
+			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
 
-			// Verifier si le tuyau n'existe pas deja // Erreur ici ou Tuyau.equals
+
+            /*------------------------------------------------*/
+			/*   Vérification si le tuyau n'existe pas déjà   */
+            /*------------------------------------------------*/
+			// Erreur ici ou Tuyau.equals
 			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
 
 			toRemove = new ArrayList<Tuyau>();
@@ -153,11 +168,17 @@ public class TestCuveTuyau
 				ensTuyau.remove(tRemove);
 			}
 						
-		}	
+		}
+		/*---------------------------------------------------*/	
 
-		// Relier cuves
+
+        /*--------------------------------------------------------*/
+		/*          Demande du nombre de transfert voulu          */
+        /*--------------------------------------------------------*/
 		System.out.println("Combien de transfert voulez vous réaliser ? ");
 		nbTransfert = sc.nextInt();	
+		/*--------------------------------------------------------*/
+
 
 		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
 		{
@@ -181,7 +202,7 @@ public class TestCuveTuyau
 				{
 					for ( Tuyau tConnecte : c.getTuyauxConnectes() ) // pour tous les tuyaux connecte a cette origine A --> B B -->A 
 					{ // si (l'origine == Id Origine && la destnation == Id destination ) ou l'id Origine == destination && id destination == cuve de destination
-						System.out.println("test 1" + tConnecte);
+						System.out.println("Test 1" + tConnecte);
 						
 						if (tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest().getId() == idCuveDest.charAt(0))
 						/*if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
@@ -190,7 +211,7 @@ public class TestCuveTuyau
 
 						// Si le tuyau connecte a moi est connecte a la destination ou si la destination est connecte a moi et si la destination n'est pas moi	
 						{
-							System.out.println("test 2" + tConnecte);
+							System.out.println("Test 2" + tConnecte);
 							System.out.println("Avant\n");
 							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
 							System.out.println("Cuve Origine est vide ?"  + c.estVide());
@@ -205,7 +226,7 @@ public class TestCuveTuyau
 						}
 						if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
 						{
-							System.out.println("test 2" + tConnecte);
+							System.out.println("Test 2" + tConnecte);
 							System.out.println("Avant\n");
 							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
 							System.out.println("Cuve Origine est vide ?"  + c.estVide());
@@ -229,12 +250,15 @@ public class TestCuveTuyau
 		}
 
 
-		// Affichage //
+		/*----------Affichage----------*/
 		for ( Tuyau tAffiche: ensTuyau )
 		{
 			System.out.println(tAffiche);
 		}
+		/*-----------------------------*/
 
+
+		/*--------------------Création de la matrice / liste voulu--------------------*/
 		System.out.println("Quel format voulez vous ?(Matrice, Matrice Optimisee, Liste d'adjacence)\n");
 		format = sc.nextLine() + sc.nextLine();
 		switch(format)
@@ -260,7 +284,8 @@ public class TestCuveTuyau
 				break;
 			}
 		}
-		
+		/*----------------------------------------------------------------------------*/
+
 
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//
 		//      Pour forcer l'encodage (par exemple en utf-8), remplacez l'instanciation de pw par :              //
