@@ -32,6 +32,7 @@ public class FramePrincipale extends JFrame
         System.out.println(this.ctrl.afficherMatriceOpti(matrice));
         //this.ctrl.ecrire(matrice, format);
 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 	}
 
