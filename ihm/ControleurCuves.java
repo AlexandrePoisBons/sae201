@@ -1,20 +1,20 @@
 package sae201.ihm;
 
-import java.io.File;
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 import java.util.ArrayList;
 import sae201.metier.*;
 import javax.swing.JFrame;
 
 import java.io.FileOutputStream;
+import java.util.Scanner;
 import java.io.PrintWriter;
+import java.io.FileReader;
+import java.io.File;
+import java.io.IOException;
 
 public class ControleurCuves
 {
     private ArrayList<Cuve>  ensCuves;
-    public ArrayList<Tuyau>  ensTuyau; // en public juste pour tester
+    public  ArrayList<Tuyau> ensTuyau; // en public juste pour tester
     private JFrame           ihm;
     private Metier           metier;
     private String           choix;
@@ -30,8 +30,25 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                //lireFichier(../metier/resultat.txt)
+                // TEST 1 //
+                // ArrayList<String[]> res = lecteurTest.lire("../metier/resultat.txt");
+                // String tmp ="";
+                // for(String[]tabString: res)
+                // {
+                //     for(String str: tabString)
+                //     {
+                //         tmp += str+" ";
+                //     }
+                //     tmp += "\n";
+                // }
+                // System.out.println(tmp);
+                // TEST 1 FINI //
+
+
+                System.out.println(lireFichier("sae201/metier/resultat.txt"));
                 //puis generer
+
+
                 break;
             }
 
@@ -39,8 +56,13 @@ public class ControleurCuves
             {
                 this.ihm    = new FrameSelectFichier(this);
                 this.metier = new Metier(this);
-                //lireFichier(path/to/fichierChoisi.txt)
+
+
+                // lireFichier();
+
+
                 //generer
+
                 break;
             }
 
@@ -100,9 +122,10 @@ public class ControleurCuves
         new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 
-    public void lireFichier()
+    public static String lireFichier(String fichier)
     {
-
+        String temp = Lecture.creer(fichier); 
+        return temp;    
     }
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
@@ -153,7 +176,9 @@ public class ControleurCuves
 
     public static void main(String[] args)
     {
-        new ControleurCuves("Avance");
+        
+
+        // new ControleurCuves("Avance");
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
