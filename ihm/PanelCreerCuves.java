@@ -129,9 +129,15 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             // FIN
             if (!erreur)
             {
+                if (this.ensCuves.size() == 1)
+                {
+                    this.ctrl.generer();
+                }
+
                 new FrameTuyaux(this.ctrl);
                 this.ctrl.setCuves(this.ensCuves);
                 this.frmParent.dispose();
+                
             }
                 
         }      

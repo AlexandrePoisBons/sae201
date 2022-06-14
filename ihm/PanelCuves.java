@@ -60,14 +60,17 @@ public class PanelCuves extends JPanel //implements ActionListener
     {
         super.paint(g);
 		Graphics2D g2D = (Graphics2D) g;
-        for (Tuyau t : this.ensTuyaux)
-        {			
-            g.setColor(Color.GRAY);
-			g2D.setStroke(new BasicStroke(t.getSection()/2));
-            g2D.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
+		if (this.ensTuyaux.size() == 0)
+		{
+			for (Tuyau t : this.ensTuyaux)
+			{			
+				g.setColor(Color.GRAY);
+				g2D.setStroke(new BasicStroke(t.getSection()/2));
+				g2D.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
 
-        }
-
+			}
+		}
+		
 		for ( Cuve c : this.ensCuves)
         {			
 			g.setColor(c.getCouleur());
