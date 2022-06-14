@@ -85,7 +85,7 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
 			}
 			for (Tuyau tRemove : toRemove)
 			{
-				ensTuyau.remove(tRemove);
+				this.ctrl.ensTuyau.remove(tRemove);
 			}
 
 

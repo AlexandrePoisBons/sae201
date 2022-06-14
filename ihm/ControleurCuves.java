@@ -75,7 +75,7 @@ public class ControleurCuves
             case "Matrice" : formatChoisi = this.metier.afficherMatrice(matrice);
             break;
 
-            case "Matrice Optimisée" : formatChoisi = this.metier.afficherMatriceOpti(matrice);
+            case "Matrice Optimisee" : formatChoisi = this.metier.afficherMatriceOpti(matrice);
             break;
 
             case "Liste d'Adjacence" : formatChoisi = this.metier.afficherListeAdjacence(matrice);
