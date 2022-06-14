@@ -95,7 +95,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 {
                     if (c2 != c)
                     {
-                        if (c.getPosX() == c2.getPosX() && c.getPosY() == c.getPosY())
+                        if (c.getPosX() == c2.getPosX() && c.getPosY() == c2.getPosY())
                         {
                             erreur = true;
                             this.toRemove.add(c2);

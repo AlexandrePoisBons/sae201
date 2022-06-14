@@ -30,25 +30,7 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                // TEST 1 //
-                // ArrayList<String[]> res = lecteurTest.lire("../metier/resultat.txt");
-                // String tmp ="";
-                // for(String[]tabString: res)
-                // {
-                //     for(String str: tabString)
-                //     {
-                //         tmp += str+" ";
-                //     }
-                //     tmp += "\n";
-                // }
-                // System.out.println(tmp);
-                // TEST 1 FINI //
-
-
-                System.out.println(lireFichier("sae201/metier/resultat.txt"));
-                //puis generer
-
-
+                this.creerGraph("sae201/metier/resultat.txt");
                 break;
             }
 
@@ -56,8 +38,6 @@ public class ControleurCuves
             {
                 this.ihm    = new FrameSelectFichier(this);
                 this.metier = new Metier(this);
-
-
                 // lireFichier();
 
 
@@ -122,11 +102,106 @@ public class ControleurCuves
         new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 
-    public static String lireFichier(String fichier)
+    // Generation graphique depuis .txt
+    public void creerGraph(String fichier)
     {
-        String temp = Lecture.creer(fichier); 
-        return temp;    
+        //initialisation des ensemble de cuves et tuyaux du reseau
+        this.ensCuves = new ArrayList<Cuve>();
+        this.ensTuyau = new ArrayList<Tuyau>();
+
+        //initialisation des ensemble de ligne de cuves et tuyaux du fichier
+        ArrayList<String> lignesCuves  = new ArrayList<String>();
+        ArrayList<String> lignesTuyaux = new ArrayList<String>();
+
+        String data = "";
+        try(FileReader fr = new FileReader(fichier))
+        {
+            int i = fr.read();
+            char temp = ' ';
+            while ( i != -1 )
+            {
+                temp = (char)i;
+                data += temp;
+                i = fr.read();
+            }
+        } catch ( IOException e )
+        {
+            e.printStackTrace();
+        }
+
+        String[] tabData = data.split("\r?\n|\r"); // tab des donnees separees par \n
+
+        boolean cuveOk  = false;
+        boolean tuyauOk = false;
+        for (String s:  tabData)
+        {
+            if (!s.equals("Cuves") && !s.equals("") && !cuveOk)
+            {
+                if (s.equals("Tuyaux"))
+                {
+                    cuveOk = true;
+                }
+                else
+                {
+                    lignesCuves.add(s);
+                }                
+                
+            }
+            if (cuveOk)
+            {
+                if (!s.equals("Tuyaux") && !tuyauOk)
+                {
+                    if (s.equals(""))
+                    {
+                        tuyauOk = true;
+                    }
+                    else
+                    {
+                        lignesTuyaux.add(s);
+                    }                    
+                }
+            }            
+        }
+
+        ArrayList<String[]> tabArgCuves = new ArrayList<String[]>();
+        ArrayList<String[]> tabArgTuyau = new ArrayList<String[]>();
+        for (String arg: lignesCuves)
+        {
+           // pour chaque ligne argument de cuve les mettre dans un tableau 
+           tabArgCuves.add(arg.split(","));
+        }
+
+        for (String argT: lignesTuyaux)
+        {
+            // pour chaque ligne argument de cuve les mettre dans un tableau 
+            tabArgTuyau.add(argT.split(","));
+        }
+
+        for(String[] argumentsCuve: tabArgCuves)
+        {
+            int capacite    = Integer.parseInt(argumentsCuve[0]);
+            int posX        = Integer.parseInt(argumentsCuve[1]);
+            int posY        = Integer.parseInt(argumentsCuve[2]);
+            String position = argumentsCuve[3];
+
+            this.ensCuves.add(Cuve.creerCuve(capacite, posX, posY, position));
+        }
+
+        for(String[] argumentsTuyau: tabArgTuyau)
+        {
+            int  section         = Integer.parseInt(argumentsTuyau[0]);
+            Cuve cuveOrig        = this.estCuve    (argumentsTuyau[1].charAt(0));
+            Cuve cuveDest        = this.estCuve    (argumentsTuyau[2].charAt(0));
+
+            this.ensTuyau.add(Tuyau.creerTuyau(section));
+            this.ensTuyau.get(this.ensTuyau.size()-1).setLien(cuveOrig, cuveDest);
+        }
+
+        // puis lance l'affichage du reseau
+        this.generer();
     }
+
+
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
     public void ecrire(String format)
@@ -159,14 +234,14 @@ public class ControleurCuves
                              c.getPosition()
                             );
 
-            pw.println("\nTuyaux");
+            pw.println("Tuyaux");
             for(Tuyau t: ensTuyau)
                 pw.println ( t.getSection ()        +","+
                              t.getCuveOrig().getId()+","+
                              t.getCuveDest().getId()
                             ); 
 
-            pw.println("\n"+format);
+            pw.println(""+format);
             pw.println(formatChoisi);
 
             pw.close();
@@ -175,10 +250,8 @@ public class ControleurCuves
     }
 
     public static void main(String[] args)
-    {
-        
-
-        // new ControleurCuves("Avance");
+    {    
+        new ControleurCuves("Avance");
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
