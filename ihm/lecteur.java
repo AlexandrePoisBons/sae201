@@ -3,15 +3,19 @@ package sae201.ihm;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
-public class TestFileReader
+public class lecteur
 {
     private String fichier;
  
-    public TestFileReader(String fichier )
+    public lecteur(String fichier )
+    {
+
+    }
+
+    public static String lire(String fichier)
     {
         boolean passage = false;
         boolean passage2 = true;
-        this.fichier = fichier;
         try{
             FileReader fr = new FileReader(fichier);
             Scanner    sc = new Scanner(fr);
@@ -60,11 +64,11 @@ public class TestFileReader
             sc.close();
         }
         catch(Exception e) { e.getStackTrace(); }
-        
+        return "bozo";
     }
 
     public static void main(String[] args)
     {
-        new TestFileReader("../metier/resultat.txt");
+        new lecteur("../metier/resultat.txt");
     }
 }

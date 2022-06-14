@@ -26,8 +26,21 @@ public class ControleurCuves
         {
             case "Simple":
             {
+                ArrayList<String[]> res = lecteurTest.lire("../metier/resultat.txt");
+                String tmp ="";
+                for(String[]tabString: res)
+                {
+                    for(String str: tabString)
+                    {
+                        tmp += str+" ";
+                    }
+                    tmp += "\n";
+                }
+                System.out.println(tmp);
+                
                 //lireFichier(../metier/resultat.txt)
                 //puis generer
+                break;
             }
 
             case "Avance":
@@ -36,12 +49,14 @@ public class ControleurCuves
                 this.metier = new Metier(this);
                 //lireFichier(path/to/fichierChoisi.txt)
                 //generer
+                break;
             }
 
             case "Manuel":
             {
                 this.metier = new Metier(this);
                 this.ihm = new FrameGUI(this);
+                break;
             }
         }        
     }
