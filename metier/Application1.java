@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 // Pour les structures de données
 import java.util.ArrayList;
 import java.util.List;
-
+    
 import java.awt.Point;
 
 // Pour la lecture des saisies claviers
@@ -19,12 +19,12 @@ import java.util.Scanner;
 public class Application1
 {
     public static void main(String[] args)
-    {
+    { 
         if ( args.length == 1)
             switch( args[0].toUpperCase() )
             {
                 case "GUI" : 
-                {
+                {   
                     System.out.println("Affichage en mode graphique :\n"); 
                     new ControleurCuves();
                     // System.exit(0);
@@ -72,7 +72,7 @@ public class Application1
         {
             boolean positionTaken = false;
 
-            System.out.print("Quelle capacité | posX | posY | position pour la cuve" + " : " + ( char ) ( 'A' + cpt ) + " ? " + "\n");
+            System.out.print("\nQuelle capacité | posX | posY | position pour la cuve" + " : " + ( char ) ( 'A' + cpt ) + " ? " + "\n");
             int capacite    = sc.nextInt();
             int posX        = sc.nextInt();
             int posY        = sc.nextInt();
@@ -91,7 +91,17 @@ public class Application1
                 }
             }
             if(!positionTaken)
-                ensCuves.add(Cuve.creerCuve(capacite, posX, posY, position));
+            {
+                Cuve verif;
+
+                verif = Cuve.creerCuve(capacite, posX, posY, position);
+
+                if ( verif != null )
+                    ensCuves.add(verif);
+                
+                if ( verif == null )
+                    nbCuves--;
+            }
             
         }
         /*--------------------------------------------------------------------------------------------*/

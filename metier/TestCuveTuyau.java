@@ -64,13 +64,25 @@ public class TestCuveTuyau
 				{
 					positionTaken = true;
 					cpt--;
-					System.out.println("Position ("+posX+", "+posY+") deja occupee veuillez ressayer avec une position differente\n");
+					System.out.println("Position (" + posX + ", " + posY + ") deja occupee veuillez ressayer avec une position differente\n");
 					break;
 					
 				}
 			}
 			if(!positionTaken)
-				ensCuves.add(Cuve.creerCuve(capacite, posX, posY, position));
+			{
+				Cuve verif;
+
+				verif = Cuve.creerCuve(capacite, posX, posY, position);
+
+				if ( verif != null )
+					ensCuves.add(verif);
+				
+				if ( verif == null )
+					nbCuves--;
+
+
+			}
 			
 		}
 		/*--------------------------------------------------------------------------------------------*/
