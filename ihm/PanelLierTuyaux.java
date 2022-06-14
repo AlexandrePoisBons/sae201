@@ -68,6 +68,33 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             this.ctrl.setLien(j/2, c1, c2);
             //VERIFICATION EXISTENCE TUYAU
 
+<<<<<<< HEAD
+            toRemove = new ArrayList<Tuyau>();
+			boolean alreadySelected = false;
+			for (Tuyau t3: this.ctrl.ensTuyau)
+			{
+				for (Tuyau t2: this.ctrl.ensTuyau)
+				{
+					if (t3 != t2 && t3.equals(t2))
+					{
+						for (Tuyau tRemove : toRemove)
+						{
+							if (tRemove.equals(t3))
+							{
+								alreadySelected = true;
+								break;
+							}							
+						}
+						if (!alreadySelected)
+							toRemove.add(this.ctrl.ensTuyau.get(this.ctrl.ensTuyau.lastIndexOf(t3)));
+					}
+				}
+			}
+			for (Tuyau tRemove : toRemove)
+			{
+				this.ctrl.ensTuyau.remove(tRemove);
+			}
+=======
             this.toRemove = new ArrayList<Tuyau>();
             boolean alreadySelected = false;
             for (Tuyau t3: this.ctrl.ensTuyau)
@@ -96,6 +123,7 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
                 this.lstLblErreurs.get(this.lstLblErreurs.size()-1).setForeground(Color.RED);
                 this.ctrl.ensTuyau.remove(tRemove);
             }
+>>>>>>> f53b4c8ad8ae8674942f711b18394a4108715ddc
 
 
             //TEST AFFICHAGE

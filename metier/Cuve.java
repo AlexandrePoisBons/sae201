@@ -50,7 +50,7 @@ public class Cuve
         
 
         // Correction de la saisie position ( par ex : haUt est valide mais est formaté en Haut pour des raisons esthéthique )
-        switch ( position.toUpperCase() )
+        switch ( position.toUpperCase().replace( " ", "") )
         {
             case "HAUT"   -> position = "Haut";
             case "BAS"    -> position = "Bas";
