@@ -16,6 +16,8 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
     private ButtonGroup   bgChoix;
     private JRadioButton  rbSimple;
     private JRadioButton  rbAvance;
+    private JRadioButton  rbManuel;
+    // rajouter mode CUI ?
     private JButton       btnValider;
     private String        choix;
 
@@ -31,23 +33,27 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         // creation des composants //
             
         this.bgChoix            = new ButtonGroup();
-        this.rbSimple           = new JRadioButton("Simple (a partir d'un fichier) "); 
-        this.rbAvance           = new JRadioButton("Avance ( entrer donnees manuellement )");
+        this.rbSimple           = new JRadioButton("Simple ( recommande ) "); 
+        this.rbAvance           = new JRadioButton("Avance ( a partir d'un fichier existant )");
+        this.rbManuel           = new JRadioButton("Manuel ( entrer donnees manuellement )");
         this.btnValider         = new JButton("Valider");
 
         this.bgChoix.add(this.rbSimple);
         this.bgChoix.add(this.rbAvance);
+        this.bgChoix.add(this.rbManuel);
 
         // positionnement des composants //
 
         this.add(this.rbSimple);
         this.add(this.rbAvance);
+        this.add(this.rbManuel);
         this.add(this.btnValider);
 
         // activation des composants//
 
         this.rbSimple.addItemListener(this);
         this.rbAvance.addItemListener(this);   
+        this.rbManuel.addItemListener(this);   
         this.btnValider.addActionListener(this);
 
     }
@@ -76,6 +82,11 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         if (e.getSource() == this.rbAvance)
         {
             this.choix = "Avance";
+        }
+
+        if (e.getSource() == this.rbManuel)
+        {
+            this.choix = "Manuel";
         }
     }
 }

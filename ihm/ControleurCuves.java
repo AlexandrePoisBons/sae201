@@ -22,35 +22,40 @@ public class ControleurCuves
     public ControleurCuves(String choix)
     {
         this.choix = choix;
-        if (this.choix == "Avance")
+        switch(this.choix)
         {
-            this.ihm = new FrameGUI(this);
-            this.metier = new Metier(this);
-        }
+            case "Simple":
+            {
+                c
+            }
 
-        else
-        {
-            this.metier = new Metier(this);
-            this.ihm    = new FrameSelectFichier(this);
-        }
-        
+            case "Avance":
+            {
+                this.ihm    = new FrameSelectFichier(this);
+                this.metier = new Metier(this);
+            }
+
+            case "Manuel":
+            {
+                this.metier = new Metier(this);
+                this.ihm = new FrameGUI(this);
+            }
+        }        
     }
 
+    // Ajoute un ensemble de cuves au controleur
     public void setCuves(ArrayList<Cuve> ensCuves)
     {
         this.ensCuves  = ensCuves;
     }
 
+    // Ajoute un ensemble de tuyaux au controleur
     public void setTuyau(ArrayList<Tuyau> ensTuyau)
     {
         this.ensTuyau  = ensTuyau;
     }
 
-    public void generer()
-    {
-        new FramePrincipale(this, this.ensCuves, this.ensTuyau);
-    }
-
+    // Renvoie une cuve si l'identifiant existe
     public Cuve estCuve(char c)
     {
         for (Cuve cuve: this.ensCuves)
@@ -61,22 +66,36 @@ public class ControleurCuves
         return null;
     }
 
+    // lie au tuyau deux cuves 
     public void setLien(int index, Cuve c1, Cuve c2)
     {
         this.ensTuyau.get(index).setLien(c1, c2);
     }
 
+    // cree une matrice a partir de cuves et tuyaux d'un reseau
     public Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
         return this.metier.creerMatrice(lstCuves, lstTuyaux, taille);
     }
 
+    // renvoie une matrice optimisee sous forme textuelle a partir d'une matrice
     public String afficherMatriceOpti(Tuyau[][] matrice)
     {
         return this.metier.afficherMatriceOpti(matrice);
     }
 
-    /* ECRIRE DANS LE RESULTAT.TXT */
+    // generer la fenetre graphique correspondant au reseau
+    public void generer() 
+    {
+        new FramePrincipale(this, this.ensCuves, this.ensTuyau);
+    }
+
+    public void lireFichier()
+    {
+        
+    }
+
+    // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
     public void ecrire(String format)
     {
         String formatChoisi ="";
