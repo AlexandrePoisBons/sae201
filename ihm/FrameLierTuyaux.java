@@ -23,7 +23,7 @@ public class FrameLierTuyaux extends JFrame
 		this.setTitle    ( "Frame Lier Tuyaux" );
 		this.setSize(500, 200);
 		this.setLayout(new BorderLayout());
-		//this.pack();
+		//this.pack();s
 
 		this.setVisible(true);
 		this.panelInfo 	 = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);

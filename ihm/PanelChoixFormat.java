@@ -83,7 +83,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
 
         if (e.getSource() == this.rbMatriceOpti)
         {
-            this.format = "Matrice Optimisée";
+            this.format = "Matrice Optimisee";
         }
 
         if (e.getSource() == this.rbListeAdjacence)
