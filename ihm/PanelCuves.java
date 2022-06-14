@@ -60,7 +60,7 @@ public class PanelCuves extends JPanel //implements ActionListener
     {
         super.paint(g);
 		Graphics2D g2D = (Graphics2D) g;
-		if (this.ensTuyaux.size() == 0)
+		if (this.ensTuyaux.size() != 0)
 		{
 			for (Tuyau t : this.ensTuyaux)
 			{			
@@ -70,7 +70,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 
 			}
 		}
-		
+
 		for ( Cuve c : this.ensCuves)
         {			
 			g.setColor(c.getCouleur());
