@@ -1,5 +1,9 @@
 package sae201.ihm;
 
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 import java.util.ArrayList;
 import sae201.metier.*;
 import javax.swing.JFrame;
@@ -26,18 +30,6 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                ArrayList<String[]> res = lecteurTest.lire("../metier/resultat.txt");
-                String tmp ="";
-                for(String[]tabString: res)
-                {
-                    for(String str: tabString)
-                    {
-                        tmp += str+" ";
-                    }
-                    tmp += "\n";
-                }
-                System.out.println(tmp);
-                
                 //lireFichier(../metier/resultat.txt)
                 //puis generer
                 break;

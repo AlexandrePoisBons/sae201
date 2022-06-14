@@ -13,8 +13,9 @@ public class lecteurTest
     {
     }
 
-    public static ArrayList<String[]> lire(String fichier)
+    public static void /*ArrayList<String[]>*/ lire(String fichier)
     {
+        System.out.println("test1");
         ArrayList<String[]>cuves = new ArrayList<String[]>();
         boolean passage = false;
         boolean passage2 = true;
@@ -27,13 +28,14 @@ public class lecteurTest
             String[] tmp;
             while ( (ligneActuelle = bufRead.readLine()) != "")
             {    
-                tmp = ligneActuelle.split(",");
+                tmp = null;
+                System.out.println(ligneActuelle.split(","));
                 cuves.add(tmp);
                 cpt++;
             }
         }
         catch(Exception e) { e.getStackTrace(); }
-        return cuves;
+        //return cuves;
     }
 
     public static void main(String[] args)
