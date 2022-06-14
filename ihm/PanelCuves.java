@@ -30,6 +30,27 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.lstLblCuves 	= new ArrayList<JLabel>();
 		this.lstLblTuyaux 	= new ArrayList<JLabel>();
 		this.lstLblCuves 	= new ArrayList<JLabel>();
+		for (Cuve c  :this.ensCuves)
+		{
+			c.remplir(200.0); // TEST
+
+			this.lstLblCuves.add(new JLabel(c.getId()+"\n"+c.getContenu()+"/"+c.getCapacite()));
+			Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
+			//Dernier label de la liste //
+			JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
+			
+			switch(c.getPosition())
+			{
+				case "Haut": 	lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)-30, dimLbl.width, dimLbl.height); break;
+				case "Bas":		lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)+30, dimLbl.width, dimLbl.height); break;
+				case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;
+				case "Droite":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;
+			}
+			
+			this.add(lblActuel);
+			
+		}
+		
 
 		//Creation des composants//
 		
@@ -38,30 +59,21 @@ public class PanelCuves extends JPanel //implements ActionListener
 	public void paint(Graphics g)
     {
         super.paint(g);
-
+		Graphics2D g2D = (Graphics2D) g;
         for (Tuyau t : this.ensTuyaux)
         {
+			
             g.setColor(Color.GRAY);
-            g.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
+			g2D.setStroke(new BasicStroke(t.getSection()/2));
+            g2D.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
 
         }
 
 		for ( Cuve c : this.ensCuves)
-        {
-			this.lstLblCuves.add(new JLabel(c.getId()+"\n"+c.getContenu()+"/"+c.getCapacite()));
-			Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
-			// Dernier label de la liste //
-			JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
-			switch(c.getPosition())
-			{
-				case "Haut": 	lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)-30, dimLbl.width, dimLbl.height); break;
-				case "Bas":		lblActuel.setBounds(c.getPosX(), c.getPosY()-(int) (c.getContenu()/5)+30, dimLbl.width, dimLbl.height); break;
-				case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;
-				case "Droite":	lblActuel.setBounds(c.getPosX()-(int) (c.getContenu()/5)-30, c.getPosY(), dimLbl.width, dimLbl.height); break;
-			}
-			this.add(lblActuel);
-			c.remplir(200.0); // TEST
-            g.setColor(c.getCouleur());
+        {			
+			g.setColor(Color.BLACK);
+            g.drawOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
+			g.setColor(c.getCouleur());
             g.fillOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
         }
  

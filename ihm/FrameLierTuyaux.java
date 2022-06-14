@@ -3,7 +3,7 @@ package sae201.ihm;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import sae201.Controleur;
 
 import sae201.metier.*;
@@ -11,8 +11,9 @@ import sae201.metier.*;
 public class FrameLierTuyaux extends JFrame
 {
 	private ControleurCuves ctrl;
-	private PanelLierTuyaux   panelInfo;
-	private int nbTuyaux;
+	private PanelLierTuyaux panelInfo;
+	private JPanel 			panelErreur;
+	private int 			nbTuyaux;
 
 	public FrameLierTuyaux(ControleurCuves ctrl, int nbTuyaux)
 	{
@@ -21,12 +22,22 @@ public class FrameLierTuyaux extends JFrame
 
 		this.setTitle    ( "Frame Lier Tuyaux" );
 		this.setSize(500, 200);
-		//this.pack();
+		this.setLayout(new BorderLayout());
+		//this.pack();s
 
 		this.setVisible(true);
+		this.panelInfo 	 = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);
+		this.panelErreur = new JPanel();	
+		this.add(this.panelInfo, BorderLayout.NORTH);
+		this.add(this.panelErreur, BorderLayout.SOUTH);
+	}
 
-		this.panelInfo = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);
-		this.add(this.panelInfo);
+	public void majPanelErreur(ArrayList<JLabel> lstLblErreur)
+	{
+		for(JLabel lbl: lstLblErreur)
+		{
+			this.panelErreur.add(lbl);
+		}
 	}
 }
  
