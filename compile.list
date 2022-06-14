@@ -20,8 +20,6 @@
 ./ihm/panelSelectFichier.java
 ./ihm/FrameSelectFichier.java
 
-./ihm/Lecture.java
-
 ./metier/Tuyau.java
 ./metier/TestCuve.java
 ./metier/Metier.java

@@ -154,6 +154,7 @@ public class ControleurCuves
                     if (s.equals(""))
                     {
                         tuyauOk = true;
+                        break;
                     }
                     else
                     {
@@ -197,6 +198,17 @@ public class ControleurCuves
             this.ensTuyau.get(this.ensTuyau.size()-1).setLien(cuveOrig, cuveDest);
         }
 
+        // TESTS
+        for (Cuve cu: this.ensCuves)
+        {
+            System.out.println(cu);
+        }
+
+        for (Tuyau tu: this.ensTuyau)
+        {
+            System.out.println(tu);
+        }
+
         // puis lance l'affichage du reseau
         this.generer();
     }
@@ -230,7 +242,7 @@ public class ControleurCuves
             for(Cuve c : ensCuves)
                 pw.println ( c.getCapacite()+","+
                              c.getPosX()    +","+  
-                             c.getPosX()    +","+
+                             c.getPosY()    +","+
                              c.getPosition()
                             );
 
@@ -241,7 +253,7 @@ public class ControleurCuves
                              t.getCuveDest().getId()
                             ); 
 
-            pw.println(""+format);
+            pw.println("\n"+format);
             pw.println(formatChoisi);
 
             pw.close();
@@ -251,7 +263,7 @@ public class ControleurCuves
 
     public static void main(String[] args)
     {    
-        new ControleurCuves("Avance");
+        new ControleurCuves("Manuel");
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
