@@ -79,8 +79,6 @@ public class TestCuveTuyau
 				
 				if ( verif == null )
 					nbCuves--;
-
-
 			}
 			
 		}

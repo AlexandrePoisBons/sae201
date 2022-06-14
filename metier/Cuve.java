@@ -29,18 +29,29 @@ public class Cuve
 
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
-        /* Différentes vérifications nécessaires */
+        // Regarde si le numéro séquentiel n'est pas à Z
         if ( Cuve.id > 'Y' ) 
             return null;
 
         if ( capacite < 200 || capacite > 1000 ) 
             return null;
 
+        // Vérification de la saisie utilisitatuer pour voir si elle est valide
         if ( !position.toUpperCase().contains("HAUT")   && !position.toUpperCase().contains("BAS")    && 
              !position.toUpperCase().contains("DROITE") && !position.toUpperCase().contains("GAUCHE")    )
             return null;
-            
+        
 
+        // Correction de la saisie position ( par ex : haUt est valide mais est formaté en Haut pour des raisons esthéthique )
+        switch ( position.toUpperCase() )
+        {
+            case "HAUT"   -> position = "Haut";
+            case "BAS"    -> position = "Bas";
+            case "GAUCHE" -> position = "Gauche";
+            case "DROITE" -> position = "Droite";
+        }
+
+        // Vérification des positions
         if ( posX < 0 || posY < 0 )
             return null;
 
