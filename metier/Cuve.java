@@ -15,6 +15,9 @@ public class Cuve
     private Color  couleur;
     private ArrayList<Tuyau> lstTuyauxConnectes;
 
+    /*-----------------------------------------------------------*/
+    /*                     Constructeur Cuve                     */
+    /*-----------------------------------------------------------*/
     private Cuve(int capacite, int posX, int posY, String position)
     {   
         this.idCuve             = ++Cuve.id;
@@ -26,7 +29,11 @@ public class Cuve
         this.lstTuyauxConnectes = new ArrayList<Tuyau>();
         this.couleur            = new Color(0,0,0);
     }
+    /*-----------------------------------------------------------*/
 
+    /*---------------------------------------------------------------------------*/
+    /*                              Factory de Cuve                              */
+    /*---------------------------------------------------------------------------*/
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
         // Regarde si le numéro séquentiel n'est pas à Z
@@ -57,12 +64,20 @@ public class Cuve
 
         return new Cuve( capacite, posX, posY, position );
     }
+    /*---------------------------------------------------------------------------*/
 
+    /*--------------------------------------------------------*/
+    /* Permet d'ajouter les tuyaux connectés dans l'ArrayList */
+    /*--------------------------------------------------------*/
     public void connecterTuyau(Tuyau t)
     {
         this.lstTuyauxConnectes.add(t);
     }
+    /*--------------------------------------------------------*/
 
+    /*------------------------------------------------*/
+    /* Méthode pour ajouter du liquide dans les cuves */
+    /*------------------------------------------------*/
     public boolean remplir(double quantite)
     {
         if ( quantite > this.capacite || quantite < 0)
@@ -73,7 +88,11 @@ public class Cuve
         return true;
         
     }
+    /*------------------------------------------------*/
 
+    /*---------------------------------------------------*/
+    /* Méthode pour transvaser du liquide dans les cuves */
+    /*---------------------------------------------------*/
     public boolean couler(Cuve cuveDest, Tuyau tuyau) 
     // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien été effectué//
     {
@@ -115,6 +134,8 @@ public class Cuve
 
         return true;    
     }
+    /*---------------------------------------------------*/
+
 
     public void majCouleur()
     {
@@ -130,7 +151,9 @@ public class Cuve
         
     }
 
-    /* --------------------- Getters ----------------------- */
+    /*------------------------------------------------------------------------*/
+    /*                                 Getters                                */
+    /*------------------------------------------------------------------------*/
     public int    getCapacite   () { return this.capacite;                     } 
     public int    getPlaceLibre () { return this.capacite - (int)this.contenu; }
     public int    getPosX       () { return this.posX;                         }
@@ -141,10 +164,10 @@ public class Cuve
     public Color  getCouleur    () { return this.couleur;                      }
     
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
-    /*-------------------------------------------------------*/
+    /*------------------------------------------------------------------------*/
 
-    public boolean estVide()                     { return this.contenu == 0;                      }
-    public boolean estPleine()                   { return this.capacite == this.contenu;          }
+    public boolean estVide   () { return this.contenu == 0;             }
+    public boolean estPleine () { return this.capacite == this.contenu; }
     
     public boolean estVoisin( Cuve cuvePara )
     { 
@@ -158,6 +181,9 @@ public class Cuve
             return false;
     }
 
+    /*-----------------------------------------------*/
+    /* Méthode toString() pour l'affichage des Cuves */
+    /*-----------------------------------------------*/
     public String toString()
     {
         return " Cuve : "          + String.format("%2s"   , this.idCuve   ) + " | " + 
@@ -167,4 +193,5 @@ public class Cuve
                                      String.format("%-4d"  , this.posY     ) + " | " +
                " Direction : "     + String.format("%-5s"  , this.position );
     }
+    /*-----------------------------------------------*/
 }
