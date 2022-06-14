@@ -44,10 +44,9 @@ public class TestCuveTuyau
 		nbCuves = sc.nextInt();
 		/*---------------------------------------------*/
 
-
-		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
-
-		
+		/*--------------------------------------------------------------------------------------------*/
+		/*                           Création des cuves selon l'utilisateur                           */
+		/*--------------------------------------------------------------------------------------------*/
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 		{
 			boolean positionTaken = false;
@@ -80,21 +79,27 @@ public class TestCuveTuyau
 			System.out.println(ensCuves.get(cpt));
 
 
-        /*----------------- Récupération des valeurs des utilisateurs pour les tuyaux ----------------*/
-		System.out.print("\nCombien de Tuyaux ? ");
+		/*--------------------------------------------------------------------------------------------*/
+        /*                Récupération des valeurs des utilisateurs pour les tuyaux                   */
+		/*--------------------------------------------------------------------------------------------*/
+		System.out.print("\nCombien de Tuyaux voulez-vous créer ? ");
 		nbTuyaux = sc.nextInt();
 		/*---------------------------------------------------------------------------------------------*/
 
 
-		/*-------------------------- Création des tuyaux selon l'utilisateur --------------------------*/
+		/*----------------------------------------------------------------------------------*/
+		/*                     Création des tuyaux selon l'utilisateur                      */
+		/*----------------------------------------------------------------------------------*/
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
 			System.out.print("\nQuelle section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 		}
-		/*--------------------------------------------------------------------------------------------*/
+		/*----------------------------------------------------------------------------------*/
 
-		/*------------Remplissage des cuves-------------*/
+        /*----------------------------------------------*/
+		/*            Remplissage des cuves             */
+        /*----------------------------------------------*/
 		for (Cuve c :ensCuves)
 		{
 			if ( c != null )
@@ -109,7 +114,10 @@ public class TestCuveTuyau
 		}
 		/*----------------------------------------------*/
 		
-		/*------Création de la liaison entre deux cuves------*/
+
+        /*---------------------------------------------------*/
+		/*      Création de la liaison entre deux cuves      */
+        /*---------------------------------------------------*/
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
 		{
@@ -124,10 +132,13 @@ public class TestCuveTuyau
 					cuveALier[1] = c;
 			}
 
-			/* Ligne de code pour faire une liaison directe */
+			// Ligne de code pour faire une liaison directe //
 			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]);
 
-			/* Vérification si le tuyau n'existe pas déjà */
+
+            /*------------------------------------------------*/
+			/*   Vérification si le tuyau n'existe pas déjà   */
+            /*------------------------------------------------*/
 			// Erreur ici ou Tuyau.equals
 			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
 
@@ -161,7 +172,9 @@ public class TestCuveTuyau
 		/*---------------------------------------------------*/	
 
 
-		/*----------Demande du nombre de transfert voulu----------*/
+        /*--------------------------------------------------------*/
+		/*          Demande du nombre de transfert voulu          */
+        /*--------------------------------------------------------*/
 		System.out.println("Combien de transfert voulez vous réaliser ? ");
 		nbTransfert = sc.nextInt();	
 		/*--------------------------------------------------------*/
@@ -243,6 +256,7 @@ public class TestCuveTuyau
 			System.out.println(tAffiche);
 		}
 		/*-----------------------------*/
+
 
 		/*--------------------Création de la matrice / liste voulu--------------------*/
 		System.out.println("Quel format voulez vous ?(Matrice, Matrice Optimisee, Liste d'adjacence)\n");
