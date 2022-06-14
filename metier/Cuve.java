@@ -138,14 +138,14 @@ public class Cuve
 
 
     public void majCouleur()
-    {
-        int rgbValue = (int)this.contenu*(1000/(int)this.contenu)/2; // renvoie un nombre [0; 500]
-
-        if ( rgbValue < 255)
-            this.couleur = new Color(rgbValue/2, 0, 0);
+    {// mettre notre contenu sur 1000 puis apres easy
+        int rgbValue = (int)(this.contenu)/2; // renvoie un nombre [0; 500]
+        //System.out.println(rgbValue);
+        if ( rgbValue > 255)
+            this.couleur = new Color(rgbValue, 0, 0);
         else
         {
-            int diff = (500 - rgbValue);
+            int diff = (255 - rgbValue);
             this.couleur = new Color(255,diff, diff);
         }
         
