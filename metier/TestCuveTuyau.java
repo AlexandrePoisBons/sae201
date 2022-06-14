@@ -216,13 +216,13 @@ public class TestCuveTuyau
 							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
 							System.out.println("Cuve Origine est vide ?"  + c.estVide());
 							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
-							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
+							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu() + "\n\n");
 							
 							System.out.println(( c.couler( tConnecte.getCuveDest(), tConnecte) ));//
 
 							System.out.println("\n\nApres\n");
-							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
-							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
+							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
+							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
 						}
 						if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
 						{
@@ -231,13 +231,13 @@ public class TestCuveTuyau
 							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
 							System.out.println("Cuve Origine est vide ?"  + c.estVide());
 							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
-							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu()+"\n\n");
+							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu() + "\n\n");
 							
-							System.out.println(( c.couler( tConnecte.getCuveOrig(), tConnecte) ));//
+							System.out.println( c.couler( tConnecte.getCuveOrig(), tConnecte ) );//
 
-							System.out.println("\n\nApres\n");
-							System.out.println("Cuve Origine:"+c.getId()+", Contenu "+c.getContenu());
-							System.out.println("Cuve Dest:"+tConnecte.getCuveDest().getId()+", Contenu "+tConnecte.getCuveDest().getContenu());
+							System.out.println("\n\n Apres \n");
+							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
+							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
 						}
 						else 
 						{
