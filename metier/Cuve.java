@@ -64,8 +64,7 @@ public class Cuve
     }
 
     public boolean couler(Cuve cuveDest, Tuyau tuyau) 
-    // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien ete effectue//
-    // FAIRE SYSTEME VASES COMMUNICANTS //
+    // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien été effectué//
     {
         // Variable intermédiaire pour éviter de perdre trace de la valeur à transférer
         double contenuTransfert = 0;
@@ -82,6 +81,7 @@ public class Cuve
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
+
             return true;            
         }
 
@@ -93,20 +93,22 @@ public class Cuve
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
-            return true;
 
+            return true;
         }
 
         // Cas général
         cuveDest.contenu += tuyau.getSection();
         this.contenu     -= tuyau.getSection();
         this.majCouleur();
+
         return true;    
     }
 
     public void majCouleur()
     {
         int rgbValue = (int)this.contenu*(1000/(int)this.contenu)/2; // renvoie un nombre [0; 500]
+
         if ( rgbValue < 255)
             this.couleur = new Color(rgbValue, 0, 0);
         else
@@ -118,16 +120,16 @@ public class Cuve
     }
 
     /* --------------------- Getters ----------------------- */
-    public int     getCapacite()                 { return this.capacite;                          } 
-    public char    getId()                       { return this.idCuve;                            }
-    public double  getContenu()                  { return this.contenu;                           }
-    public int     getPosX()                     { return this.posX;                              }
-    public int     getPosY()                     { return this.posY;                              }
-    public String  getPosition()                 { return this.position;                          }
-    public Color   getCouleur()                  { return this.couleur;                           }
-
-    public int     getPlaceLibre()               { return this.capacite - (int)this.contenu;      }
-    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes;                }
+    public int    getCapacite   () { return this.capacite;                     } 
+    public int    getPlaceLibre () { return this.capacite - (int)this.contenu; }
+    public int    getPosX       () { return this.posX;                         }
+    public int    getPosY       () { return this.posY;                         }
+    public char   getId         () { return this.idCuve;                       }
+    public double getContenu    () { return this.contenu;                      }
+    public String getPosition   () { return this.position;                     }
+    public Color  getCouleur    () { return this.couleur;                      }
+    
+    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
     /*-------------------------------------------------------*/
 
     public boolean estVide()                     { return this.contenu == 0;                      }
@@ -145,12 +147,13 @@ public class Cuve
             return false;
     }
 
-
     public String toString()
     {
-        return "Cuve: " + this.idCuve + " | capacite: " + this.capacite  + 
-                                        " | Contenu: "  + this.contenu   + 
-                                        " | positionne en (" + this.posX + "," + this.posY + ")" +
-                                        " | et "        + this.position; 
+        return " Cuve : "          + String.format("%2s"   , this.idCuve   ) + " | " + 
+               " Capacité : "      + String.format("%4d"   , this.capacite ) + " | " + 
+               " Contenu  : "      + String.format("%4.2f" , this.contenu  ) + " | " + 
+               " Positionné en : " + String.format("%4d"   , this.posX     ) + " : " + 
+                                     String.format("%-4d"  , this.posY     ) + " | " +
+               " Direction : "     + String.format("%-5s"  , this.position );
     }
 }

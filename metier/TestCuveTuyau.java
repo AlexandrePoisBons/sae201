@@ -87,7 +87,7 @@ public class TestCuveTuyau
 		/*--------------------------------------------------------------------------------------------*/
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
-			System.out.println(ensCuves.get(cpt));
+			System.out.println(ensCuves.get(cpt).toString());
 
 
 		/*-----------------------------------------------------------*/
