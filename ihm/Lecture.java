@@ -1,5 +1,7 @@
 package sae201.ihm;
 
+import sae201.metier.*;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileInputStream;
@@ -23,14 +25,14 @@ public class Lecture
             }
 
 
-        }catch (IOException e)
+        } catch ( IOException e )
         {
             e.printStackTrace();
         }
-/*
+
         try
         {
-            Scanner sc = new Scanner ( new FileReader ( "./travail/sae201/metier/resultat.txt" ) );
+            Scanner sc = new Scanner ( new FileReader ( fichier ) );
 
             while ( sc.hasNextLine() )
             {
@@ -39,15 +41,14 @@ public class Lecture
                 for(int cpt = 0; cpt < tabS.length; cpt++)
                     System.out.println(tabS[cpt]);
 
-                //Cuve.creerCuve(Integer.parseInt(tabS[0]), Integer.parseInt(tabS[1]), Integer.parseInt(tabS[2]), tabS[3]);
+                Cuve.creerCuve(Integer.parseInt(tabS[0]), Integer.parseInt(tabS[1]), Integer.parseInt(tabS[2]), tabS[3]);
             }
-        }catch (Exception e){ e.printStackTrace(); }
-*/
-    return sRet;
+        } catch (Exception e) { e.printStackTrace(); }
+        return sRet;
     }
 
     public static void main(String [] args)
     {
-        System.out.println(Lecture.creer("./travail/sae201/metier/resultat.txt"));
+        //System.out.println(Lecture.creer("./travail/sae201/metier/resultat.txt"));
     }
 }
