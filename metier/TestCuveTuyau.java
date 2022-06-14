@@ -1,6 +1,5 @@
 package sae201.metier;
 
-
 // Pour l'écriture dans le fichier texte
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -91,39 +90,35 @@ public class TestCuveTuyau
 			System.out.println(ensCuves.get(cpt));
 
 
-		/*--------------------------------------------------------------------------------------------*/
-        /*                Récupération des valeurs des utilisateurs pour les tuyaux                   */
-		/*--------------------------------------------------------------------------------------------*/
+		/*-----------------------------------------------------------*/
+        /* Récupération des valeurs des utilisateurs pour les tuyaux */
+		/*-----------------------------------------------------------*/
 		System.out.print("\nCombien de Tuyaux voulez-vous créer ? ");
 		nbTuyaux = sc.nextInt();
-		/*---------------------------------------------------------------------------------------------*/
+		/*-----------------------------------------------------------*/
 
 
-		/*----------------------------------------------------------------------------------*/
-		/*                     Création des tuyaux selon l'utilisateur                      */
-		/*----------------------------------------------------------------------------------*/
+		/*-----------------------------------------*/
+		/* Création des tuyaux selon l'utilisateur */
+		/*-----------------------------------------*/
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
-			System.out.print("\nQuelle section ?\n");
+			System.out.print("\nQuelle valeurs voulez-vous donner à la section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 		}
-		/*----------------------------------------------------------------------------------*/
+		/*-----------------------------------------*/
 
         /*----------------------------------------------*/
 		/*            Remplissage des cuves             */
         /*----------------------------------------------*/
-		for (Cuve c :ensCuves)
-		{
+		for (Cuve c : ensCuves)
 			if ( c != null )
 			{
 				System.out.println("Combien voulez vous remplir la cuve ? " + c.getId());
 				c.remplir((double) sc.nextInt());
 			}
 			else
-			{
 				System.out.println("La cuve n'existe pas");
-			}
-		}
 		/*----------------------------------------------*/
 		
 
@@ -134,12 +129,14 @@ public class TestCuveTuyau
 		for (int j=0; j< nbTuyaux; j++)
 		{
 			System.out.print("Quelles cuves voulez vous relier ?\n");
+
 			String stringCuve1 = sc.next();
 			String stringCuve2 = sc.next();
 			for (Cuve c :ensCuves)
 			{
 				if (c.getId() == stringCuve1.charAt(0)) 
 					cuveALier[0] =  c;
+
 				if (c.getId() == stringCuve2.charAt(0))
 					cuveALier[1] = c;
 			}
@@ -153,33 +150,26 @@ public class TestCuveTuyau
             /*------------------------------------------------*/
 			// Erreur ici ou Tuyau.equals
 			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
-
 			toRemove = new ArrayList<Tuyau>();
+
 			boolean alreadySelected = false;
 			for (Tuyau t3: ensTuyau)
-			{
 				for (Tuyau t2: ensTuyau)
-				{
 					if (t3 != t2 && t3.equals(t2))
 					{
 						for (Tuyau tRemove : toRemove)
-						{
 							if (tRemove.equals(t3))
 							{
 								alreadySelected = true;
 								break;
 							}							
-						}
+
 						if (!alreadySelected)
 							toRemove.add(ensTuyau.get(ensTuyau.lastIndexOf(t3)));
 					}
-				}
-			}
+
 			for (Tuyau tRemove : toRemove)
-			{
-				ensTuyau.remove(tRemove);
-			}
-						
+				ensTuyau.remove(tRemove);	
 		}
 		/*---------------------------------------------------*/	
 
@@ -236,6 +226,7 @@ public class TestCuveTuyau
 							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
 							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
 						}
+
 						if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
 						{
 							System.out.println("Test 2" + tConnecte);
@@ -251,6 +242,7 @@ public class TestCuveTuyau
 							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
 							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
 						}
+
 						else 
 						{
 							System.out.println("Il n'y a aucune liaison entre ces 2 cuves.");
@@ -264,9 +256,7 @@ public class TestCuveTuyau
 
 		/*----------Affichage----------*/
 		for ( Tuyau tAffiche: ensTuyau )
-		{
 			System.out.println(tAffiche);
-		}
 		/*-----------------------------*/
 
 
