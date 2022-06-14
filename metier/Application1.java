@@ -26,7 +26,7 @@ public class Application1
                 case "GUI" : 
                 {   
                     System.out.println("Affichage en mode graphique :\n"); 
-                    new ControleurCuves();
+                    new ControleurCuves("Avance");
                     // System.exit(0);
                     break;
                 }

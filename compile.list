@@ -15,6 +15,11 @@
 ./ihm/PanelLierTuyaux.java
 ./ihm/PanelChoixFormat.java
 ./ihm/FrameFormat.java
+./ihm/panelApplication2.java
+./ihm/Application2.java
+./ihm/panelSelectFichier.java
+./ihm/FrameSelectFichier.java
+
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java

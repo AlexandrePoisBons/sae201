@@ -13,15 +13,27 @@ public class ControleurCuves
     public ArrayList<Tuyau>  ensTuyau; // en public juste pour tester
     private JFrame           ihm;
     private Metier           metier;
+    private String           choix;
     /*
      *Completer
      * 
      */
     
-    public ControleurCuves()
+    public ControleurCuves(String choix)
     {
-        this.ihm = new FrameGUI(this);
-        this.metier = new Metier(this);
+        this.choix = choix;
+        if (this.choix == "Avance")
+        {
+            this.ihm = new FrameGUI(this);
+            this.metier = new Metier(this);
+        }
+
+        else
+        {
+            this.metier = new Metier(this);
+            this.ihm    = new FrameSelectFichier(this);
+        }
+        
     }
 
     public void setCuves(ArrayList<Cuve> ensCuves)
@@ -112,7 +124,7 @@ public class ControleurCuves
 
     public static void main(String[] args)
     {
-        new ControleurCuves();
+        new ControleurCuves("Avance");
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
