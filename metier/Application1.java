@@ -68,6 +68,12 @@ public class Application1
         System.out.print( "Combien de cuves ? " );
         nbCuves = sc.nextInt();
 
+        while ( nbCuves <= 0)
+        {
+            System.out.println("Impossible de créer " + nbCuves + "cuves. Veuillez resaisir : ");
+            nbCuves = sc.nextInt();
+        }
+
         for(int cpt = 0; cpt < nbCuves; cpt++)
         {
             boolean positionTaken = false;
@@ -113,8 +119,16 @@ public class Application1
         /*--------------------------------------------------------------------------------------------*/
         /*                Récupération des valeurs des utilisateurs pour les tuyaux                   */
         /*--------------------------------------------------------------------------------------------*/
+        boolean plusieursCuves = ensCuves.size() > 1;
+
         System.out.print( "\nCombien de Tuyaux voulez-vous créer ? " );
         nbTuyaux = sc.nextInt();
+
+        while ( nbTuyaux < 0) 
+        {
+            System.out.print( "\n Impossible de créer " + nbTuyaux + "tuyaux. Veuillez resaisir : " );
+            nbTuyaux = sc.nextInt();
+        }
         /*---------------------------------------------------------------------------------------------*/
 
 

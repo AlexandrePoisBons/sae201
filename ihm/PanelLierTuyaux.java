@@ -68,7 +68,6 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             this.ctrl.setLien(j/2, c1, c2);
             //VERIFICATION EXISTENCE TUYAU
 
-
             this.toRemove = new ArrayList<Tuyau>();
             boolean alreadySelected = false;
             for (Tuyau t3: this.ctrl.ensTuyau)
