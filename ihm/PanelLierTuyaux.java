@@ -74,11 +74,11 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             {
                 for (Tuyau t2: this.ctrl.ensTuyau)
                 {
-                    if (t3 != t2 && t3.equals(t2))
+                    if (t3 != t2 && t3.equals(t2)) // t3!=t2 --> compare les adresses memoire = eviter de se compareer a lui meme
                     {
                         for (Tuyau tRemove : toRemove)
                         {
-                            if (tRemove.equals(t3))
+                            if (tRemove.equals(t3)) // si c'est le meme compare les cuves 
                             {
                                 alreadySelected = true;
                                 break;

@@ -18,6 +18,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
     private int                         totalTxt;
     private ArrayList<JTextField>       lstTextFields; 
     private ArrayList<Cuve>             ensCuves;
+    private ArrayList<Cuve>            toRemove;
 
     private JPanel                      panelDonnes;
 
@@ -33,6 +34,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
         this.ensCuves      = new ArrayList<Cuve>();
+        this.toRemove      = new ArrayList<Cuve>();
 
         // creation des composants //
         this.panelDonnes = new JPanel();
@@ -91,6 +93,24 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             //Sysout pour tester//
         }        
 
+        //TEST CUVE DEJA PRESENTE //
+        boolean positionTaken;
+        for (Cuve c: this.ensCuves)						
+        {
+            for (Cuve c2 : this.ensCuves)
+            {
+                if (c2 != c)
+                {
+                    if (c.getPosX() == c2.getPosX() && c.getPosY() == c.getPosY())
+                    {
+                        this.toRemove.add(c2);
+                        break;                
+                    }
+                }
+                
+            }            
+        }
+        // FIN
         new FrameTuyaux(this.ctrl);
         this.ctrl.setCuves(this.ensCuves);
         this.frmParent.dispose();
