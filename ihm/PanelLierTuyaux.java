@@ -3,15 +3,17 @@ package sae201.ihm;
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import sae201.Controleur;
+import sae201.ihm.FrameLierTuyaux;
 import sae201.metier.*;
 
 public class PanelLierTuyaux extends JPanel implements ActionListener
 {
-    private JFrame                frmParent;
+    private FrameLierTuyaux       frmParent;
 	private ControleurCuves       ctrl;
 	private JLabel			      lblInfo;
 	private JTextField  	      txtNbCuves;
@@ -19,15 +21,18 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
     private int                   nbTuyaux;
     private ArrayList<JTextField> lstText;
     private ArrayList<Tuyau>      toRemove;
+    private ArrayList<JLabel>     lstLblErreurs;
+
+    private JPanel                panelErreurs;
     
 
-	public PanelLierTuyaux(JFrame frmParent, ControleurCuves ctrl, int nbTuyaux)
+	public PanelLierTuyaux(FrameLierTuyaux frmParent, ControleurCuves ctrl, int nbTuyaux)
 	{
-        this.frmParent = frmParent;
-		this.ctrl      = ctrl;
-        this.nbTuyaux  = nbTuyaux;
-        this.lstText   = new ArrayList<JTextField>();
-        this.toRemove  = new ArrayList<Tuyau>(); // --> tuyaux incorrects a supprimer
+        this.frmParent     = frmParent;
+		this.ctrl          = ctrl;
+        this.nbTuyaux      = nbTuyaux;
+        this.lstText       = new ArrayList<JTextField>();
+        this.lstLblErreurs = new ArrayList<JLabel>();
 
         this.setLayout(new GridLayout(this.nbTuyaux+1, 2));
 
@@ -54,46 +59,67 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
+        boolean erreur = false;
         //int taille = (this.nbTuyaux*2);
-        for (int j=0; j<this.lstText.size(); j=j+2)
+        for (int j=0; j<this.ctrl.ensTuyau.size()*2; j=j+2)
         {
             Cuve c1 = this.ctrl.estCuve(this.lstText.get(j).getText().charAt(0));
             Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
             this.ctrl.setLien(j/2, c1, c2);
             //VERIFICATION EXISTENCE TUYAU
 
-            toRemove = new ArrayList<Tuyau>();
-			boolean alreadySelected = false;
-			for (Tuyau t3: this.ctrl.ensTuyau)
-			{
-				for (Tuyau t2: this.ctrl.ensTuyau)
-				{
-					if (t3 != t2 && t3.equals(t2))
-					{
-						for (Tuyau tRemove : toRemove)
-						{
-							if (tRemove.equals(t3))
-							{
-								alreadySelected = true;
-								break;
-							}							
-						}
-						if (!alreadySelected)
-							toRemove.add(this.ctrl.ensTuyau.get(this.ctrl.ensTuyau.lastIndexOf(t3)));
-					}
-				}
-			}
-			for (Tuyau tRemove : toRemove)
-			{
-				ensTuyau.remove(tRemove);
-			}
+            this.toRemove = new ArrayList<Tuyau>();
+            boolean alreadySelected = false;
+            for (Tuyau t3: this.ctrl.ensTuyau)
+            {
+                for (Tuyau t2: this.ctrl.ensTuyau)
+                {
+                    if (t3 != t2 && t3.equals(t2))
+                    {
+                        for (Tuyau tRemove : toRemove)
+                        {
+                            if (tRemove.equals(t3))
+                            {
+                                alreadySelected = true;
+                                break;
+                            }							
+                        }
+                        if (!alreadySelected)
+                            toRemove.add(this.ctrl.ensTuyau.get(this.ctrl.ensTuyau.lastIndexOf(t3)));
+                            erreur = true;
+                    }
+                }
+            }
+            for (Tuyau tRemove : toRemove)
+            {
+                this.lstLblErreurs.add(new JLabel("Impossible de creer le tuyau: [ " + tRemove + " ]", JLabel.CENTER));
+                this.lstLblErreurs.get(this.lstLblErreurs.size()-1).setForeground(Color.RED);
+                this.ctrl.ensTuyau.remove(tRemove);
+            }
 
 
             //TEST AFFICHAGE
-            System.out.println(this.ctrl.ensTuyau.get(j/2));
+            //System.out.println(this.ctrl.ensTuyau.get(j/2));
         }
-        new FrameFormat(this.ctrl);
-        this.frmParent.dispose();
+        if (erreur)
+        {
+            for (Tuyau t: this.ctrl.ensTuyau) // si il y a une erreur remettre les liens "à 0"
+            {
+                //t.setLien(null, null);
+            }
+            this.frmParent.majPanelErreur(this.lstLblErreurs);
+
+            for (JTextField txt: this.lstText)
+            {
+                txt.setText("");
+            }
+        }
+        if (!erreur)
+        {
+            new FrameFormat(this.ctrl);
+            this.frmParent.dispose();
+        }
+        
 		//this.ctrl.generer();
 	}
 
