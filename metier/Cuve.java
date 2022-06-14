@@ -142,7 +142,7 @@ public class Cuve
         int rgbValue = (int)this.contenu*(1000/(int)this.contenu)/2; // renvoie un nombre [0; 500]
 
         if ( rgbValue < 255)
-            this.couleur = new Color(rgbValue, 0, 0);
+            this.couleur = new Color(rgbValue/2, 0, 0);
         else
         {
             int diff = (500 - rgbValue);
