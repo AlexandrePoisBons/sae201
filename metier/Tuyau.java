@@ -23,7 +23,9 @@ public class Tuyau
     {
         if ( cuveOrig == null || cuveDest == null )
             return false;
-
+        if (cuveOrig == cuveDest)
+            return false;
+        
         this.cuveOrig = cuveOrig;
         this.cuveOrig.connecterTuyau(this); // Connecter les cuves entres elles //
         this.cuveDest = cuveDest;

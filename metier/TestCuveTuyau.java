@@ -200,52 +200,55 @@ public class TestCuveTuyau
 			
 			for ( Cuve c : ensCuves )
 			{
-				if ( c.getId() == idCuveOrig.charAt(0) ) // on cherche la cuve qui correspond a notre id d'origine
+				if ( c != null )
 				{
-					for ( Tuyau tConnecte : c.getTuyauxConnectes() ) // pour tous les tuyaux connecte a cette origine A --> B B -->A 
-					{ // si (l'origine == Id Origine && la destnation == Id destination ) ou l'id Origine == destination && id destination == cuve de destination
-						System.out.println("Test 1" + tConnecte);
-						
-						if (tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest().getId() == idCuveDest.charAt(0))
-						/*if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
-						    tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveOrig()==c && (idCuveOrig != idCuveDest)  ) //&& idCuveOrig != idCuveDest)
-						*/
-
-						// Si le tuyau connecte a moi est connecte a la destination ou si la destination est connecte a moi et si la destination n'est pas moi	
-						{
-							System.out.println("Test 2" + tConnecte);
-							System.out.println("Avant\n");
-							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
-							System.out.println("Cuve Origine est vide ?"  + c.estVide());
-							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
-							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu() + "\n\n");
+					if ( c.getId() == idCuveOrig.charAt(0) ) // on cherche la cuve qui correspond a notre id d'origine
+					{
+						for ( Tuyau tConnecte : c.getTuyauxConnectes() ) // pour tous les tuyaux connecte a cette origine A --> B B -->A 
+						{ // si (l'origine == Id Origine && la destnation == Id destination ) ou l'id Origine == destination && id destination == cuve de destination
 							
-							System.out.println(( c.couler( tConnecte.getCuveDest(), tConnecte) ));//
+							if (tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest().getId() == idCuveDest.charAt(0))
+							/*if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
+								tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveOrig()==c && (idCuveOrig != idCuveDest)  ) //&& idCuveOrig != idCuveDest)
+							*/
 
-							System.out.println("\n\nApres\n");
-							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
-							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
-						}
+							// Si le tuyau connecte a moi est connecte a la destination ou si la destination est connecte a moi et si la destination n'est pas moi	
+							{
+								System.out.println("-----Avant Transfert-----\n"																					);
+								System.out.println("Cuve Origine : "          + c.getId() +", Contenu " + c.getContenu()											);
+								System.out.println("    --Verifications-- "																							);										
+								System.out.println("    Cuve Origine est vide ? " + c.estVide()																			);			
+								System.out.println("    Cuve dest est pleine ? "  + tConnecte.getCuveDest().estPleine()													);
+								System.out.println("    ----------------- "																							);										
+								System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu() + "\n\n" 	);
+								
+								System.out.println(( c.couler( tConnecte.getCuveDest(), tConnecte) ));
 
-						if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
-						{
-							System.out.println("Test 2" + tConnecte);
-							System.out.println("Avant\n");
-							System.out.println("Cuve Origine:"+ c.getId() +", Contenu " + c.getContenu());
-							System.out.println("Cuve Origine est vide ?"  + c.estVide());
-							System.out.println("Cuve dest est pleine ?"   + tConnecte.getCuveDest().estPleine());
-							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu() + "\n\n");
-							
-							System.out.println( c.couler( tConnecte.getCuveOrig(), tConnecte ) );//
+								System.out.println("\n\n-----Apres Transfert-----\n"																				);
+								System.out.println("Cuve Origine : " + c.getId()                       + ", Contenu " + c.getContenu()								);
+								System.out.println("Cuve Dest : "    + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu()		);
+							}
+		
+							if (tConnecte.getCuveDest().getId() == idCuveOrig.charAt(0) && (tConnecte.getCuveOrig().getId() == idCuveDest.charAt(0)))
+							{
+								System.out.println("-----Avant Transfert-----\n"																					);
+								System.out.println("Cuve Origine : "          + c.getId() + ", Contenu " + c.getContenu()											);
+								System.out.println("    --Verifications-- "																							);										
+								System.out.println("     Cuve Origine est vide ? "  + c.estVide()																		);
+								System.out.println("    Cuve dest est pleine ? "   + tConnecte.getCuveDest().estPleine()												);
+								System.out.println("    ----------------- "																							);										
+								System.out.println("Cuve Dest : " + tConnecte.getCuveOrig().getId() + ", Contenu " + tConnecte.getCuveOrig().getContenu() + "\n\n"	);
+								
+							/* 	if ( ( c.couler( tConnecte.getCuveOrig(), tConnecte) ) == false )
+									System.out.println("Transfert Impossible");
+								else
+									System.out.println("Transfert Effectue");*/
+								System.out.println(( c.couler( tConnecte.getCuveOrig(), tConnecte) ));
 
-							System.out.println("\n\n Apres \n");
-							System.out.println("Cuve Origine : " + c.getId() + ", Contenu " + c.getContenu());
-							System.out.println("Cuve Dest : " + tConnecte.getCuveDest().getId() + ", Contenu " + tConnecte.getCuveDest().getContenu());
-						}
-
-						else 
-						{
-							System.out.println("Il n'y a aucune liaison entre ces 2 cuves.");
+								System.out.println("\n\n-----Apres Transfert-----\n"																				);
+								System.out.println("Cuve Origine : " + c.getId()                       + ", Contenu " + c.getContenu()								);
+								System.out.println("Cuve Dest : "    + tConnecte.getCuveOrig().getId() + ", Contenu " + tConnecte.getCuveOrig().getContenu()		);
+							}
 						}
 					}
 				}

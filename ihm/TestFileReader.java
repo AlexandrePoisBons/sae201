@@ -1,3 +1,5 @@
+package sae201.ihm;	
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.Scanner;
