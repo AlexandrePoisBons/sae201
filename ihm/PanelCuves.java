@@ -71,10 +71,11 @@ public class PanelCuves extends JPanel //implements ActionListener
 
 		for ( Cuve c : this.ensCuves)
         {			
-			g.setColor(Color.BLACK);
-            g.drawOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
+			
 			g.setColor(c.getCouleur());
             g.fillOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
+			g.setColor(Color.BLACK);
+            g.drawOval(c.getPosX()-(int) (c.getContenu()/10), c.getPosY()-(int) (c.getContenu()/10), (int) (c.getContenu()/5), (int) (c.getContenu()/5));
         }
  
     }
