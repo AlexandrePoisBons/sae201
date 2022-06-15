@@ -79,6 +79,8 @@ public class TestEcoulementAuto
 					System.out.println( " | " + cuveOrig + "|  Montant pour equilibre : " + qteLiqRemplirO );
 					System.out.println( " | " + cuveDest + "|  Montant pour equilibre : " + qteLiqRemplirD );
 
+					System.out.println(cuveOrig.getTuyauxConnectes().size());
+
 					if ( cuveOrig.getContenu() > cuveDest.getContenu() )
 						cuveOrig.couler( cuveDest, t );
 

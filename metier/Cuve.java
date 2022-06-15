@@ -208,7 +208,7 @@ public class Cuve
                  this.getId()     == t.getCuveDest().getId()     )
                 return t;
 
-            return false;
+            return null;
     }
 
 
