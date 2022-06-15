@@ -12,23 +12,28 @@ import sae201.ihm.PanelCreerTuyau;
 
 public class FrameSelectTuyau extends JFrame
 {
-	private ControleurCuves        ctrl;
-	private PanelCreerTuyau 	   panelCreerTuyau;
-
-    private int               nbTuyaux;    
+	private ControleurCuves ctrl;
+	private PanelCreerTuyau panelCreerTuyau;
+    private int             nbTuyaux;   
 
 	public FrameSelectTuyau(ControleurCuves ctrl, int nbTuyaux)
 	{
         this.ctrl = ctrl;
+        this.panelCreerTuyau = new PanelCreerTuyau(this, this.ctrl, nbTuyaux);
 
-		this.setTitle    ( "Creation de tuyaux" );
-		this.setSize(500, 200);
-		//this.pack();
+		this.setTitle("Creation de tuyaux");
+		this.setSize (500, 200);
 
-		this.setVisible(true);
-
-		this.panelCreerTuyau = new PanelCreerTuyau(this, this.ctrl, nbTuyaux);
 		this.add(this.panelCreerTuyau);	
+
+		/*--------------------------------------------------*/
+		/*               Concernant la JFrame               */
+		/*--------------------------------------------------*/
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setResizable(false);
+		this.setVisible(true);
+		/*---------------------------------------------------*/
 	}
 
 } 

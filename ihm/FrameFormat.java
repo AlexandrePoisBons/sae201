@@ -13,13 +13,21 @@ public class FrameFormat extends JFrame
 
     public FrameFormat(ControleurCuves ctrl)
     {
-        this.setTitle("Choix format");
-        this.setSize(500, 200);
-        this.setResizable(false);
-
+        this.ctlr             = ctrl;
         this.panelChoixFormat = new PanelChoixFormat(this, ctrl);
+
+        this.setTitle("Choix format");
+        this.setSize (500, 200);
+        
         this.add(this.panelChoixFormat);
 
+        /*--------------------------------------------------*/
+        /*               Concernant la JFrame               */
+        /*--------------------------------------------------*/
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
+        /*---------------------------------------------------*/
     }
 }
