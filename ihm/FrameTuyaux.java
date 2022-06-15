@@ -24,7 +24,7 @@ public class FrameTuyaux extends JFrame
 
 		this.add(this.panelInfo);
 
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);

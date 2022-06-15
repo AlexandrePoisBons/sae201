@@ -13,7 +13,7 @@ public class FrameSelectFichier extends JFrame
         this.ctrl  = ctrl;
         
         this.setTitle("Choix du fichier");
-        this.setSize (300, 300);
+        this.setSize (500, 200);
         
         /*---------------------------------*/
         /*     Création des composants     */
@@ -28,7 +28,7 @@ public class FrameSelectFichier extends JFrame
         /*--------------------------------------------------*/
         /*               Concernant la JFrame               */
         /*--------------------------------------------------*/
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+    //    this.setExtendedState(JFrame.MAXIMIZED_BOTH );
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);

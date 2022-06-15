@@ -52,7 +52,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         this.panelDonnes.add(this.lblSection);
 
         for(JTextField txt: this.lstTextFields)
-            this.panelDonnes.add(txt);
+            this.panelDonnes.add(txt, CENTER_ALIGNMENT);
 
         this.add(this.panelDonnes, BorderLayout.CENTER);
         this.add(this.btnCreer, BorderLayout.SOUTH);
