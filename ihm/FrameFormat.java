@@ -19,7 +19,6 @@ public class FrameFormat extends JFrame
         /*     Création des composants     */
         /*---------------------------------*/
         this.panelChoixFormat = new PanelChoixFormat(this, ctrl);
-        /*---------------------------------*/
 
         /*-------------------------------*/
         /* Positionnement des composants */

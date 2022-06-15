@@ -18,15 +18,21 @@ public class FrameLierTuyaux extends JFrame
 	public FrameLierTuyaux(ControleurCuves ctrl, int nbTuyaux)
 	{
 		this.ctrl     = ctrl;
-		
-		this.setTitle    ( "Frame Lier Tuyaux" );
-		this.setSize(500, 200);
+		this.nbTuyaux = nbTuyaux;
+
+		this.setTitle( "Frame Lier Tuyaux" );
+		this.setSize (500, 200);
 		this.setLayout(new BorderLayout());
 
-		this.nbTuyaux    = nbTuyaux;
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.panelInfo 	 = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);
 		this.panelErreur = new JPanel();	
 
+		/*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
 		this.add(this.panelInfo, BorderLayout.NORTH);
 		this.add(this.panelErreur, BorderLayout.SOUTH);
 

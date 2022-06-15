@@ -22,7 +22,14 @@ public class FramePrincipale extends JFrame
 		this.setTitle( "Affichage du reseaux de Cuves " );
       this.setSize (1000, 500);
 
+      /*---------------------------------*/
+      /*     Création des composants     */
+      /*---------------------------------*/
 		this.panelCuves = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
+
+      /*-------------------------------*/
+      /* Positionnement des composants */
+      /*-------------------------------*/
 		this.add(this.panelCuves);
 
       /*

@@ -12,12 +12,17 @@ public class FrameSelectFichier extends JFrame
     {
         this.ctrl  = ctrl;
         
-
         this.setTitle("Choix du fichier");
         this.setSize (300, 300);
         
+        /*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
         this.panel = new panelSelectFichier(this, this.ctrl);
 
+        /*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
         this.add(this.panel);
 
         /*--------------------------------------------------*/
