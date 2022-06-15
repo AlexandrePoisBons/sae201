@@ -34,23 +34,25 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.setLayout(null);
 		for (Cuve c  :this.ensCuves)
 		{
-			c.remplir(200.0); // TEST
-
-			this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getCapacite()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
-			Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
-			//Dernier label de la liste //
-			JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
-			
-			switch(c.getPosition())
+			if( c != null )
 			{
-				case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
-				case "Bas":		lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()+(int) (c.getCapacite()/10)+5,    dimLbl.width, dimLbl.height); break;
-				case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getCapacite()/5)-35, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
-				case "Droite":	lblActuel.setBounds(c.getPosX()+(int) (c.getCapacite()/5)-05, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
+				c.remplir(200.0); // TEST
+
+				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getCapacite()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
+				Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
+				//Dernier label de la liste //
+				JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
+				
+				switch(c.getPosition())
+				{
+					case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
+					case "Bas":		lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()+(int) (c.getCapacite()/10)+5,    dimLbl.width, dimLbl.height); break;
+					case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getCapacite()/5)-35, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
+					case "Droite":	lblActuel.setBounds(c.getPosX()+(int) (c.getCapacite()/5)-05, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
+				}
+				
+				this.add(lblActuel);
 			}
-			
-			this.add(lblActuel);
-			
 		}
 		
 
