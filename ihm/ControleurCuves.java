@@ -1,6 +1,7 @@
 package sae201.ihm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import sae201.metier.*;
 import javax.swing.JFrame;
 
@@ -221,9 +222,35 @@ public class ControleurCuves
 
         // puis lance l'affichage du reseau
         this.generer();
+        Collections.sort(this.ensCuves);
+        for ( Cuve cu: this.ensCuves )
+            System.out.println(cu);
+
     }
     /*------------------------------------------------------*/
 
+    /*
+    public ArrayList<Cuve> trier() 
+    {
+        for (int i = 0; i < this.ensCuves.size(); i++)
+        {
+            Cuve min = this.ensCuves.get(i);
+            int minId = i;
+            for (int j = i+1; j < this.ensCuves.size(); j++)
+            {
+                if (this.ensCuves.get(j).getContenu() > min.getContenu()) {
+                    min = this.ensCuves.get(j);
+                    minId = j;
+                }
+            }
+            // swapping
+            Cuve temp = this.ensCuves.get(i);
+            this.ensCuves.set(i, min);
+            this.ensCuves.set(minId, temp);
+        }
+        return this.ensCuves;
+    }
+    */
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
     public void ecrire(String format)

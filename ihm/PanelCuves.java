@@ -1,6 +1,7 @@
 package sae201.ihm;	
 
 import javax.swing.JPanel;
+import java.util.Collections;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -35,7 +36,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 		{
 			if (c != null)
 			{
-				c.remplir(200.0); // TEST
+				c.remplir(remplir += 50); // TEST
 
 				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getContenu()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
 				Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();

@@ -1,8 +1,9 @@
 package sae201.metier;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.util.Collections;
 
-public class Cuve
+public class Cuve implements Comparable<Cuve>
 {
     private static char id = 'A'-1;
 
@@ -211,6 +212,13 @@ public class Cuve
             return null;
     }
 
+    public int compareTo(Cuve cuve2)
+    {
+        if ( this.getContenu() >  cuve2.getContenu() ) return  1;
+        if ( this.getContenu() == cuve2.getContenu() ) return  0;
+        if ( this.getContenu() >  cuve2.getContenu() ) return -1;
+        else return 99;
+    }
 
 
     /*-----------------------------------------------*/

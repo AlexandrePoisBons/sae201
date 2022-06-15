@@ -59,10 +59,10 @@ public class TestEcoulementAuto2
 		alCuves.get(0).remplir(200); // remplir A à 200 
 		alCuves.get(2).remplir( 50); // remplir C à 50
 
-		/* Affichage
+		
 		for ( Cuve c : alCuves )
 			System.out.println( c );
-		*/
+
 
 		while ( !estEquilibre )
 		{

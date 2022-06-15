@@ -158,7 +158,8 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                lstTextFields.remove(cpt);
             }
             */
-            this.ensCuves.clear();
+
+            this.ensCuves =new ArrayList<>();
             this.frmParent.majPanelErreur(this.lstLblErreurs);
 
             for (JTextField txt: this.lstTextFields)
