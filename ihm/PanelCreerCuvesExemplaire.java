@@ -93,12 +93,19 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         {
             this.toRemove = new ArrayList<Cuve>();
 
-            int capacite    = Integer.parseInt(this.lstTextFields.get(i).getText());
-            int posX        = Integer.parseInt(this.lstTextFields.get(i+1).getText());
-            int posY        = Integer.parseInt(this.lstTextFields.get(i+2).getText());
-            String position = this.lstTextFields.get(i+3).getText();
-            arPosX.add(posX);   //retiens la position dans un ensemble
-            arPosY.add(posY);
+            String saisieCapacite = this.lstTextFields.get(i).getText();
+            String saisiePosX     = this.lstTextFields.get(i+1).getText();
+            String saisiePosY    = this.lstTextFields.get(i+2).getText();
+
+            if (saisieCapacite.matches("[0-9]+") && saisiePosX.matches("[0-9]+") && saisiePosY.matches("[0-9]+"))
+            {
+                int capacite    = Integer.parseInt(saisieCapacite);
+                int posX        = Integer.parseInt(saisiePosX);
+                int posY        = Integer.parseInt(saisiePosY);
+                String position = this.lstTextFields.get(i+3).getText();
+                arPosX.add(posX);   //retiens la position dans un ensemble
+                arPosY.add(posY);
+            }
 
 
             if (Capacite < 200 || Capacite > 1000)
