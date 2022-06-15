@@ -23,6 +23,9 @@ public class ControleurCuves
      * 
      */
     
+    /*-------------------------------------------------------------*/
+    /*               Constructeur du ControleurCuves               */
+    /*-------------------------------------------------------------*/
     public ControleurCuves(String choix)
     {
         this.choix = choix;
@@ -38,9 +41,6 @@ public class ControleurCuves
             {
                 this.ihm    = new FrameSelectFichier(this);
                 this.metier = new Metier(this);
-                // lireFichier();
-
-
                 //generer
 
                 break;
@@ -54,20 +54,32 @@ public class ControleurCuves
             }
         }        
     }
+    /*-------------------------------------------------------------*/
 
-    // Ajoute un ensemble de cuves au controleur
+
+    /*--------------------------------------------*/
+    /* Ajout d'un ensemble de cuves au controleur */
+    /*--------------------------------------------*/
     public void setCuves(ArrayList<Cuve> ensCuves)
     {
         this.ensCuves  = ensCuves;
     }
+    /*--------------------------------------------*/
 
-    // Ajoute un ensemble de tuyaux au controleur
+
+    /*---------------------------------------------*/
+    /* Ajout d'un ensemble de tuyaux au controleur */
+    /*---------------------------------------------*/
     public void setTuyau(ArrayList<Tuyau> ensTuyau)
     {
         this.ensTuyau  = ensTuyau;
     }
+    /*---------------------------------------------*/
 
-    // Renvoie une cuve si l'identifiant existe
+
+    /*------------------------------------------*/
+    /* Renvoie une cuve si l'identifiant existe */
+    /*------------------------------------------*/
     public Cuve estCuve(char c)
     {
         for (Cuve cuve: this.ensCuves)
@@ -77,39 +89,59 @@ public class ControleurCuves
         }
         return null;
     }
+    /*------------------------------------------*/
 
-    // lie au tuyau deux cuves 
+
+    /*---------------------------------------------*/
+    /*           Lie au tuyau deux cuves           */
+    /*---------------------------------------------*/
     public void setLien(int index, Cuve c1, Cuve c2)
     {
         this.ensTuyau.get(index).setLien(c1, c2);
     }
+    /*---------------------------------------------*/
 
-    // cree une matrice a partir de cuves et tuyaux d'un reseau
+
+    /*-----------------------------------------------------------*/
+    /* Créer une matrice à partir de cuves et tuyaux d'un reseau */
+    /*-----------------------------------------------------------*/
     public Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
         return this.metier.creerMatrice(lstCuves, lstTuyaux, taille);
     }
+    /*-----------------------------------------------------------*/
 
-    // renvoie une matrice optimisee sous forme textuelle a partir d'une matrice
+
+    /*---------------------------------------------------------------------------*/
+    /* Renvoie une matrice optimisee sous forme textuelle a partir d'une matrice */
+    /*---------------------------------------------------------------------------*/
     public String afficherMatriceOpti(Tuyau[][] matrice)
     {
         return this.metier.afficherMatriceOpti(matrice);
     }
+    /*---------------------------------------------------------------------------*/
 
-    // generer la fenetre graphique correspondant au reseau
+
+    /*---------------------------------------------------------*/
+    /* Génération de la fenêtre graphique correspond au réseau */
+    /*---------------------------------------------------------*/
     public void generer() 
     {
         new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
+    /*---------------------------------------------------------*/
 
-    // Generation graphique depuis .txt
+
+    /*------------------------------------------------------*/
+    /* Méthode de génération des graphiques depuis les .txt */
+    /*------------------------------------------------------*/
     public void creerGraph(String fichier)
     {
-        //initialisation des ensemble de cuves et tuyaux du reseau
+        //Initialisation des ensembles de cuves et tuyaux du reseau
         this.ensCuves = new ArrayList<Cuve>();
         this.ensTuyau = new ArrayList<Tuyau>();
 
-        //initialisation des ensemble de ligne de cuves et tuyaux du fichier
+        //Initialisation des ensembles de lignes de cuves et tuyaux du fichier
         ArrayList<String> lignesCuves  = new ArrayList<String>();
         ArrayList<String> lignesTuyaux = new ArrayList<String>();
 
@@ -124,59 +156,42 @@ public class ControleurCuves
                 data += temp;
                 i = fr.read();
             }
-        } catch ( IOException e )
-        {
-            e.printStackTrace();
-        }
+        } catch ( IOException e ) { e.printStackTrace(); }
 
-        String[] tabData = data.split("\r?\n|\r"); // tab des donnees separees par \n
+        // Tableau des données separés par un "\n"
+        String[] tabData = data.split("\r?\n|\r"); 
 
         boolean cuveOk  = false;
         boolean tuyauOk = false;
         for (String s:  tabData)
         {
             if (!s.equals("Cuves") && !s.equals("") && !cuveOk)
-            {
                 if (s.equals("Tuyaux"))
-                {
                     cuveOk = true;
-                }
                 else
-                {
-                    lignesCuves.add(s);
-                }                
-                
-            }
+                    lignesCuves.add(s);             
+
             if (cuveOk)
-            {
                 if (!s.equals("Tuyaux") && !tuyauOk)
-                {
                     if (s.equals(""))
                     {
                         tuyauOk = true;
                         break;
                     }
                     else
-                    {
-                        lignesTuyaux.add(s);
-                    }                    
-                }
-            }            
+                        lignesTuyaux.add(s);  
         }
 
         ArrayList<String[]> tabArgCuves = new ArrayList<String[]>();
         ArrayList<String[]> tabArgTuyau = new ArrayList<String[]>();
-        for (String arg: lignesCuves)
-        {
-           // pour chaque ligne argument de cuve les mettre dans un tableau 
-           tabArgCuves.add(arg.split(","));
-        }
 
+        // Pour chaque ligne arguments de cuves les mettre dans un tableau
+        for (String arg: lignesCuves)    
+           tabArgCuves.add(arg.split(","));
+
+        // Pour chaque ligne arguments de cuves les mettre dans un tableau
         for (String argT: lignesTuyaux)
-        {
-            // pour chaque ligne argument de cuve les mettre dans un tableau 
             tabArgTuyau.add(argT.split(","));
-        }
 
         for(String[] argumentsCuve: tabArgCuves)
         {
@@ -190,9 +205,9 @@ public class ControleurCuves
 
         for(String[] argumentsTuyau: tabArgTuyau)
         {
-            int  section         = Integer.parseInt(argumentsTuyau[0]);
-            Cuve cuveOrig        = this.estCuve    (argumentsTuyau[1].charAt(0));
-            Cuve cuveDest        = this.estCuve    (argumentsTuyau[2].charAt(0));
+            int  section  = Integer.parseInt(argumentsTuyau[0]          );
+            Cuve cuveOrig = this.estCuve    (argumentsTuyau[1].charAt(0));
+            Cuve cuveDest = this.estCuve    (argumentsTuyau[2].charAt(0));
 
             this.ensTuyau.add(Tuyau.creerTuyau(section));
             this.ensTuyau.get(this.ensTuyau.size()-1).setLien(cuveOrig, cuveDest);
@@ -200,19 +215,15 @@ public class ControleurCuves
 
         // TESTS
         for (Cuve cu: this.ensCuves)
-        {
             System.out.println(cu);
-        }
 
         for (Tuyau tu: this.ensTuyau)
-        {
             System.out.println(tu);
-        }
 
         // puis lance l'affichage du reseau
         this.generer();
     }
-
+    /*------------------------------------------------------*/
 
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
@@ -240,9 +251,9 @@ public class ControleurCuves
             /* Pour l'écriture correcte du .txt */
             pw.println("Cuves");
             for(Cuve c : ensCuves)
-                pw.println ( c.getCapacite()+","+
-                             c.getPosX()    +","+  
-                             c.getPosY()    +","+
+                pw.println ( c.getCapacite() +","+
+                             c.getPosX    () +","+  
+                             c.getPosY    () +","+
                              c.getPosition()
                             );
 
