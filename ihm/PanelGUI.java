@@ -1,10 +1,10 @@
 package sae201.ihm;	
 
+import sae201.Controleur;
+
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
-
-import sae201.Controleur;
 
 public class PanelGUI extends JPanel implements ActionListener
 {
@@ -16,21 +16,29 @@ public class PanelGUI extends JPanel implements ActionListener
 
 	public PanelGUI( FrameGUI frmParent, ControleurCuves ctrl)
 	{
-		this.ctrl = ctrl;
+		this.ctrl      = ctrl;
 		this.frmParent = frmParent;
 
-		//Creation des composants//
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.lblInfo 	= new JLabel("Combien de Cuves souhaitez vous créer ? ");
 		this.txtNbCuves = new JTextField(2);
 		this.btnValider = new JButton("Valider");
+		/*---------------------------------*/
 
-		// Activation des composants //
-		this.btnValider.addActionListener(this);
-
-		//Positionnement des composants//
+		/*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
 		this.add(this.lblInfo);
 		this.add(this.txtNbCuves);
 		this.add(this.btnValider);	
+		/*-------------------------------*/
+
+		/*-----------------------------------*/
+        /*     Activation des composants     */
+        /*-----------------------------------*/
+		this.btnValider.addActionListener(this);
 		
 	}
 

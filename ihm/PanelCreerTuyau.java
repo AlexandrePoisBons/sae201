@@ -13,11 +13,10 @@ import sae201.metier.*;
 public class PanelCreerTuyau extends JPanel implements ActionListener
 {
 	private ControleurCuves       ctrl;
-    private JFrame                frmParent;
-    private int                   nbTuyaux;
     private ArrayList<JTextField> lstTextFields; 
     private ArrayList<Tuyau>      lstTuyaux;
-
+    private JFrame                frmParent;
+    private int                   nbTuyaux;
     private JPanel                  panelDonnes;
     private JLabel                  lblSection;
     private JButton                 btnCreer;
@@ -25,14 +24,17 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
 	public PanelCreerTuyau(JFrame frmParent, ControleurCuves ctrl, int nbTuyaux)
 	{
-        this.setLayout(new BorderLayout());
-		this.ctrl          = ctrl;
+        this.ctrl          = ctrl;
         this.frmParent     = frmParent;
         this.nbTuyaux      = nbTuyaux;
         this.lstTextFields = new ArrayList<JTextField>();
         this.lstTuyaux     = new ArrayList<Tuyau>();
 
-        // creation des composants //
+        this.setLayout(new BorderLayout());
+		
+        /*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
         this.panelDonnes = new JPanel();
         this.panelDonnes.setLayout(new GridLayout(this.nbTuyaux+1, 1));
 
@@ -40,36 +42,36 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
         this.btnCreer = new JButton("Creer");
 
-		for(int i=0; i < this.nbTuyaux; i++)
-        {
+		for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
             this.lstTextFields.add(new JTextField());
-        }
+        /*---------------------------------*/
 
-
-        // activation des composants//
-        this.btnCreer.addActionListener(this);
-
-        // positionnement des composants //
+        /*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
         this.panelDonnes.add(this.lblSection);
 
         for(JTextField txt: this.lstTextFields)
-        {
             this.panelDonnes.add(txt);
-        }
 
         this.add(this.panelDonnes, BorderLayout.CENTER);
         this.add(this.btnCreer, BorderLayout.SOUTH);
-		
+        /*-------------------------------*/
+
+        /*-----------------------------------*/
+        /*     Activation des composants     */
+        /*-----------------------------------*/
+        this.btnCreer.addActionListener(this);
 	}
 
 	public void actionPerformed (ActionEvent ae)
 	{
         int taille = this.lstTextFields.size();
-        for(int i=0; i < this.nbTuyaux; i++)
+        for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
         {
-            int section    = Integer.parseInt(this.lstTextFields.get(i).getText());
+            int section = Integer.parseInt(this.lstTextFields.get(cpt).getText());
             this.lstTuyaux.add(Tuyau.creerTuyau(section));
-            System.out.println(this.lstTuyaux.get(i));
+            System.out.println(this.lstTuyaux.get(cpt));
             //Sysout pour tester//
         }
         //this.parent.maj(this.lstTuyaux);

@@ -13,32 +13,31 @@ import java.awt.Color;
 
 public class PanelCuves extends JPanel //implements ActionListener
 {
-	private ControleurCuves     ctrl;
-    private ArrayList<Cuve> 	ensCuves;
-    private ArrayList<Tuyau> 	ensTuyaux;
-
+	private ControleurCuves   ctrl;
+    private ArrayList<Cuve>   ensCuves;
+    private ArrayList<Tuyau>  ensTuyaux;
 	private ArrayList<JLabel> lstLblCuves;
 	private ArrayList<JLabel> lstLblTuyaux;
-
-	private JLabel		lblInfo;
+	private JLabel		      lblInfo;
 
 	public PanelCuves( ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
-		this.ctrl     	 	= ctrl;
-        this.ensCuves  		= ensCuves;
-        this.ensTuyaux 		= ensTuyaux;
-		this.lstLblCuves 	= new ArrayList<JLabel>();
-		this.lstLblTuyaux 	= new ArrayList<JLabel>();
-		this.lstLblCuves 	= new ArrayList<JLabel>();
+		this.ctrl     	  = ctrl;
+        this.ensCuves  	  = ensCuves;
+        this.ensTuyaux 	  = ensTuyaux;
+		this.lstLblCuves  = new ArrayList<JLabel>();
+		this.lstLblTuyaux = new ArrayList<JLabel>();
+		this.lstLblCuves  = new ArrayList<JLabel>();
 
 		this.setLayout(null);
 		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
+			if (c != null)
 			{
 				c.remplir(200.0); // TEST
 
-				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getCapacite()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
+				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getContenu()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
 				Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
 				//Dernier label de la liste //
 				JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
@@ -53,21 +52,15 @@ public class PanelCuves extends JPanel //implements ActionListener
 				
 				this.add(lblActuel);
 
-			}
+			}		
 		}
-		
-
-		//Creation des composants//
-		
 	}
-
 	public void paint(Graphics g)
     {
         super.paint(g);
 		Graphics2D g2D = (Graphics2D) g;
 
 		if (this.ensTuyaux.size() != 0)
-		{
 			for (Tuyau t : this.ensTuyaux)
 			{	
 				//System.out.println("panelCuve ->" +t);		
@@ -76,7 +69,6 @@ public class PanelCuves extends JPanel //implements ActionListener
 				g2D.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY()); 
 
 			}
-		}
 
 		for ( Cuve c : this.ensCuves)
         {		

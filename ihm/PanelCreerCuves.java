@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Color;
+import java.lang.Math;
 import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -32,7 +33,10 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.setLayout(new BorderLayout());
         this.frmParent     = frmParent;
 		this.ctrl          = ctrl;
-        this.nbCuves       = nbCuves;
+        if (nbCuves < 26)
+            this.nbCuves       = nbCuves;
+        else
+            this.nbCuves = 26;
         this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
         this.lstLblErreurs = new ArrayList<JLabel>();
@@ -95,11 +99,22 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 {
                     if (c2 != c)
                     {
+                        int distanceX = Math.abs( c2.getPosX() - c.getPosX() ); // ecart horizontal entre centre de C et de C2
+                        int distanceY = Math.abs( c2.getPosY() - c.getPosY() ); // ecart vertical   entre centre de C et de C2
+                        int ecartMin  = c2.getPosX()+(c2.getCapacite()) + c.getPosX()+(c.getCapacite());
+
                         if (c.getPosX() == c2.getPosX() && c.getPosY() == c2.getPosY())
                         {
                             erreur = true;
                             this.toRemove.add(c2);
                             break;                
+                        }
+                        // verif cheveuchement
+                        if ( (Math.pow(distanceX, 2) + Math.pow(distanceY, 2))< Math.pow(ecartMin, 2))
+                        {
+                            erreur = true; 
+                            this.toRemove.add(c2);
+                            break;
                         }
                     }
                     
