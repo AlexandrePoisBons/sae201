@@ -171,7 +171,7 @@ public class Cuve
     /*------------------------------------------------------------------------*/
     /*                                 Getters                                */
     /*------------------------------------------------------------------------*/
-    public int    getCapacite   () { return this.capacite;                     }
+    public int    getCapacite   () { return this.capacite;                     } 
     public int    getPlaceLibre () { return this.capacite - (int)this.contenu; }
     public int    getPosX       () { return this.posX;                         }
     public int    getPosY       () { return this.posY;                         }
