@@ -32,6 +32,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 		this.lstLblCuves 	= new ArrayList<JLabel>();
 
 		this.setLayout(null);
+		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
 			if( c != null )
@@ -52,6 +53,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 				}
 				
 				this.add(lblActuel);
+
 			}
 		}
 		

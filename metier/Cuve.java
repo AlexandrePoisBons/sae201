@@ -81,7 +81,11 @@ public class Cuve
     public boolean remplir(double quantite)
     {
         if ( quantite > this.capacite || quantite < 0)
+        {
+            this.contenu = 0.0;
+            this.majCouleur();
             return false;
+        }
     
         this.contenu += quantite;
         this.majCouleur();
@@ -152,12 +156,13 @@ public class Cuve
     public void majCouleur()
     {// mettre notre contenu sur 1000 puis apres easy
         int rgbValue = (int)(this.contenu)/2; // renvoie un nombre [0; 500]
+        System.out.println(""+rgbValue);
         //System.out.println(rgbValue);
         if ( rgbValue > 255)
-            this.couleur = new Color(rgbValue, 0, 0);
+            this.couleur = new Color(255-rgbValue/2, 0, 0);
         else
         {
-            int diff = (255 - rgbValue);
+            int diff = (255 - rgbValue/2);
             this.couleur = new Color(255,diff, diff);
         }
         
