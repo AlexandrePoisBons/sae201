@@ -95,8 +95,18 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             //TEST CUVE DEJA PRESENTE //
             for (Cuve c: this.ensCuves)						
             {
+                if (c == null)
+                {
+                    erreur = true;
+                    this.toRemove.add(c);
+                }    
                 for (Cuve c2 : this.ensCuves)
                 {
+                    if (c2 == null)
+                    {
+                        erreur = true;
+                        this.toRemove.add(c2);
+                    }
                     if (c2 != c)
                     {
                         int distanceX = Math.abs( c2.getPosX() - c.getPosX() ); // ecart horizontal entre centre de C et de C2
@@ -107,7 +117,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                         {
                             erreur = true;
                             this.toRemove.add(c2);
-                            break;                
+                            //break;                
                         }
                         
                         // verif chevauchement
@@ -115,7 +125,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                         {
                             erreur = true; 
                             this.toRemove.add(c2);
-                            break;
+                            //break;
                         }
                         
                     }
@@ -146,9 +156,9 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             // FIN
             if (!erreur)
             {
-                    new FrameTuyaux(this.ctrl);
-                    this.ctrl.setCuves(this.ensCuves);
-                    this.frmParent.dispose();              
+                new FrameTuyaux(this.ctrl);
+                this.ctrl.setCuves(this.ensCuves);
+                this.frmParent.dispose();              
                 
             }
                 

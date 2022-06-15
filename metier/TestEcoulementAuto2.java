@@ -112,3 +112,5 @@ public class TestEcoulementAuto2
 		return alTransfert;			
 	}
 }
+
+// Tant que ce n'est pas equilibre on peut passer au tour suivant .
