@@ -44,7 +44,27 @@ public class PanelGUI extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-		new FrameCreation(this.ctrl, Integer.parseInt(this.txtNbCuves.getText()));
-		this.frmParent.dispose();
+		String saisie = this.txtNbCuves.getText();
+		if (saisie.matches("[0-9]+"))
+		{
+			int nbCuves = Integer.parseInt(saisie);
+			if (nbCuves < 27)
+			{
+				new FrameCreation(this.ctrl, nbCuves);
+				this.frmParent.dispose();
+			}
+			else
+			{
+				this.txtNbCuves.setText("");
+				this.frmParent.majErreur("Vous ne pouvez pas creer plus de 26 cuves");
+			}
+		}
+		else
+		{
+			this.txtNbCuves.setText("");
+			this.frmParent.majErreur("Veuillez saisir un nombre entier de cuves");
+		}
+		
+		
 	}
 }
