@@ -199,6 +199,20 @@ public class Cuve
             return false;
     }
 
+    public Tuyau getTuyauEntre( Cuve cuvePara )
+    { 
+        for ( Tuyau t : this.lstTuyauxConnectes )     
+            if ( this.getId()     == t.getCuveOrig().getId() &&
+                 cuvePara.getId() == t.getCuveDest().getId() ||
+                 cuvePara.getId() == t.getCuveOrig().getId() &&
+                 this.getId()     == t.getCuveDest().getId()     )
+                return t;
+
+            return false;
+    }
+
+
+
     /*-----------------------------------------------*/
     /* Méthode toString() pour l'affichage des Cuves */
     /*-----------------------------------------------*/
