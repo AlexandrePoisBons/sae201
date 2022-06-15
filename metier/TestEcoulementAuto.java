@@ -48,16 +48,16 @@ public class TestEcoulementAuto
 		alCuves.add( Cuve.creerCuve( 300, 250, 70, "dRoite" ) );
 
 		// Instanciations des tuyaux
-		alTuyau.add( Tuyau.creerTuyau( 5 ) );
-		alTuyau.add( Tuyau.creerTuyau( 3 ) );
+		alTuyau.add( Tuyau.creerTuyau( 5 ) ); // Tuyau 1
+		alTuyau.add( Tuyau.creerTuyau( 3 ) ); // Tuyau 2
 
 		// Création des liens
-		alTuyau.get(0).setLien( alCuves.get(0), alCuves.get(1) );
-		alTuyau.get(1).setLien( alCuves.get(2), alCuves.get(3) );
+		alTuyau.get(0).setLien( alCuves.get(0), alCuves.get(1) ); // lier tuyau 1 a A et B
+		alTuyau.get(1).setLien( alCuves.get(2), alCuves.get(3) ); // lier tuyau 2 a C et D
 
 		// Remplissage des cuves
-		alCuves.get(0).remplir(200);
-		alCuves.get(2).remplir( 50);
+		alCuves.get(0).remplir(200); // remplir A à 200 
+		alCuves.get(2).remplir( 50); // remplir C à 50
 
 		/* Affichage
 		for ( Cuve c : alCuves )
@@ -150,11 +150,11 @@ public class TestEcoulementAuto
 		/*------------------------*/
 
 		for ( Tuyau t : cuveReceveur.getTuyauxConnectes() )
-			alSection.add( new Integer( (int) t.getSection() ) );
+			alSection.add( (int) t.getSection() );
 
 
 		for ( int cpt = 0; cpt < cuveReceveur.getNbTuyaux(); cpt++ )
-			alTransfert.add( new Double ( (double) ( contenu * alSection.get( cpt ) ) / 10 ) );
+			alTransfert.add( (double) ( contenu * alSection.get( cpt ) ) / 10 );
 
 		return alTransfert;			
 	}

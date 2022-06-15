@@ -35,8 +35,8 @@ public class PanelCuves extends JPanel //implements ActionListener
 		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
-			c.remplir(remplir+=250); // TEST
-
+			//c.remplir(remplir+=250); // TEST
+			c.remplir(remplir+=50); // TEST
 			this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"<br>"+c.getContenu()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
 			Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
 			//Dernier label de la liste //
