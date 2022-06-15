@@ -84,6 +84,6 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
 
         if (e.getSource() == this.rbListeAdjacence)
             this.format = "Liste d'Adjacence";
-        }
+        
     }
 }
