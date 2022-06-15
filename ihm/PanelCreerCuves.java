@@ -85,12 +85,14 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         int taille = this.lstTextFields.size();
         for(int i=0; i < taille; i=i+4)
         {
-            int Capacite    = Integer.parseInt(this.lstTextFields.get(i).getText());
+            this.toRemove = new ArrayList<Cuve>();
+
+            int capacite    = Integer.parseInt(this.lstTextFields.get(i).getText());
             int posX        = Integer.parseInt(this.lstTextFields.get(i+1).getText());
             int posY        = Integer.parseInt(this.lstTextFields.get(i+2).getText());
             String position = this.lstTextFields.get(i+3).getText();
 
-            this.ensCuves.add(Cuve.creerCuve(Capacite, posX, posY, position));
+            this.ensCuves.add(Cuve.creerCuve(capacite, posX, posY, position));
 
             //TEST CUVE DEJA PRESENTE //
             for (Cuve c: this.ensCuves)						
@@ -98,14 +100,17 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 if (c == null)
                 {
                     erreur = true;
-                    this.toRemove.add(c);
+                    this.lstLblErreurs.add(new JLabel("Impossible de creer la cuve verifiez vos valeurs"));
+                    break;
+                    
                 }    
                 for (Cuve c2 : this.ensCuves)
                 {
                     if (c2 == null)
                     {
                         erreur = true;
-                        this.toRemove.add(c2);
+                        this.lstLblErreurs.add(new JLabel("Impossible de creer la cuve verifiez vos valeurs"));
+                        //break;
                     }
                     if (c2 != c)
                     {
@@ -116,15 +121,18 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                         if (c.getPosX() == c2.getPosX() && c.getPosY() == c2.getPosY())
                         {
                             erreur = true;
-                            this.toRemove.add(c2);
+                            this.lstLblErreurs.add(new JLabel("Position ("+ c2.getPosX() +", "+c2.getPosY()+") deja prise"));
                             //break;                
                         }
                         
                         // verif chevauchement
                         if ( (Math.pow(distanceX, 2) + Math.pow(distanceY, 2)) < Math.pow(ecartMin, 2))
                         {
+                            this.lstLblErreurs.add(
+                                new JLabel("Les cuves " + 
+                                    c.getId()  + "("+c.getPosX()+", "+ c.getPosY()+")" + " et "+ 
+                                    c2.getId() + "("+c2.getPosX()+", "+ c2.getPosY()+") se chevauchent"));
                             erreur = true; 
-                            this.toRemove.add(c2);
                             //break;
                         }
                         
@@ -132,37 +140,41 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                     
                 }            
             }
+            /*
             for (Cuve c: toRemove)
             {
                 this.lstLblErreurs.add(new JLabel("Impossible de creer la cuve: [ " + c + " ]", JLabel.CENTER));
                 this.lstLblErreurs.get(this.lstLblErreurs.size()-1).setForeground(Color.RED);
                 this.ensCuves.remove(this.ensCuves.lastIndexOf(c));
             }
-
-            if (erreur)
+            */          
+        }  
+        
+        if (erreur)
+        {
+            /*
+            for (int cpt=0; cpt<this.lstTextFields.size()/4; cpt++) // si il y a une erreur remettre les liens "à 0"
             {
-                for (int cpt=0; cpt<this.lstTextFields.size()/4; cpt++) // si il y a une erreur remettre les liens "à 0"
-                {
-                   lstTextFields.remove(cpt);
-                }
-                this.frmParent.majPanelErreur(this.lstLblErreurs);
-    
-                for (JTextField txt: this.lstTextFields)
-                {
-                    txt.setText("");
-                }
+               lstTextFields.remove(cpt);
             }
+            */
+            this.ensCuves.clear();
+            this.frmParent.majPanelErreur(this.lstLblErreurs);
 
-            // FIN
-            if (!erreur)
+            for (JTextField txt: this.lstTextFields)
             {
-                new FrameTuyaux(this.ctrl);
-                this.ctrl.setCuves(this.ensCuves);
-                this.frmParent.dispose();              
-                
+                txt.setText("");
             }
-                
-        }      
+        }
+
+        // FIN
+        if (!erreur)
+        {
+            new FrameTuyaux(this.ctrl);
+            this.ctrl.setCuves(this.ensCuves);
+            this.frmParent.dispose();              
+            
+        }
   
         // TEST AFFICHAGE //
         for(Cuve c: this.ensCuves)

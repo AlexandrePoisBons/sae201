@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.JLabel;
 import java.util.ArrayList;
 import sae201.Controleur;
@@ -25,6 +26,7 @@ public class FrameCreation extends JFrame
         this.nbCuves = nbCuves;
         
 		this.setTitle("Creation de Cuves ");
+		this.setLayout(new GridLayout(2, 1));
 		this.setSize (500, 200);
 
 		/*---------------------------------*/
@@ -36,15 +38,15 @@ public class FrameCreation extends JFrame
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
-		this.add(this.panelCreerCuves, BorderLayout.NORTH);
-		this.add(this.panelErreur    , BorderLayout.SOUTH);
+		this.add(this.panelCreerCuves);
+		this.add(this.panelErreur);
 
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
 		/*--------------------------------------------------*/
 	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setResizable(false);
+		//this.setResizable(false);
 		this.setVisible(true);
 		/*---------------------------------------------------*/
 	}
