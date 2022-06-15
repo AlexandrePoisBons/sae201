@@ -33,7 +33,6 @@ public class PanelCuves extends JPanel //implements ActionListener
 		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
-<<<<<<< HEAD
 			if (c != null)
 			{
 				c.remplir(200.0); // TEST
@@ -53,27 +52,9 @@ public class PanelCuves extends JPanel //implements ActionListener
 				
 				this.add(lblActuel);
 
-=======
-			c.remplir(200.0); // TEST
-
-			this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"</br>"+c.getCapacite()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
-			Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
-			//Dernier label de la liste //
-			JLabel lblActuel = this.lstLblCuves.get(this.lstLblCuves.size()-1);
-			
-			switch(c.getPosition())
-			{
-				case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
-				case "Bas":		lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()+(int) (c.getCapacite()/10)+5,    dimLbl.width, dimLbl.height); break;
-				case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getCapacite()/5)-35, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
-				case "Droite":	lblActuel.setBounds(c.getPosX()+(int) (c.getCapacite()/5)-05, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
->>>>>>> refs/remotes/origin/main
-			}
-			
-			this.add(lblActuel);
-		}		
+			}		
+		}
 	}
-
 	public void paint(Graphics g)
     {
         super.paint(g);
