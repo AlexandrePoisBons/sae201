@@ -40,7 +40,7 @@ public class ControleurCuves
             case "Avance":
             {
                 this.ihm    = new FrameSelectFichier(this);
-                this.metier = new Metier(this);
+                this.metier = new Metier            (this);
                 //generer
 
                 break;
@@ -48,8 +48,8 @@ public class ControleurCuves
 
             case "Manuel":
             {
-                this.metier = new Metier(this);
-                this.ihm = new FrameGUI(this);
+                this.metier = new Metier  (this);
+                this.ihm    = new FrameGUI(this);
                 break;
             }
         }        
@@ -83,10 +83,9 @@ public class ControleurCuves
     public Cuve estCuve(char c)
     {
         for (Cuve cuve: this.ensCuves)
-        {
             if (cuve.getId() == c )
                 return cuve;
-        }
+
         return null;
     }
     /*------------------------------------------*/
@@ -189,7 +188,7 @@ public class ControleurCuves
         for (String arg: lignesCuves)    
            tabArgCuves.add(arg.split(","));
 
-        // Pour chaque ligne arguments de cuves les mettre dans un tableau
+        // Pour chaque ligne arguments de cuves les mettre   dans un tableau
         for (String argT: lignesTuyaux)
             tabArgTuyau.add(argT.split(","));
 
@@ -209,15 +208,15 @@ public class ControleurCuves
             Cuve cuveOrig = this.estCuve    (argumentsTuyau[1].charAt(0));
             Cuve cuveDest = this.estCuve    (argumentsTuyau[2].charAt(0));
 
-            this.ensTuyau.add(Tuyau.creerTuyau(section));
-            this.ensTuyau.get(this.ensTuyau.size()-1).setLien(cuveOrig, cuveDest);
+            this.ensTuyau.add(Tuyau.creerTuyau( section )                        );
+            this.ensTuyau.get(this.ensTuyau.size()-1 ).setLien(cuveOrig, cuveDest);
         }
 
         // TESTS
-        for (Cuve cu: this.ensCuves)
+        for ( Cuve cu: this.ensCuves )
             System.out.println(cu);
 
-        for (Tuyau tu: this.ensTuyau)
+        for ( Tuyau tu: this.ensTuyau )
             System.out.println(tu);
 
         // puis lance l'affichage du reseau
@@ -229,15 +228,15 @@ public class ControleurCuves
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
     public void ecrire(String format)
     {
-        String formatChoisi ="";
-        Tuyau [][] matrice = this.metier.creerMatrice(this.ensCuves, this.ensTuyau, this.ensCuves.size());
+        String formatChoisi = "";
+        Tuyau [][] matrice  = this.metier.creerMatrice(this.ensCuves, this.ensTuyau, this.ensCuves.size());
 
         switch(format)
         {
-            case "Matrice" : formatChoisi = this.metier.afficherMatrice(matrice);
+            case "Matrice" :           formatChoisi = this.metier.afficherMatrice       (matrice);
             break;
 
-            case "Matrice Optimisee" : formatChoisi = this.metier.afficherMatriceOpti(matrice);
+            case "Matrice Optimisee" : formatChoisi = this.metier.afficherMatriceOpti   (matrice);
             break;
 
             case "Liste d'Adjacence" : formatChoisi = this.metier.afficherListeAdjacence(matrice);
@@ -249,23 +248,23 @@ public class ControleurCuves
             PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
             /* Pour l'écriture correcte du .txt */
-            pw.println("Cuves");
-            for(Cuve c : ensCuves)
-                pw.println ( c.getCapacite() +","+
-                             c.getPosX    () +","+  
-                             c.getPosY    () +","+
+            pw.println( "Cuves" );
+            for( Cuve c : ensCuves )
+                pw.println ( c.getCapacite() + "," +
+                             c.getPosX    () + "," +  
+                             c.getPosY    () + "," +
                              c.getPosition()
                             );
 
-            pw.println("Tuyaux");
-            for(Tuyau t: ensTuyau)
-                pw.println ( t.getSection ()        +","+
-                             t.getCuveOrig().getId()+","+
+            pw.println( "Tuyaux" );
+            for( Tuyau t: ensTuyau )
+                pw.println ( t.getSection ()         +","+
+                             t.getCuveOrig().getId() +","+
                              t.getCuveDest().getId()
                             ); 
 
-            pw.println("\n"+format);
-            pw.println(formatChoisi);
+            pw.println( "\n" + format );
+            pw.println( formatChoisi  );
 
             pw.close();
         }
