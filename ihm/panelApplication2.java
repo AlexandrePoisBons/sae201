@@ -56,7 +56,7 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         /*-----------------------------------*/
         this.rbSimple  .addItemListener  (this);
         this.rbAvance  .addItemListener  (this);   
-        this.rbManuel  .addItemListener  (this);   
+        this.rbManuel  .addItemListener    (this);   
         this.btnValider.addActionListener(this);
         /*-----------------------------------*/
     }  

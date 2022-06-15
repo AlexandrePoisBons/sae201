@@ -16,17 +16,16 @@ public class panelSelectFichier extends JPanel implements ActionListener
 
     public panelSelectFichier(FrameSelectFichier frmParent, ControleurCuves ctrl)
     {
-        this.frmParent = frmParent;
         this.ctrl      = ctrl;
+        this.frmParent = frmParent;
         
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Fichiers seulement .txt", "txt");
         chooser.setFileFilter(filter);
+
         int returnVal = chooser.showOpenDialog(this.frmParent);
         if(returnVal == JFileChooser.APPROVE_OPTION)
-        {
            this.fichier = ""+chooser.getSelectedFile();
-        }
  
     }
 

@@ -20,18 +20,26 @@ public class PanelTuyaux extends JPanel implements ActionListener
 		this.ctrl = ctrl;
 		this.frmParent = frmParent;
 
-		//Creation des composants//
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.lblInfo 	= new JLabel("Combien de Tuyaux souhaitez vous créer ? ");
 		this.txtNbCuves = new JTextField(2);
 		this.btnValider = new JButton("Valider");
+		/*---------------------------------*/
 
-		// Activation des composants //
-		this.btnValider.addActionListener(this);
-
-		//Positionnement des composants//
+		/*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
 		this.add(this.lblInfo);
 		this.add(this.txtNbCuves);
-		this.add(this.btnValider);	
+		this.add(this.btnValider);
+		/*-------------------------------*/
+
+		/*-----------------------------------*/
+        /*     Activation des composants     */
+        /*-----------------------------------*/
+		this.btnValider.addActionListener(this);
 		
 	}
 

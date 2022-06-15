@@ -1,5 +1,9 @@
 package sae201.ihm;	
 
+import sae201.Controleur;
+import sae201.ihm.FrameLierTuyaux;
+import sae201.metier.*;
+
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.event.*;
@@ -7,9 +11,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-import sae201.Controleur;
-import sae201.ihm.FrameLierTuyaux;
-import sae201.metier.*;
+
 
 public class PanelLierTuyaux extends JPanel implements ActionListener
 {
@@ -36,25 +38,27 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
 
         this.setLayout(new GridLayout(this.nbTuyaux+1, 2));
 
-		//Creation des composants//
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.btnValider = new JButton("Valider");
 
         for (int i=0; i<this.nbTuyaux*2; i++)
-        {
             this.lstText.add(new JTextField(1));
-        }
 
         for (JTextField t: this.lstText)
-        {
             this.add(t);
-        }
+        /*---------------------------------*/
 
-		// Activation des composants //
+        /*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
+        this.add(this.btnValider);  
+
+		/*-----------------------------------*/
+        /*     Activation des composants     */
+        /*-----------------------------------*/
 		this.btnValider.addActionListener(this);
-
-		//Positionnement des composants//
-		this.add(this.btnValider);	
-		
 	}
 
 	public void actionPerformed (ActionEvent ae)
@@ -71,25 +75,23 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             this.toRemove = new ArrayList<Tuyau>();
             boolean alreadySelected = false;
             for (Tuyau t3: this.ctrl.ensTuyau)
-            {
                 for (Tuyau t2: this.ctrl.ensTuyau)
-                {
                     if (t3 != t2 && t3.equals(t2)) // t3!=t2 --> compare les adresses memoire = eviter de se compareer a lui meme
                     {
                         for (Tuyau tRemove : toRemove)
-                        {
                             if (tRemove.equals(t3)) // si c'est le meme compare les cuves 
                             {
                                 alreadySelected = true;
                                 break;
-                            }							
-                        }
+                            }			
+
                         if (!alreadySelected)
+                        {
                             toRemove.add(this.ctrl.ensTuyau.get(this.ctrl.ensTuyau.lastIndexOf(t3)));
                             erreur = true;
+                        }
                     }
-                }
-            }
+
             for (Tuyau tRemove : toRemove)
             {
                 this.lstLblErreurs.add(new JLabel("Impossible de creer le tuyau: [ " + tRemove + " ]", JLabel.CENTER));
@@ -104,15 +106,12 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         if (erreur)
         {
             for (Tuyau t: this.ctrl.ensTuyau) // si il y a une erreur remettre les liens "à 0"
-            {
                 //t.setLien(null, null);
-            }
+
             this.frmParent.majPanelErreur(this.lstLblErreurs);
 
             for (JTextField txt: this.lstText)
-            {
                 txt.setText("");
-            }
         }
         if (!erreur)
         {

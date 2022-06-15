@@ -69,7 +69,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         int taille = this.lstTextFields.size();
         for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
         {
-            int section    = Integer.parseInt(this.lstTextFields.get(cpt).getText());
+            int section = Integer.parseInt(this.lstTextFields.get(cpt).getText());
             this.lstTuyaux.add(Tuyau.creerTuyau(section));
             System.out.println(this.lstTuyaux.get(cpt));
             //Sysout pour tester//
