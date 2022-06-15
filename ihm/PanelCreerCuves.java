@@ -1,48 +1,47 @@
 package sae201.ihm;	
 
-import javax.swing.JPanel;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Color;
-import java.util.ArrayList;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-
 import sae201.Controleur;
 import sae201.metier.*;
 
+import javax.swing.*;
+
+import java.util.ArrayList;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.event.*;
+
 public class PanelCreerCuves extends JPanel implements ActionListener
 {
-    private FrameCreation               frmParent;
-	private ControleurCuves             ctrl;
-    private int                         nbCuves;
-    private int                         totalTxt;
-    private ArrayList<JTextField>       lstTextFields;
-    private ArrayList<JLabel>           lstLblErreurs; 
-    private ArrayList<Cuve>             ensCuves;
-    private ArrayList<Cuve>             toRemove;
-
-    private JPanel                      panelDonnes;
-
-    private JButton                     btnCreer;
+    private FrameCreation         frmParent;
+	private ControleurCuves       ctrl;
+    private int                   nbCuves;
+    private int                   totalTxt;
+    private ArrayList<JTextField> lstTextFields;
+    private ArrayList<JLabel>     lstLblErreurs; 
+    private ArrayList<Cuve>       ensCuves;
+    private ArrayList<Cuve>       toRemove;
+    private JPanel                panelDonnes;
+    private JButton               btnCreer;
 
 
 	public PanelCreerCuves(FrameCreation frmParent, ControleurCuves ctrl, int nbCuves)
 	{
-        this.setLayout(new BorderLayout());
+        this.ctrl          = ctrl;
         this.frmParent     = frmParent;
-		this.ctrl          = ctrl;
-        if (nbCuves < 26)
-            this.nbCuves       = nbCuves;
-        else
-            this.nbCuves = 26;
+        this.nbCuves       = nbCuves;
         this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
         this.lstLblErreurs = new ArrayList<JLabel>();
         this.ensCuves      = new ArrayList<Cuve>();
         this.toRemove      = new ArrayList<Cuve>();
 
-        // creation des composants //
+        this.setLayout(new BorderLayout());        
+
+        /*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
         this.panelDonnes = new JPanel();
         this.panelDonnes.setLayout(new GridLayout(this.nbCuves+1, 4));
 
@@ -53,28 +52,29 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
         this.btnCreer = new JButton("Creer");
 
-		for(int i=0; i < this.totalTxt; i++)
-        {
+		for(int cpt = 0; cpt < this.totalTxt; cpt++)
             this.lstTextFields.add(new JTextField());
-        }
+        /*---------------------------------*/
 
+        /*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
+        this.add(this.panelDonnes, BorderLayout.CENTER);
+        this.add(this.btnCreer   , BorderLayout.SOUTH);
 
-        // activation des composants//
-        this.btnCreer.addActionListener(this);
-
-        // positionnement des composants //
         this.panelDonnes.add(lblCapacite);
         this.panelDonnes.add(lblPosX);
         this.panelDonnes.add(lblPosY);
         this.panelDonnes.add(lblPosition);
 
         for(JTextField txt: this.lstTextFields)
-        {
             this.panelDonnes.add(txt);
-        }
+        /*-------------------------------*/
 
-        this.add(this.panelDonnes, BorderLayout.CENTER);
-        this.add(this.btnCreer, BorderLayout.SOUTH);
+        /*-----------------------------------*/
+        /*     Activation des composants     */
+        /*-----------------------------------*/
+        this.btnCreer.addActionListener(this);
 		
 	}
 

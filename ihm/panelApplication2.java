@@ -1,9 +1,6 @@
 package sae201.ihm;
 
-import javax.swing.JPanel;
 import javax.swing.*;
-
-
 
 import java.awt.CheckboxGroup;
 import java.awt.Checkbox;
@@ -17,7 +14,6 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
     private JRadioButton  rbSimple;
     private JRadioButton  rbAvance;
     private JRadioButton  rbManuel;
-    // rajouter mode CUI ?
     private JButton       btnValider;
     private String        choix;
 
@@ -58,9 +54,9 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         /*-----------------------------------*/
         /*     Activation des composants     */
         /*-----------------------------------*/
-        this.rbSimple.addItemListener    (this);
-        this.rbAvance.addItemListener    (this);   
-        this.rbManuel.addItemListener    (this);   
+        this.rbSimple  .addItemListener  (this);
+        this.rbAvance  .addItemListener  (this);   
+        this.rbManuel  .addItemListener  (this);   
         this.btnValider.addActionListener(this);
         /*-----------------------------------*/
     }  

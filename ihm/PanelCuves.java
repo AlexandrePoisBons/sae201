@@ -13,14 +13,12 @@ import java.awt.Color;
 
 public class PanelCuves extends JPanel //implements ActionListener
 {
-	private ControleurCuves     ctrl;
-    private ArrayList<Cuve> 	ensCuves;
-    private ArrayList<Tuyau> 	ensTuyaux;
-
+	private ControleurCuves   ctrl;
+    private ArrayList<Cuve>   ensCuves;
+    private ArrayList<Tuyau>  ensTuyaux;
 	private ArrayList<JLabel> lstLblCuves;
 	private ArrayList<JLabel> lstLblTuyaux;
-
-	private JLabel		lblInfo;
+	private JLabel		      lblInfo;
 
 	public PanelCuves( ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
@@ -35,6 +33,7 @@ public class PanelCuves extends JPanel //implements ActionListener
 		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
+			
 			{
 				c.remplir(200.0); // TEST
 
