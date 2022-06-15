@@ -68,7 +68,7 @@ public class TestEcoulementAuto2
 		{
 			for( Cuve c : alCuves )
 			{
-				for ( Tuyau t : c.getTuyauxConnectes )
+				for ( Tuyau t : c.getTuyauxConnectes() )
 				{
                     if (t.getCuveOrig() == c) // cas ou les tuyaux sont inverses
                     {

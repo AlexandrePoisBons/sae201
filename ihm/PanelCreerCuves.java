@@ -99,8 +99,8 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 {
                     if (c2 != c)
                     {
-                        int distanceX = Math.abs(c2.getPosX - c.getPosX); // ecart horizontal entre centre de C et de C2
-                        int distanceY = Math.abs(c2.getPosY - c.getPosY); // ecart vertical   entre centre de C et de C2
+                        int distanceX = Math.abs( c2.getPosX() - c.getPosX() ); // ecart horizontal entre centre de C et de C2
+                        int distanceY = Math.abs( c2.getPosY() - c.getPosY() ); // ecart vertical   entre centre de C et de C2
                         int ecartMin  = c2.getPosX()+(c2.getCapacite()) + c.getPosX()+(c.getCapacite());
 
                         if (c.getPosX() == c2.getPosX() && c.getPosY() == c2.getPosY())
@@ -112,9 +112,9 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                         // verif cheveuchement
                         if ( (Math.pow(distanceX, 2) + Math.pow(distanceY, 2))< Math.pow(ecartMin, 2))
                         {
-                            erreur = true 
+                            erreur = true; 
                             this.toRemove.add(c2);
-                            break
+                            break;
                         }
                     }
                     
