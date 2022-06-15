@@ -68,8 +68,9 @@ public class TestEcoulementAuto2
 		{
 			for( Cuve c : alCuves )
 			{
-				for ( Tuyau t : alTuyau )
+				for ( Tuyau t : c.getTuyauxConnectes )
 				{
+                    if (t.getCuveOrig() == c)
 					cuveOrig = t.getCuveOrig();
 					cuveDest = t.getCuveDest();
 
