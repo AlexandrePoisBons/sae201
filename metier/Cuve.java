@@ -30,11 +30,12 @@ public class Cuve implements Comparable<Cuve>
         this.lstTuyauxConnectes = new ArrayList<Tuyau>();
         this.couleur            = new Color(0,0,0);
     }
-    /*-----------------------------------------------------------*/
+ 
 
     /*---------------------------------------------------------------------------*/
     /*                              Factory de Cuve                              */
     /*---------------------------------------------------------------------------*/
+
     public static Cuve creerCuve(int capacite, int posX, int posY, String position)
     {
         // Regarde si le numéro séquentiel n'est pas à Z
@@ -65,20 +66,41 @@ public class Cuve implements Comparable<Cuve>
 
         return new Cuve( capacite, posX, posY, position );
     }
-    /*---------------------------------------------------------------------------*/
+
+
+    /*--------------------------------------------------------*/
+    /*               Constructeur par recopie                 */
+    /*--------------------------------------------------------*/
+
+    public static Cuve creerCuve(Cuve c)
+    {
+        int capacite    = c.getCapacite();
+        int posX        = c.getPosX();
+        int posY        = c.getPosY();
+        String position = c.getPosition();
+
+        return Cuve.creerCuve(capacite, posX, posY, position);
+    }
 
     /*--------------------------------------------------------*/
     /* Permet d'ajouter les tuyaux connectés dans l'ArrayList */
+    /*                   ---------------                      */
+    /*  Chaque Cuve aura pourra ainsi acceder a ses voisins   */
     /*--------------------------------------------------------*/
+
     public void connecterTuyau(Tuyau t)
     {
         this.lstTuyauxConnectes.add(t);
     }
-    /*--------------------------------------------------------*/
+
 
     /*------------------------------------------------*/
     /* Méthode pour ajouter du liquide dans les cuves */
+    /*                   -----------                  */
+    /*     Renvoie vrai sur la cuve a etre remplie    */
+    /*           avec la quantite souhaitee           */
     /*------------------------------------------------*/
+
     public boolean remplir(double quantite)
     {
         if ( quantite > this.capacite || quantite < 0)
@@ -94,11 +116,15 @@ public class Cuve implements Comparable<Cuve>
         
     }
 
+
     /*---------------------------------------------------*/
     /* Méthode pour transvaser du liquide dans les cuves */
+    /*                  -----------                      */
+    /*  Renvoie vrai si le transfert de fluide vers la   */
+    /*     cuve de destination a bien été effectué       */
     /*---------------------------------------------------*/
+
     public boolean couler(Cuve cuveDest, Tuyau tuyau) 
-    // Renvoie vrai si le transfert de fluide vers la cuve de destination a bien été effectué//
     {
         // Variable intermédiaire pour éviter de perdre trace de la valeur à transférer
         double contenuTransfert = 0;
@@ -141,6 +167,12 @@ public class Cuve implements Comparable<Cuve>
     }
 
 
+    /*---------------------------------------------------*/
+    /*    Méthode pour changer le contenu de la cuve     */
+    /*                  -----------                      */
+    /*       Sert pour effectuer les transfert           */
+    /*---------------------------------------------------*/
+
     public void recevoirDe( Cuve cuveDest, double transfert )
     {
         this.contenu     += transfert;
@@ -150,9 +182,13 @@ public class Cuve implements Comparable<Cuve>
     }
 
 
-
     /*---------------------------------------------------*/
-
+    /*      Méthode pour mettre a jour la couleur en     */
+    /*           fonction du contenu de la cuve          */
+    /*                  -----------                      */
+    /*     Est appelee a chaque fois que le contenu      */
+    /*                  vient a changer                  */
+    /*---------------------------------------------------*/
 
     public void majCouleur()
     {// mettre notre contenu sur 1000 puis apres easy
@@ -172,6 +208,7 @@ public class Cuve implements Comparable<Cuve>
     /*------------------------------------------------------------------------*/
     /*                                 Getters                                */
     /*------------------------------------------------------------------------*/
+
     public int    getCapacite   () { return this.capacite;                     } 
     public int    getPlaceLibre () { return this.capacite - (int)this.contenu; }
     public int    getPosX       () { return this.posX;                         }
@@ -183,11 +220,16 @@ public class Cuve implements Comparable<Cuve>
     public int    getNbTuyaux   () { return this.lstTuyauxConnectes.size();    }
      
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
-    /*------------------------------------------------------------------------*/
 
     public boolean estVide   () { return this.contenu == 0;             }
     public boolean estPleine () { return this.capacite == this.contenu; }
+  
     
+    /*------------------------------------------------*/
+    /*  Renvoie vrai si la cuve actuelle est voisine  */
+    /*    a celle pasee en paramatre (si il y a un    */
+    /*            tuyau entre les deux)               */
+    /*------------------------------------------------*/
     public boolean estVoisin( Cuve cuvePara )
     { 
         for ( Tuyau t : this.lstTuyauxConnectes )     
@@ -199,6 +241,12 @@ public class Cuve implements Comparable<Cuve>
 
             return false;
     }
+
+
+    /*-----------------------------------------------*/
+    /*   Renvoie le tuyau qui relie la cuve actuelle */
+    /*            a celle pasee en paramatre         */
+    /*-----------------------------------------------*/
 
     public Tuyau getTuyauEntre( Cuve cuvePara )
     { 
@@ -212,6 +260,11 @@ public class Cuve implements Comparable<Cuve>
             return null;
     }
 
+
+    /*-----------------------------------------------*/
+    /*   Permet l'utilisation de Collection.sort()   */
+    /*-----------------------------------------------*/
+
     public int compareTo(Cuve cuve2)
     {
         if ( this.getContenu() >  cuve2.getContenu() ) return  1;
@@ -224,6 +277,7 @@ public class Cuve implements Comparable<Cuve>
     /*-----------------------------------------------*/
     /* Méthode toString() pour l'affichage des Cuves */
     /*-----------------------------------------------*/
+
     public String toString()
     {
         return " Cuve : "          + String.format("%2s"   , this.idCuve   ) + " | " + 
@@ -233,5 +287,5 @@ public class Cuve implements Comparable<Cuve>
                                      String.format("%-4d"  , this.posY     ) + " | " +
                " Direction : "     + String.format("%-5s"  , this.position );
     }
-    /*-----------------------------------------------*/
+
 }
