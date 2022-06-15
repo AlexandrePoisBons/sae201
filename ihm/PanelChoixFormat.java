@@ -16,7 +16,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     private JRadioButton  rbMatrice;
     private JRadioButton  rbMatriceOpti;
     private JRadioButton  rbListeAdjacence;
-    private JButton       btnValider;
+    private JButton       btnFinir;
+    private JButton       btnCreer;
     private String        format;
 
     private Boolean alreadyChecked = false;
@@ -36,7 +37,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.rbMatrice          = new JRadioButton("Matrice"); 
         this.rbMatriceOpti      = new JRadioButton("Matrice Opti");
         this.rbListeAdjacence   = new JRadioButton("Liste Adjacence");
-        this.btnValider         = new JButton("Valider");
+        this.btnFinir           = new JButton("Finir");
+        this.btnCreer           = new JButton("Afficher Reseaux");
         
         this.bgFormat.add(this.rbMatrice);
         this.bgFormat.add(this.rbMatriceOpti);
@@ -49,7 +51,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.add(this.rbMatrice);
         this.add(this.rbMatriceOpti);
         this.add(this.rbListeAdjacence);
-        this.add(this.btnValider);
+        this.add(this.btnFinir);
+        this.add(this.btnCreer);
         /*-------------------------------*/
 
         /*-----------------------------------*/
@@ -58,19 +61,25 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.rbMatrice       .addItemListener  (this);
         this.rbMatriceOpti   .addItemListener  (this);   
         this.rbListeAdjacence.addItemListener  (this);
-        this.btnValider      .addActionListener(this);
+        this.btnFinir        .addActionListener(this);
         /*-----------------------------------*/
     }
 
     public void actionPerformed(ActionEvent e)
     {
         //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
-        if (!alreadyChecked)
+        if (e.getSource() == this.btnCreer && !alreadyChecked )
         {
             this.ctrl.ecrire(this.format);
             this.ctrl.generer();
             this.frmParent.dispose();
             alreadyChecked = true;
+        }
+
+        if (e.getSource() == this.btnFinir)
+        {
+            this.ctrl.ecrire(this.format);
+            this.frmParent.dispose();
         }
     }
 
