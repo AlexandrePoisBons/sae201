@@ -35,7 +35,6 @@ public class PanelCuves extends JPanel //implements ActionListener
 		double remplir = 50.0;
 		for (Cuve c  :this.ensCuves)
 		{
-			if( c != null )
 			{
 				c.remplir(200.0); // TEST
 
