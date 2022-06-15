@@ -27,9 +27,15 @@ public class FrameCreation extends JFrame
 		this.setTitle("Creation de Cuves ");
 		this.setSize (500, 200);
 
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.panelCreerCuves = new PanelCreerCuves(this, this.ctrl, this.nbCuves);
 		this.panelErreur     = new JPanel();
 
+		/*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
 		this.add(this.panelCreerCuves, BorderLayout.NORTH);
 		this.add(this.panelErreur    , BorderLayout.SOUTH);
 

@@ -10,18 +10,17 @@ public class FramePrincipale extends JFrame
 {
 	private ControleurCuves   ctrl;
 	private PanelCuves        panelCuves;
-    private ArrayList<Cuve>  ensCuves;  
-    private ArrayList<Tuyau> ensTuyaux;
+   private ArrayList<Cuve>  ensCuves;  
+   private ArrayList<Tuyau> ensTuyaux;
 
 	public FramePrincipale(ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
-      this.ctrl       = ctrl;
-      this.ensCuves   = ensCuves;
-      this.ensTuyaux  = ensTuyaux;
+      this.ctrl      = ctrl;
+      this.ensCuves  = ensCuves;
+      this.ensTuyaux = ensTuyaux;
         
-		this.setTitle    ( "Affichage du reseaux de Cuves " );
-      this.setSize(1000, 500);
-
+		this.setTitle( "Affichage du reseaux de Cuves " );
+      this.setSize (1000, 500);
 
 		this.panelCuves = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
 		this.add(this.panelCuves);

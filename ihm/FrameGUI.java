@@ -16,8 +16,14 @@ public class FrameGUI extends JFrame
 		this.setTitle("GUI Application 1");
 		this.setSize (500, 200);
 
+		/*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
 		this.panelInfo = new PanelGUI(this, this.ctrl);
 
+		/*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
 		this.add(this.panelInfo);
 
 		/*--------------------------------------------------*/
