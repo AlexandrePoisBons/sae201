@@ -32,7 +32,10 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         this.setLayout(new BorderLayout());
         this.frmParent     = frmParent;
 		this.ctrl          = ctrl;
-        this.nbCuves       = nbCuves;
+        if (nbCuves < 26)
+            this.nbCuves       = nbCuves;
+        else
+            this.nbCuves = 26;
         this.totalTxt      = (this.nbCuves*4);        
         this.lstTextFields = new ArrayList<JTextField>();
         this.lstLblErreurs = new ArrayList<JLabel>();

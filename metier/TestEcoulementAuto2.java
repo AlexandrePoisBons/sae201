@@ -70,60 +70,16 @@ public class TestEcoulementAuto2
 			{
 				for ( Tuyau t : c.getTuyauxConnectes )
 				{
-                    if (t.getCuveOrig() == c)
-					cuveOrig = t.getCuveOrig();
-					cuveDest = t.getCuveDest();
-
-					qteLiqRemplirO = cuveOrig.getContenu() - cuveDest.getContenu();
-					qteLiqRemplirD = cuveDest.getContenu() - cuveOrig.getContenu();
-
-					System.out.println( " | " + cuveOrig + "|  Montant pour equilibre : " + qteLiqRemplirO );
-					System.out.println( " | " + cuveDest + "|  Montant pour equilibre : " + qteLiqRemplirD );
-
-					if ( cuveOrig.getContenu() > cuveDest.getContenu() )
-						cuveOrig.couler( cuveDest, t );
-
-					if ( cuveOrig.getContenu() < cuveDest.getContenu() )
-						cuveDest.couler( cuveOrig, t );
-
-					if ( qteLiqRemplirO < t.getSection() )
-					{
-						System.out.println("Test condition");
-						if ( cuveOrig.getNbTuyaux() > 1 )
-						{
-							System.out.println("Flag1");
-							for ( int cpt = 0; cpt < cuveOrig.getTuyauxConnectes().size(); cpt++ )							
-								cuveOrig.recevoirDe( t.getCuveDest(), cuveOrig.getCapacite() - cuveOrig.getContenu() );
-							
-						}
-						else 
-						{
-							alTransfert = calculerTransfert( alCuves, alTuyau, cuveOrig );
-							System.out.println("Flag2");
-							for ( int cpt = 0; cpt < cuveOrig.getTuyauxConnectes().size(); cpt++ )							
-								cuveOrig.recevoirDe( t.getCuveDest(), alTransfert.get( cpt ) );
-						}
-						
-
-					}
-
-					if ( qteLiqRemplirD < t.getSection() )
-					{
-						if ( cuveDest.getNbTuyaux() > 1 )
-						{
-							System.out.println("Flag3");
-							for ( int cpt = 0; cpt < cuveDest.getTuyauxConnectes().size(); cpt++ )							
-								cuveDest.recevoirDe( t.getCuveOrig(), cuveDest.getCapacite() - cuveDest.getContenu() );
-							
-						}
-						else 
-						{
-							alTransfert = calculerTransfert( alCuves, alTuyau, cuveDest );
-							System.out.println("Flag4");
-							for ( int cpt = 0; cpt < cuveDest.getTuyauxConnectes().size(); cpt++ )							
-								cuveDest.recevoirDe( t.getCuveOrig(), alTransfert.get( cpt ) );
-						}
-					}
+                    if (t.getCuveOrig() == c) // cas ou les tuyaux sont inverses
+                    {
+                        Cuve cuveActuelle = c;
+                        Cuve cuveDestination = t.getCuveDest();
+                    }
+                    else
+                    {
+                        Cuve cuveActuelle = t.getCuveDest();
+                        Cuve cuvedestination = c;
+                    }					
 
 					sc.nextLine();
 				}
