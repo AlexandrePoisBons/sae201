@@ -8,12 +8,20 @@ public class Application2 extends JFrame
 
     public Application2()
     {
-        this.panel = new panelApplication2(this);
-
         this.setTitle("Application 2");
         this.setSize (300, 300);
         
+        /*---------------------------------*/
+        /*     Création des composants     */
+        /*---------------------------------*/
+        this.panel = new panelApplication2(this);
+        /*---------------------------------*/
+
+        /*-------------------------------*/
+        /* Positionnement des composants */
+        /*-------------------------------*/
         this.add(this.panel);
+
 
         this.setResizable(false);
         this.setVisible(true);

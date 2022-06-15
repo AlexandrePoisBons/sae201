@@ -8,8 +8,8 @@ import sae201.metier.*;
 
 public class FramePrincipale extends JFrame
 {
-	private ControleurCuves   ctrl;
-	private PanelCuves        panelCuves;
+	private ControleurCuves  ctrl;
+	private PanelCuves       panelCuves;
    private ArrayList<Cuve>  ensCuves;  
    private ArrayList<Tuyau> ensTuyaux;
 

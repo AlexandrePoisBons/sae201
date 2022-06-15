@@ -33,7 +33,7 @@ public class FrameLierTuyaux extends JFrame
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
-		this.add(this.panelInfo, BorderLayout.NORTH);
+		this.add(this.panelInfo  , BorderLayout.NORTH);
 		this.add(this.panelErreur, BorderLayout.SOUTH);
 
 		/*--------------------------------------------------*/
