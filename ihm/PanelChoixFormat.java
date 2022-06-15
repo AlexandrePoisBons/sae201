@@ -37,8 +37,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.rbMatrice          = new JRadioButton("Matrice"); 
         this.rbMatriceOpti      = new JRadioButton("Matrice Opti");
         this.rbListeAdjacence   = new JRadioButton("Liste Adjacence");
-        this.btnFinir           = new JButton("Finir");
-        this.btnCreer           = new JButton("Afficher Reseaux");
+        this.btnFinir           = new JButton("Générer .txt");
+        this.btnCreer           = new JButton("Afficher Reseaux Cuves");
         
         this.bgFormat.add(this.rbMatrice);
         this.bgFormat.add(this.rbMatriceOpti);
@@ -62,13 +62,14 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.rbMatriceOpti   .addItemListener  (this);   
         this.rbListeAdjacence.addItemListener  (this);
         this.btnFinir        .addActionListener(this);
+        this.btnCreer        .addActionListener(this);
         /*-----------------------------------*/
     }
 
     public void actionPerformed(ActionEvent e)
     {
         //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
-        if (e.getSource() == this.btnCreer && !alreadyChecked )
+        if (e.getSource() == this.btnCreer && alreadyChecked )
         {
             this.ctrl.ecrire(this.format);
             this.ctrl.generer();
@@ -87,12 +88,15 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     {
         if (e.getSource() == this.rbMatrice)
             this.format = "Matrice";
+            this.alreadyChecked = true;
 
         if (e.getSource() == this.rbMatriceOpti)
             this.format = "Matrice Optimisee";
+            this.alreadyChecked = true;
 
         if (e.getSource() == this.rbListeAdjacence)
             this.format = "Liste d'Adjacence";
+            this.alreadyChecked = true;
         
     }
 }
