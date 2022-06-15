@@ -19,6 +19,7 @@
 ./ihm/Application2.java
 ./ihm/panelSelectFichier.java
 ./ihm/FrameSelectFichier.java
+./ihm/panelAction.java
 
 ./metier/Tuyau.java
 ./metier/TestCuve.java

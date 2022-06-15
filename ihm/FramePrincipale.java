@@ -4,12 +4,15 @@ import javax.swing.JFrame;
 
 import java.util.ArrayList;
 import sae201.Controleur;
+import java.awt.BorderLayout;
+import sae201.ihm.panelAction;
 import sae201.metier.*;
 
 public class FramePrincipale extends JFrame
 {
 	private ControleurCuves  ctrl;
 	private PanelCuves       panelCuves;
+   private panelAction      panelAction;
    private ArrayList<Cuve>  ensCuves;  
    private ArrayList<Tuyau> ensTuyaux;
 
@@ -21,16 +24,19 @@ public class FramePrincipale extends JFrame
         
 		this.setTitle( "Affichage du reseaux de Cuves " );
       this.setSize (1000, 500);
+      this.setLayout(new BorderLayout());
 
       /*---------------------------------*/
       /*     Création des composants     */
       /*---------------------------------*/
-		this.panelCuves = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
+		this.panelCuves  = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
+      this.panelAction = new panelAction(this, this.ctrl);
 
       /*-------------------------------*/
       /* Positionnement des composants */
       /*-------------------------------*/
-		this.add(this.panelCuves);
+		this.add(this.panelCuves,  BorderLayout.CENTER);
+      this.add(this.panelAction, BorderLayout.EAST);
 
       /*
       Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());

@@ -28,7 +28,7 @@ public class Cuve implements Comparable<Cuve>
         this.posY               = posY;
         this.position           = position;
         this.lstTuyauxConnectes = new ArrayList<Tuyau>();
-        this.couleur            = new Color(0,0,0);
+        this.couleur            = new Color(255,255,255);
     }
  
 
@@ -103,9 +103,10 @@ public class Cuve implements Comparable<Cuve>
 
     public boolean remplir(double quantite)
     {
-        if ( quantite > this.capacite || quantite < 0)
+        if ( quantite > this.getPlaceLibre() || quantite < 0)
         {
-            this.contenu = 0.0;
+            if (this.getPlaceLibre() != 0.0)
+                this.contenu = 0.0;
             this.majCouleur();
             return false;
         }
