@@ -18,12 +18,13 @@ public class TestEcoulementAuto
 
 		List<Cuve>   alCuves;
 		List<Tuyau>  alTuyau;
-		List<Douvle> alTransfert;
+		List<Double> alTransfert;
 
 		String idCuveOrig = "";
         String idCuveDest = "";
 
-        double transfert;
+        double qteLiqRemplirO = 0.0;
+        double qteLiqRemplirD = 0.0;
 
         Cuve   cuveOrig   = null;
         Cuve   cuveDest   = null;
@@ -72,8 +73,11 @@ public class TestEcoulementAuto
 					cuveOrig = t.getCuveOrig();
 					cuveDest = t.getCuveDest();
 
-					System.out.println( " | " + cuveOrig );
-					System.out.println( " | " + cuveDest );
+					qteLiqRemplirO = cuveOrig.getContenu() - cuveDest.getContenu();
+					qteLiqRemplirD = cuveDest.getContenu() - cuveOrig.getContenu();
+
+					System.out.println( " | " + cuveOrig + "|  Montant pour equilibre : " + qteLiqRemplirO );
+					System.out.println( " | " + cuveDest + "|  Montant pour equilibre : " + qteLiqRemplirD );
 
 					if ( cuveOrig.getContenu() > cuveDest.getContenu() )
 						cuveOrig.couler( cuveDest, t );
@@ -81,23 +85,43 @@ public class TestEcoulementAuto
 					if ( cuveOrig.getContenu() < cuveDest.getContenu() )
 						cuveDest.couler( cuveOrig, t );
 
-					if ( cuveOrig.getContenu() < t.getSection() )
+					if ( qteLiqRemplirO < t.getSection() )
 					{
-						transfert = ( cuveOrig.getContenu() * t.getSection() ) / 10;
-						//alTransfert = calculerTransfert( alCuves, alTuyau, cuveOrig );
+						System.out.println("Test condition");
+						if ( cuveOrig.getNbTuyaux() > 1 )
+						{
+							System.out.println("Flag1");
+							for ( int cpt = 0; cpt < cuveOrig.getTuyauxConnectes().size(); cpt++ )							
+								cuveOrig.recevoirDe( t.getCuveDest(), cuveOrig.getCapacite() - cuveOrig.getContenu() );
+							
+						}
+						else 
+						{
+							alTransfert = calculerTransfert( alCuves, alTuyau, cuveOrig );
+							System.out.println("Flag2");
+							for ( int cpt = 0; cpt < cuveOrig.getTuyauxConnectes().size(); cpt++ )							
+								cuveOrig.recevoirDe( t.getCuveDest(), alTransfert.get( cpt ) );
+						}
 						
-
-						cuveOrig.recevoirDe( cuveDest, transfert );
 
 					}
 
-					if ( cuveDes.getContenu() < t.getSection() )
+					if ( qteLiqRemplirD < t.getSection() )
 					{
-						transfert = ( cuveDest.getContenu() * t.getSection() ) / 10;
-						//alTransfert = calculerTransfert( alCuves, alTuyau, cuveDest );
-						
-
-						cuveDest.recevoirDe( cuveOrig, transfert );
+						if ( cuveDest.getNbTuyaux() > 1 )
+						{
+							System.out.println("Flag3");
+							for ( int cpt = 0; cpt < cuveDest.getTuyauxConnectes().size(); cpt++ )							
+								cuveDest.recevoirDe( t.getCuveOrig(), cuveDest.getCapacite() - cuveDest.getContenu() );
+							
+						}
+						else 
+						{
+							alTransfert = calculerTransfert( alCuves, alTuyau, cuveDest );
+							System.out.println("Flag4");
+							for ( int cpt = 0; cpt < cuveDest.getTuyauxConnectes().size(); cpt++ )							
+								cuveDest.recevoirDe( t.getCuveOrig(), alTransfert.get( cpt ) );
+						}
 					}
 
 					sc.nextLine();
@@ -110,7 +134,7 @@ public class TestEcoulementAuto
 
 
 
-	public ArrayList<Double> calculerTransfert( ArrayList<Cuve> alCuves, ArrayList<Tuyau> alTuyau, Cuve cuvePara )
+	public static List<Double> calculerTransfert( List<Cuve> alCuves, List<Tuyau> alTuyau, Cuve cuvePara )
 	{
 		/*------------------------*/
 		/*	     Variables        */
@@ -126,11 +150,11 @@ public class TestEcoulementAuto
 		/*------------------------*/
 
 		for ( Tuyau t : cuveReceveur.getTuyauxConnectes() )
-			alSection.add( new Integer( t.getSection() ) );
+			alSection.add( new Integer( (int) t.getSection() ) );
 
 
-		for ( int cpt = 0; cpt < cuveReceveur.getNbTuyaux() )
-			alTransfert.add( new Double ( ( contenu * alSection.get( cpt ) ) / 10 ) );
+		for ( int cpt = 0; cpt < cuveReceveur.getNbTuyaux(); cpt++ )
+			alTransfert.add( new Double ( (double) ( contenu * alSection.get( cpt ) ) / 10 ) );
 
 		return alTransfert;			
 	}

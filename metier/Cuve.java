@@ -156,7 +156,7 @@ public class Cuve
     public void majCouleur()
     {// mettre notre contenu sur 1000 puis apres easy
         int rgbValue = (int)(this.contenu)/2; // renvoie un nombre [0; 500]
-        System.out.println(""+rgbValue);
+        System.out.println("Couleur: "+rgbValue);
         //System.out.println(rgbValue);
         if ( rgbValue > 255)
             this.couleur = new Color(255-rgbValue/2, 0, 0);
