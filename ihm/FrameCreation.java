@@ -3,6 +3,7 @@ package sae201.ihm;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -16,6 +17,7 @@ public class FrameCreation extends JFrame
 	private ControleurCuves     ctrl;
 	private PanelCreerCuves   	panelCreerCuves;
 	private JPanel 				panelErreur;
+	private JLabel				lblErreur;
     private int               	nbCuves;
 
 
@@ -26,7 +28,7 @@ public class FrameCreation extends JFrame
         this.nbCuves = nbCuves;
         
 		this.setTitle("Creation de Cuves ");
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new BorderLayout());
 		this.setSize (500, 200);
 
 		/*---------------------------------*/
@@ -34,12 +36,16 @@ public class FrameCreation extends JFrame
         /*---------------------------------*/
 		this.panelCreerCuves = new PanelCreerCuves(this, this.ctrl, this.nbCuves);
 		this.panelErreur     = new JPanel();
+		this.lblErreur       = new JLabel();
 
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
-		this.add(this.panelCreerCuves);
-		this.add(this.panelErreur);
+		this.add(this.panelCreerCuves, BorderLayout.NORTH);
+
+		this.panelErreur.add(this.lblErreur);
+		this.add(this.panelErreur, BorderLayout.CENTER);
+		
 
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
@@ -51,9 +57,9 @@ public class FrameCreation extends JFrame
 		/*---------------------------------------------------*/
 	}
 
-	public void majPanelErreur(ArrayList<JLabel> lstLblErreur)
+	public void majPanelErreur(String erreur)
 	{
-		for(JLabel lbl: lstLblErreur)
-			this.panelErreur.add(lbl);
+		this.lblErreur.setText(erreur);
+		this.lblErreur.setForeground(Color.RED);
 	}
 } 

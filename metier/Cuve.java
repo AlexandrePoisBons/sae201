@@ -273,6 +273,10 @@ public class Cuve implements Comparable<Cuve>
         else return 99;
     }
 
+    public static void decrement()
+    {
+        id--;
+    }
 
     /*-----------------------------------------------*/
     /* Méthode toString() pour l'affichage des Cuves */

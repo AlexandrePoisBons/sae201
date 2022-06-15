@@ -48,7 +48,7 @@ public class PanelGUI extends JPanel implements ActionListener
 		if (saisie.matches("[0-9]+"))
 		{
 			int nbCuves = Integer.parseInt(saisie);
-			if (nbCuves < 27)
+			if (nbCuves > 0 && nbCuves < 27 )
 			{
 				new FrameCreation(this.ctrl, nbCuves);
 				this.frmParent.dispose();
@@ -56,7 +56,7 @@ public class PanelGUI extends JPanel implements ActionListener
 			else
 			{
 				this.txtNbCuves.setText("");
-				this.frmParent.majErreur("Vous ne pouvez pas creer plus de 26 cuves");
+				this.frmParent.majErreur("Vous ne pouvez pas creer 0 ou plus de 26 cuves");
 			}
 		}
 		else
