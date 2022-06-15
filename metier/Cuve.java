@@ -90,6 +90,14 @@ public class Cuve
     }
     /*------------------------------------------------*/
 
+
+     public void recevoirDe( Cuve cuveDest, double transfert )
+    {
+        this.contenu     += transfert;
+        cuveDest.contenu -= transfert;
+    }
+    
+
     /*---------------------------------------------------*/
     /* Méthode pour transvaser du liquide dans les cuves */
     /*---------------------------------------------------*/
@@ -134,6 +142,16 @@ public class Cuve
 
         return true;    
     }
+
+
+    public void recevoirDe( Cuve cuveDest, double transfert )
+    {
+        this.contenu     += transfert;
+        cuveDest.contenu -= transfert;
+    }
+
+
+
     /*---------------------------------------------------*/
 
 
@@ -162,7 +180,8 @@ public class Cuve
     public double getContenu    () { return this.contenu;                      }
     public String getPosition   () { return this.position;                     }
     public Color  getCouleur    () { return this.couleur;                      }
-    
+    public int    getNbTuyaux   () { return this.lstTuyauxConnectes.size();    }
+     
     public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
     /*------------------------------------------------------------------------*/
 
