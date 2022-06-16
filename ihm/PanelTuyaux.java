@@ -45,21 +45,30 @@ public class PanelTuyaux extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-		int nbTuyaux = Integer.parseInt(this.txtNbCuves.getText());
-		int nbCuves  = this.ctrl.getNbCuves();
-		int nbMax 	 = nbCuves*(nbCuves-1)/2;
-
-		if (nbTuyaux <= nbMax)
+		if (this.txtNbCuves.getText().matches("[0-9]+"))
 		{
-			new FrameSelectTuyau(this.ctrl, nbTuyaux);
-			this.frmParent.dispose();
+			int nbTuyaux = Integer.parseInt(this.txtNbCuves.getText());
+			int nbCuves  = this.ctrl.getNbCuves();
+			int nbMax 	 = nbCuves*(nbCuves-1)/2;
+
+			if (nbTuyaux <= nbMax)
+			{
+				new FrameSelectTuyau(this.ctrl, nbTuyaux);
+				this.frmParent.dispose();
+			}
+
+			else
+			{
+				this.txtNbCuves.setText("");
+				this.frmParent.majErreur("Il y a " + this.ctrl.getNbCuves() + "cuve(s) dans votre reseau, vous ne pouvez ainsi pas creer plus de "+ nbMax +" tuyaux");
+			}
 		}
 
 		else
 		{
-			this.txtNbCuves.setText("");
-			this.frmParent.majErreur(nbMax);
+			this.frmParent.majErreur("Le nombre de tuyaux doit etre entier");
 		}
+		
 		
 	}
 }

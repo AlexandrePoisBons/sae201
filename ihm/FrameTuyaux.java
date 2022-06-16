@@ -58,9 +58,9 @@ public class FrameTuyaux extends JFrame
         this.add(this.panelInfo);
     }
 
-	public void majErreur(int nbMax)
+	public void majErreur(String erreur)
 	{
-		this.lblErreur.setText("Il y a " + this.ctrl.getNbCuves() + "cuve(s) dans votre reseau, vous ne pouvez ainsi pas creer plus de "+ nbMax +" tuyaux");
+		this.lblErreur.setText(erreur));
 		this.lblErreur.setForeground(Color.RED);
 	}
 } 
