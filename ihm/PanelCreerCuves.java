@@ -111,9 +111,14 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                     posY        = Integer.parseInt(saisiePosY);
                     position    = this.lstTextFields.get(i+3).getText();
                 }
+                else
+                {
+                    erreurLigne = true;
+                    this.stringErreurs+="La capacite et les coordonnes de la cuves doivent etre entières";
+                }
 
                 // 2 - Verifier que la capacite est valide sinon remet les champs vides
-                if ( capacite < 200 || capacite > 1000 )
+                if ( !erreurLigne && capacite < 200 || capacite > 1000 )
                 {
                     this.lstTextFields.get(i).setText("");
                     this.lstTextFields.get(i+1).setText("");
