@@ -19,6 +19,7 @@ public class ControleurCuves
     private JFrame           ihm;
     private Metier           metier;
     private String           choix;
+    private int              nbCuves;
     /*
      *Completer
      * 
@@ -29,7 +30,8 @@ public class ControleurCuves
     /*-------------------------------------------------------------*/
     public ControleurCuves(String choix)
     {
-        this.choix = choix;
+        this.choix   = choix;
+        this.nbCuves = 0;
         switch(this.choix)
         {
             case "Simple":
@@ -296,6 +298,11 @@ public class ControleurCuves
             pw.close();
         }
         catch (Exception e){ e.printStackTrace(); }
+    }
+
+    public void setNbCuves(int nbCuves)
+    {
+        this.nbCuves = nbCuves;
     }
 
     public static void main(String[] args)

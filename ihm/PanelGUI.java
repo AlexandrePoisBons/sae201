@@ -51,6 +51,7 @@ public class PanelGUI extends JPanel implements ActionListener
 			if (nbCuves > 0 && nbCuves < 27 )
 			{
 				new FrameCreation(this.ctrl, nbCuves);
+				this.ctrl.setNbCuves(nbCuves);
 				this.frmParent.dispose();
 			}
 			else

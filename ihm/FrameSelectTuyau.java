@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.JPanel;
 
 import java.awt.event.*;
+import java.awt.Color;
+import java.awt.BorderLayout;
 
 import sae201.Controleur;
 import sae201.ihm.PanelCreerCuves;
@@ -14,17 +16,24 @@ public class FrameSelectTuyau extends JFrame
 {
 	private ControleurCuves ctrl;
 	private PanelCreerTuyau panelCreerTuyau;
+	private JPanel			panelErreur;
     private int             nbTuyaux;   
+	private JLabel			lblErreur;
 
 	public FrameSelectTuyau(ControleurCuves ctrl, int nbTuyaux)
 	{
         this.ctrl = ctrl;
         this.panelCreerTuyau = new PanelCreerTuyau(this, this.ctrl, nbTuyaux);
+		this.panelErreur     = new JPanel();
 
 		this.setTitle("Creation de tuyaux");
 		this.setSize (500, 200);
+		this.setLayout(new BorderLayout());
 
-		this.add(this.panelCreerTuyau);	
+		this.lblErreur = new JLabel();
+		this.panelErreur.add(this.lblErreur);
+		this.add(this.panelCreerTuyau, BorderLayout.NORTH);	
+		this.add(this.panelErreur, 	   BorderLayout.CENTER);	
 
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
@@ -34,6 +43,12 @@ public class FrameSelectTuyau extends JFrame
 		this.setResizable(false);
 		this.setVisible(true);
 		/*---------------------------------------------------*/
+	}
+
+	public void majErreur(String erreur)
+	{
+		this.lblErreur.setText(erreur);
+		this.lblErreur.setForeground(Color.RED);
 	}
 
 } 
