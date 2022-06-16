@@ -60,7 +60,7 @@ public class FrameTuyaux extends JFrame
 
 	public void majErreur(String erreur)
 	{
-		this.lblErreur.setText(erreur));
+		this.lblErreur.setText(erreur);
 		this.lblErreur.setForeground(Color.RED);
 	}
 } 
