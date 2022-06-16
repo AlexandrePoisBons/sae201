@@ -34,7 +34,7 @@ public class panelAction extends JPanel implements ActionListener
         /*---------------------------------*/
         this.lblCuve        = new JLabel("Cuve a remplir");
         this.lblQuantite    = new JLabel("Quantite");
-        this.lstCuveRemplir = new JComboBox();
+        this.lstCuveRemplir = new JComboBox<String>();
         this.txtQuantite    = new JTextField(4);
         this.btnValider     = new JButton("Valider");
         this.btnSuivant     = new JButton ("Suivant");

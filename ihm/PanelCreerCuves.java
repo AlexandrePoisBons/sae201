@@ -186,6 +186,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             if (erreurLigne)
                 erreur = true;  
 
+            // TEST A ENLEVER
             System.out.println("iteration "+i);
             for(Cuve c: this.ensCuvesValides)
             {
