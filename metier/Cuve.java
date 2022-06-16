@@ -197,7 +197,7 @@ public class Cuve implements Comparable<Cuve>
             this.couleur = new Color(255-rgbValue/2, 0, 0);
         else
         {
-            int diff = (255 - rgbValue/2);
+            int diff = (255 - rgbValue);
             this.couleur = new Color(255,diff, diff);
         }
         
