@@ -21,7 +21,7 @@ public class FrameGUI extends JFrame
 		this.ctrl = ctrl;
 		
 
-		this.setTitle("GUI Application 1");
+		this.setTitle("Choix du nombre de cuves");
 		this.setSize (500, 200);
 		this.setLayout(new BorderLayout());
 
@@ -40,9 +40,13 @@ public class FrameGUI extends JFrame
 		this.add(this.panelInfo, BorderLayout.NORTH);
 
 		this.panelErreur = new JPanel();
-		this.lblErreur   = new JLabel ("");
+		this.lblErreur   = new JLabel ("AAAAAAAAAAAAAAAA"); //initialiser une taille par defaut pour le this.pack()
 		this.panelErreur.add(lblErreur);
 		this.add(this.panelErreur, BorderLayout.CENTER);	
+
+		this.setResizable(false);
+		this.pack();
+		this.lblErreur.setText("");
 
 
 		/*--------------------------------------------------*/
@@ -50,7 +54,7 @@ public class FrameGUI extends JFrame
 		/*--------------------------------------------------*/	
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		this.setVisible(true);
+		this.setVisible(true); //enlever le text qui a permit l'initialisation
 
 	}
 

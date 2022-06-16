@@ -24,7 +24,7 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
     public panelApplication2(JFrame frmParent)
     {
         this.frmParent = frmParent;
-        this.choix     = "";
+        this.choix     = "Simple"; //par defaut
 
         /*---------------------------------*/
         /*     Création des composants     */

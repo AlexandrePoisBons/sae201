@@ -9,6 +9,8 @@ import java.awt.CheckboxGroup;
 import java.awt.Checkbox;
 import java.awt.event.*;
 import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class PanelChoixFormat extends JPanel implements ActionListener, ItemListener
 {
@@ -37,26 +39,75 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         /*     Création des composants     */
         /*---------------------------------*/
         this.bgFormat           = new ButtonGroup();
-        this.rbMatrice          = new JRadioButton("Matrice", true); 
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+/*/
+        if (shouldFill) {
+                        //natural height, maximum width
+                        c.fill = GridBagConstraints.HORIZONTAL;
+        }
+*/
+        this.rbMatrice          = new JRadioButton("Matrice", true); ;
+ //       if (shouldWeightX) { c.weightx = 0.5; }
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx    = 2;
+        c.gridx      = 0;
+        c.gridwidth  = 2;
+        c.gridy      = 0;
+        this.add(this.rbMatrice, c);
+
         this.rbMatriceOpti      = new JRadioButton("Matrice Opti");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx   = 2;
+        c.gridx     = 2;
+        c.gridwidth = 2;
+        c.gridy     = 0;
+        this.add(this.rbMatriceOpti, c);
+
         this.rbListeAdjacence   = new JRadioButton("Liste Adjacence");
-        this.btnFinir           = new JButton("Générer .txt et quitter ");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx   = 2;
+        c.gridx     = 4;
+        c.gridwidth = 2;
+        c.gridy     = 0;
+        this.add(this.rbListeAdjacence, c);
+
+        this.btnFinir           = new JButton("Générer .txt et quitter ");    
+        c.fill      = GridBagConstraints.HORIZONTAL;
+        c.gridy     = 1;       //reset to default
+        c.weightx   = 0.5;   //request any extra vertical space
+        c.weighty   = 1;
+        c.gridx     = 0;       //aligned with button 2
+        c.gridwidth = 3;   //2 columns wide
+        this.add(this.btnFinir, c);
+
         this.btnCreer           = new JButton("Générer .txt et afficher ");
-        
+        c.fill      = GridBagConstraints.HORIZONTAL;
+        c.gridy     = 1;       //reset to default
+        c.weightx   = 0.5;   //request any extra vertical space
+        c.weighty   = 1;
+        c.gridx     = 3;       //aligned with button 2
+        c.gridwidth = 3;   //2 columns wide
+        this.add(this.btnCreer, c);
+
+/*
         this.bgFormat.add(this.rbMatrice);
         this.bgFormat.add(this.rbMatriceOpti);
         this.bgFormat.add(this.rbListeAdjacence);
+*/
         /*---------------------------------*/
 
         /*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+/*
         this.add(this.rbMatrice);
         this.add(this.rbMatriceOpti);
         this.add(this.rbListeAdjacence);
         this.add(this.btnFinir);
         this.add(this.btnCreer);
         this.add(new JLabel());
+*/
         /*-------------------------------*/
 
         /*-----------------------------------*/

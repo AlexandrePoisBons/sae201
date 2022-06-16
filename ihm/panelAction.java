@@ -27,11 +27,12 @@ public class panelAction extends JPanel implements ActionListener
     {
         this.frmParent = frmParent;
         this.ctrl      = ctrl;
-        this.setLayout(new GridLayout(3, 2));
-        this.setPreferredSize(new Dimension(100, 100));
+        this.setLayout(new GridLayout(3,2));
+
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
         this.lblCuve        = new JLabel("Cuve a remplir");
         this.lblQuantite    = new JLabel("Quantite");
         this.lstCuveRemplir = new JComboBox<String>();
