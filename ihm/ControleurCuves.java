@@ -11,15 +11,16 @@ import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.File;
 import java.io.IOException;
-
 public class ControleurCuves
 {
-    private ArrayList<Cuve>  ensCuves;
+    public  ArrayList<Cuve>  ensCuves;  //REMETTRE EN PRIVE APRES TESTS
     public  ArrayList<Tuyau> ensTuyau; // en public juste pour tester
     private JFrame           ihm;
     private Metier           metier;
     private String           choix;
     private int              nbCuves;
+    private int              cptEquilibre = 0;
+    private boolean          estEquilibre;
     /*
      *Completer
      * 
@@ -224,35 +225,87 @@ public class ControleurCuves
 
         // puis lance l'affichage du reseau
         this.generer();
-        Collections.sort(this.ensCuves);
-        for ( Cuve cu: this.ensCuves )
-            System.out.println(cu);
 
     }
-    /*------------------------------------------------------*/
 
-    /*
-    public ArrayList<Cuve> trier() 
+    public void trier(ArrayList<Cuve> lstATrier)
     {
-        for (int i = 0; i < this.ensCuves.size(); i++)
-        {
-            Cuve min = this.ensCuves.get(i);
-            int minId = i;
-            for (int j = i+1; j < this.ensCuves.size(); j++)
-            {
-                if (this.ensCuves.get(j).getContenu() > min.getContenu()) {
-                    min = this.ensCuves.get(j);
-                    minId = j;
-                }
-            }
-            // swapping
-            Cuve temp = this.ensCuves.get(i);
-            this.ensCuves.set(i, min);
-            this.ensCuves.set(minId, temp);
-        }
-        return this.ensCuves;
+        Collections.sort(lstATrier);
     }
-    */
+
+
+
+    // transfert de la cuve la plus pleine vers ses voisins les plus vides
+    ArrayList<Cuve> transmetteurs = new ArrayList<Cuve>();
+    int totalSection = 0;
+    int checkContenu = 0;
+    public void transferer(Cuve cuveDepart)
+    {
+        while (!estEquilibre)
+        {
+            transmetteurs.add(cuveDepart);
+            // pour chacun de mes voisins
+            for (Cuve voisin: cuveDepart.getVoisins())
+            {
+                transmetteurs.clear();
+                // pour chacun des voisins de mes voisins
+                for (Cuve voisin2: voisin.getVoisins() )
+                {
+                    // je suis le voisin de mon voisin 
+                    if (voisin2 != cuveDepart)
+                        totalSection += voisin.getTuyauEntre(voisin2).getSection();
+                    
+                    // si le voisin du voisin que je regarde n'est pas moi
+                    else
+                    {
+                        // et si son contenu et le meme que moi alors transfert
+                        if (voisin2.getContenu() == cuveDepart.getContenu())
+                        {
+                            transmetteurs.add(voisin2);
+                            totalSection += voisin.getTuyauEntre(voisin2).getSection();
+                        }
+                    }
+                }
+                
+                for (Cuve transmet: transmetteurs)
+                {
+                    
+                    if(voisin.getPlaceLibre() < transmet.getTuyauEntre(voisin).getSection())
+                    {
+                        double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
+                        //System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId());
+                        voisin.recevoirDe(transmet, qte);
+                        //System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
+                    }
+                    else
+                    {
+                        double diff = transmet.getContenu()-voisin.getContenu();
+                        if ( diff <= transmet.getTuyauEntre(voisin).getSection())
+                        {
+                            voisin.recevoirDe(transmet, diff/2);
+                            estEquilibre = true ;
+                        }
+                        //System.out.println("transmetteur: " + transmet.getId()+ ", voisin (receveur) a: "+voisin.getId());
+                        transmet.couler(voisin, transmet.getTuyauEntre(voisin));
+                        //System.out.println("contenu du receveur ("+voisin.getId() + ") apres transfert: "+ voisin.getContenu());
+                    }
+                    
+                    
+                    
+                } 
+
+            }
+            this.trier(this.ensCuves);
+            this.transferer(this.ensCuves.get(0));
+        }
+        for (Cuve c: this.ensCuves)
+            System.out.println(c);
+               
+    }
+         
+    /*------------------------------------------------------*/
+    
+ 
 
     // ecrit dans un .txt le contenu du reseaux (cuves, tuyaux, matrice correspondante sous la forme choisie) 
     public void ecrire(String format)
@@ -343,3 +396,48 @@ public class ControleurCuves
         //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
+
+/*
+
+    while (!estEquilibre)
+    {
+        Cuve cuveActuelle = cuveDepart; // on regarde la cuve actuelle
+        this.trier(cuveActuelle.getVoisins());// on trie ses voisins par cuve la + remplie
+
+        ArrayList<Cuve> lstATransferer = new ArrayList<Cuve>();              
+        
+        for (Cuve cTest: cuveActuelle.getVoisins())
+        {
+            if (cTest != cuveActuelle.getVoisins().get(0) && cTest.getContenu() == cuveActuelle.getVoisins().get(0).getContenu() )
+                estEquilibre = true;
+        }
+        if (!estEquilibre)                    
+            transferer(cuveActuelle, cuveActuelle.getVoisins().get(0));
+
+
+           /*
+
+    // si la place libre de la cuve est + petite que deux section 
+    if(voisin.getPlaceLibre() < Cuve.getTuyauEntre(cuveDepart, voisin2) + Cuve.getTuyauEntre(voisin, voisin2) )
+
+    public ArrayList<Cuve> trier() 
+    {
+        for (int i = 0; i < this.ensCuves.size(); i++)
+        {
+            Cuve min = this.ensCuves.get(i);
+            int minId = i;
+            for (int j = i+1; j < this.ensCuves.size(); j++)
+            {
+                if (this.ensCuves.get(j).getContenu() > min.getContenu()) {
+                    min = this.ensCuves.get(j);
+                    minId = j;
+                }
+            }
+            // swapping
+            Cuve temp = this.ensCuves.get(i);
+            this.ensCuves.set(i, min);
+            this.ensCuves.set(minId, temp);
+        }
+        return this.ensCuves;
+    }
+*/

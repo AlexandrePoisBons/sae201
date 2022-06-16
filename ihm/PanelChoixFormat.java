@@ -31,7 +31,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.frmParent = frmParent;
         this.format    = "";
 
-        this.setLayout(new GridLayout(2, 3));
+        //this.setLayout(new GridLayout(2, 3));
 
         /*---------------------------------*/
         /*     Création des composants     */

@@ -3,6 +3,7 @@ package sae201.metier;
 // Pour les structures de données
 import java.util.ArrayList;
 import java.util.List;
+import sae201.ihm.*;
 
 // Pour la lecture des saisies claviers
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class TestEcoulementAuto2
 {
 	public static void main(String[] args)
 	{
+		ControleurCuves ctrl = new ControleurCuves("Manuel");
 		/*-----------------------------------*/
 		/*			  Variables              */
 		/*-----------------------------------*/
@@ -41,26 +43,8 @@ public class TestEcoulementAuto2
 		alCuves = new ArrayList<Cuve>();
 		alTuyau = new ArrayList<Tuyau>();
 
-		// Instanciations des cuves
-		alCuves.add( Cuve.creerCuve( 500,  50, 50, "Haut"   ) );
-		alCuves.add( Cuve.creerCuve( 600,  80, 70, "Bas"    ) );
-		alCuves.add( Cuve.creerCuve( 200, 150, 80, "Gauche" ) );
-		alCuves.add( Cuve.creerCuve( 300, 250, 70, "dRoite" ) );
-
-		// Instanciations des tuyaux
-		alTuyau.add( Tuyau.creerTuyau( 5 ) ); // Tuyau 1
-		alTuyau.add( Tuyau.creerTuyau( 3 ) ); // Tuyau 2
-
-		// Création des liens
-		alTuyau.get(0).setLien( alCuves.get(0), alCuves.get(1) ); // lier tuyau 1 a A et B
-		alTuyau.get(1).setLien( alCuves.get(2), alCuves.get(3) ); // lier tuyau 2 a C et D
-
-		// Remplissage des cuves
-		alCuves.get(0).remplir(200); // remplir A à 200 
-		alCuves.get(2).remplir( 50); // remplir C à 50
-
-		
-		for ( Cuve c : alCuves )
+		System.out.println("avant tri");
+		for ( Cuve c : ctrl.getCuves())
 			System.out.println( c );
 
 
@@ -84,7 +68,11 @@ public class TestEcoulementAuto2
 					sc.nextLine();
 				}
 			}			
-		}		
+		}
+		ctrl.trier(ctrl.ensCuves);
+		System.out.println("\nApres tri");
+		for ( Cuve c : ctrl.getCuves())
+			System.out.println( c );
 	}
 
 	public static List<Double> calculerTransfert( List<Cuve> alCuves, List<Tuyau> alTuyau, Cuve cuvePara )

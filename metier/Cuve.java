@@ -16,6 +16,10 @@ public class Cuve implements Comparable<Cuve>
     private Color  couleur;
     private ArrayList<Tuyau> lstTuyauxConnectes;
 
+    private int     posXLabel;
+    private int     posYLabel;
+    private String  contenuLabel;
+
     /*-----------------------------------------------------------*/
     /*                     Constructeur Cuve                     */
     /*-----------------------------------------------------------*/
@@ -29,6 +33,9 @@ public class Cuve implements Comparable<Cuve>
         this.position           = position;
         this.lstTuyauxConnectes = new ArrayList<Tuyau>();
         this.couleur            = new Color(255,255,255);
+        this.contenuLabel       = "<html>"+this.getId()+"<br>"+"00"+this.getContenu()+"/"+this.getCapacite()+"</html>";
+        this.posXLabel          = this.getPosX()-(this.getCapacite()/5)-10;
+        this.posYLabel          = this.getPosY()-(int) (this.getCapacite()/5)-5;
     }
  
 
@@ -110,6 +117,7 @@ public class Cuve implements Comparable<Cuve>
     
         this.contenu += quantite;
         this.majCouleur();
+        this.majLabel();
         return true;
         
     }
@@ -139,6 +147,7 @@ public class Cuve implements Comparable<Cuve>
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
+            this.majLabel();
 
             return true;            
         }
@@ -151,6 +160,7 @@ public class Cuve implements Comparable<Cuve>
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
+            this.majLabel();
 
             return true;
         }
@@ -159,7 +169,9 @@ public class Cuve implements Comparable<Cuve>
         cuveDest.contenu += tuyau.getSection();
         this.contenu     -= tuyau.getSection();
         this.majCouleur();
+        this.majLabel();
         cuveDest.majCouleur();
+        cuveDest.majLabel();
 
         return true;    
     }
@@ -176,7 +188,9 @@ public class Cuve implements Comparable<Cuve>
         this.contenu     += transfert;
         cuveDest.contenu -= transfert;
         cuveDest.majCouleur();
+        cuveDest.majLabel();
         this.majCouleur();
+        this.majLabel();
     }
 
 
@@ -191,7 +205,6 @@ public class Cuve implements Comparable<Cuve>
     public void majCouleur()
     {// mettre notre contenu sur 1000 puis apres easy
         int rgbValue = (int)(this.contenu)/2; // renvoie un nombre [0; 500]
-        System.out.println("Couleur: "+rgbValue);
         //System.out.println(rgbValue);
         if ( rgbValue > 255)
             this.couleur = new Color(255-rgbValue/2, 0, 0);
@@ -201,6 +214,13 @@ public class Cuve implements Comparable<Cuve>
             this.couleur = new Color(255,diff, diff);
         }
         
+    }
+
+    public void majLabel()
+    {
+        this.contenuLabel       = "<html>"+this.getId()+"<br>"+"00"+this.getContenu()+"/"+this.getCapacite()+"</html>";
+        this.posXLabel          = this.getPosX()-(this.getCapacite()/5)-10;
+        this.posYLabel          = this.getPosY()-(int) (this.getCapacite()/5)-5;
     }
 
     /*------------------------------------------------------------------------*/
@@ -215,12 +235,16 @@ public class Cuve implements Comparable<Cuve>
     public double getContenu    () { return this.contenu;                      }
     public String getPosition   () { return this.position;                     }
     public Color  getCouleur    () { return this.couleur;                      }
-    public int    getNbTuyaux   () { return this.lstTuyauxConnectes.size();    }
+    public int    getNbTuyaux   () { return this.lstTuyauxConnectes.size();    }   
      
-    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
+    public boolean estVide   ()    { return this.contenu == 0;                 }
+    public boolean estPleine ()    { return this.capacite == this.contenu;     }
 
-    public boolean estVide   () { return this.contenu == 0;             }
-    public boolean estPleine () { return this.capacite == this.contenu; }
+    public int getPosXLabel()      { return this.posXLabel;                     }
+    public int getPosYLabel()      { return this.posYLabel;                     }
+    public String getContenuLabel(){ return this.contenuLabel;                  }
+
+    public ArrayList<Tuyau> getTuyauxConnectes() { return this.lstTuyauxConnectes; }
   
     
     /*------------------------------------------------*/
@@ -240,6 +264,25 @@ public class Cuve implements Comparable<Cuve>
             return false;
     }
 
+    // Pour chaque tuyau dans les tuyaux connectes
+    // si la destination n'est pas nous alors voisin
+    // sinon l'origine est le voisin 
+    public ArrayList<Cuve> getVoisins()
+    {
+        ArrayList<Cuve> voisins = new ArrayList<Cuve>();
+        for (Tuyau t: this.getTuyauxConnectes())
+        {
+            if ( t.getCuveDest() != this)
+            {
+                voisins.add(t.getCuveDest());
+            }
+            else
+            {
+                voisins.add( t.getCuveOrig() );
+            } 
+        }
+        return voisins;
+    }
 
     /*-----------------------------------------------*/
     /*   Renvoie le tuyau qui relie la cuve actuelle */
@@ -265,10 +308,7 @@ public class Cuve implements Comparable<Cuve>
 
     public int compareTo(Cuve cuve2)
     {
-        if ( this.getContenu() >  cuve2.getContenu() ) return  1;
-        if ( this.getContenu() == cuve2.getContenu() ) return  0;
-        if ( this.getContenu() >  cuve2.getContenu() ) return -1;
-        else return 99;
+       return Double.compare(cuve2.contenu, this.contenu);
     }
 
     public static void decrement()
