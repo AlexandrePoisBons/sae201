@@ -12,7 +12,7 @@ import sae201.Controleur;
 import sae201.metier.*;
 import java.awt.Color;
 
-public class PanelCuves extends JPanel //implements ActionListener
+public class PanelCuves extends JPanel implements Scrollable
 {
 	private ControleurCuves   ctrl;
     private ArrayList<Cuve>   ensCuves;
@@ -94,5 +94,31 @@ public class PanelCuves extends JPanel //implements ActionListener
         }
 
     }
+
+	public Dimension getPreferredSize() {
+		return new Dimension(this.ctrl.getMaxX() + 200, this.ctrl.getMaxY() + 200);
+	}
+	
+	public Dimension getPreferredScrollableViewportSize() {
+		return new Dimension(1280, 720);
+	}
+
+	public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
+		return 128;
+	}
+
+	public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
+		return 128;
+	}
+
+	public boolean getScrollableTracksViewportWidth() {
+		return getPreferredSize().width
+						<= getParent().getSize().width;
+	}
+
+	public boolean getScrollableTracksViewportHeight() {
+		return getPreferredSize().height
+						<= getParent().getSize().height;
+	}
 
 }

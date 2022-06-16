@@ -118,32 +118,5 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
             new FrameFormat(this.ctrl);
             this.frmParent.dispose();
         }
-        
-		//this.ctrl.generer();
-	}
-
-    /*
- * Cuve[] cuveALier= new Cuve[2];
-		for (int j=0; j< nbTuyaux; j++)
-		{
-			System.out.print("Quelles cuves voulez vous relier ?\n");
-			String stringCuve1 = sc.next();
-			String stringCuve2 = sc.next();
-			for (Cuve c :ensCuves)
-			{
-				if (c.getId() == stringCuve1.charAt(0)) 
-					cuveALier[0] =  c;
-				if (c.getId() == stringCuve2.charAt(0))
-					cuveALier[1] = c;
-			}
-
-			
-			//ensTuyau.get(ensTuyau.lastIndexOf(t)).setLien(cuveALier[0], cuveALier[1]); --> lier directement
-
-			// Verifier si le tuyau n'existe pas deja // Erreur ici ou Tuyau.equals
-			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
-
-			
-						
- */
+    }
 }

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.CheckboxGroup;
 import java.awt.Checkbox;
 import java.awt.event.*;
+import java.awt.GridLayout;
 
 public class PanelChoixFormat extends JPanel implements ActionListener, ItemListener
 {
@@ -30,15 +31,17 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.frmParent = frmParent;
         this.format    = "";
 
+        this.setLayout(new GridLayout(2, 3));
+
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
         this.bgFormat           = new ButtonGroup();
-        this.rbMatrice          = new JRadioButton("Matrice"); 
+        this.rbMatrice          = new JRadioButton("Matrice", true); 
         this.rbMatriceOpti      = new JRadioButton("Matrice Opti");
         this.rbListeAdjacence   = new JRadioButton("Liste Adjacence");
-        this.btnFinir           = new JButton("Générer .txt");
-        this.btnCreer           = new JButton("Afficher Reseaux Cuves");
+        this.btnFinir           = new JButton("Générer .txt et quitter ");
+        this.btnCreer           = new JButton("Générer .txt et afficher ");
         
         this.bgFormat.add(this.rbMatrice);
         this.bgFormat.add(this.rbMatriceOpti);
@@ -53,6 +56,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.add(this.rbListeAdjacence);
         this.add(this.btnFinir);
         this.add(this.btnCreer);
+        this.add(new JLabel());
         /*-------------------------------*/
 
         /*-----------------------------------*/

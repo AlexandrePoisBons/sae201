@@ -310,6 +310,33 @@ public class ControleurCuves
         return this.nbCuves;
     }
 
+    public int getMaxX()
+    {
+        int x = 0;
+        for (Cuve c: this.ensCuves)
+        {
+            if (c.getPosX() > x)
+                x = c.getPosX();
+        }
+        return x;
+    }
+
+    public int getMaxY()
+    {
+        int y = 0;
+        for (Cuve c: this.ensCuves)
+        {
+            if (c.getPosY() > y)
+                y = c.getPosY();
+        }
+        return y;
+    }
+
+    public ArrayList<Cuve> getCuves()
+    {
+        return this.ensCuves;
+    }
+
     public static void main(String[] args)
     {    
         new ControleurCuves("Manuel");
