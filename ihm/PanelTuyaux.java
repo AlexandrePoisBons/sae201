@@ -45,7 +45,21 @@ public class PanelTuyaux extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-		new FrameSelectTuyau(this.ctrl, Integer.parseInt(this.txtNbCuves.getText()));
-		this.frmParent.dispose();
+		int nbTuyaux = Integer.parseInt(this.txtNbCuves.getText());
+		int nbCuves  = this.ctrl.getNbCuves();
+		int nbMax 	 = nbCuves*(nbCuves-1)/2;
+
+		if (nbTuyaux <= nbMax)
+		{
+			new FrameSelectTuyau(this.ctrl, nbTuyaux);
+			this.frmParent.dispose();
+		}
+
+		else
+		{
+			this.txtNbCuves.setText("");
+			this.frmParent.majErreur(nbMax);
+		}
+		
 	}
 }

@@ -305,6 +305,11 @@ public class ControleurCuves
         this.nbCuves = nbCuves;
     }
 
+    public int getNbCuves()
+    {
+        return this.nbCuves;
+    }
+
     public static void main(String[] args)
     {    
         new ControleurCuves("Manuel");
