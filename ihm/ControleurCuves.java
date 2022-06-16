@@ -20,7 +20,7 @@ public class ControleurCuves
     private String           choix;
     private int              nbCuves;
     private int              cptEquilibre = 0;
-    private boolean          estEquilibre;
+    //private boolean          estEquilibre;
     /*
      *Completer
      * 
@@ -234,27 +234,39 @@ public class ControleurCuves
     }
 
 
-
     // transfert de la cuve la plus pleine vers ses voisins les plus vides
     ArrayList<Cuve> transmetteurs = new ArrayList<Cuve>();
+    boolean estEquilibre = false;
     int totalSection = 0;
     int checkContenu = 0;
     public void transferer(Cuve cuveDepart)
     {
-        while (!estEquilibre)
+        // si le contenu de la 1ere est le meme que la derniere les autres sont tous egaux donc equilibre 
+        if ( (this.ensCuves.get(0).getContenu()) == (this.ensCuves.get(this.ensCuves.size()-1).getContenu()) )
+        {
+            this.estEquilibre = true;
+            System.out.println("Les cuves sont equilibree");
+        }
+
+        if (!this.estEquilibre)
         {
             transmetteurs.add(cuveDepart);
             // pour chacun de mes voisins
+            
             for (Cuve voisin: cuveDepart.getVoisins())
             {
                 transmetteurs.clear();
+                totalSection = 0;
+
                 // pour chacun des voisins de mes voisins
                 for (Cuve voisin2: voisin.getVoisins() )
                 {
                     // je suis le voisin de mon voisin 
-                    if (voisin2 != cuveDepart)
+                    if (voisin2.equals(cuveDepart))
+                    {
+                        transmetteurs.add(voisin2);
                         totalSection += voisin.getTuyauEntre(voisin2).getSection();
-                    
+                    }
                     // si le voisin du voisin que je regarde n'est pas moi
                     else
                     {
@@ -262,6 +274,7 @@ public class ControleurCuves
                         if (voisin2.getContenu() == cuveDepart.getContenu())
                         {
                             transmetteurs.add(voisin2);
+                            System.out.println(transmetteurs);
                             totalSection += voisin.getTuyauEntre(voisin2).getSection();
                         }
                     }
@@ -272,22 +285,31 @@ public class ControleurCuves
                     
                     if(voisin.getPlaceLibre() < transmet.getTuyauEntre(voisin).getSection())
                     {
+                        //chauqe trasnemtteur ennvoie ca
                         double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
-                        //System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId());
+                        System.out.println("-------------Flag1----------");
+                        System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
                         voisin.recevoirDe(transmet, qte);
-                        //System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
+                        System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
                     }
                     else
                     {
-                        double diff = transmet.getContenu()-voisin.getContenu();
+                        //cas 'ping-pong'
+                        double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
+                            System.out.println("-------------Flag2----------");
                             voisin.recevoirDe(transmet, diff/2);
-                            estEquilibre = true ;
+                            System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
+                            //estEquilibre = true ;
                         }
-                        //System.out.println("transmetteur: " + transmet.getId()+ ", voisin (receveur) a: "+voisin.getId());
+                        else
+                        {
+                        System.out.println("-------------Flag3----------");
+                        System.out.println("transmetteur: " + transmet.getId()+ ", voisin (receveur) a: "+voisin.getId());
                         transmet.couler(voisin, transmet.getTuyauEntre(voisin));
-                        //System.out.println("contenu du receveur ("+voisin.getId() + ") apres transfert: "+ voisin.getContenu());
+                        System.out.println("contenu du receveur ("+voisin.getId() + ") apres transfert: "+ voisin.getContenu());
+                        }
                     }
                     
                     
@@ -296,7 +318,7 @@ public class ControleurCuves
 
             }
             this.trier(this.ensCuves);
-            this.transferer(this.ensCuves.get(0));
+            //this.transferer(this.ensCuves.get(0));
         }
         for (Cuve c: this.ensCuves)
             System.out.println(c);

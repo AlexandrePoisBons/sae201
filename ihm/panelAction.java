@@ -76,6 +76,7 @@ public class panelAction extends JPanel implements ActionListener
             this.frmParent.repaint();
             this.ctrl.trier(this.ctrl.ensCuves);                   // trier par ordre decroissant de contenu
             this.ctrl.trier(this.ctrl.ensCuves.get(0).getVoisins());// trier les voisins de la cuve la + remplie
+            this.ctrl.estEquilibre = false;
             for (Cuve c: this.ctrl.getCuves())
             {
                 System.out.println(c);

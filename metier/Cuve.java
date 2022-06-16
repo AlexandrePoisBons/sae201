@@ -218,7 +218,8 @@ public class Cuve implements Comparable<Cuve>
 
     public void majLabel()
     {
-        this.contenuLabel       = "<html>"+this.getId()+"<br>"+"00"+this.getContenu()+"/"+this.getCapacite()+"</html>";
+        String arrondi          = String.format("%.2f", this.getContenu());
+        this.contenuLabel       = "<html>"+this.getId()+"<br>"+"00"+arrondi+"/"+this.getCapacite()+"</html>";
         this.posXLabel          = this.getPosX()-(this.getCapacite()/5)-10;
         this.posYLabel          = this.getPosY()-(int) (this.getCapacite()/5)-5;
     }
