@@ -5,6 +5,8 @@ import sae201.metier.*;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.GridLayout;
 
@@ -13,16 +15,24 @@ public class FrameTuyaux extends JFrame
 {
 	private ControleurCuves ctrl;
 	private PanelTuyaux     panelInfo;
+	private JPanel 			panelErreur;
+	private JLabel 			lblErreur;
 
 	public FrameTuyaux(ControleurCuves ctrl)
 	{
 		this.ctrl      = ctrl;
-		this.panelInfo = new PanelTuyaux(this, this.ctrl);
 
 		this.setTitle("Frame Tuyaux");
 		this.setSize (500, 200);
 
-		this.add(this.panelInfo);
+		this.panelInfo   = new PanelTuyaux(this, this.ctrl);
+		this.panelErreur = new JPanel();
+		this.lblErreur   = new JLabel();
+
+		this.panelErreur.add(this.lblErreur);
+
+		this.add(this.panelInfo,   BorderLayout.NORTH);
+		this.add(this.panelErreur, BorderLayout.CENTER);
 
 	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,5 +62,6 @@ public class FrameTuyaux extends JFrame
 	{
 		this.lblErreur.setText("Il y a" + this.ctrl.getNbCuves() + "dans votre reseau, vous ne pouvez ainsi pas creer
 								plus de "+ nbMax +" tuyaux");
+		this.lblErreur.setForeground(Color.RED);
 	}
 } 
