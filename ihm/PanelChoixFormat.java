@@ -85,6 +85,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         {
             this.ctrl.ecrire(this.format);
             this.frmParent.dispose();
+            alreadyChecked = true;
         }
     }
 
@@ -92,15 +93,12 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     {
         if (e.getSource() == this.rbMatrice)
             this.format = "Matrice";
-            this.alreadyChecked = true;
 
         if (e.getSource() == this.rbMatriceOpti)
             this.format = "Matrice Optimisee";
-            this.alreadyChecked = true;
 
         if (e.getSource() == this.rbListeAdjacence)
             this.format = "Liste d'Adjacence";
-            this.alreadyChecked = true;
         
     }
 }
