@@ -82,10 +82,12 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
+        this.stringErreurs = "";
+        
         int capacite    = 0;
         int posX        = 0;     
         int posY        = 0;      
-        String position = "";
+        String position = "";        
 
         boolean erreur      = false;
         boolean erreurLigne = false;;

@@ -103,11 +103,8 @@ public class Cuve implements Comparable<Cuve>
 
     public boolean remplir(double quantite)
     {
-        if ( quantite > this.getPlaceLibre() || quantite < 0)
+        if ( quantite > this.getPlaceLibre() || quantite < 0 || this.estPleine())
         {
-            if (this.getPlaceLibre() != 0.0)
-                this.contenu = 0.0;
-            this.majCouleur();
             return false;
         }
     

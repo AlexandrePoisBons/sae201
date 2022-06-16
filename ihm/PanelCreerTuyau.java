@@ -71,7 +71,8 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 	{
         boolean erreurLigne = false;
         boolean erreur      = false;
-
+        this.stringErreur = "";
+        
         int taille = this.lstTextFields.size();
         for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
         {
