@@ -72,7 +72,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         boolean erreurLigne = false;
         boolean erreur      = false;
         this.stringErreur = "";
-        
+
         int taille = this.lstTextFields.size();
         for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
         {
@@ -102,10 +102,13 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
                 }
 
             }
-           
+            if (erreurLigne)
+                erreur = true;
+        }
 
-            //Sysout pour tester//
-            erreur = erreurLigne;
+        if (erreur)
+        {
+            this.frmParent.majErreur(stringErreur);
         }
 
         if (!erreur)
@@ -113,11 +116,6 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
             new FrameLierTuyaux(this.ctrl, this.nbTuyaux);
             this.ctrl.setTuyau(this.lstTuyaux);
             this.frmParent.dispose();
-        }
-
-        if (erreur)
-        {
-            this.frmParent.majErreur(stringErreur);
         }
         //this.parent.maj(this.lstTuyaux);
 
