@@ -77,7 +77,8 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
         {
             erreurLigne = false;
-            if (this.lstTextFields.get(cpt).isEditable()==false)
+
+            if (this.lstTextFields.get(cpt).isEditable()==true)
             {
                 String saisie = this.lstTextFields.get(cpt).getText();
                 if ( saisie.matches("[0-9]+") )

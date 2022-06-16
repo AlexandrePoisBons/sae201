@@ -83,14 +83,15 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 	public void actionPerformed (ActionEvent ae)
 	{
         this.stringErreurs = "";
-        
+
         int capacite    = 0;
         int posX        = 0;     
         int posY        = 0;      
         String position = "";        
 
         boolean erreur      = false;
-        boolean erreurLigne = false;;
+        boolean erreurLigne = false;
+        
         int taille = this.lstTextFields.size();
         for(int i=0; i < taille; i=i+4) // pour chaque ligne 
         {
