@@ -120,10 +120,6 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 // 2 - Verifier que la capacite est valide sinon remet les champs vides
                 if ( !erreurLigne && capacite < 200 || capacite > 1000 )
                 {
-                    this.lstTextFields.get(i).setText("");
-                    this.lstTextFields.get(i+1).setText("");
-                    this.lstTextFields.get(i+2).setText("");
-                    this.lstTextFields.get(i+3).setText("");
                     this.stringErreurs += "Capacite < 200 ou > 1000\n";
                     erreurLigne = true;
                 }
