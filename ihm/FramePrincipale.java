@@ -51,8 +51,8 @@ public class FramePrincipale extends JFrame
       // Permet d'étendre la fenêtre en fonction de la taille de l'écran
       this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 
-      // Permet de cacher la fenêtre est fermé
-      this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      // Permet de femer la fenêtre une fois fini
+      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       // Permet d'empêcher de changer la taille de la fenêtre
       this.setResizable(false);
