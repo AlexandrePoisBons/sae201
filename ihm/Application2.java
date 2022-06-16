@@ -9,7 +9,6 @@ public class Application2 extends JFrame
     public Application2()
     {
         this.setTitle("Application 2");
-        this.setSize (300, 300);
         
         /*---------------------------------*/
         /*     Création des composants     */
@@ -21,10 +20,9 @@ public class Application2 extends JFrame
         /* Positionnement des composants */
         /*-------------------------------*/
         this.add(this.panel);
-
-
-        this.setResizable(false);
         this.setVisible(true);
+        this.pack();
+        this.setResizable(false);
     } 
 
     public static void main(String[] args)

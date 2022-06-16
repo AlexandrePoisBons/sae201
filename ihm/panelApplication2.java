@@ -31,7 +31,7 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         /*---------------------------------*/
         this.bgChoix    = new ButtonGroup ();
 
-        this.rbSimple   = new JRadioButton("Simple ( recommande ) "                   ); 
+        this.rbSimple   = new JRadioButton("Simple ( recommande ) "                   , true); 
         this.rbAvance   = new JRadioButton("Avance ( a partir d'un fichier existant )");
         this.rbManuel   = new JRadioButton("Manuel ( entrer donnees manuellement )"   );
 
@@ -63,10 +63,8 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
 
     public void actionPerformed(ActionEvent e)
     {
-        //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
         if (!alreadyChecked)
         {
-            //this.ctrl.lancerApp(this.choix);
             this.ctrl = new ControleurCuves(this.choix);
             this.frmParent.dispose();
             alreadyChecked = true;

@@ -13,15 +13,18 @@ public class Metier
     /*--------------*/
     /* Constructeur */
     /*--------------*/
+
     public Metier(ControleurCuves ctrl)
     {
         this.lstCuves  = new ArrayList<Cuve>();
         this.lstTuyaux = new ArrayList<Tuyau>(); 
     }
 
+
     /*-----------------------------------------*/
     /*          Création des Matrices          */
     /*-----------------------------------------*/
+
     public static Tuyau[][] creerMatrice(ArrayList<Cuve> lstCuves, ArrayList<Tuyau> lstTuyaux, int taille)
     {
         Tuyau [][] matrice = new Tuyau [taille][taille];
@@ -40,9 +43,11 @@ public class Metier
         return matrice;       
     }
 
+
     /*---------------------------------*/
     /* Affichage de la Matrice de coût */
     /*---------------------------------*/
+
     public static String afficherMatrice(Tuyau[][] matrice)
     {
         String sRet = "";
@@ -59,11 +64,12 @@ public class Metier
         }
         return sRet;
     }
-    /*---------------------------------*/
+
 
     /*-----------------------------------*/
     /* Affichage de la Matrice Optimisée */
     /*-----------------------------------*/
+
     public static String afficherMatriceOpti(Tuyau[][] matrice)
     {
         String sRet = "";
@@ -80,11 +86,12 @@ public class Metier
         }
         return sRet;
     }
-    /*-----------------------------------*/
+    
 
     /*-----------------------------------*/
     /* Affichage de la Liste d'adjacence */
     /*-----------------------------------*/
+
     public static String afficherListeAdjacence( Tuyau[][] matrice )
     {
         String sRet = "";
@@ -101,7 +108,6 @@ public class Metier
         }
         return sRet;
     }
-    /*----------------------------------*/
 
 
     public static void main(String[] args)

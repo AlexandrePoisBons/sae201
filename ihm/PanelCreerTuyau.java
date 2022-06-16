@@ -35,9 +35,11 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
         this.setLayout(new BorderLayout());
 		
+
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
         this.panelDonnes = new JPanel();
         this.panelDonnes.setLayout(new GridLayout(this.nbTuyaux+1, 1));
 
@@ -47,11 +49,12 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
 		for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
             this.lstTextFields.add(new JTextField());
-        /*---------------------------------*/
+
 
         /*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
         this.panelDonnes.add(this.lblSection);
 
         for(JTextField txt: this.lstTextFields)
@@ -59,11 +62,12 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
         this.add(this.panelDonnes, BorderLayout.CENTER);
         this.add(this.btnCreer, BorderLayout.SOUTH);
-        /*-------------------------------*/
+
 
         /*-----------------------------------*/
         /*     Activation des composants     */
         /*-----------------------------------*/
+        
         this.btnCreer.addActionListener(this);
 	}
 
@@ -87,19 +91,18 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
                     if (section > 1 && section < 11)
                     {
                         this.lstTuyaux.add(Tuyau.creerTuyau(section));
-                        //System.out.println(this.lstTuyaux.get(cpt));
                         this.lstTextFields.get(cpt).setEditable(false);
                     }
                     else
                     {
                         erreurLigne = true;
-                        this.stringErreur += "La section doit etre comprise entre [2; 10]";
+                        this.stringErreur += "La section doit etre comprise entre [ 2; 10 ]";
                     }
                 }
                 else
                 {
                     erreurLigne = true;
-                    this.stringErreur += "La section doit etre un nombre entier | ";
+                    this.stringErreur += "La section doit etre un nombre entier ! ";
                 }
 
             }
@@ -118,7 +121,6 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
             this.ctrl.setTuyau(this.lstTuyaux);
             this.frmParent.dispose();
         }
-        //this.parent.maj(this.lstTuyaux);
 
     }
 

@@ -18,20 +18,24 @@ public class FrameFormat extends JFrame
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
         this.panelChoixFormat = new PanelChoixFormat(this, ctrl);
+
 
         /*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
         this.add(this.panelChoixFormat);
+
 
         /*--------------------------------------------------*/
         /*               Concernant la JFrame               */
         /*--------------------------------------------------*/
-    //    this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
-        /*---------------------------------------------------*/
+        
     }
 }

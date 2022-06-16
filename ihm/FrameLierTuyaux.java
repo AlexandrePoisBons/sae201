@@ -27,23 +27,27 @@ public class FrameLierTuyaux extends JFrame
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
 		this.panelInfo 	 = new PanelLierTuyaux(this, this.ctrl, nbTuyaux);
-		this.panelErreur = new JPanel();	
+		this.panelErreur = new JPanel();
+
 
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
 		this.add(this.panelInfo  , BorderLayout.NORTH);
 		this.add(this.panelErreur, BorderLayout.SOUTH);
+
 
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
 		/*--------------------------------------------------*/
-	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
-		/*---------------------------------------------------*/
+
 	}
 
 	public void majPanelErreur(ArrayList<JLabel> lstLblErreur)

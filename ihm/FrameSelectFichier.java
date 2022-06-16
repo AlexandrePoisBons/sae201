@@ -27,9 +27,11 @@ public class FrameSelectFichier extends JFrame implements ActionListener
         this.setTitle("Générer le Réseau");
         this.setSize (500, 200);
         
+
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
         this.panelInfo  = new JPanel();
         this.panelInfo.setLayout( new GridLayout(1,3, 5, 5));
         this.lblFichier = new JLabel();
@@ -41,9 +43,11 @@ public class FrameSelectFichier extends JFrame implements ActionListener
         this.menuiFichierOuvrir  = new JMenuItem ("Ouvrir" );
 		this.menuiFichierQuitter = new JMenuItem ("Quitter");
 
+
         /*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
         menuFichier.add( this.menuiFichierOuvrir );
 		menuFichier.addSeparator();
 		menuFichier.add( this.menuiFichierQuitter );
@@ -57,21 +61,24 @@ public class FrameSelectFichier extends JFrame implements ActionListener
 
         this.add(this.panelInfo);
 
+        
         /*-------------------------------*/
         /*   Activation des composants   */
         /*-------------------------------*/
+
         this.menuiFichierOuvrir .addActionListener ( this );
 		this.menuiFichierQuitter.addActionListener ( this );
         this.btnCreer           .addActionListener ( this );
 
+
         /*--------------------------------------------------*/
         /*               Concernant la JFrame               */
         /*--------------------------------------------------*/
-    //    this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
-        /*---------------------------------------------------*/
+
     } 
 
     public void actionPerformed ( ActionEvent e )

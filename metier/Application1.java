@@ -51,7 +51,7 @@ public class Application1
         ArrayList<Tuyau> toRemove = new ArrayList<Tuyau>(); // --> tuyaux incorrects a supprimer
         String format = "";
 
-        // Variavles pour la saisie utilisateurs
+        // Variables pour la saisie utilisateurs
         int    nbCuves    =  0; 
         int    nbTuyaux   =  0; 
         String idCuveOrig = "";

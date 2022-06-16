@@ -23,22 +23,25 @@ public class PanelTuyaux extends JPanel implements ActionListener
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
 		this.lblInfo 	= new JLabel("Combien de Tuyaux souhaitez vous créer ? ");
 		this.txtNbCuves = new JTextField(2);
 		this.btnValider = new JButton("Valider");
-		/*---------------------------------*/
+
 
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
 		this.add(this.lblInfo);
 		this.add(this.txtNbCuves);
 		this.add(this.btnValider);
-		/*-------------------------------*/
+
 
 		/*-----------------------------------*/
         /*     Activation des composants     */
         /*-----------------------------------*/
+		
 		this.btnValider.addActionListener(this);
 		
 	}
@@ -60,12 +63,13 @@ public class PanelTuyaux extends JPanel implements ActionListener
 			else
 			{
 				this.txtNbCuves.setText("");
-				this.frmParent.majErreur("Il y a " + this.ctrl.getNbCuves() + "cuve(s) dans votre reseau, vous ne pouvez ainsi pas creer plus de "+ nbMax +" tuyaux");
+				this.frmParent.majErreur("Il y a " + this.ctrl.getNbCuves() + " cuve(s) dans votre reseau, vous ne pouvez ainsi pas creer plus de "+ nbMax +" tuyaux");
 			}
 		}
 
 		else
 		{
+			this.txtNbCuves.setText("");	
 			this.frmParent.majErreur("Le nombre de tuyaux doit etre entier");
 		}
 		

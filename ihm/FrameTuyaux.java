@@ -34,13 +34,12 @@ public class FrameTuyaux extends JFrame
 		this.add(this.panelInfo,   BorderLayout.NORTH);
 		this.add(this.panelErreur, BorderLayout.CENTER);
 
-	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
 
-    public void maj(ArrayList<Tuyau> lstTuyaux) // A CHANGER CREER PANEL A PART//
+    public void maj(ArrayList<Tuyau> lstTuyaux)
     {
         this.panelInfo = new PanelTuyaux(this, this.ctrl);
 		

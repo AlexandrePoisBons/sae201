@@ -19,7 +19,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
     private int                         nbCuves;
     private int                         totalTxt;
     private ArrayList<JTextField>       lstTextFields;
-    private String                      stringErreurs; // --> contient toute les errreurs seperes par des " | ";
+    private String                      stringErreurs; // --> contient toute les errreurs;
     private ArrayList<Cuve>             ensCuvesValides;
     private ArrayList<Cuve>             toRemove;
 
@@ -82,7 +82,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
 	public void actionPerformed (ActionEvent ae)
 	{
-        this.stringErreurs = "";
+        this.stringErreurs = "<html>";
 
         int capacite    = 0;
         int posX        = 0;     
@@ -91,6 +91,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
 
         boolean erreur      = false;
         boolean erreurLigne = false;
+        boolean cuveOk      = true;
         
         int taille = this.lstTextFields.size();
         for(int i=0; i < taille; i=i+4) // pour chaque ligne 
@@ -114,70 +115,81 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 else
                 {
                     erreurLigne = true;
-                    this.stringErreurs+="La capacite et les coordonnes de la cuves doivent etre entières";
+                    this.stringErreurs+="La capacite et les coordonnes de la cuves doivent etre entières !<br>";
                 }
 
                 // 2 - Verifier que la capacite est valide sinon remet les champs vides
                 if ( !erreurLigne && capacite < 200 || capacite > 1000 )
                 {
-                    this.stringErreurs += "Capacite < 200 ou > 1000\n";
+                    this.stringErreurs += "Capacite < 200 ou > 1000 !<br>";
                     erreurLigne = true;
                 }
-            
-                // 3 - Verifier que la cuve n'est pas presente  
-                Cuve temp = Cuve.creerCuve(capacite, posX, posY, position);
-                boolean positionTaken = false;
-                for (Cuve c2 : this.ensCuvesValides)
+                
+                if (posX+(capacite/5) <= 0 || posY+(capacite/5) <= 0 || posX == 0 ||posY == 0 )
                 {
-                    if (temp == null)
+                    erreurLigne  = true;
+                    cuveOk =  false;
+                    this.stringErreurs += "La cuve est trop proche du bord veuillez la decaler<br>";
+                }            
+               
+                boolean positionTaken = false;
+                Cuve temp = Cuve.creerCuve(capacite, posX, posY, position);
+                // eviter de faire la boucle pour rien
+                if (!erreurLigne)
+                {
+                     // 3 - Verifier que la cuve n'est pas presente                
+                    for (Cuve c2 : this.ensCuvesValides)
                     {
-                        erreurLigne = true;
-                        this.stringErreurs += "Impossible de creer la cuve verifiez vos valeurs | ";
-                        break;
-                    }
-
-                    if (c2 != temp)
-                    {
-                        int distanceX = Math.abs( c2.getPosX() - temp.getPosX() ); // ecart horizontal entre centre de C et de C2
-                        int distanceY = Math.abs( c2.getPosY() - temp.getPosY() ); // ecart vertical   entre centre de C et de C2
-                        int ecartMin  = (c2.getCapacite()/5) + (temp.getCapacite()/5);
-                        
-                        // verif chevauchement
-                        if ( (Math.pow(distanceX, 2) + Math.pow(distanceY, 2)) < Math.pow(ecartMin, 2))
+                        if (temp == null)
                         {
-                            erreurLigne = true; 
-                            positionTaken = true;
+                            erreurLigne = true;
+                            this.stringErreurs += "Impossible de creer la cuve verifiez vos valeurs ! <br>";
+                            break;
+                        }
 
-                            if (temp.getPosX() == c2.getPosX() && temp.getPosY() == c2.getPosY())
+                        if (c2 != temp)
+                        {
+                            int distanceX = Math.abs( c2.getPosX() - temp.getPosX() ); // ecart horizontal entre centre de C et de C2
+                            int distanceY = Math.abs( c2.getPosY() - temp.getPosY() ); // ecart vertical   entre centre de C et de C2
+                            int ecartMin  = (c2.getCapacite()/5) + (temp.getCapacite()/5);
+                            
+                            // verif chevauchement
+                            if ( (Math.pow(distanceX, 2) + Math.pow(distanceY, 2)) < Math.pow(ecartMin, 2))
                             {
-                                erreurLigne = true;
+                                erreurLigne = true; 
                                 positionTaken = true;
-                                this.stringErreurs += "Position ("+ c2.getPosX() +", "+c2.getPosY()+") deja prise | ";
-                                //break;                
-                            }
-                            else
-                            {
-                                this.stringErreurs+= "Les cuves " +   temp.getId()  + "("+temp.getPosX()+", "+ temp.getPosY()+")" + " et "+ 
-                                                     c2.getId() + "("+c2.getPosX()+", "+ c2.getPosY()+") se chevauchent | ";
+                                
+                                
+                                if (temp.getPosX() == c2.getPosX() && temp.getPosY() == c2.getPosY())
+                                {
+                                    erreurLigne = true;
+                                    positionTaken = true;
+                                    this.stringErreurs += "Position ("+ c2.getPosX() +", "+c2.getPosY()+") deja prise ! <br>";
+                                    //break;                
+                                }
+                                else
+                                {
+                                    this.stringErreurs+= "Les cuves " +   temp.getId()  + "("+temp.getPosX()+", "+ temp.getPosY()+")" + " et "+ 
+                                                        c2.getId() + "("+c2.getPosX()+", "+ c2.getPosY()+") se chevauchent !<br>";
+                                }
+                                
+                                //break;
                             }
                             
-                            //break;
-                        }
-                        
-                    }                    
+                        }                    
+                    }
                 } 
 
                 if (!erreurLigne && !positionTaken)
                 {
-                    this.ensCuvesValides.add(temp);
-                    //this.ensCuvesValides.add(Cuve.creerCuve(capacite, posX, posY, position));
+                    this.ensCuvesValides.add(temp);;
     
                     this.lstTextFields.get(i).setEditable(false);
                     this.lstTextFields.get(i+1).setEditable(false);
                     this.lstTextFields.get(i+2).setEditable(false);
                     this.lstTextFields.get(i+3).setEditable(false);
                 } 
-                if (erreurLigne && positionTaken)
+                if ( (erreurLigne && positionTaken) || !cuveOk )
                     Cuve.decrement();          
             }
             // pour chaque ligne si il n'y a pas d'erreur setEditable false
@@ -197,6 +209,7 @@ public class PanelCreerCuves extends JPanel implements ActionListener
         
         if (erreur)
         {
+            this.stringErreurs+="</html>";
             this.frmParent.majPanelErreur(this.stringErreurs);
         }
 

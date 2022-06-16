@@ -285,12 +285,21 @@ public class ControleurCuves
                     
                     if(voisin.getPlaceLibre() < transmet.getTuyauEntre(voisin).getSection())
                     {
-                        //chauqe trasnemtteur ennvoie ca
-                        double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
-                        System.out.println("-------------Flag1----------");
-                        System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
-                        voisin.recevoirDe(transmet, qte);
-                        System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
+                        double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
+                        if ( diff <= transmet.getTuyauEntre(voisin).getSection())
+                        {
+                            System.out.println("-------------Flag1 Ping-Pong----------");
+                            voisin.recevoirDe(transmet, diff/2);
+                            System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
+                        }
+                        else{
+                            //chauqe trasnemtteur ennvoie ca
+                            double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
+                            System.out.println("-------------Flag1----------");
+                            System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
+                            voisin.recevoirDe(transmet, qte);
+                            System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
+                        }
                     }
                     else
                     {
@@ -301,7 +310,6 @@ public class ControleurCuves
                             System.out.println("-------------Flag2----------");
                             voisin.recevoirDe(transmet, diff/2);
                             System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
-                            //estEquilibre = true ;
                         }
                         else
                         {
@@ -415,51 +423,5 @@ public class ControleurCuves
     public static void main(String[] args)
     {    
         new ControleurCuves("Manuel");
-        //new FramePrincipale(this, this.ensCuves, this.ensTuyau);
     }
 }
-
-/*
-
-    while (!estEquilibre)
-    {
-        Cuve cuveActuelle = cuveDepart; // on regarde la cuve actuelle
-        this.trier(cuveActuelle.getVoisins());// on trie ses voisins par cuve la + remplie
-
-        ArrayList<Cuve> lstATransferer = new ArrayList<Cuve>();              
-        
-        for (Cuve cTest: cuveActuelle.getVoisins())
-        {
-            if (cTest != cuveActuelle.getVoisins().get(0) && cTest.getContenu() == cuveActuelle.getVoisins().get(0).getContenu() )
-                estEquilibre = true;
-        }
-        if (!estEquilibre)                    
-            transferer(cuveActuelle, cuveActuelle.getVoisins().get(0));
-
-
-           /*
-
-    // si la place libre de la cuve est + petite que deux section 
-    if(voisin.getPlaceLibre() < Cuve.getTuyauEntre(cuveDepart, voisin2) + Cuve.getTuyauEntre(voisin, voisin2) )
-
-    public ArrayList<Cuve> trier() 
-    {
-        for (int i = 0; i < this.ensCuves.size(); i++)
-        {
-            Cuve min = this.ensCuves.get(i);
-            int minId = i;
-            for (int j = i+1; j < this.ensCuves.size(); j++)
-            {
-                if (this.ensCuves.get(j).getContenu() > min.getContenu()) {
-                    min = this.ensCuves.get(j);
-                    minId = j;
-                }
-            }
-            // swapping
-            Cuve temp = this.ensCuves.get(i);
-            this.ensCuves.set(i, min);
-            this.ensCuves.set(minId, temp);
-        }
-        return this.ensCuves;
-    }
-*/

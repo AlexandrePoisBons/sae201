@@ -35,14 +35,16 @@ public class FrameSelectTuyau extends JFrame
 		this.add(this.panelCreerTuyau, BorderLayout.NORTH);	
 		this.add(this.panelErreur, 	   BorderLayout.CENTER);	
 
+
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
 		/*--------------------------------------------------*/
-	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
+
+
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
-		/*---------------------------------------------------*/
+
 	}
 
 	public void majErreur(String erreur)

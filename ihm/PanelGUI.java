@@ -19,25 +19,29 @@ public class PanelGUI extends JPanel implements ActionListener
 		this.ctrl      = ctrl;
 		this.frmParent = frmParent;
 
+
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+
 		this.lblInfo 	= new JLabel("Combien de Cuves souhaitez vous créer ? ");
 		this.txtNbCuves = new JTextField(2);
 		this.btnValider = new JButton("Valider");
-		/*---------------------------------*/
+
 
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
 		this.add(this.lblInfo);
 		this.add(this.txtNbCuves);
 		this.add(this.btnValider);	
-		/*-------------------------------*/
+
 
 		/*-----------------------------------*/
         /*     Activation des composants     */
         /*-----------------------------------*/
+		
 		this.btnValider.addActionListener(this);
 		
 	}

@@ -50,9 +50,7 @@ public class FrameCreation extends JFrame
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
 		/*--------------------------------------------------*/
-	//	this.setExtendedState(JFrame.MAXIMIZED_BOTH );
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//this.setResizable(false);
 		this.setVisible(true);
 		/*---------------------------------------------------*/
 	}

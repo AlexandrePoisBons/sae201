@@ -76,8 +76,7 @@ public class PanelCuves extends JPanel implements Scrollable
 
 		if (this.ensTuyaux.size() != 0)
 			for (Tuyau t : this.ensTuyaux)
-			{	
-				//System.out.println("panelCuve ->" +t);		
+			{		
 				g.setColor(Color.GRAY);
 				g2D.setStroke(new BasicStroke(t.getSection()/2));
 				g2D.drawLine(t.getCuveOrig().getPosX(), t.getCuveOrig().getPosY(), t.getCuveDest().getPosX() , t.getCuveDest().getPosY());
@@ -85,8 +84,7 @@ public class PanelCuves extends JPanel implements Scrollable
 
 		for ( Cuve c : this.ensCuves)
         {	
-			this.lstLblCuves.get(c.getId()-65).setText("<html>"+c.getId()+"<br>"+c.getContenu()+"/"+c.getCapacite()+"   </html>");
-			//System.out.println("panel cuves --> " + c);	
+			this.lstLblCuves.get(c.getId()-65).setText("<html>"+c.getId()+"<br>"+c.getContenu()+"/"+c.getCapacite()+"   </html>");	
 			g.setColor(c.getCouleur());
             g.fillOval(c.getPosX()-(int) (c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/10), (int) (c.getCapacite()/5), (int) (c.getCapacite()/5));
 			g.setColor(Color.BLACK);
@@ -112,13 +110,11 @@ public class PanelCuves extends JPanel implements Scrollable
 	}
 
 	public boolean getScrollableTracksViewportWidth() {
-		return getPreferredSize().width
-						<= getParent().getSize().width;
+		return getPreferredSize().width <= getParent().getSize().width;
 	}
 
 	public boolean getScrollableTracksViewportHeight() {
-		return getPreferredSize().height
-						<= getParent().getSize().height;
+		return getPreferredSize().height <= getParent().getSize().height;
 	}
 
 }

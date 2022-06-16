@@ -91,24 +91,27 @@ public class TestCuveTuyau
 		/*-----------------------------------------------------------*/
         /* Récupération des valeurs des utilisateurs pour les tuyaux */
 		/*-----------------------------------------------------------*/
+
 		System.out.print("\nCombien de Tuyaux voulez-vous créer ? ");
 		nbTuyaux = sc.nextInt();
-		/*-----------------------------------------------------------*/
+
 
 
 		/*-----------------------------------------*/
 		/* Création des tuyaux selon l'utilisateur */
 		/*-----------------------------------------*/
+
 		for(int cpt = 0; cpt < nbTuyaux; cpt++)
 		{
 			System.out.print("\nQuelle valeurs voulez-vous donner à la section ?\n");
 			ensTuyau.add(Tuyau.creerTuyau(sc.nextInt()));
 		}
-		/*-----------------------------------------*/
+
 
         /*----------------------------------------------*/
 		/*            Remplissage des cuves             */
         /*----------------------------------------------*/
+
 		for (Cuve c : ensCuves)
 			if ( c != null )
 			{
@@ -117,12 +120,12 @@ public class TestCuveTuyau
 			}
 			else
 				System.out.println("La cuve n'existe pas");
-		/*----------------------------------------------*/
 		
 
         /*---------------------------------------------------*/
 		/*      Création de la liaison entre deux cuves      */
         /*---------------------------------------------------*/
+
 		Cuve[] cuveALier= new Cuve[2];
 		for (int j=0; j< nbTuyaux; j++)
 		{
@@ -146,7 +149,7 @@ public class TestCuveTuyau
             /*------------------------------------------------*/
 			/*   Vérification si le tuyau n'existe pas déjà   */
             /*------------------------------------------------*/
-			// Erreur ici ou Tuyau.equals
+
 			ensTuyau.get(j).setLien(cuveALier[0], cuveALier[1]);
 			toRemove = new ArrayList<Tuyau>();
 
@@ -169,15 +172,14 @@ public class TestCuveTuyau
 			for (Tuyau tRemove : toRemove)
 				ensTuyau.remove(tRemove);	
 		}
-		/*---------------------------------------------------*/	
 
 
         /*--------------------------------------------------------*/
 		/*          Demande du nombre de transfert voulu          */
         /*--------------------------------------------------------*/
+
 		System.out.println("Combien de transfert voulez vous réaliser ? ");
 		nbTransfert = sc.nextInt();	
-		/*--------------------------------------------------------*/
 
 
 		for ( int cpt = 0; cpt < nbTransfert; cpt++ )
@@ -206,9 +208,6 @@ public class TestCuveTuyau
 						{ // si (l'origine == Id Origine && la destnation == Id destination ) ou l'id Origine == destination && id destination == cuve de destination
 							
 							if (tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveDest().getId() == idCuveDest.charAt(0))
-							/*if (tConnecte.getCuveDest().getId() == idCuveDest.charAt(0) && tConnecte.getCuveOrig()==c ||
-								tConnecte.getCuveOrig().getId() == idCuveOrig.charAt(0) && tConnecte.getCuveOrig()==c && (idCuveOrig != idCuveDest)  ) //&& idCuveOrig != idCuveDest)
-							*/
 
 							// Si le tuyau connecte a moi est connecte a la destination ou si la destination est connecte a moi et si la destination n'est pas moi	
 							{
@@ -237,10 +236,7 @@ public class TestCuveTuyau
 								System.out.println("    ----------------- "																							);										
 								System.out.println("Cuve Dest : " + tConnecte.getCuveOrig().getId() + ", Contenu " + tConnecte.getCuveOrig().getContenu() + "\n\n"	);
 								
-							/* 	if ( ( c.couler( tConnecte.getCuveOrig(), tConnecte) ) == false )
-									System.out.println("Transfert Impossible");
-								else
-									System.out.println("Transfert Effectue");*/
+								
 								System.out.println(( c.couler( tConnecte.getCuveOrig(), tConnecte) ));
 
 								System.out.println("\n\n-----Apres Transfert-----\n"																				);

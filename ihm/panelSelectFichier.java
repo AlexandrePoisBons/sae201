@@ -31,7 +31,6 @@ public class panelSelectFichier extends JPanel implements ActionListener
 
     public void actionPerformed(ActionEvent ae)
     {
-        //FAIRE DES CHOSES ICI
         this.ctrl.creerGraph(this.fichier);
         this.frmParent.dispose();
     }

@@ -203,9 +203,8 @@ public class Cuve implements Comparable<Cuve>
     /*---------------------------------------------------*/
 
     public void majCouleur()
-    {// mettre notre contenu sur 1000 puis apres easy
+    {
         int rgbValue = (int)(this.contenu)/2; // renvoie un nombre [0; 500]
-        //System.out.println(rgbValue);
         if ( rgbValue > 255)
             this.couleur = new Color(255-rgbValue/2, 0, 0);
         else
@@ -253,6 +252,7 @@ public class Cuve implements Comparable<Cuve>
     /*    a celle pasee en paramatre (si il y a un    */
     /*            tuyau entre les deux)               */
     /*------------------------------------------------*/
+
     public boolean estVoisin( Cuve cuvePara )
     { 
         for ( Tuyau t : this.lstTuyauxConnectes )     
@@ -265,9 +265,11 @@ public class Cuve implements Comparable<Cuve>
             return false;
     }
 
-    // Pour chaque tuyau dans les tuyaux connectes
-    // si la destination n'est pas nous alors voisin
-    // sinon l'origine est le voisin 
+
+    /*------------------------------------------------*/
+    /*    Renvoie une liste des voisins de la cuve    */
+    /*------------------------------------------------*/
+
     public ArrayList<Cuve> getVoisins()
     {
         ArrayList<Cuve> voisins = new ArrayList<Cuve>();
@@ -284,6 +286,7 @@ public class Cuve implements Comparable<Cuve>
         }
         return voisins;
     }
+
 
     /*-----------------------------------------------*/
     /*   Renvoie le tuyau qui relie la cuve actuelle */
@@ -312,11 +315,17 @@ public class Cuve implements Comparable<Cuve>
        return Double.compare(cuve2.contenu, this.contenu);
     }
 
+
+    /*-----------------------------------------------*/
+    /*       Si creation d'une Cuve temporaire       */
+    /*-----------------------------------------------*/
+
     public static void decrement()
     {
         id--;
     }
 
+    
     /*-----------------------------------------------*/
     /* Méthode toString() pour l'affichage des Cuves */
     /*-----------------------------------------------*/

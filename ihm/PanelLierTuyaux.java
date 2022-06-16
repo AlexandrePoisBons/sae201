@@ -69,6 +69,8 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         {
             Cuve c1 = this.ctrl.estCuve(this.lstText.get(j).getText().charAt(0));
             Cuve c2 = this.ctrl.estCuve(this.lstText.get(j+1).getText().charAt(0));
+            if (c1 == null || c2 == null)
+                erreur = true;
             this.ctrl.setLien(j/2, c1, c2);
             //VERIFICATION EXISTENCE TUYAU
 
@@ -99,15 +101,9 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
                 this.ctrl.ensTuyau.remove(tRemove);
             }
 
-
-            //TEST AFFICHAGE
-            //System.out.println(this.ctrl.ensTuyau.get(j/2));
         }
         if (erreur)
         {
-            for (Tuyau t: this.ctrl.ensTuyau) // si il y a une erreur remettre les liens "à 0"
-                //t.setLien(null, null);
-
             this.frmParent.majPanelErreur(this.lstLblErreurs);
 
             for (JTextField txt: this.lstText)

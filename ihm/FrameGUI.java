@@ -25,14 +25,18 @@ public class FrameGUI extends JFrame
 		this.setSize (500, 200);
 		this.setLayout(new BorderLayout());
 
+
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
+		
 		this.panelInfo = new PanelGUI(this, this.ctrl);
 
+		
 		/*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
+
 		this.add(this.panelInfo, BorderLayout.NORTH);
 
 		this.panelErreur = new JPanel();
@@ -40,13 +44,14 @@ public class FrameGUI extends JFrame
 		this.panelErreur.add(lblErreur);
 		this.add(this.panelErreur, BorderLayout.CENTER);	
 
+
 		/*--------------------------------------------------*/
 		/*               Concernant la JFrame               */
 		/*--------------------------------------------------*/	
+
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//this.setResizable(false);
 		this.setVisible(true);
-		/*---------------------------------------------------*/
+
 	}
 
 	public void majErreur(String erreur)

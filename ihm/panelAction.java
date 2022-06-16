@@ -74,7 +74,7 @@ public class panelAction extends JPanel implements ActionListener
             double qte = Double.parseDouble(this.txtQuantite.getText());
             this.ctrl.estCuve(cuve).remplir(qte);
             this.frmParent.repaint();
-            this.ctrl.trier(this.ctrl.ensCuves);                   // trier par ordre decroissant de contenu
+            this.ctrl.trier(this.ctrl.ensCuves);                           // trier par ordre decroissant de contenu
             this.ctrl.trier(this.ctrl.ensCuves.get(0).getVoisins());// trier les voisins de la cuve la + remplie
             this.ctrl.estEquilibre = false;
             for (Cuve c: this.ctrl.getCuves())
@@ -85,8 +85,9 @@ public class panelAction extends JPanel implements ActionListener
 
         if (e.getSource() == this.btnSuivant )
         {
-            this.ctrl.transferer(this.ctrl.ensCuves.get(0));
-            //passer a l'iteration suivante.
+            this.ctrl.transferer(this.ctrl.ensCuves.get(0)); //passer a l'iteration suivante.
+            this.frmParent.repaint();                               //recharger l'affichage 
+            //ajouter transfert auto jusqua equilibrage
         }
     }
 

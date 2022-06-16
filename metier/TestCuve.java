@@ -21,13 +21,14 @@ public class TestCuve
 		/*-----------------------------*/
 		/*			Variables 		   */
 		/*-----------------------------*/
+
 		List<Cuve> ensCuves = new ArrayList<Cuve>();
 		Scanner sc  = new Scanner(System.in);
         
         /* Récupération des valeurs des utilisateurs */
 		System.out.print("Combien de cuves ? ");
 		int nbCuves = sc.nextInt();
-		/*---------------------------------------------*/
+
 
 
 		/*-------------------------- Création des cuves selon l'utilisateur --------------------------*/
@@ -41,8 +42,6 @@ public class TestCuve
 
 		for(int cpt = 0; cpt < nbCuves; cpt++)
 			System.out.println(ensCuves.get(cpt));
-
-
 
 
 		//------------------------------- Pour l'écriture dans le fichier texte ----------------------------------//

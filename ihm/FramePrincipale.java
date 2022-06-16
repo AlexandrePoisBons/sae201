@@ -31,22 +31,18 @@ public class FramePrincipale extends JFrame
       /*---------------------------------*/
       /*     Création des composants     */
       /*---------------------------------*/
+
 		this.panelCuves  = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
       this.panelAction = new panelAction(this, this.ctrl);
       this.scrollpane  = new JScrollPane(this.panelCuves);
 
+
       /*-------------------------------*/
       /* Positionnement des composants */
       /*-------------------------------*/
+
 		this.add(this.scrollpane,  BorderLayout.CENTER);
       this.add(this.panelAction, BorderLayout.EAST);
-
-      /*
-      Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
-      System.out.println();
-      System.out.println(this.ctrl.afficherMatriceOpti(matrice));
-      //this.ctrl.ecrire(matrice, format);
-      */
 
       // Permet d'étendre la fenêtre en fonction de la taille de l'écran
       this.setExtendedState(JFrame.MAXIMIZED_BOTH );
@@ -54,15 +50,8 @@ public class FramePrincipale extends JFrame
       // Permet de femer la fenêtre une fois fini
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      // Permet d'empêcher de changer la taille de la fenêtre
-      this.setResizable(false);
-
       // Permet d'afficher la fenêtre
       this.setVisible(true);
 	}
 
-    public static void main(String[] args)
-    {
-       // new FramePrincipale(ctrl, ensCuves, ensTuyaux)
-    }
 } 
