@@ -1,6 +1,7 @@
 package sae201.ihm;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import java.util.ArrayList;
 import sae201.Controleur;
@@ -15,6 +16,7 @@ public class FramePrincipale extends JFrame
    private panelAction      panelAction;
    private ArrayList<Cuve>  ensCuves;  
    private ArrayList<Tuyau> ensTuyaux;
+   private JScrollPane      scrollpane;
 
 	public FramePrincipale(ControleurCuves ctrl, ArrayList<Cuve> ensCuves, ArrayList<Tuyau> ensTuyaux)
 	{
@@ -31,11 +33,12 @@ public class FramePrincipale extends JFrame
       /*---------------------------------*/
 		this.panelCuves  = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
       this.panelAction = new panelAction(this, this.ctrl);
+      this.scrollpane  = new JScrollPane(this.panelCuves);
 
       /*-------------------------------*/
       /* Positionnement des composants */
       /*-------------------------------*/
-		this.add(this.panelCuves,  BorderLayout.CENTER);
+		this.add(this.scrollpane,  BorderLayout.CENTER);
       this.add(this.panelAction, BorderLayout.EAST);
 
       /*

@@ -73,7 +73,7 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
     public void actionPerformed(ActionEvent e)
     {
         //Tuyau[][] matrice = this.ctrl.creerMatrice(this.ensCuves, this.ensTuyaux, this.ensCuves.size());
-        if (e.getSource() == this.btnCreer && alreadyChecked )
+        if (e.getSource() == this.btnCreer && !alreadyChecked )
         {
             this.ctrl.ecrire(this.format);
             this.ctrl.generer();
