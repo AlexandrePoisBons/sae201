@@ -87,7 +87,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
                     if (section > 1 && section < 11)
                     {
                         this.lstTuyaux.add(Tuyau.creerTuyau(section));
-                        System.out.println(this.lstTuyaux.get(cpt));
+                        //System.out.println(this.lstTuyaux.get(cpt));
                         this.lstTextFields.get(cpt).setEditable(false);
                     }
                     else
