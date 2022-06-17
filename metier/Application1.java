@@ -238,7 +238,7 @@ public class Application1
         // PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream("sortie.txt"), "UTF8" )); //
         try
         {
-            PrintWriter pw = new PrintWriter( new FileOutputStream( "sae201/application1/resultat.txt" ) );
+            PrintWriter pw = new PrintWriter( new FileOutputStream( "sae201/metier/resultat.txt" ) );
 
             /* Pour l'écriture correcte du .txt */
             pw.println( "Cuves" );
