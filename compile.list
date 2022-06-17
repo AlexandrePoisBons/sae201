@@ -15,11 +15,10 @@
 ./ihm/PanelLierTuyaux.java          -encoding UTF-8
 ./ihm/PanelChoixFormat.java         -encoding UTF-8
 ./ihm/FrameFormat.java              -encoding UTF-8
-./ihm/panelApplication2.java        -encoding UTF-8
+./ihm/PanelApplication2.java        -encoding UTF-8
 ./ihm/Application2.java             -encoding UTF-8
-./ihm/panelSelectFichier.java       -encoding UTF-8
 ./ihm/FrameSelectFichier.java       -encoding UTF-8
-./ihm/panelAction.java              -encoding UTF-8
+./ihm/PanelAction.java              -encoding UTF-8
 
 ./metier/Tuyau.java                 -encoding UTF-8
 ./metier/TestCuve.java              -encoding UTF-8

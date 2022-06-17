@@ -5,14 +5,14 @@ import javax.swing.JScrollPane;
 
 import java.util.ArrayList;
 import java.awt.BorderLayout;
-import sae201.ihm.panelAction;
+import sae201.ihm.PanelAction;
 import sae201.metier.*;
 
 public class FramePrincipale extends JFrame
 {
 	private ControleurCuves  ctrl;
 	private PanelCuves       panelCuves;
-   private panelAction      panelAction;
+   private PanelAction      panelAction;
    private ArrayList<Cuve>  ensCuves;  
    private ArrayList<Tuyau> ensTuyaux;
    private JScrollPane      scrollpane;
@@ -32,7 +32,7 @@ public class FramePrincipale extends JFrame
       /*---------------------------------*/
 
 		this.panelCuves  = new PanelCuves(this.ctrl, this.ensCuves,  this.ensTuyaux);
-      this.panelAction = new panelAction(this, this.ctrl);
+      this.panelAction = new PanelAction(this, this.ctrl);
       this.scrollpane  = new JScrollPane(this.panelCuves);
 
 

@@ -10,7 +10,7 @@ import java.awt.Checkbox;
 
 import java.awt.event.*;
 
-public class panelAction extends JPanel implements ActionListener
+public class PanelAction extends JPanel implements ActionListener
 {
     private JFrame          frmParent;
     private JComboBox<String> lstCuveRemplir;
@@ -23,7 +23,7 @@ public class panelAction extends JPanel implements ActionListener
 
     private ControleurCuves ctrl;
     
-    public panelAction(JFrame frmParent, ControleurCuves ctrl)
+    public PanelAction(JFrame frmParent, ControleurCuves ctrl)
     {
         this.frmParent = frmParent;
         this.ctrl      = ctrl;

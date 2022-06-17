@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Application2 extends JFrame
 {
-    private panelApplication2 panel;
+    private PanelApplication2 panel;
 
     public Application2()
     {
@@ -13,7 +13,7 @@ public class Application2 extends JFrame
         /*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
-        this.panel = new panelApplication2(this);
+        this.panel = new PanelApplication2(this);
         /*---------------------------------*/
 
         /*-------------------------------*/

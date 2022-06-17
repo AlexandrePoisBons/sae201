@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 
 import java.awt.event.*;
 
-public class panelApplication2 extends JPanel implements ActionListener, ItemListener
+public class PanelApplication2 extends JPanel implements ActionListener, ItemListener
 {
     private JFrame        frmParent;
     private ButtonGroup   bgChoix;
@@ -22,7 +22,7 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
 
     private ControleurCuves ctrl;
     
-    public panelApplication2(JFrame frmParent)
+    public PanelApplication2(JFrame frmParent)
     {
         this.frmParent = frmParent;
         this.setLayout(new GridLayout(4,1));
