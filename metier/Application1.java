@@ -241,15 +241,15 @@ public class Application1
             PrintWriter pw = new PrintWriter( new FileOutputStream( "sae201/metier/resultat.txt" ) );
 
             /* Pour l'écriture correcte du .txt */
-            pw.println( "Cuves\n" );
+            pw.println( "Cuves" );
             for( Cuve c : ensCuves )
                 pw.println ( c );
 
-            pw.println( "\nTuyaux\n" );
+            pw.println( "Tuyaux" );
             for( Tuyau t : ensTuyau )
                 pw.println ( t ); 
 
-            pw.println( "\n"+format+"\n" );
+            pw.println( ""+format);
 
             pw.close();
         }

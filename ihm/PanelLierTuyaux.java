@@ -26,7 +26,9 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
     private ArrayList<JLabel>     lstLblErreurs;
 
     private JPanel                panelErreurs;
-    
+    private JLabel                lblSection;
+    private JLabel                lblCuve1;
+    private JLabel                lblCuve2;    
 
 	public PanelLierTuyaux(FrameLierTuyaux frmParent, ControleurCuves ctrl, int nbTuyaux)
 	{
@@ -36,14 +38,18 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         this.lstText       = new ArrayList<JTextField>();
         this.lstLblErreurs = new ArrayList<JLabel>();
 
-        this.setLayout(new GridLayout(this.nbTuyaux+1, 2));
+        this.setLayout(new GridLayout(this.nbTuyaux+2, 3));
 
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
-		this.btnValider = new JButton("Valider");
-
+		this.lblSection = new JLabel("Section");
+        this.lblCuve1   = new JLabel("Cuve 1");
+        this.lblCuve2   = new JLabel("Cuve 2");
+        this.btnValider = new JButton("Valider");
         for (int i=0; i<this.nbTuyaux*2; i++)
+            if(i%2 == 0)
+                this.add(new JLabel(this.ctrl.ensTuyau.get(i/2+1)));
             this.lstText.add(new JTextField(1));
 
         for (JTextField t: this.lstText)
