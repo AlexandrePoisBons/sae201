@@ -41,7 +41,7 @@ public class PanelCuves extends JPanel implements Scrollable
 				
 				switch(c.getPosition())
 				{
-					case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/5), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
+					case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
 					case "Bas":		lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()+(int) (c.getCapacite()/10)+5,    dimLbl.width, dimLbl.height); break;
 					case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getCapacite()/5)-35, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
 					case "Droite":	lblActuel.setBounds(c.getPosX()+(int) (c.getCapacite()/5)-05, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
