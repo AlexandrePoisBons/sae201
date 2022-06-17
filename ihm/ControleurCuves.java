@@ -217,12 +217,6 @@ public class ControleurCuves
             this.ensTuyau.get(this.ensTuyau.size()-1 ).setLien(cuveOrig, cuveDest);
         }
 
-        // TESTS
-        for ( Cuve cu: this.ensCuves )
-            System.out.println(cu);
-
-        for ( Tuyau tu: this.ensTuyau )
-            System.out.println(tu);
 
         // puis lance l'affichage du reseau
         this.generer();
@@ -277,7 +271,6 @@ public class ControleurCuves
                         if (voisin2.getContenu() == cuveDepart.getContenu())
                         {
                             transmetteurs.add(voisin2);
-                            System.out.println(transmetteurs);
                             totalSection += voisin.getTuyauEntre(voisin2).getSection();
                         }
                     }
@@ -291,17 +284,12 @@ public class ControleurCuves
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
-                            System.out.println("-------------Flag1 Ping-Pong----------");
                             voisin.recevoirDe(transmet, diff/2);
-                            System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
                         }
                         else{
                             //chauqe transmemtteur ennvoie ca
                             double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
-                            System.out.println("-------------Flag1----------");
-                            System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
                             voisin.recevoirDe(transmet, qte);
-                            System.out.println("contenu "+voisin.getId() + "apres transfert: "+ voisin.getContenu());
                         }
                     }
                     else
@@ -310,16 +298,11 @@ public class ControleurCuves
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
-                            System.out.println("-------------Flag2----------");
                             voisin.recevoirDe(transmet, diff/2);
-                            System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
                         }
                         else
                         {
-                        System.out.println("-------------Flag3----------");
-                        System.out.println("transmetteur: " + transmet.getId()+ ", voisin (receveur) a: "+voisin.getId());
                         transmet.couler(voisin, transmet.getTuyauEntre(voisin));
-                        System.out.println("contenu du receveur ("+voisin.getId() + ") apres transfert: "+ voisin.getContenu());
                         }
                     }
                     
@@ -332,8 +315,6 @@ public class ControleurCuves
             if (mode.equals("continue"))
                 this.transferer(this.ensCuves.get(0), "continue");
         }
-        for (Cuve c: this.ensCuves)
-            System.out.println(c);
                
     }
          
