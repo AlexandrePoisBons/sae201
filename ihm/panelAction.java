@@ -20,6 +20,7 @@ public class PanelAction extends JPanel implements ActionListener
     private JLabel          lblQuantite;
     private JButton         btnValider;
     private JButton         btnSuivant;
+    private JButton         btnLancer;
 
     private ControleurCuves ctrl;
     
@@ -27,7 +28,7 @@ public class PanelAction extends JPanel implements ActionListener
     {
         this.frmParent = frmParent;
         this.ctrl      = ctrl;
-        this.setLayout(new GridLayout(3,2));
+        this.setLayout(new GridLayout(4,2));
 
         /*---------------------------------*/
         /*     Création des composants     */
@@ -39,6 +40,7 @@ public class PanelAction extends JPanel implements ActionListener
         this.txtQuantite    = new JTextField(4);
         this.btnValider     = new JButton("Valider");
         this.btnSuivant     = new JButton ("Suivant");
+        this.btnLancer      = new JButton("Lancer");
 
 
         /*-------------------------------*/
@@ -56,6 +58,7 @@ public class PanelAction extends JPanel implements ActionListener
         this.add(this.txtQuantite);
         this.add(this.btnValider);
         this.add(this.btnSuivant);
+        this.add(this.btnLancer);
 
         
 
@@ -86,9 +89,14 @@ public class PanelAction extends JPanel implements ActionListener
 
         if (e.getSource() == this.btnSuivant )
         {
-            this.ctrl.transferer(this.ctrl.ensCuves.get(0)); //passer a l'iteration suivante.
+            this.ctrl.transferer(this.ctrl.ensCuves.get(0), "pasApas"); //passer a l'iteration suivante.
             this.frmParent.repaint();                               //recharger l'affichage 
             //ajouter transfert auto jusqua equilibrage
+        }
+
+        if ( e.getSource() == this.btnLancer ) 
+        {
+            this.ctrl.transferer(this.ctrl.ensCuves.get(0), "continue");
         }
     }
 

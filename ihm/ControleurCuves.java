@@ -241,7 +241,7 @@ public class ControleurCuves
     int totalSection = 0;
     int checkContenu = 0;
 
-    public void transferer(Cuve cuveDepart)
+    public void transferer(Cuve cuveDepart, String mode)
     {
         
         // si le contenu de la 1ere est le meme que la derniere les autres sont tous egaux donc equilibre 
@@ -289,7 +289,6 @@ public class ControleurCuves
                     if(voisin.getPlaceLibre() < transmet.getTuyauEntre(voisin).getSection())
                     {
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
-                        //double diffRound = (double) Math.round(diff*100)/100;
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
                             System.out.println("-------------Flag1 Ping-Pong----------");
@@ -297,9 +296,8 @@ public class ControleurCuves
                             System.out.println("transmetteur: " + transmet.getId()+ ", a: "+voisin.getId());
                         }
                         else{
-                            //chauqe trasnemtteur ennvoie ca
+                            //chauqe transmemtteur ennvoie ca
                             double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
-                            //double qteRound = (double) Math.round((qte)*100)/100;
                             System.out.println("-------------Flag1----------");
                             System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
                             voisin.recevoirDe(transmet, qte);
@@ -310,7 +308,6 @@ public class ControleurCuves
                     {
                         //cas 'ping-pong'
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
-                        //double diffRound = (double) Math.round(diff*100)/100;
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
                             System.out.println("-------------Flag2----------");
@@ -332,7 +329,8 @@ public class ControleurCuves
 
             }
             this.trier(this.ensCuves);
-            //this.transferer(this.ensCuves.get(0));
+            if (mode == "continue")
+                this.transferer(this.ensCuves.get(0), "continue");
         }
         for (Cuve c: this.ensCuves)
             System.out.println(c);

@@ -185,7 +185,6 @@ public class Cuve implements Comparable<Cuve>
         this.contenu     += transfert;
         cuveDest.contenu -= transfert;
         cuveDest.majCouleur();
-        cuveDest.majLabel();
         this.majCouleur();
     }
 
