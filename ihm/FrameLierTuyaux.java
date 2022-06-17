@@ -47,6 +47,7 @@ public class FrameLierTuyaux extends JFrame
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setVisible(true);
+		this.pack();
 
 	}
 
@@ -56,6 +57,7 @@ public class FrameLierTuyaux extends JFrame
 		{
 			this.panelErreur.add(lbl);
 		}
+		this.pack();
 	}
 }
  

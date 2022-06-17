@@ -30,7 +30,7 @@ public class FrameSelectTuyau extends JFrame
 		this.setSize (500, 200);
 		this.setLayout(new BorderLayout());
 
-		this.lblErreur = new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", JLabel.CENTER); // taille par defaut
+		this.lblErreur = new JLabel("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", JLabel.CENTER); // taille par defaut
 		this.panelErreur.add(this.lblErreur);
 		this.add(this.panelCreerTuyau, BorderLayout.NORTH);	
 		this.add(this.panelErreur, 	   BorderLayout.CENTER);	

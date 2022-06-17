@@ -117,8 +117,8 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 
         if (!erreur)
         {
-            new FrameLierTuyaux(this.ctrl, this.nbTuyaux);
             this.ctrl.setTuyau(this.lstTuyaux);
+            new FrameLierTuyaux(this.ctrl, this.nbTuyaux);           
             this.frmParent.dispose();
         }
 

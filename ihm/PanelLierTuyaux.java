@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 
@@ -28,7 +29,8 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
     private JPanel                panelErreurs;
     private JLabel                lblSection;
     private JLabel                lblCuve1;
-    private JLabel                lblCuve2;    
+    private JLabel                lblCuve2; 
+    private JPanel                panelInfos;   
 
 	public PanelLierTuyaux(FrameLierTuyaux frmParent, ControleurCuves ctrl, int nbTuyaux)
 	{
@@ -37,9 +39,10 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         this.nbTuyaux      = nbTuyaux;
         this.lstText       = new ArrayList<JTextField>();
         this.lstLblErreurs = new ArrayList<JLabel>();
+        this.panelInfos    = new JPanel();
 
-        this.setLayout(new GridLayout(this.nbTuyaux+2, 3));
-
+        this.panelInfos.setLayout(new GridLayout(this.nbTuyaux+1, 3));
+        this.setLayout(new BorderLayout());
 		/*---------------------------------*/
         /*     Création des composants     */
         /*---------------------------------*/
@@ -47,17 +50,34 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         this.lblCuve1   = new JLabel("Cuve 1");
         this.lblCuve2   = new JLabel("Cuve 2");
         this.btnValider = new JButton("Valider");
-        for (int i=0; i<this.nbTuyaux*2; i++)
-            this.lstText.add(new JTextField(1));
 
-        for (JTextField t: this.lstText)
-            this.add(t);
+        this.panelInfos.add(this.lblSection);
+        this.panelInfos.add(this.lblCuve1);
+        this.panelInfos.add(this.lblCuve2);
+
+        int cpt=0;
+        for (int i=0; i<this.nbTuyaux*2; i++)
+        {
+            this.lstText.add(new JTextField(1));            
+        }
+            
+        cpt=0;
+        for (int i=0; i<this.lstText.size(); i++)
+        {
+            if (i%2 == 0)
+            {                
+                this.panelInfos.add(new JLabel(""+this.ctrl.ensTuyau.get(cpt).getSection(), JLabel.CENTER));
+                cpt++;
+            }
+            this.panelInfos.add(this.lstText.get(i));            
+        }
         /*---------------------------------*/
 
         /*-------------------------------*/
         /* Positionnement des composants */
         /*-------------------------------*/
-        this.add(this.btnValider);  
+        this.add(this.panelInfos, BorderLayout.NORTH);
+        this.add(this.btnValider, BorderLayout.CENTER);  
 
 		/*-----------------------------------*/
         /*     Activation des composants     */
