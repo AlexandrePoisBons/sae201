@@ -257,7 +257,7 @@ public class Application1
                             ); 
 
             pw.println( "\n" + format );
-            pw.println( formatChoisi  );
+            pw.println( format  );
 
             pw.close();
         }
