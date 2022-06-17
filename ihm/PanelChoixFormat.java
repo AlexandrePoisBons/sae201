@@ -32,7 +32,6 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.frmParent = frmParent;
         this.format    = "";
 
-        //this.setLayout(new GridLayout(2, 3));
 
         /*---------------------------------*/
         /*     Création des composants     */
@@ -40,14 +39,8 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         this.bgFormat           = new ButtonGroup();
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-/*/
-        if (shouldFill) {
-                        //natural height, maximum width
-                        c.fill = GridBagConstraints.HORIZONTAL;
-        }
-*/
+
         this.rbMatrice          = new JRadioButton("Matrice", true); ;
- //       if (shouldWeightX) { c.weightx = 0.5; }
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx    = 2;
         c.gridx      = 0;

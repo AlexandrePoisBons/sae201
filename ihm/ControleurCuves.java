@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.File;
 import java.io.IOException;
+
 public class ControleurCuves
 {
     public  ArrayList<Cuve>  ensCuves;  //REMETTRE EN PRIVE APRES TESTS
@@ -239,10 +240,12 @@ public class ControleurCuves
     boolean estEquilibre = false;
     int totalSection = 0;
     int checkContenu = 0;
+
     public void transferer(Cuve cuveDepart)
     {
+        
         // si le contenu de la 1ere est le meme que la derniere les autres sont tous egaux donc equilibre 
-        if ( (this.ensCuves.get(0).getContenu()) == (this.ensCuves.get(this.ensCuves.size()-1).getContenu()) )
+        if ( String.format("%4.2f", this.ensCuves.get(0).getContenu()).equals(String.format("%4.2f", this.ensCuves.get(this.ensCuves.size()-1).getContenu())))
         {
             this.estEquilibre = true;
             System.out.println("Les cuves sont equilibree");
@@ -286,6 +289,7 @@ public class ControleurCuves
                     if(voisin.getPlaceLibre() < transmet.getTuyauEntre(voisin).getSection())
                     {
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
+                        //double diffRound = (double) Math.round(diff*100)/100;
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
                             System.out.println("-------------Flag1 Ping-Pong----------");
@@ -295,6 +299,7 @@ public class ControleurCuves
                         else{
                             //chauqe trasnemtteur ennvoie ca
                             double qte = (transmet.getTuyauEntre(voisin).getSection()*voisin.getPlaceLibre())/totalSection;
+                            //double qteRound = (double) Math.round((qte)*100)/100;
                             System.out.println("-------------Flag1----------");
                             System.out.println("transmetteur: " + transmet.getId()+ ", qte = " +qte+", a: "+voisin.getId()+"total section: "+totalSection);
                             voisin.recevoirDe(transmet, qte);
@@ -305,6 +310,7 @@ public class ControleurCuves
                     {
                         //cas 'ping-pong'
                         double diff = Math.abs(transmet.getContenu()-voisin.getContenu());
+                        //double diffRound = (double) Math.round(diff*100)/100;
                         if ( diff <= transmet.getTuyauEntre(voisin).getSection())
                         {
                             System.out.println("-------------Flag2----------");

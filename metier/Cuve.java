@@ -117,7 +117,6 @@ public class Cuve implements Comparable<Cuve>
     
         this.contenu += quantite;
         this.majCouleur();
-        this.majLabel();
         return true;
         
     }
@@ -142,12 +141,11 @@ public class Cuve implements Comparable<Cuve>
         // Cas où le contenu à transférer est plus petit que la section du tuyau
         if ( this.getContenu() < tuyau.getSection() )
         {
-            contenuTransfert = this.getContenu();
+            //contenuTransfert = (double) Math.round(this.getContenu()*100)/100;
 
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
-            this.majLabel();
 
             return true;            
         }
@@ -155,12 +153,11 @@ public class Cuve implements Comparable<Cuve>
         // Cas où la section du tuyau est plus grande que la place restante dans la cuveDest
         if ( cuveDest.getPlaceLibre() < tuyau.getSection() )
         {
-            contenuTransfert = (double) cuveDest.getPlaceLibre();
+            //contenuTransfert = (double) Math.round(cuveDest.getPlaceLibre()*100)/100;
 
             cuveDest.contenu += contenuTransfert;
             this.contenu     -= contenuTransfert;
             this.majCouleur();
-            this.majLabel();
 
             return true;
         }
@@ -169,9 +166,7 @@ public class Cuve implements Comparable<Cuve>
         cuveDest.contenu += tuyau.getSection();
         this.contenu     -= tuyau.getSection();
         this.majCouleur();
-        this.majLabel();
         cuveDest.majCouleur();
-        cuveDest.majLabel();
 
         return true;    
     }
@@ -185,12 +180,13 @@ public class Cuve implements Comparable<Cuve>
 
     public void recevoirDe( Cuve cuveDest, double transfert )
     {
+        //arrondir le transfert
+        //transfert = (double) Math.round(transfert*100)/100;
         this.contenu     += transfert;
         cuveDest.contenu -= transfert;
         cuveDest.majCouleur();
         cuveDest.majLabel();
         this.majCouleur();
-        this.majLabel();
     }
 
 
@@ -213,14 +209,6 @@ public class Cuve implements Comparable<Cuve>
             this.couleur = new Color(255,diff, diff);
         }
         
-    }
-
-    public void majLabel()
-    {
-        String arrondi          = String.format("%.2f", this.getContenu());
-        this.contenuLabel       = "<html>"+this.getId()+"<br>"+"00"+arrondi+"/"+this.getCapacite()+"</html>";
-        this.posXLabel          = this.getPosX()-(this.getCapacite()/5)-10;
-        this.posYLabel          = this.getPosY()-(int) (this.getCapacite()/5)-5;
     }
 
     /*------------------------------------------------------------------------*/

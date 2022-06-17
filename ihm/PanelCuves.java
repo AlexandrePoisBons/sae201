@@ -34,14 +34,14 @@ public class PanelCuves extends JPanel implements Scrollable
 		{
 			if (c != null)
 			{
-				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"<br>"+"00"+c.getContenu()+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
+				this.lstLblCuves.add(new JLabel("<html>"+c.getId()+"<br>"+"00"+String.format("%4.2f", c.getContenu())+"/"+c.getCapacite()+"</html>", JLabel.CENTER));
 				Dimension dimLbl = this.lstLblCuves.get(0).getPreferredSize();
 				//Dernier label de la liste //
 				JLabel lblActuel = this.lstLblCuves.get(this.ensCuves.indexOf(c));
 				
 				switch(c.getPosition())
 				{
-					case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
+					case "Haut": 	lblActuel.setBounds(c.getPosX()-(c.getCapacite()/5), c.getPosY()-(int) (c.getCapacite()/5)-5,     dimLbl.width, dimLbl.height); break;
 					case "Bas":		lblActuel.setBounds(c.getPosX()-(c.getCapacite()/10), c.getPosY()+(int) (c.getCapacite()/10)+5,    dimLbl.width, dimLbl.height); break;
 					case "Gauche":	lblActuel.setBounds(c.getPosX()-(int) (c.getCapacite()/5)-35, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
 					case "Droite":	lblActuel.setBounds(c.getPosX()+(int) (c.getCapacite()/5)-05, c.getPosY()-10, 					   dimLbl.width, dimLbl.height); break;
@@ -81,7 +81,7 @@ public class PanelCuves extends JPanel implements Scrollable
 
 		for ( Cuve c : this.ensCuves)
         {	
-			this.lstLblCuves.get(c.getId()-65).setText("<html>"+c.getId()+"<br>"+c.getContenu()+"/"+c.getCapacite()+"   </html>");	
+			this.lstLblCuves.get(c.getId()-65).setText("<html>"+c.getId()+"<br>"+String.format("%4.2f", c.getContenu())+"/"+c.getCapacite()+"   </html>");	
 			g.setColor(c.getCouleur());
             g.fillOval(c.getPosX()-(int) (c.getCapacite()/10), c.getPosY()-(int) (c.getCapacite()/10), (int) (c.getCapacite()/5), (int) (c.getCapacite()/5));
 			g.setColor(Color.BLACK);
