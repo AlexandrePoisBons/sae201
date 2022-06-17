@@ -3,7 +3,7 @@ Explications pour lancer les deux applications.
 
 
 # Instruction pour la compilation
-Afin de compiler rapidement nos programmes, nous avons créé un fichier compile.list permettant de compiler tous nos programmes depuis un seul répertoire. Pour cela, mettez-vous dans le répertoire "sae201" puis exécutez la commande : sous Windows : « javac "@compile.list" » sous Linux : javac @compile.list
+Afin de compiler rapidement nos programmes, nous avons créé un fichier compile.list permettant de compiler tous nos programmes depuis un seul répertoire. Pour cela, mettez-vous dans le répertoire "sae201" puis exécutez la commande : sous Windows :  javac "@compile.list"  sous Linux : javac @compile.list
 
 
 # Application n°1
