@@ -243,13 +243,21 @@ public class Application1
             /* Pour l'écriture correcte du .txt */
             pw.println( "Cuves" );
             for( Cuve c : ensCuves )
-                pw.println ( c );
+                pw.println ( c.getCapacite() + "," +
+                             c.getPosX    () + "," +  
+                             c.getPosY    () + "," +
+                             c.getPosition()
+                            );
 
             pw.println( "Tuyaux" );
-            for( Tuyau t : ensTuyau )
-                pw.println ( t ); 
+            for( Tuyau t: ensTuyau )
+                pw.println ( t.getSection ()         +","+
+                             t.getCuveOrig().getId() +","+
+                             t.getCuveDest().getId()
+                            ); 
 
-            pw.println( "\n"+format);
+            pw.println( "\n" + format );
+            pw.println( formatChoisi  );
 
             pw.close();
         }
