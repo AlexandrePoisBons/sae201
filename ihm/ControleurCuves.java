@@ -38,7 +38,7 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                this.creerGraph("sae201/application1/resultat.txt");
+                this.creerGraph("sae201/metier/resultat.txt");
                 break;
             }
 
@@ -361,7 +361,7 @@ public class ControleurCuves
 
         try
         {
-            PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/application2/resultat.txt") );
+            PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
 
             /* Pour l'écriture correcte du .txt */
             pw.println( "Cuves" );
