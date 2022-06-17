@@ -48,8 +48,6 @@ public class PanelLierTuyaux extends JPanel implements ActionListener
         this.lblCuve2   = new JLabel("Cuve 2");
         this.btnValider = new JButton("Valider");
         for (int i=0; i<this.nbTuyaux*2; i++)
-            if(i%2 == 0)
-                this.add(new JLabel(this.ctrl.ensTuyau.get(i/2+1)));
             this.lstText.add(new JTextField(1));
 
         for (JTextField t: this.lstText)

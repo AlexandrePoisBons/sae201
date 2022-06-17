@@ -249,7 +249,7 @@ public class Application1
             for( Tuyau t : ensTuyau )
                 pw.println ( t ); 
 
-            pw.println( ""+format);
+            pw.println( "\n"+format);
 
             pw.close();
         }
