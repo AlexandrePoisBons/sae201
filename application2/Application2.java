@@ -1,4 +1,6 @@
-package sae201.ihm;
+package sae201.application2;
+
+import sae201.ihm.*;
 import javax.swing.*;
 
 

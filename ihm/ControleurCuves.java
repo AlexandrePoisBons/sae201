@@ -38,7 +38,7 @@ public class ControleurCuves
         {
             case "Simple":
             {
-                this.creerGraph("sae201/metier/resultat.txt");
+                this.creerGraph("sae201/application1/resultat.txt");
                 break;
             }
 

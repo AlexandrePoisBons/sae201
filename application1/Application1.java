@@ -1,4 +1,6 @@
-package sae201.metier;
+package sae201.application1;
+
+import sae201.metier.*;
 
 import sae201.ihm.ControleurCuves;
 

@@ -1,5 +1,6 @@
 package sae201.ihm;
 
+import sae201.application2.Application2;
 import javax.swing.*;
 
 import java.awt.CheckboxGroup;
