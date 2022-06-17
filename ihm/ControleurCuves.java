@@ -329,7 +329,7 @@ public class ControleurCuves
 
             }
             this.trier(this.ensCuves);
-            if (mode == "continue")
+            if (mode.equals("continue"))
                 this.transferer(this.ensCuves.get(0), "continue");
         }
         for (Cuve c: this.ensCuves)
