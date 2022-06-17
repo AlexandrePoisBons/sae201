@@ -357,7 +357,7 @@ public class ControleurCuves
 
         try
         {
-            PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/metier/resultat.txt") );
+            PrintWriter pw = new PrintWriter( new FileOutputStream("sae201/application2/resultat.txt") );
 
             /* Pour l'écriture correcte du .txt */
             pw.println( "Cuves" );
