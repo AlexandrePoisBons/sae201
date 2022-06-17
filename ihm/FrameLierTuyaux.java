@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.BorderLayout;
-import sae201.Controleur;
 
 import sae201.metier.*;
 

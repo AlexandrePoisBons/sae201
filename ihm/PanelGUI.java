@@ -1,6 +1,5 @@
 package sae201.ihm;	
 
-import sae201.Controleur;
 
 import javax.swing.JPanel;
 import javax.swing.*;

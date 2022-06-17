@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-import sae201.Controleur;
 
 public class FrameGUI extends JFrame
 {

@@ -1,6 +1,5 @@
 package sae201.ihm;
 
-import sae201.Controleur;
 import sae201.metier.*;
 
 import javax.swing.*;
@@ -90,11 +89,11 @@ public class PanelChoixFormat extends JPanel implements ActionListener, ItemList
         c.gridwidth = 3;   //2 columns wide
         this.add(this.btnCreer, c);
 
-/*
+
         this.bgFormat.add(this.rbMatrice);
         this.bgFormat.add(this.rbMatriceOpti);
         this.bgFormat.add(this.rbListeAdjacence);
-*/
+
         /*---------------------------------*/
 
         /*-------------------------------*/

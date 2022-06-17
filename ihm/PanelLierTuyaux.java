@@ -1,6 +1,5 @@
 package sae201.ihm;	
 
-import sae201.Controleur;
 import sae201.ihm.FrameLierTuyaux;
 import sae201.metier.*;
 

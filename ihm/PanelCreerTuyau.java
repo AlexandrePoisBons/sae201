@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
-import sae201.Controleur;
 import sae201.ihm.FrameSelectTuyau;
 import sae201.metier.*;
 

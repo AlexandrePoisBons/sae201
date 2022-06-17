@@ -8,7 +8,6 @@ import java.awt.event.*;
 import java.awt.Color;
 import java.awt.BorderLayout;
 
-import sae201.Controleur;
 import sae201.ihm.PanelCreerCuves;
 import sae201.ihm.PanelCreerTuyau;
 

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
-import sae201.Controleur;
 import sae201.metier.*;
 
 public class PanelCreerCuves extends JPanel implements ActionListener

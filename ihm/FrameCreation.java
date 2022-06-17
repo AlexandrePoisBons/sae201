@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import java.util.ArrayList;
-import sae201.Controleur;
 import sae201.ihm.FrameGUI;
 
 public class FrameCreation extends JFrame
