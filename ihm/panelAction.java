@@ -68,6 +68,7 @@ public class PanelAction extends JPanel implements ActionListener
 
         this.btnValider.addActionListener(this);
         this.btnSuivant.addActionListener(this);
+        this.btnLancer.addActionListener(this);
     }  
 
     public void actionPerformed(ActionEvent e)
@@ -97,6 +98,7 @@ public class PanelAction extends JPanel implements ActionListener
         if ( e.getSource() == this.btnLancer ) 
         {
             this.ctrl.transferer(this.ctrl.ensCuves.get(0), "continue");
+            this.frmParent.repaint();
         }
     }
 
