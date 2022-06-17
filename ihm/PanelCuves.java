@@ -68,8 +68,6 @@ public class PanelCuves extends JPanel implements Scrollable
 	}
 	public void paint(Graphics g)
     {
-		int cptLblCuves	= 0;
-		int cptLblTuyau = 0;
         super.paint(g);
 		Graphics2D g2D = (Graphics2D) g;
 
