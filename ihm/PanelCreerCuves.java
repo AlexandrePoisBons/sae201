@@ -172,8 +172,6 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                                     this.stringErreurs+= "Les cuves " +   temp.getId()  + "("+temp.getPosX()+", "+ temp.getPosY()+")" + " et "+ 
                                                         c2.getId() + "("+c2.getPosX()+", "+ c2.getPosY()+") se chevauchent !<br>";
                                 }
-                                
-                                //break;
                             }
                             
                         }                    
@@ -192,13 +190,14 @@ public class PanelCreerCuves extends JPanel implements ActionListener
                 if ( (erreurLigne && positionTaken) || !cuveOk )
                     Cuve.decrement();          
             }
+
             // pour chaque ligne si il n'y a pas d'erreur setEditable false
             // si le textField est editable la cuve na pas ete cree
            
             if (erreurLigne)
                 erreur = true;  
 
-            // TEST A ENLEVER
+            // TEST POUR MONTRER QUE LES CUVES ONT BIEN ETE CREES
             System.out.println("iteration "+i);
             for(Cuve c: this.ensCuvesValides)
             {
@@ -213,7 +212,6 @@ public class PanelCreerCuves extends JPanel implements ActionListener
             this.frmParent.majPanelErreur(this.stringErreurs);
         }
 
-        // FIN
         if (!erreur)
         {
             new FrameTuyaux(this.ctrl);

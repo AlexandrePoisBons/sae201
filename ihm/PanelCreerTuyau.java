@@ -48,7 +48,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
         this.btnCreer = new JButton("Creer");
 
 		for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
-            this.lstTextFields.add(new JTextField());
+            this.lstTextFields.add(new JTextField(JTextField.CENTER));
 
 
         /*-------------------------------*/
@@ -75,7 +75,7 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
 	{
         boolean erreurLigne = false;
         boolean erreur      = false;
-        this.stringErreur = "";
+        this.stringErreur = "<html>";
 
         int taille = this.lstTextFields.size();
         for(int cpt = 0; cpt < this.nbTuyaux; cpt++)
@@ -96,13 +96,13 @@ public class PanelCreerTuyau extends JPanel implements ActionListener
                     else
                     {
                         erreurLigne = true;
-                        this.stringErreur += "La section doit etre comprise entre [ 2; 10 ]";
+                        this.stringErreur += "La section doit etre comprise entre [ 2; 10 ]<br>";
                     }
                 }
                 else
                 {
                     erreurLigne = true;
-                    this.stringErreur += "La section doit etre un nombre entier ! ";
+                    this.stringErreur += "La section doit etre un nombre entier !<br>";
                 }
 
             }

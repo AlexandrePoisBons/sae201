@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import java.awt.CheckboxGroup;
 import java.awt.Checkbox;
+import java.awt.GridLayout;
 
 import java.awt.event.*;
 
@@ -24,6 +25,7 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
     public panelApplication2(JFrame frmParent)
     {
         this.frmParent = frmParent;
+        this.setLayout(new GridLayout(4,1));
         this.choix     = "Simple"; //par defaut
 
         /*---------------------------------*/
@@ -31,9 +33,9 @@ public class panelApplication2 extends JPanel implements ActionListener, ItemLis
         /*---------------------------------*/
         this.bgChoix    = new ButtonGroup ();
 
-        this.rbSimple   = new JRadioButton("Simple ( recommande ) "                   , true); 
-        this.rbAvance   = new JRadioButton("Avance ( a partir d'un fichier existant )");
-        this.rbManuel   = new JRadioButton("Manuel ( entrer donnees manuellement )"   );
+        this.rbSimple   = new JRadioButton("Simple ( Recommandé ) "                   , true); 
+        this.rbAvance   = new JRadioButton("Avance ( à partir d'un fichier existant )");
+        this.rbManuel   = new JRadioButton("Manuel ( Entrer donnees )"   );
 
         this.btnValider = new JButton     ("Valider");
 
